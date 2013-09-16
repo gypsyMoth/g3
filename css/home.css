@@ -11,13 +11,29 @@ div.content {
 
 div.homeDiv {
     width: 100%;
+    text-align: center;
 }
 
-#signalSpan {
+.signalDiv {
     background-color: red;
 }
 
-#locationSpan {
-    font-size:large;
+.signalSpan {
+    color: white;
     font-weight:bold;
+}
+
+.locationSpan {
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+
+.siteDiv {
+    background-color: #799839;
+}
+
+.siteSpan {
+    color: white;
+    font-size: 2em;
+    font-weight: bolder;
 }
