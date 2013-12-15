@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -11,8 +11,10 @@
     </head>
     <body>
         <div id="content" class="content">
-            <div id="locationDiv" class="homeDiv">
-                <span id="locationSpan" class="locationSpan">123456E 1234567N</span>
+            <div class="homeHeader">
+                <div id="locationDiv" class="homeDiv">
+                    <span id="locationSpan" class="locationSpan">123456E 1234567N</span>
+                </div>
             </div>
 
             <div id="ActionDiv" class="actionDiv">
@@ -21,17 +23,20 @@
                 </div>
             </div>
 
-            <div id="siteDiv" class="homeDiv siteDiv">
-                <span id="siteSpan" class="siteSpan">BBURG:1</span>
-            </div>
+            <div class="homeFooter">
+                <div id="siteDiv" class="homeDiv siteDiv">
+                    <span id="siteSpan" class="siteSpan">BBURG:0001</span>
+                </div>
 
-            <div id="MessageDiv" class="homeDiv">
-                <span id="MessageSpan">No trap has been placed here.</span>
+                <div id="MessageDiv" class="homeDiv">
+                    <span id="MessageSpan">No trap has been placed here.</span>
+                </div>
             </div>
         </div>
 
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/jquery/jquery.mobile-1.3.2.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>
