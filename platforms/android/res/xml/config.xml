@@ -10,12 +10,13 @@
     <feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
     </feature>
-    <name>HelloWorld</name>
+    <name>G3</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Phonegap implementation of the STS Trapper Gadget
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="imf@vt.edu" href="http://gmsts.org">
+        Ian Firkin
+        Slow the Spread of the Gypsy Moth
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
     <preference name="permissions" value="none" />
@@ -58,4 +59,6 @@
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="http://127.0.0.1*" />
+    <gap:plugin name="Compass" value="org.apache.cordova.core.CompassListener" />
+    <gap:plugin name="Geolocation" value="org.apache.cordova.core.GeoBroker" />
 </widget>

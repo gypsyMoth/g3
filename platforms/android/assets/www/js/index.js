@@ -28,22 +28,21 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicity call 'app.receivedEvent(...);'
+
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+        //app.receivedEvent('deviceready');
+        app.startGeolocation();
     },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
+    startGeolocation: function() {
+        var watchId = navigator.geolocation.watchPosition(function (position) {
+            var element = document.getElementById('locationSpan');
+            element.innerHTML = position.coords.latitude + ' ' + position.coords.longitude;
+        },
+        function (error) {
+            var element = document.getElementById('locationSpan');
+            element.innerHTML ='code: ' + error.code + '\n' + 'message: ' + error.message + '\n';
+        },
+        {enableHighAccuracy:true, timeout:10000, maximumAge:0 });
     }
 };
