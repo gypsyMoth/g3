@@ -37,12 +37,12 @@ var app = {
     startGeolocation: function() {
         var watchId = navigator.geolocation.watchPosition(function (position) {
             var element = document.getElementById('locationSpan');
-            element.innerHTML = position.coords.latitude + ' ' + position.coords.longitude;
+            element.innerHTML = Math.round(position.coords.latitude) + ' ' + Math.round(position.coords.longitude);
         },
         function (error) {
             var element = document.getElementById('locationSpan');
             element.innerHTML ='code: ' + error.code + '\n' + 'message: ' + error.message + '\n';
         },
-        {enableHighAccuracy:true, timeout:10000, maximumAge:0 });
+        {enableHighAccuracy:true, timeout:1000, maximumAge:0 });
     }
 };
