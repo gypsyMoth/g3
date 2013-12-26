@@ -37,7 +37,9 @@ var app = {
     startGeolocation: function() {
         var watchId = navigator.geolocation.watchPosition(function (position) {
             var element = document.getElementById('locationSpan');
-            element.innerHTML = Math.round(position.coords.latitude) + ' ' + Math.round(position.coords.longitude);
+            var p = CoordinateConverter.datumShift({ Lon:position.coords.longitude, Lat:position.coords.latitude});
+            var utm = CoordinateConverter.project(p);
+            element.innerHTML = utm.Easting + 'E, ' + utm.Northing + 'N (' + utm.Zone + ')';
         },
         function (error) {
             var element = document.getElementById('locationSpan');
