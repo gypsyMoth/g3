@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c559ed9-cc82-4479-a930-0b8087215b45" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/CoordinateConverter.js" afterPath="$PROJECT_DIR$/js/CoordinateConverter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/CoordinateConverterSpec.js" afterPath="$PROJECT_DIR$/spec/CoordinateConverterSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/index.js" afterPath="$PROJECT_DIR$/js/index.js" />
+      <change type="DELETED" beforePath="C:\Users\Ian\Documents\GitHub\g3\platforms\android\assets\www\js\jquery\jquery.mobile-1.3.2.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/css/home.css" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/css/home.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/index.html" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/js/index.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/js/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/spec.html" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/spec.html" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -388,7 +390,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />

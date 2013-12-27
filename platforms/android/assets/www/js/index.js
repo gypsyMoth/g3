@@ -37,12 +37,14 @@ var app = {
     startGeolocation: function() {
         var watchId = navigator.geolocation.watchPosition(function (position) {
             var element = document.getElementById('locationSpan');
-            element.innerHTML = position.coords.latitude + ' ' + position.coords.longitude;
+            var p = CoordinateConverter.datumShift({ Lon:position.coords.longitude, Lat:position.coords.latitude});
+            var utm = CoordinateConverter.project(p);
+            element.innerHTML = utm.Easting + 'E, ' + utm.Northing + 'N (' + utm.Zone + ')';
         },
         function (error) {
             var element = document.getElementById('locationSpan');
             element.innerHTML ='code: ' + error.code + '\n' + 'message: ' + error.message + '\n';
         },
-        {enableHighAccuracy:true, timeout:10000, maximumAge:0 });
+        {enableHighAccuracy:true, timeout:1000, maximumAge:0 });
     }
 };
