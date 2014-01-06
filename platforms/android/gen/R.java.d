@@ -1,4 +1,4 @@
-C:\Users\Ian\Documents\GitHub\g3\platforms\android\gen\com\phonegap\helloworld\R.java \
+C:\Users\Ian\Documents\GitHub\g3\platforms\android\gen\com\phonegap\g3\R.java \
  : C:\Users\Ian\Documents\GitHub\g3\platforms\android\res\drawable\icon.png \
 C:\Users\Ian\Documents\GitHub\g3\platforms\android\res\drawable-hdpi\icon.png \
 C:\Users\Ian\Documents\GitHub\g3\platforms\android\res\drawable-ldpi\icon.png \

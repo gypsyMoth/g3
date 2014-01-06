@@ -1,16 +1,6 @@
 /**
  * Created by Ian on 12/22/13.
  */
-
-/*
-
- new object[] {719260,4981714,14,-96.220537695,44.956966172},
- new object[] {673287,4798532,15,-90.863035668,43.321608218},
- new object[] {269918,4908228,16,-89.883982884,44.292842819},
- new object[] {369000,4230000,17,-82.496129896,38.210347828},
- new object[] {255000,4005000,18,-77.723231329,36.160698197},
- */
-
 describe( "Coordinate Converter", function () {
 
     describe( "Project WGS84 Lat/Lon to Nad27 UTM", function () {
@@ -40,13 +30,4 @@ describe( "Coordinate Converter", function () {
             expect(CoordinateConverter.project(p)).toEqual({Easting:255000, Northing:4005000, Zone:18});
         });
     });
-
-    /*
-    describe("datum shift", function() {
-       it("Takes a geographic point input and returns a geographic point output", function() {
-           var p = {Lon:0, Lat:0};
-           expect(CoordinateConverter.datumShift(p)).toEqual(p);
-       });
-    });
-    */
 });

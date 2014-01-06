@@ -1,37 +1,47 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
+
 var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
     },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
+
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
 
     onDeviceReady: function() {
-        //app.receivedEvent('deviceready');
+        var element = document.getElementById('locationSpan');
+        element.innerHTML = "Loading sites...";
+        app.getSitesFile();
+        element.innerHTML = "Acquiring satellites...";
         app.startGeolocation();
+    },
+
+    getSitesFile: function(file) {
+        window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onFileSystemSuccess, this.fail);
+    },
+
+    onFileSystemSuccess: function(fileSystem) {
+        window.rootFS = fileSystem.root;
+
+        // Get a directory reader
+        var directoryReader = window.rootFS.createReader();
+
+        // Get a list of all the entries in the directory
+        directoryReader.readEntries(
+            function(entries) {
+                var i;
+                for (i = 0; i < entries.length; i++) {
+                    console.log(entries[i].name);
+                }
+            },
+            function() {
+                console.log(error.code + " " + error.message)
+            });
+
+        Sites.Load(window.rootFS.fullPath + "www/db/wv_1.json");
+        console.log(window.rootFS.fullPath);
     },
 
     startGeolocation: function() {
@@ -40,11 +50,18 @@ var app = {
             var p = CoordinateConverter.datumShift({ Lon:position.coords.longitude, Lat:position.coords.latitude});
             var utm = CoordinateConverter.project(p);
             element.innerHTML = utm.Easting + 'E, ' + utm.Northing + 'N (' + utm.Zone + ')';
+            var nearestSite = Sites.Nearest(utm);
+            element = document.getElementById('siteSpan');
+            element.innerHTML = nearestSite.quad + ':' + nearestSite.site_id;
         },
-        function (error) {
-            var element = document.getElementById('locationSpan');
-            element.innerHTML ='code: ' + error.code + '\n' + 'message: ' + error.message + '\n';
-        },
+        this.fail,
         {enableHighAccuracy:true, timeout:1000, maximumAge:0 });
+    },
+
+    fail: function (error) {
+        var element = document.getElementById('locationSpan');
+        var msg = 'code: ' + error.code + '\n' + 'message: ' + error.message + '\n';
+        element.innerHTML = msg;
+        console.log(msg);
     }
 };
