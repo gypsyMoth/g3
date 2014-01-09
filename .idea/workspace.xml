@@ -2,31 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20da09c5-c3ea-40cf-8e84-b3fc505237dd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/Sites.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/spec/SitesSpec.js" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\GitHub\g3\platforms\android\assets\www\spec\index.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\GitHub\g3\platforms\android\gen\com\phonegap\helloworld\BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\GitHub\g3\platforms\android\gen\com\phonegap\helloworld\R.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\GitHub\g3\www\spec\index.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/AndroidManifest.xml" afterPath="$PROJECT_DIR$/platforms/android/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/CoordinateConverterSpec.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/spec/CoordinateConverterSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/CoordinateConverterSpec.js" afterPath="$PROJECT_DIR$/www/spec/CoordinateConverterSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/gen/R.java.d" afterPath="$PROJECT_DIR$/platforms/android/gen/R.java.d" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/android.json" afterPath="$PROJECT_DIR$/plugins/android.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/config.xml" afterPath="$PROJECT_DIR$/platforms/android/assets/www/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/res/xml/config.xml" afterPath="$PROJECT_DIR$/platforms/android/res/xml/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config.xml" afterPath="$PROJECT_DIR$/www/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/cordova_plugins.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/cordova_plugins.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/index.html" afterPath="$PROJECT_DIR$/platforms/android/assets/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/index.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/index.js" afterPath="$PROJECT_DIR$/www/js/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/jsTestDriver.conf" afterPath="$PROJECT_DIR$/platforms/android/assets/www/jsTestDriver.conf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/jsTestDriver.conf" afterPath="$PROJECT_DIR$/www/jsTestDriver.conf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec.html" afterPath="$PROJECT_DIR$/platforms/android/assets/www/spec.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec.html" afterPath="$PROJECT_DIR$/www/spec.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/.idea/workspace.xml" afterPath="$PROJECT_DIR$/www/.idea/workspace.xml" />
     </list>
     <ignored path="g3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,7 +39,7 @@
       <file leaf-file-name="index.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="8" selection-start="1379" selection-end="1379" vertical-scroll-proportion="0.90710384" vertical-offset="399" max-vertical-offset="1241">
+            <state line="57" column="28" selection-start="2062" selection-end="2062" vertical-scroll-proportion="0.58196723" vertical-offset="756" max-vertical-offset="1190">
               <folding />
             </state>
           </provider>
@@ -297,6 +275,23 @@
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="20da09c5-c3ea-40cf-8e84-b3fc505237dd" name="Default" comment="" />
@@ -390,7 +385,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="8" selection-start="1379" selection-end="1379" vertical-scroll-proportion="0.90710384" vertical-offset="399" max-vertical-offset="1241">
+        <state line="57" column="28" selection-start="2062" selection-end="2062" vertical-scroll-proportion="0.58196723" vertical-offset="756" max-vertical-offset="1190">
           <folding />
         </state>
       </provider>

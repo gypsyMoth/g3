@@ -14,34 +14,31 @@ var app = {
         element.innerHTML = "Loading sites...";
         app.getSitesFile();
         element.innerHTML = "Acquiring satellites...";
-        app.startGeolocation();
+        //app.startGeolocation();
     },
 
     getSitesFile: function(file) {
         window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onFileSystemSuccess, this.fail);
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, app.onFileSystemSuccess, this.fail);
     },
 
     onFileSystemSuccess: function(fileSystem) {
         window.rootFS = fileSystem.root;
 
         // Get a directory reader
-        var directoryReader = window.rootFS.createReader();
+        var directoryReader = fileSystem.root.createReader();
 
         // Get a list of all the entries in the directory
-        directoryReader.readEntries(
-            function(entries) {
-                var i;
-                for (i = 0; i < entries.length; i++) {
-                    console.log(entries[i].name);
-                }
-            },
-            function() {
-                console.log(error.code + " " + error.message)
-            });
+        directoryReader.readEntries(app.onDirectoryReaderSuccess, app.fail);
 
-        Sites.Load(window.rootFS.fullPath + "www/db/wv_1.json");
-        console.log(window.rootFS.fullPath);
+        //Sites.Load(window.rootFS.fullPath + "www/db/wv_1.json");
+    },
+
+    onDirectoryReaderSuccess: function(entries) {
+        var i;
+        for (i = 0; i < entries.length; i++) {
+            console.log(entries[i].name);
+        }
     },
 
     startGeolocation: function() {
