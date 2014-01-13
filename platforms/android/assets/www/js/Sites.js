@@ -5,14 +5,6 @@ var Sites = (function () {
     var my = {};
     my.List = [];
 
-    my.Load = function(file) {
-        var reader = new FileReader();
-        reader.onloadend = function(evt) {
-            this.List = JSON.parse(event.target.result);
-        };
-        reader.readAsText(window.rootFS + '/' + file);
-    },
-
     my.Nearest = function(point) {
         var minDistance = Number.MAX_VALUE;
         var pCurrent = {x: point.Easting, y: point.Northing};

@@ -17,21 +17,55 @@ var app = {
         //app.startGeolocation();
     },
 
+    testFile: "wv_1.json",
+
     getSitesFile: function(file) {
         window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, app.onFileSystemSuccess, this.fail);
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, app.onFileSystemSuccess, app.fail);
     },
 
     onFileSystemSuccess: function(fileSystem) {
         window.rootFS = fileSystem.root;
 
-        // Get a directory reader
-        var directoryReader = fileSystem.root.createReader();
+        //Read in a data file
+        fileSystem.root.getFile(app.testFile, { create: false }, app.loadLocal, app.fileDoesNotExist);
+    },
 
-        // Get a list of all the entries in the directory
-        directoryReader.readEntries(app.onDirectoryReaderSuccess, app.fail);
+    loadLocal: function (fileEntry){
+        var msg = "Loading " + fileEntry.name + " from local...";
+        console.log(msg);
+        var element = document.getElementById('locationSpan');
+        element.innerHTML = msg;
 
-        //Sites.Load(window.rootFS.fullPath + "www/db/wv_1.json");
+        var reader = new FileReader();
+        reader.onloadend = function(evt) {
+            Sites.List = JSON.parse(event.target.result);
+        };
+        reader.readAsText(fileEntry.fullPath);
+    },
+
+    fileDoesNotExist: function (){
+        var msg = "Downloading sites...";
+        console.log(msg);
+        var element = document.getElementById('locationSpan');
+        element.innerHTML = msg;
+
+        var fileTransfer = new FileTransfer();
+        var uri = encodeURI("http://yt.ento.vt.edu/SlowTheSpread/gadgetsites/WV/1");
+
+        fileTransfer.download(
+            uri,
+            app.testFile,
+            function(entry) {
+                console.log("download complete: " + entry.fullPath);
+                app.loadLocal(entry);
+            },
+            function(error) {
+                console.log("download error source " + error.source);
+                console.log("download error target " + error.target);
+                console.log("upload error code" + error.code);
+            }
+        );
     },
 
     onDirectoryReaderSuccess: function(entries) {
@@ -51,7 +85,7 @@ var app = {
             element = document.getElementById('siteSpan');
             element.innerHTML = nearestSite.quad + ':' + nearestSite.site_id;
         },
-        this.fail,
+        app.fail,
         {enableHighAccuracy:true, timeout:1000, maximumAge:0 });
     },
 
