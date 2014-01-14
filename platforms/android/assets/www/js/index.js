@@ -1,5 +1,9 @@
 
 var app = {
+
+    AppHome: "",
+    testFile: "wv_1.json",
+
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -14,10 +18,8 @@ var app = {
         element.innerHTML = "Loading sites...";
         app.getSitesFile();
         element.innerHTML = "Acquiring satellites...";
-        //app.startGeolocation();
+        app.startGeolocation();
     },
-
-    testFile: "wv_1.json",
 
     getSitesFile: function(file) {
         window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
@@ -27,8 +29,14 @@ var app = {
     onFileSystemSuccess: function(fileSystem) {
         window.rootFS = fileSystem.root;
 
+        //Get app directory
+        fileSystem.root.getDirectory("com.phonegap.g3", {create: true }, app.gotApplicationDirectory, app.fail);
+    },
+
+    gotApplicationDirectory: function(dirEntry) {
         //Read in a data file
-        fileSystem.root.getFile(app.testFile, { create: false }, app.loadLocal, app.fileDoesNotExist);
+        app.AppHome = dirEntry;
+        dirEntry.getFile(app.testFile, { create: false }, app.fileDoesNotExist, app.fileDoesNotExist);
     },
 
     loadLocal: function (fileEntry){
@@ -37,11 +45,20 @@ var app = {
         var element = document.getElementById('locationSpan');
         element.innerHTML = msg;
 
+        fileEntry.file(app.gotFile, app.fail);
+    },
+
+    gotFile: function(file) {
         var reader = new FileReader();
         reader.onloadend = function(evt) {
-            Sites.List = JSON.parse(event.target.result);
+            var element = document.getElementById('locationSpan');
+
+            console.log(evt.target.result);
+            Sites.List = JSON.parse(evt.target.result);
+            element.innerHTML = "Success!";
+
         };
-        reader.readAsText(fileEntry.fullPath);
+        reader.readAsText(file);
     },
 
     fileDoesNotExist: function (){
@@ -51,11 +68,11 @@ var app = {
         element.innerHTML = msg;
 
         var fileTransfer = new FileTransfer();
-        var uri = encodeURI("http://yt.ento.vt.edu/SlowTheSpread/gadgetsites/WV/1");
+        var uri = encodeURI("http://yt.ento.vt.edu/SlowTheSpread/gadgetsites/WV/1?format=json");
 
         fileTransfer.download(
             uri,
-            app.testFile,
+            app.AppHome.fullPath + "/" + app.testFile,
             function(entry) {
                 console.log("download complete: " + entry.fullPath);
                 app.loadLocal(entry);
@@ -66,13 +83,6 @@ var app = {
                 console.log("upload error code" + error.code);
             }
         );
-    },
-
-    onDirectoryReaderSuccess: function(entries) {
-        var i;
-        for (i = 0; i < entries.length; i++) {
-            console.log(entries[i].name);
-        }
     },
 
     startGeolocation: function() {
