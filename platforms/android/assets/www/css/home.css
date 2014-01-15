@@ -63,6 +63,6 @@ div.homeDiv {
     font-size: 3em;
     font-weight: bolder;
 }
-#MessageSpan {
+.message {
     font-size: 1.5em;
 }

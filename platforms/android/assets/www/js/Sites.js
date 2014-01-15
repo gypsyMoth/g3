@@ -9,9 +9,11 @@ var Sites = (function () {
         var minDistance = Number.MAX_VALUE;
         var pCurrent = {x: point.Easting, y: point.Northing};
         var nearest = this.List[0];
+        var foundSite = false;
         for (var i = 0, len = this.List.length; i < len; i++) {
             var s = this.List[i];
             if (s.zone === point.Zone) {
+                foundSite = true;
                 var p = {x: s.xth, y: s.yth};
                 var d = distance(p, pCurrent);
                 if (d < minDistance) {
@@ -20,11 +22,11 @@ var Sites = (function () {
                 }
             }
         }
-        return nearest;
+        return {Site: nearest, Distance: Math.sqrt(minDistance), Found: foundSite};
     }
 
     var distance = function(p2, p1) {
-        return Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2);
+        return (Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
     };
 
     return my;

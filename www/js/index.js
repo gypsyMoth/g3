@@ -51,12 +51,8 @@ var app = {
     gotFile: function(file) {
         var reader = new FileReader();
         reader.onloadend = function(evt) {
-            var element = document.getElementById('locationSpan');
-
             console.log(evt.target.result);
             Sites.List = JSON.parse(evt.target.result);
-            element.innerHTML = "Success!";
-
         };
         reader.readAsText(file);
     },
@@ -87,13 +83,24 @@ var app = {
 
     startGeolocation: function() {
         var watchId = navigator.geolocation.watchPosition(function (position) {
-            var element = document.getElementById('locationSpan');
+
             var p = CoordinateConverter.datumShift({ Lon:position.coords.longitude, Lat:position.coords.latitude});
             var utm = CoordinateConverter.project(p);
-            element.innerHTML = utm.Easting + 'E, ' + utm.Northing + 'N (' + utm.Zone + ')';
-            var nearestSite = Sites.Nearest(utm);
-            element = document.getElementById('siteSpan');
-            element.innerHTML = nearestSite.quad + ':' + nearestSite.site_id;
+            var e = document.getElementById('locationSpan');
+            e.innerHTML = utm.Zone + ', ' + utm.Easting + 'E, ' + utm.Northing + 'N';
+
+                var nearest = Sites.Nearest(utm);
+            if (nearest.Found) {
+                e = document.getElementById('siteSpan');
+                e.innerHTML = nearest.Site.quad + ':' + nearest.Site.site_id;
+                e = document.getElementById('distanceSpan');
+                e.innerHTML = "Distance: " + nearest.Distance + " meters";
+            } else {
+                e = document.getElementById('siteSpan');
+                e.innerHTML = "No sites found";
+                e = document.getElementById('distanceSpan');
+                e.innerHTML = "";
+            }
         },
         app.fail,
         {enableHighAccuracy:true, timeout:1000, maximumAge:0 });
