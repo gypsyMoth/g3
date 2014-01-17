@@ -10,40 +10,47 @@
         <link rel="stylesheet" href="css/home.css" type="text/css" />
     </head>
     <body>
-        <div id="content" class="content">
-            <div class="homeHeader">
-                <div id="locationDiv" class="homeDiv">
-                    <span id="locationSpan" class="locationSpan">123456E 1234567N</span>
+        <script type="text/template" id="home-template">
+            <div class="view">
+                <div id="content" class="content">
+
+                    <div class="homeHeader">
+                        <div id="locationDiv" class="homeDiv">
+                            <span id="locationSpan" class="locationSpan">
+                                <%= currentUtm.Zone + ", " + currentUtm.Easting + "E, " + currentUtm.Northing + "N" %>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div id="ActionDiv" class="actionDiv">
+                        <img id="homeImage" src="img/greenTree.gif"/>
+                    </div>
+
+                    <div class="homeFooter">
+                        <div id="distanceDiv" class="homeDiv">
+                            <span id="distanceSpan" class="message"><%= nearestSite.Distance %></span>
+                        </div>
+                        <div id="siteDiv" class="homeDiv siteDiv">
+                            <span id="siteSpan" class="siteSpan"><%= nearestSite.Site.quad + ":" + nearestSite.Site.site_id %></span>
+                        </div>
+
+                        <div id="MessageDiv" class="homeDiv">
+                            <span id="MessageSpan" class="message"><%= message %></span>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div id="ActionDiv" class="actionDiv">
-                <img id="homeImage" src="img/greenTree.gif"/>
-            </div>
-
-            <div class="homeFooter">
-                <div id="distanceDiv" class="homeDiv">
-                    <span id="distanceSpan" class="message">Distance: 1000 m</span>
-                </div>
-                <div id="siteDiv" class="homeDiv siteDiv">
-                    <span id="siteSpan" class="siteSpan">BBURG:0001</span>
-                </div>
-
-                <div id="MessageDiv" class="homeDiv">
-                    <span id="MessageSpan" class="message">No trap has been placed here.</span>
-                </div>
-            </div>
-        </div>
+        </script>
 
         <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="js/underscore-min.js"></script>
-        <script type="text/javascript" src="js/backbone-min.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/lib/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="js/lib/underscore-min.js"></script>
+        <script type="text/javascript" src="js/lib/backbone-min.js"></script>
+        <script type="text/javascript" src="js/models/CurrentPosition.js"></script>
+        <script type="text/javascript" src="js/views/HomeView.js"></script>
+        <!--<script type="text/javascript" src="js/views/AppView.js"></script>-->
         <script type="text/javascript" src="js/CoordinateConverter.js"></script>
         <script type="text/javascript" src="js/Sites.js"></script>
-        <!--<script type="text/javascript" src="js/jquery/jquery.mobile-1.3.2.js"></script>-->
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+        <script type="text/javascript" src="js/app.js"></script>
     </body>
 </html>

@@ -3,16 +3,18 @@
  */
 var Sites = (function () {
     var my = {};
-    my.List = [];
 
-    my.Nearest = function(point) {
+    my.Nearest = function(currentLocation, sites) {
         var minDistance = Number.MAX_VALUE;
-        var pCurrent = {x: point.Easting, y: point.Northing};
-        var nearest = this.List[0];
+        var pCurrent = {x: currentLocation.Easting, y: currentLocation.Northing};
+        var nearest = {
+            quad: '',
+            site_id: ''
+        };
         var foundSite = false;
-        for (var i = 0, len = this.List.length; i < len; i++) {
-            var s = this.List[i];
-            if (s.zone === point.Zone) {
+        for (var i = 0, len = sites.length; i < len; i++) {
+            var s = sites[i];
+            if (s.zone === currentLocation.Zone) {
                 foundSite = true;
                 var p = {x: s.xth, y: s.yth};
                 var d = distance(p, pCurrent);
