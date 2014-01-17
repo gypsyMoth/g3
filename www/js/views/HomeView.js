@@ -9,8 +9,6 @@ var app = app || {};
 
     app.HomeView = Backbone.View.extend({
 
-//        tagName: 'div',
-
         el: 'body',
 
         template: _.template($('#home-template').html()),
