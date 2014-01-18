@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c559ed9-cc82-4479-a930-0b8087215b45" name="Default" comment="Got jasmine up and running, and added CoordinateConverter library.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Sites.js" afterPath="$PROJECT_DIR$/js/Sites.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/SitesSpec.js" afterPath="$PROJECT_DIR$/spec/SitesSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/home.css" afterPath="$PROJECT_DIR$/css/home.css" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,19 +65,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="home.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/home.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="48" selection-end="48" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
+            <state line="14" column="13" selection-start="151" selection-end="151" vertical-scroll-proportion="0.38019168" vertical-offset="0" max-vertical-offset="1360">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="97" selection-start="1592" selection-end="1592" vertical-scroll-proportion="0.39182281" vertical-offset="263" max-vertical-offset="1054">
+            <state line="25" column="26" selection-start="1369" selection-end="1369" vertical-scroll-proportion="-6.230769" vertical-offset="263" max-vertical-offset="1054">
               <folding>
                 <marker date="1390080428340" expanded="true" signature="873:1211" placeholder="..." />
                 <marker date="1390080428340" expanded="true" signature="936:1184" placeholder="..." />
@@ -151,13 +148,13 @@
         <option value="$PROJECT_DIR$/js/views/HomeFooter.js" />
         <option value="$PROJECT_DIR$/js/app.js" />
         <option value="$PROJECT_DIR$/js/views/Home.js" />
-        <option value="$PROJECT_DIR$/css/home.css" />
         <option value="$PROJECT_DIR$/css/gadget.css" />
         <option value="$PROJECT_DIR$/spec.html" />
         <option value="$PROJECT_DIR$/js/models/CurrentPosition.js" />
         <option value="$PROJECT_DIR$/js/Sites.js" />
         <option value="$PROJECT_DIR$/spec/SitesSpec.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/css/home.css" />
       </list>
     </option>
   </component>
@@ -544,13 +541,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/home.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="48" selection-end="48" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/gadget.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="17" selection-start="159" selection-end="159" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
@@ -608,7 +598,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="97" selection-start="1592" selection-end="1592" vertical-scroll-proportion="0.39182281" vertical-offset="263" max-vertical-offset="1054">
+        <state line="25" column="26" selection-start="1369" selection-end="1369" vertical-scroll-proportion="-6.230769" vertical-offset="263" max-vertical-offset="1054">
           <folding>
             <marker date="1390080428340" expanded="true" signature="873:1211" placeholder="..." />
             <marker date="1390080428340" expanded="true" signature="936:1184" placeholder="..." />
@@ -619,6 +609,13 @@
             <marker date="1390080428340" expanded="true" signature="1729:1894" placeholder="..." />
             <marker date="1390080428340" expanded="true" signature="1957:2077" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/home.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="13" selection-start="151" selection-end="151" vertical-scroll-proportion="0.38019168" vertical-offset="0" max-vertical-offset="1360">
+          <folding />
         </state>
       </provider>
     </entry>
