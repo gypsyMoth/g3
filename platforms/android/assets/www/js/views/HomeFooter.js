@@ -1,6 +1,3 @@
-/**
- * Created by Ian on 1/17/14.
- */
 $(function () {
     'use strict';
 
@@ -15,13 +12,7 @@ $(function () {
             //this.render();
         },
 
-//        events: {
-//            "click #homeImage": "onImageClicked"
-//        },
-//
-//        onImageClicked: function() {
-//            alert("Trap Placement");
-//        },
+
 
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
