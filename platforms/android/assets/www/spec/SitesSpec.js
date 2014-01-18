@@ -1,17 +1,12 @@
 /**
  * Created by Ian on 12/28/13.
  */
-describe( "Sites", function () {
+describe( "Sites Module", function () {
     it("Exists", function() {
         expect(Sites).toBeDefined();
     });
 
-    it ("Has a Nearest method", function(){
-        expect(Sites.Nearest).toBeDefined();
-    });
-
-    describe ("Uses a test list of sites", function() {
-
+    describe( "Sites Tests", function() {
         var list = [
             {"zone":17,"xth":"536000","yth":"4184000","quad":"TEST","site_id":1,"grid":"8000","trap_type":"Milk Carton","moth_count":0},
             {"zone":18,"xth":"528000","yth":"4168000","quad":"TEST","site_id":2,"grid":"8000","trap_type":"Milk Carton","moth_count":0},
@@ -49,5 +44,53 @@ describe( "Sites", function () {
             var pOut = nearest.Site;
             expect(nearest.Found).toEqual(false);
         });
+
+        describe("Bearing tests", function() {
+            var list = [
+                {"zone":17,"xth":"446000","yth":"4118000","quad":"TAZEN","site_id":40,"grid":"3000","trap_type":"Delta","moth_count":0}
+            ];
+
+            var bearingTest = function(currentLocation, expectedBearing) {
+                var nearest = Sites.Nearest(currentLocation, list);
+                var pOut = nearest.Site;
+                expect(nearest.Bearing).toEqual(expectedBearing);
+            };
+
+            it("Returns 'N' when we're north of the point", function() {
+                bearingTest({Easting: 446000, Northing: 4119000, Zone: 17}, "N");
+            });
+
+            it("Returns 'S' when we're south of the point", function() {
+                bearingTest({Easting: 446000, Northing: 4117000, Zone: 17}, "S");
+            });
+
+            it("Returns 'E' when we're east of the point", function() {
+                bearingTest({Easting: 447000, Northing: 4118000, Zone: 17}, "E");
+            });
+
+            it("Returns 'W' when we're west of the point", function() {
+                bearingTest({Easting: 445000, Northing: 4118000, Zone: 17}, "W");
+            });
+        });
+    });
+
+    describe("Target Circle Tests", function() {
+        var list = [
+            {"zone":17,"xth":"446000","yth":"4118000","quad":"TAZEN","site_id":40,"grid":"3000","trap_type":"Delta","moth_count":0}
+        ];
+       it("Returns false when the current position is within 30% of the grid distance of the nearest site", function() {
+           var pIn = {Easting: 445999, Northing: 4118000, Zone: 17}; // 1 meter away
+           var nearest = Sites.Nearest(pIn, list);
+           var pOut = nearest.Site;
+           expect(nearest.Outside).toEqual(false);
+       });
+
+        it("Returns true when the current position is greater than 30% of the grid distance of the nearest site", function() {
+            var pIn = {Easting: 445099, Northing: 4118000, Zone: 17}; // 901 meters away
+            var nearest = Sites.Nearest(pIn, list);
+            var pOut = nearest.Site;
+            expect(nearest.Outside).toEqual(true);
+        });
+
     });
 });
