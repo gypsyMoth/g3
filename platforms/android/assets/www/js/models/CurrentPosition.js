@@ -1,13 +1,16 @@
 /**
  * Created by Ian on 1/15/14.
- */
-var app = app || {};
+*/
 
 (function () {
     'use strict';
 
-    app.CurrentPosition = Backbone.Model.extend({
+    app.models.CurrentPosition = Backbone.Model.extend({
        defaults: {
+           currentLatLon: {
+             Latitude: '',
+             Longitude: ''
+           },
            currentUtm: {
                Easting: '',
                Northing: '',
@@ -18,6 +21,7 @@ var app = app || {};
                Found: false,
                Site: { quad: '', site_id: ''}
            },
+           outsideTarget: false,
            message: ''
        }
     });

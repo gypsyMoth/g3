@@ -10,21 +10,24 @@
         <link rel="stylesheet" href="css/home.css" type="text/css" />
     </head>
     <body>
-        <script type="text/template" id="home-template">
-            <div id="content" class="content">
-                <div class="homeHeader">
-                    <div id="locationDiv" class="homeDiv">
-                        <span id="locationSpan" class="locationSpan">
-                            <%= currentUtm.Zone + ", " + currentUtm.Easting + "E, " + currentUtm.Northing + "N" %>
-                        </span>
-                    </div>
-                </div>
+        <div id="content" class="content">
 
-                <div id="ActionDiv" class="actionDiv">
-                    <img id="homeImage" src="img/greenTree.gif"/>
-                </div>
+            <div id="homeHeader" class="homeHeader">
+                <script type="text/template" id="home-header-template">
+                        <div id="locationDiv" class="homeDiv">
+                            <span id="locationSpan" class="locationSpan">
+                                <%= currentUtm.Zone + ", " + currentUtm.Easting + "E, " + currentUtm.Northing + "N" %>
+                            </span>
+                        </div>
+                </script>
+            </div>
 
-                <div class="homeFooter">
+            <div id="ActionDiv" class="actionDiv">
+                <img id="homeImage" src="img/greenTree.gif"/>
+            </div>
+
+            <div id="homeFooter" class="homeFooter">
+                <script type="text/template" id="home-footer-template">
                     <div id="distanceDiv" class="homeDiv">
                         <span id="distanceSpan" class="message"><%= nearestSite.Distance %></span>
                     </div>
@@ -35,19 +38,20 @@
                     <div id="MessageDiv" class="homeDiv">
                         <span id="MessageSpan" class="message"><%= message %></span>
                     </div>
-                </div>
+                </script>
             </div>
-        </script>
+        </div>
 
         <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
         <script type="text/javascript" src="js/lib/jquery-2.0.3.min.js"></script>
         <script type="text/javascript" src="js/lib/underscore-min.js"></script>
         <script type="text/javascript" src="js/lib/backbone-min.js"></script>
         <script type="text/javascript" src="js/models/CurrentPosition.js"></script>
-        <script type="text/javascript" src="js/views/HomeView.js"></script>
-        <!--<script type="text/javascript" src="js/views/AppView.js"></script>-->
+        <script type="text/javascript" src="js/views/HomeHeader.js"></script>
+        <script type="text/javascript" src="js/views/HomeFooter.js"></script>
         <script type="text/javascript" src="js/CoordinateConverter.js"></script>
         <script type="text/javascript" src="js/Sites.js"></script>
-        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
     </body>
 </html>

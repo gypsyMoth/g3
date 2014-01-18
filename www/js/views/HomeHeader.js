@@ -1,20 +1,16 @@
-/**
- * Created by Ian on 1/15/14.
- */
-
-var app = app || {};
-
-(function ($) {
+/* Created by Ian on 1/15/14.*/
+$(function () {
     'use strict';
 
-    app.HomeView = Backbone.View.extend({
+    app.views.HomeHeader = Backbone.View.extend({
 
-        el: 'body',
+        el: '#homeHeader',
 
-        template: _.template($('#home-template').html()),
+        template: _.template($('#home-header-template').html()),
 
         initialize: function() {
             this.listenTo(this.model, 'change', this.render);
+            //this.render();
         },
 
         render: function() {
@@ -22,4 +18,4 @@ var app = app || {};
             return this;
         }
     });
-})(jQuery);
+});
