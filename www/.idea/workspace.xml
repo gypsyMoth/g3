@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c559ed9-cc82-4479-a930-0b8087215b45" name="Default" comment="Got jasmine up and running, and added CoordinateConverter library.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/models/CurrentPosition.js" afterPath="$PROJECT_DIR$/js/models/CurrentPosition.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/Home.js" afterPath="$PROJECT_DIR$/js/views/Home.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app.js" afterPath="$PROJECT_DIR$/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/home.css" afterPath="$PROJECT_DIR$/css/home.css" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,10 +54,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Home.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Home.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/views/Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="9" selection-start="861" selection-end="861" vertical-scroll-proportion="0.8690096" vertical-offset="0" max-vertical-offset="697">
+            <state line="32" column="9" selection-start="861" selection-end="861" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -111,10 +108,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="79" selection-start="890" selection-end="890" vertical-scroll-proportion="0.0" vertical-offset="207" max-vertical-offset="833">
+            <state line="17" column="86" selection-start="481" selection-end="481" vertical-scroll-proportion="0.13099042" vertical-offset="207" max-vertical-offset="833">
               <folding />
             </state>
           </provider>
@@ -159,10 +156,10 @@
         <option value="$PROJECT_DIR$/js/Sites.js" />
         <option value="$PROJECT_DIR$/spec/SitesSpec.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/app.js" />
         <option value="$PROJECT_DIR$/css/home.css" />
         <option value="$PROJECT_DIR$/js/models/CurrentPosition.js" />
         <option value="$PROJECT_DIR$/js/views/Home.js" />
+        <option value="$PROJECT_DIR$/js/app.js" />
       </list>
     </option>
   </component>
@@ -479,7 +476,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -586,13 +583,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="79" selection-start="890" selection-end="890" vertical-scroll-proportion="0.0" vertical-offset="207" max-vertical-offset="833">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/img/redTree.gif">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -637,10 +627,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/views/Home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="9" selection-start="861" selection-end="861" vertical-scroll-proportion="0.8690096" vertical-offset="0" max-vertical-offset="697">
+        <state line="32" column="9" selection-start="861" selection-end="861" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="86" selection-start="481" selection-end="481" vertical-scroll-proportion="0.13099042" vertical-offset="207" max-vertical-offset="833">
+          <folding />
         </state>
       </provider>
     </entry>
