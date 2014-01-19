@@ -4,11 +4,12 @@ $(function () {
 
     app.views.Home = Backbone.View.extend({
 
-        el: '#homeView',
+        el: '#pageView',
 
         template: _.template($('#home-template').html()),
 
         initialize: function() {
+            app.startGeolocation();
             this.listenTo(this.model, 'change', this.render);
             this.render();
         },
@@ -18,7 +19,9 @@ $(function () {
         },
 
         onImageClicked: function() {
-            alert("Trap Placement");
+            //alert("Trap Placement");
+            app.stopGeolocation();
+            app.pageRouter.navigate('placement', true);
         },
 
         render: function() {

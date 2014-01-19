@@ -1,6 +1,7 @@
 var app = {
     views: {},
     models: {},
+    router: {},
     Root: "",
     SitesList: [],
     Here: {},
@@ -11,6 +12,9 @@ var app = {
 $(document).on("ready", function () {
     'use strict';
 
+    app.pageRouter = new app.Router();
+    Backbone.history.start();
+
     app.Root = "";
 
     app.SitesList = [
@@ -19,16 +23,8 @@ $(document).on("ready", function () {
         {"zone":15,"xth":"528000","yth":"4176000","quad":"TEST","site_id":3,"grid":"8000","trap_type":"Milk Carton","moth_count":0}
     ];
 
-    app.Here = new app.models.CurrentPosition();
-    var home = new app.views.Home({model: app.Here});
-
     app.startGeolocation = function() {
-        var watchId = navigator.geolocation.watchPosition(function (position) {
-                var p = CoordinateConverter.datumShift({ Lon:position.coords.longitude, Lat:position.coords.latitude});
-                var utm = CoordinateConverter.project(p);
-                app.Here.set({currentUtm: utm});
-                app.Here.set({nearestSite: Sites.Nearest(utm, app.SitesList)});
-            },
+        app.watchId = navigator.geolocation.watchPosition(app.onPositionUpdate,
             function(error) {
                 console.log(error.message);
             },
@@ -36,8 +32,23 @@ $(document).on("ready", function () {
         );
     };
 
+    app.onPositionUpdate = function (position) {
+        var p = CoordinateConverter.datumShift({ Lon:position.coords.longitude, Lat:position.coords.latitude});
+        var utm = CoordinateConverter.project(p);
+        app.Here.set({currentUtm: utm});
+        app.Here.set({nearestSite: Sites.Nearest(utm, app.SitesList)});
+    },
+
+    app.stopGeolocation = function() {
+        if (app.watchId !== null) {
+            navigator.geolocation.clearWatch(app.watchId);
+            app.watchId = null;
+        }
+    },
+
     app.onDeviceReady = function() {
-        app.startGeolocation();
+        app.Here = new app.models.CurrentPosition();
+        app.pageRouter.navigate('home', true);
     };
 
     document.addEventListener('deviceready', app.onDeviceReady, false);
