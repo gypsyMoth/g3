@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c559ed9-cc82-4479-a930-0b8087215b45" name="Default" comment="Got jasmine up and running, and added CoordinateConverter library.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/models/CurrentPosition.js" afterPath="$PROJECT_DIR$/js/models/CurrentPosition.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/Home.js" afterPath="$PROJECT_DIR$/js/views/Home.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app.js" afterPath="$PROJECT_DIR$/js/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/home.css" afterPath="$PROJECT_DIR$/css/home.css" />
     </list>
     <ignored path="www.iws" />
@@ -39,7 +42,7 @@
       <file leaf-file-name="CurrentPosition.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/models/CurrentPosition.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="32" selection-start="540" selection-end="540" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+            <state line="3" column="0" selection-start="37" selection-end="37" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
               <folding />
             </state>
           </provider>
@@ -48,16 +51,16 @@
       <file leaf-file-name="Sites.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Sites.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="16" selection-start="1942" selection-end="1942" vertical-scroll-proportion="0.0" vertical-offset="700" max-vertical-offset="1394">
+            <state line="18" column="39" selection-start="558" selection-end="558" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1394">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Home.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Home.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/views/Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="0" selection-start="409" selection-end="409" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+            <state line="32" column="9" selection-start="861" selection-end="861" vertical-scroll-proportion="0.8690096" vertical-offset="0" max-vertical-offset="697">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -65,10 +68,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="redTree.gif" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/img/redTree.gif">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/home.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="13" selection-start="151" selection-end="151" vertical-scroll-proportion="0.38019168" vertical-offset="0" max-vertical-offset="1360">
+            <state line="57" column="22" selection-start="714" selection-end="721" vertical-scroll-proportion="0.0" vertical-offset="632" max-vertical-offset="1326">
               <folding />
             </state>
           </provider>
@@ -77,7 +87,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="26" selection-start="1369" selection-end="1369" vertical-scroll-proportion="-6.230769" vertical-offset="263" max-vertical-offset="1054">
+            <state line="32" column="66" selection-start="1730" selection-end="1730" vertical-scroll-proportion="-10.807693" vertical-offset="263" max-vertical-offset="1054">
               <folding>
                 <marker date="1390080428340" expanded="true" signature="873:1211" placeholder="..." />
                 <marker date="1390080428340" expanded="true" signature="936:1184" placeholder="..." />
@@ -104,10 +114,8 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="79" selection-start="1199" selection-end="1199" vertical-scroll-proportion="0.0" vertical-offset="207" max-vertical-offset="833">
-              <folding>
-                <marker date="1390075808091" expanded="true" signature="200:1540" placeholder="{...}" />
-              </folding>
+            <state line="25" column="79" selection-start="890" selection-end="890" vertical-scroll-proportion="0.0" vertical-offset="207" max-vertical-offset="833">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -146,15 +154,15 @@
         <option value="$PROJECT_DIR$/tpl/Home.html" />
         <option value="$PROJECT_DIR$/js/views/HomeHeader.js" />
         <option value="$PROJECT_DIR$/js/views/HomeFooter.js" />
-        <option value="$PROJECT_DIR$/js/app.js" />
-        <option value="$PROJECT_DIR$/js/views/Home.js" />
         <option value="$PROJECT_DIR$/css/gadget.css" />
         <option value="$PROJECT_DIR$/spec.html" />
-        <option value="$PROJECT_DIR$/js/models/CurrentPosition.js" />
         <option value="$PROJECT_DIR$/js/Sites.js" />
         <option value="$PROJECT_DIR$/spec/SitesSpec.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/app.js" />
         <option value="$PROJECT_DIR$/css/home.css" />
+        <option value="$PROJECT_DIR$/js/models/CurrentPosition.js" />
+        <option value="$PROJECT_DIR$/js/views/Home.js" />
       </list>
     </option>
   </component>
@@ -283,6 +291,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -555,29 +577,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="79" selection-start="1199" selection-end="1199" vertical-scroll-proportion="0.0" vertical-offset="207" max-vertical-offset="833">
-          <folding>
-            <marker date="1390075808091" expanded="true" signature="200:1540" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/models/CurrentPosition.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="32" selection-start="540" selection-end="540" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Sites.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="16" selection-start="1942" selection-end="1942" vertical-scroll-proportion="0.0" vertical-offset="700" max-vertical-offset="1394">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/SitesSpec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="56" column="14" selection-start="2807" selection-end="2807" vertical-scroll-proportion="0.0" vertical-offset="632" max-vertical-offset="1717">
@@ -587,18 +586,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/views/Home.js">
+    <entry file="file://$PROJECT_DIR$/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="409" selection-end="409" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state line="25" column="79" selection-start="890" selection-end="890" vertical-scroll-proportion="0.0" vertical-offset="207" max-vertical-offset="833">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/redTree.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/home.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="22" selection-start="714" selection-end="721" vertical-scroll-proportion="0.0" vertical-offset="632" max-vertical-offset="1326">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Sites.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="39" selection-start="558" selection-end="558" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1394">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/models/CurrentPosition.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="37" selection-end="37" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="26" selection-start="1369" selection-end="1369" vertical-scroll-proportion="-6.230769" vertical-offset="263" max-vertical-offset="1054">
+        <state line="32" column="66" selection-start="1730" selection-end="1730" vertical-scroll-proportion="-10.807693" vertical-offset="263" max-vertical-offset="1054">
           <folding>
             <marker date="1390080428340" expanded="true" signature="873:1211" placeholder="..." />
             <marker date="1390080428340" expanded="true" signature="936:1184" placeholder="..." />
@@ -612,10 +635,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/home.css">
+    <entry file="file://$PROJECT_DIR$/js/views/Home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="13" selection-start="151" selection-end="151" vertical-scroll-proportion="0.38019168" vertical-offset="0" max-vertical-offset="1360">
-          <folding />
+        <state line="32" column="9" selection-start="861" selection-end="861" vertical-scroll-proportion="0.8690096" vertical-offset="0" max-vertical-offset="697">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

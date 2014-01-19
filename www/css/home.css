@@ -15,7 +15,6 @@ div.homeDiv {
     height:10%;
     float:left;
     clear:left;
-    /*background-color:red;*/
 }
 
 .actionDiv {
@@ -24,7 +23,6 @@ div.homeDiv {
     min-height:50%;
     line-height:50%;
     float:left;
-    /*outline: 1px solid red;*/
     text-align:center;
 }
 

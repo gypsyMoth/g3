@@ -19,9 +19,10 @@
            nearestSite: {
                Distance: '',
                Found: false,
+               Bearing: 'X',
+               Outside: false,
                Site: { quad: '', site_id: ''}
            },
-           outsideTarget: false,
            message: ''
        }
     });

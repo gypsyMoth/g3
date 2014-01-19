@@ -14,8 +14,8 @@ $(document).on("ready", function () {
     app.Root = "";
 
     app.SitesList = [
-        {"zone":15,"xth":"536000","yth":"4184000","quad":"TEST","site_id":1,"grid":"8000","trap_type":"Milk Carton","moth_count":0},
-        {"zone":15,"xth":"528000","yth":"4168000","quad":"TEST","site_id":2,"grid":"8000","trap_type":"Milk Carton","moth_count":0},
+        {"zone":15,"xth":"329229","yth":"3475979","quad":"FIREP","site_id":1,"grid":"10","trap_type":"Milk Carton","moth_count":0},
+        {"zone":15,"xth":"329180","yth":"3475941","quad":"DITCH","site_id":2,"grid":"10","trap_type":"Milk Carton","moth_count":0},
         {"zone":15,"xth":"528000","yth":"4176000","quad":"TEST","site_id":3,"grid":"8000","trap_type":"Milk Carton","moth_count":0}
     ];
 

@@ -22,7 +22,13 @@ $(function () {
         },
 
         render: function() {
+
             this.$el.html(this.template(this.model.toJSON()));
+
+            var site = this.model.get('nearestSite');
+            $('#siteDiv').css('background-color', site.Outside ? 'red' : '#799839');
+            $('#homeImage').attr('src', site.Outside ? 'img/redTree.gif' : 'img/greenTree.gif');
+            
             return this;
         }
     });
