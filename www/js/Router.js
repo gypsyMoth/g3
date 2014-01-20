@@ -15,5 +15,6 @@ app.Router = Backbone.Router.extend({
     loadView : function(view) {
         this.view && this.view.remove();
         this.view = view;
+        $("#content").append(this.view.render().el);
     }
 });

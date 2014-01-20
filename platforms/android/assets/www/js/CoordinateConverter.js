@@ -2,7 +2,7 @@
  * Created by Ian on 12/22/13.
  */
 
-var CoordinateConverter = (function () {
+app.CoordinateConverter = (function () {
     var my = {};
 
     //Constants

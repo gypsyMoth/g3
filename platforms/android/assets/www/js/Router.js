@@ -7,9 +7,14 @@ app.Router = Backbone.Router.extend({
         "placement" : "placement"
     },
     home : function() {
-        this.view = new app.views.Home({model: app.Here});
+        this.loadView(new app.views.Home({model: app.Here}));
     },
     placement : function() {
-        this.view = new app.views.Placement({model: app.Here});
+        this.loadView(new app.views.Placement({model: app.Here}));
+    },
+    loadView : function(view) {
+        this.view && this.view.remove();
+        this.view = view;
+        $("#content").append(this.view.render().el);
     }
 });

@@ -3,6 +3,8 @@ var app = {
     models: {},
     router: {},
     Root: "",
+    CoordinateConverter: {},
+    Sites: {},
     SitesList: [],
     Here: {},
     startGeolocation: function() {},
@@ -33,10 +35,10 @@ $(document).on("ready", function () {
     };
 
     app.onPositionUpdate = function (position) {
-        var p = CoordinateConverter.datumShift({ Lon:position.coords.longitude, Lat:position.coords.latitude});
-        var utm = CoordinateConverter.project(p);
+        var p = app.CoordinateConverter.datumShift({ Lon:position.coords.longitude, Lat:position.coords.latitude});
+        var utm = app.CoordinateConverter.project(p);
         app.Here.set({currentUtm: utm});
-        app.Here.set({nearestSite: Sites.Nearest(utm, app.SitesList)});
+        app.Here.set({nearestSite: app.Sites.Nearest(utm, app.SitesList)});
     },
 
     app.stopGeolocation = function() {

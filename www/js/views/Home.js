@@ -4,14 +4,15 @@ $(function () {
 
     app.views.Home = Backbone.View.extend({
 
-        el: '#pageView',
+        tagName: "div",
+
+        className: "view",
 
         template: _.template($('#home-template').html()),
 
         initialize: function() {
             app.startGeolocation();
             this.listenTo(this.model, 'change', this.render);
-            this.render();
         },
 
         events: {
@@ -19,7 +20,6 @@ $(function () {
         },
 
         onImageClicked: function() {
-            //alert("Trap Placement");
             app.stopGeolocation();
             app.pageRouter.navigate('placement', true);
         },
@@ -27,12 +27,14 @@ $(function () {
         render: function() {
 
             this.$el.html(this.template(this.model.toJSON()));
+            this.checkTargetCircle();
+            return this;
+        },
 
+        checkTargetCircle: function () {
             var site = this.model.get('nearestSite');
             $('#siteDiv').css('background-color', site.Outside ? 'red' : '#799839');
             $('#homeImage').attr('src', site.Outside ? 'img/redTree.gif' : 'img/greenTree.gif');
-
-            return this;
         }
     });
 });

@@ -6,13 +6,14 @@ $(function () {
 
     app.views.Placement = Backbone.View.extend({
 
-        el: '#pageView',
+        tagName: "div",
+
+        className: "view",
 
         template: _.template($('#placement-template').html()),
 
         initialize: function() {
-            //this.listenTo(this.model, 'change', this.render);
-            this.render();
+
         },
 
         events: {

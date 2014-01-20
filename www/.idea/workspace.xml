@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c559ed9-cc82-4479-a930-0b8087215b45" name="Default" comment="Got jasmine up and running, and added CoordinateConverter library.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/CoordinateConverter.js" afterPath="$PROJECT_DIR$/js/CoordinateConverter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/CoordinateConverterSpec.js" afterPath="$PROJECT_DIR$/spec/CoordinateConverterSpec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/Home.js" afterPath="$PROJECT_DIR$/js/views/Home.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/views/Placement.js" afterPath="$PROJECT_DIR$/js/views/Placement.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Router.js" afterPath="$PROJECT_DIR$/js/Router.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Sites.js" afterPath="$PROJECT_DIR$/js/Sites.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/SitesSpec.js" afterPath="$PROJECT_DIR$/spec/SitesSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app.js" afterPath="$PROJECT_DIR$/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,7 +31,7 @@
       <file leaf-file-name="Home.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/views/Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="35" selection-start="265" selection-end="265" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="748">
+            <state line="21" column="36" selection-start="482" selection-end="482" vertical-scroll-proportion="0.0" vertical-offset="24" max-vertical-offset="782">
               <folding />
             </state>
           </provider>
@@ -42,27 +40,36 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="0" selection-start="3070" selection-end="3070" vertical-scroll-proportion="-6.230769" vertical-offset="773" max-vertical-offset="1360">
+            <state line="11" column="10" selection-start="660" selection-end="660" vertical-scroll-proportion="-0.65384614" vertical-offset="170" max-vertical-offset="1360">
               <folding>
-                <marker date="1390111366613" expanded="true" signature="873:1211" placeholder="..." />
-                <marker date="1390111366613" expanded="true" signature="936:1184" placeholder="..." />
-                <marker date="1390111366613" expanded="true" signature="1006:1153" placeholder="..." />
-                <marker date="1390111366613" expanded="true" signature="1271:1368" placeholder="..." />
-                <marker date="1390111366613" expanded="true" signature="1430:2104" placeholder="..." />
-                <marker date="1390111366613" expanded="true" signature="1493:1661" placeholder="..." />
-                <marker date="1390111366613" expanded="true" signature="1729:1894" placeholder="..." />
-                <marker date="1390111366613" expanded="true" signature="1957:2077" placeholder="..." />
-                <marker date="1390111366613" expanded="true" signature="2246:2975" placeholder="..." />
-                <marker date="1390111366613" expanded="true" signature="2359:2599" placeholder="..." />
+                <marker date="1390240571625" expanded="true" signature="880:1218" placeholder="..." />
+                <marker date="1390240571625" expanded="true" signature="943:1191" placeholder="..." />
+                <marker date="1390240571625" expanded="true" signature="1013:1160" placeholder="..." />
+                <marker date="1390240571625" expanded="true" signature="1278:1375" placeholder="..." />
+                <marker date="1390240571625" expanded="true" signature="1437:2111" placeholder="..." />
+                <marker date="1390240571625" expanded="true" signature="1500:1668" placeholder="..." />
+                <marker date="1390240571625" expanded="true" signature="1736:1901" placeholder="..." />
+                <marker date="1390240571625" expanded="true" signature="1964:2084" placeholder="..." />
+                <marker date="1390240571625" expanded="true" signature="2253:2982" placeholder="..." />
+                <marker date="1390240571625" expanded="true" signature="2366:2606" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Placement.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/views/Placement.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="8" selection-start="131" selection-end="131" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="850">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="2" selection-start="1430" selection-end="1430" vertical-scroll-proportion="0.6347107" vertical-offset="313" max-vertical-offset="1054">
+            <state line="52" column="41" selection-start="1751" selection-end="1751" vertical-scroll-proportion="0.0" vertical-offset="381" max-vertical-offset="1054">
               <folding />
             </state>
           </provider>
@@ -104,10 +111,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Router.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Router.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/Router.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+            <state line="16" column="25" selection-start="451" selection-end="451" vertical-scroll-proportion="0.44958678" vertical-offset="0" max-vertical-offset="605">
               <folding />
             </state>
           </provider>
@@ -118,17 +125,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state line="40" column="82" selection-start="1993" selection-end="1993" vertical-scroll-proportion="-15.230769" vertical-offset="284" max-vertical-offset="884">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="helper.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spec/helper.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="46" selection-start="983" selection-end="983" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -157,16 +153,16 @@
         <option value="$PROJECT_DIR$/css/gadget.css" />
         <option value="$PROJECT_DIR$/css/home.css" />
         <option value="$PROJECT_DIR$/js/models/CurrentPosition.js" />
-        <option value="$PROJECT_DIR$/js/views/Placement.js" />
-        <option value="$PROJECT_DIR$/js/views/Home.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/spec.html" />
-        <option value="$PROJECT_DIR$/js/Router.js" />
         <option value="$PROJECT_DIR$/js/Sites.js" />
         <option value="$PROJECT_DIR$/js/CoordinateConverter.js" />
         <option value="$PROJECT_DIR$/spec/CoordinateConverterSpec.js" />
         <option value="$PROJECT_DIR$/spec/SitesSpec.js" />
         <option value="$PROJECT_DIR$/js/app.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/views/Placement.js" />
+        <option value="$PROJECT_DIR$/js/views/Home.js" />
+        <option value="$PROJECT_DIR$/js/Router.js" />
       </list>
     </option>
   </component>
@@ -287,6 +283,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -559,43 +573,11 @@
         <state line="4" column="0" selection-start="38" selection-end="70" vertical-scroll-proportion="0.1086262" vertical-offset="0" max-vertical-offset="626" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/views/Placement.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/views/Home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="35" selection-start="265" selection-end="265" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/helper.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="46" selection-start="983" selection-end="983" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="3070" selection-end="3070" vertical-scroll-proportion="-6.230769" vertical-offset="773" max-vertical-offset="1360">
-          <folding>
-            <marker date="1390111366613" expanded="true" signature="873:1211" placeholder="..." />
-            <marker date="1390111366613" expanded="true" signature="936:1184" placeholder="..." />
-            <marker date="1390111366613" expanded="true" signature="1006:1153" placeholder="..." />
-            <marker date="1390111366613" expanded="true" signature="1271:1368" placeholder="..." />
-            <marker date="1390111366613" expanded="true" signature="1430:2104" placeholder="..." />
-            <marker date="1390111366613" expanded="true" signature="1493:1661" placeholder="..." />
-            <marker date="1390111366613" expanded="true" signature="1729:1894" placeholder="..." />
-            <marker date="1390111366613" expanded="true" signature="1957:2077" placeholder="..." />
-            <marker date="1390111366613" expanded="true" signature="2246:2975" placeholder="..." />
-            <marker date="1390111366613" expanded="true" signature="2359:2599" placeholder="..." />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -603,13 +585,6 @@
     <entry file="file://$PROJECT_DIR$/spec.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="82" selection-start="1993" selection-end="1993" vertical-scroll-proportion="-15.230769" vertical-offset="284" max-vertical-offset="884">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
           <folding />
         </state>
       </provider>
@@ -644,7 +619,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="2" selection-start="1430" selection-end="1430" vertical-scroll-proportion="0.6347107" vertical-offset="313" max-vertical-offset="1054">
+        <state line="52" column="41" selection-start="1751" selection-end="1751" vertical-scroll-proportion="0.0" vertical-offset="381" max-vertical-offset="1054">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/views/Placement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="8" selection-start="131" selection-end="131" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="850">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/views/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="36" selection-start="482" selection-end="482" vertical-scroll-proportion="0.0" vertical-offset="24" max-vertical-offset="782">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="10" selection-start="660" selection-end="660" vertical-scroll-proportion="-0.65384614" vertical-offset="170" max-vertical-offset="1360">
+          <folding>
+            <marker date="1390240571625" expanded="true" signature="880:1218" placeholder="..." />
+            <marker date="1390240571625" expanded="true" signature="943:1191" placeholder="..." />
+            <marker date="1390240571625" expanded="true" signature="1013:1160" placeholder="..." />
+            <marker date="1390240571625" expanded="true" signature="1278:1375" placeholder="..." />
+            <marker date="1390240571625" expanded="true" signature="1437:2111" placeholder="..." />
+            <marker date="1390240571625" expanded="true" signature="1500:1668" placeholder="..." />
+            <marker date="1390240571625" expanded="true" signature="1736:1901" placeholder="..." />
+            <marker date="1390240571625" expanded="true" signature="1964:2084" placeholder="..." />
+            <marker date="1390240571625" expanded="true" signature="2253:2982" placeholder="..." />
+            <marker date="1390240571625" expanded="true" signature="2366:2606" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="25" selection-start="451" selection-end="451" vertical-scroll-proportion="0.44958678" vertical-offset="0" max-vertical-offset="605">
           <folding />
         </state>
       </provider>
