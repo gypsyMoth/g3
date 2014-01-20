@@ -1,7 +1,7 @@
 /**
  * Created by Ian on 12/28/13.
  */
-var Sites = (function () {
+app.Sites = (function () {
     var my = {};
 
     my.Nearest = function(currentLocation, sites) {
