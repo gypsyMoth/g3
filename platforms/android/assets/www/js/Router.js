@@ -1,12 +1,15 @@
-/**
- * Created by Ian on 1/18/14.
- */
+/*Created by Ian on 1/18/14.*/
 app.Router = Backbone.Router.extend({
     routes : {
+        "splash" : "splash",
         "home" : "home",
         "placement" : "placement",
         "caution" : "caution",
         "confirm" : "confirm"
+    },
+
+    splash: function() {
+        this.loadView(new app.views.Splash());
     },
 
     home : function() {

@@ -28,7 +28,8 @@ $(function () {
         },
 
         onOkClicked: function() {
-            if (this.model.get("outsideTarget")) {
+            var site = this.model.get("nearestSite");
+            if (site.Outside) {
                 app.pageRouter.navigate('caution', true);
             } else {
                 app.pageRouter.navigate('confirm', true);

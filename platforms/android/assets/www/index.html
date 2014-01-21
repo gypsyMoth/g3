@@ -60,7 +60,11 @@
             </script>
             <script type="text/template" id="confirm-template">
                 <div id="confirmHeader" class="formHeader">
-                    Confirm
+                    <span id="confirmMessage" class="message">
+                        Confirm placement of <%=nearestSite.Site.trap_type%> at
+                        site <%=nearestSite.Site.quad%>:<%=nearestSite.Site.site_id%>,
+                        coordinates <%=currentUtm.Easting%> E, <%=currentUtm.Northing%> N?
+                    </span>
                 </div>
                 <div id="confirmFooter" class="formFooter">
                     <input type="button" id="btnConfirmOk" class="gadgetButton" value="Ok">
@@ -68,13 +72,15 @@
                 </div>
             </script>
             <script type="text/template" id="caution-template">
-                <div id="divImage" class="imageDiv">
+                <div id="cautionImage">
                     <img src="img/caution.png" />
-                    <span class="cautionSpan">CAUTION</span>
+                    <span id="cautionSpan">CAUTION</span>
                 </div>
 
                 <div id="cautionHeader" class="formHeader">
-                    Caution
+                    <span id="cautionMessage" class="message">
+                        You are outside the target circle.  Proceed?
+                    </span>
                 </div>
 
                 <div id="cautionFooter" class="formFooter">

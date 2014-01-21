@@ -55,8 +55,18 @@ select {
 
 }
 
-.cautionSpan {
+#cautionSpan {
     font-weight:700;
     color:red;
     text-align:center;
+}
+
+#cautionImage {
+    margin: auto;
+}
+
+#cautionImage img {
+    display:block;
+    margin:auto;
+    height:25%;
 }
