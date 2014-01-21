@@ -1,20 +1,56 @@
-﻿body {
-
+﻿span.message {
+    font-size: 2em;
+    font-weight: bold;
 }
 
-input.gadgetButton {
+span.dataMessage {
+    background-color: #C0C4BE;
+    display: block;
+    margin: auto;
+}
+
+select {
+    height: 2em;
+    font-size: 2em;
+    font-weight: bold;
+    width: 100%;
+    background-color: #C0C4BE;
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+
+.formHeader {
+    padding: 1em;
+    text-align: center;
+    background-color: #E1E3E0;
+    margin: auto;
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.formFooter {
+    bottom:0;
+    padding: 1em;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.gadgetButton {
     background-color: #9CCB3B;
-    font-weight:700;
+    font-size: 2em;
+    font-weight: bold;
     width:100%;
-    height:10%;
-    margin: 0 auto;
+    margin-bottom: 1%;
 }
 
-input.cancelButton {
+.cancelButton {
     background-color: #DEA625;
-    font-weight:700;
+    font-size: 2em;
+    font-weight: bold;
     width:100%;
-    height:10%;
-    margin: 0 auto;
+    margin: auto;
+    margin-bottom: 1%;
 
 }
