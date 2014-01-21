@@ -9,7 +9,7 @@ app.Router = Backbone.Router.extend({
     },
 
     splash: function() {
-        this.loadView(new app.views.Splash());
+        this.loadView(new app.views.Splash({model: app.Startup}));
     },
 
     home : function() {

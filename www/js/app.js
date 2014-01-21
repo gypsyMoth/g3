@@ -11,6 +11,9 @@ var app = {
     onDeviceReady: function() {}
 };
 
+// Allow the application to raise custom events
+//_.extend(app, Backbone.Events);
+
 $(document).on("ready", function () {
     'use strict';
 
@@ -26,7 +29,7 @@ $(document).on("ready", function () {
     ];
 
     app.startGeolocation = function() {
-        app.watchId = navigator.geolocation.watchPosition(app.onPositionUpdate,
+        app.watchId = app.watchId || navigator.geolocation.watchPosition(app.onPositionUpdate,
             function(error) {
                 console.log(error.message);
             },
@@ -35,6 +38,7 @@ $(document).on("ready", function () {
     };
 
     app.onPositionUpdate = function (position) {
+        app.Startup.set('gotSignal', true); //Tell the splash screen we're good now
         var p = app.CoordinateConverter.datumShift({ Lon:position.coords.longitude, Lat:position.coords.latitude});
         var utm = app.CoordinateConverter.project(p);
         app.Here.set({currentUtm: utm});
@@ -49,8 +53,9 @@ $(document).on("ready", function () {
     },
 
     app.onDeviceReady = function() {
+        app.Startup = new app.models.Splash();
         app.Here = new app.models.CurrentPosition();
-        app.pageRouter.navigate('home', true);
+        app.pageRouter.navigate('splash', true);
     };
 
     document.addEventListener('deviceready', app.onDeviceReady, false);

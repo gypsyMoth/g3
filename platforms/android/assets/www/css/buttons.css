@@ -63,10 +63,42 @@ select {
 
 #cautionImage {
     margin: auto;
+    text-align: center;
 }
 
 #cautionImage img {
     display:block;
     margin:auto;
     height:25%;
+    text-align: center;
+}
+
+#splashSpan {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#splashHeader {
+    width:100%;
+    height:25%;
+    float:left;
+    clear:left;
+}
+
+#splashImage {
+    width: 100%;
+    float: left;
+    clear: left;
+    text-align: center;
+}
+
+#splashText {
+    width: 100%;
+    float: left;
+    clear: left;
+    text-align: center;
+}
+
+.splash {
+
 }
