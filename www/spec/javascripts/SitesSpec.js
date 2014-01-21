@@ -78,18 +78,18 @@ describe( "Sites Module", function () {
         var list = [
             {"zone":17,"xth":"446000","yth":"4118000","quad":"TAZEN","site_id":40,"grid":"3000","trap_type":"Delta","moth_count":0}
         ];
-       it("Returns false when the current position is within 30% of the grid distance of the nearest site", function() {
+       it("Is < 0 the current position is within 30% of the grid distance of the nearest site", function() {
            var pIn = {Easting: 445999, Northing: 4118000, Zone: 17}; // 1 meter away
            var nearest = app.Sites.Nearest(pIn, list);
            var pOut = nearest.Site;
-           expect(nearest.Outside).toEqual(false);
+           expect(nearest.DistanceOutside).toBeLessThan(0);
        });
 
-        it("Returns true when the current position is greater than 30% of the grid distance of the nearest site", function() {
+        it("Is > 0 when the current position is greater than 30% of the grid distance of the nearest site", function() {
             var pIn = {Easting: 445099, Northing: 4118000, Zone: 17}; // 901 meters away
             var nearest = app.Sites.Nearest(pIn, list);
             var pOut = nearest.Site;
-            expect(nearest.Outside).toEqual(true);
+            expect(nearest.DistanceOutside).toBeGreaterThan(0);
         });
 
     });

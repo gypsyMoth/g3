@@ -1,5 +1,5 @@
 /* Created by Ian on 1/15/14.*/
-$(function () {
+(function () {
     'use strict';
 
     app.views.Home = Backbone.View.extend({
@@ -8,9 +8,8 @@ $(function () {
 
         className: "view",
 
-        template: _.template($('#home-template').html()),
-
-        initialize: function() {
+        initialize: function(options) {
+            this.template = options.template;
             app.startGeolocation();
             this.listenTo(this.model, 'change', this.render);
         },
@@ -25,16 +24,17 @@ $(function () {
         },
 
         render: function() {
-
-            this.$el.html(this.template(this.model.toJSON()));
-            this.checkTargetCircle();
+            var e = this.template(this.model.toJSON());
+            this.$el.html(this.checkTargetCircle(e));
             return this;
         },
 
-        checkTargetCircle: function () {
+        checkTargetCircle: function (html) {
             var site = this.model.get('nearestSite');
-            $('#siteDiv').css('background-color', site.Outside ? 'red' : '#799839');
-            $('#homeImage').attr('src', site.Outside ? 'img/redTree.gif' : 'img/greenTree.gif');
+            var isOut = site.DistanceOutside > 0;
+            $(html).find('#siteDiv').css('background-color', isOut ? 'red' : '#799839');
+            $(html).find('#homeImage').attr('src', isOut ? 'img/redTree.gif' : 'img/greenTree.gif');
+            return html;
         }
     });
-});
+})();

@@ -27,20 +27,20 @@ app.Sites = (function () {
             }
         }
         if (foundSite) {
-            outside = minDistance - (nearest.grid * 0.3) > 0;
+            outside = minDistance - (nearest.grid * 0.3);
             bearing = getBearingString(pCurrent, {x: nearest.xth, y: nearest.yth});
         }
         return {
             Site: nearest,
-            Distance: Math.round(Math.sqrt(minDistance),0),
+            Distance: Math.round(minDistance,0),
             Bearing: bearing,
-            Outside: outside,
+            DistanceOutside: Math.round(outside, 0),
             Found: foundSite
         };
     };
 
     var getDistance = function(p2, p1) {
-        return (Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
+        return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
     };
 
     var getBearing = function(p2, p1) {

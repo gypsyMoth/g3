@@ -13,7 +13,7 @@ app.Router = Backbone.Router.extend({
     },
 
     home : function() {
-        this.loadView(new app.views.Home({model: app.Here}));
+        this.loadView(new app.views.Home({model: app.Here, template: _.template($('#home-template').html())}));
     },
 
     placement : function() {

@@ -9,7 +9,8 @@
        defaults: {
            currentLatLon: {
              Latitude: '',
-             Longitude: ''
+             Longitude: '',
+             Accuracy: ''
            },
            currentUtm: {
                Easting: '',
@@ -20,7 +21,7 @@
                Distance: '',
                Found: false,
                Bearing: 'X',
-               Outside: false,
+               DistanceOutside: false,
                Site: { quad: '', site_id: ''}
            },
            message: ''

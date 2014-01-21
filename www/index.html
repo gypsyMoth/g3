@@ -27,7 +27,9 @@
 
                 <div id="homeFooter" class="homeFooter">
                     <div id="distanceDiv" class="homeDiv">
-                        <span id="distanceSpan" class="message"><%= nearestSite.Distance + " meters " + nearestSite.Bearing%></span>
+                        <span id="distanceSpan" class="message">
+                            <%= nearestSite.Distance + " (&plusmn" + currentLatLon.Accuracy + ") meters " + nearestSite.Bearing%>
+                        </span>
                     </div>
 
                     <div id="siteDiv" class="homeDiv siteDiv">
@@ -87,7 +89,7 @@
 
                 <div id="cautionHeader" class="formHeader">
                     <span id="cautionMessage" class="message">
-                        You are outside the target circle.  Proceed?
+                        You are <%=nearestSite.Outside %> meters outside the target circle.  Proceed?
                     </span>
                 </div>
 
