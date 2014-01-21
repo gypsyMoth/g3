@@ -4,14 +4,27 @@
 app.Router = Backbone.Router.extend({
     routes : {
         "home" : "home",
-        "placement" : "placement"
+        "placement" : "placement",
+        "caution" : "caution",
+        "confirm" : "confirm"
     },
+
     home : function() {
         this.loadView(new app.views.Home({model: app.Here}));
     },
+
     placement : function() {
         this.loadView(new app.views.Placement({model: app.Here}));
     },
+
+    caution: function() {
+        this.loadView(new app.views.Caution({model: app.Here}));
+    },
+
+    confirm: function() {
+        this.loadView(new app.views.Confirm({model: app.Here}));
+    },
+
     loadView : function(view) {
         this.view && this.view.remove();
         this.view = view;

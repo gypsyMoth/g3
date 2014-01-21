@@ -50,16 +50,22 @@
                     <span class="message"><%= currentUtm.Easting + 'E ' + currentUtm.Northing + 'N' %></span>
                 </div>
                 <div id="placementBottom" class="formFooter">
-                    <input type="button" id="btnPlace" class="gadgetButton" value="Place Trap">
+                    <input type="button" id="btnPlacementOk" class="gadgetButton" value="Place Trap">
                     <input type="button" id="btnPlacementOmit" class="gadgetButton" value="Omit Site">
                     <input type="button" id="btnPlacementCancel" class="cancelButton" value="Cancel">
                 </div>
             </script>
             <script type="text/template" id="splash-template">
-
+                Splash
             </script>
             <script type="text/template" id="confirm-template">
-                <%= Confirm placement of nearestSite.Site.trap_type trap at
+                <div id="confirmHeader" class="formHeader">
+                    Confirm
+                </div>
+                <div id="confirmFooter" class="formFooter">
+                    <input type="button" id="btnConfirmOk" class="gadgetButton" value="Ok">
+                    <input type="button" id="btnConfirmCancel" class="cancelButton" value="Cancel">
+                </div>
             </script>
             <script type="text/template" id="caution-template">
                 <div id="divImage" class="imageDiv">
@@ -67,12 +73,14 @@
                     <span class="cautionSpan">CAUTION</span>
                 </div>
 
-                <div id="divMessage" class="messageDiv">
-                    <%= caution.Message %>
+                <div id="cautionHeader" class="formHeader">
+                    Caution
                 </div>
 
-                <input type="button" id="btnCautionOk" class="gadgetButton" value="Ok" />
-                <input type="button" id="btnCautionCancel" class="cancelButton" value="Cancel">
+                <div id="cautionFooter" class="formFooter">
+                    <input type="button" id="btnCautionOk" class="gadgetButton" value="Ok">
+                    <input type="button" id="btnCautionCancel" class="cancelButton" value="Cancel">
+                </div>
             </script>
         </div>
 
@@ -86,6 +94,8 @@
         <script type="text/javascript" src="js/models/CurrentPosition.js"></script>
         <script type="text/javascript" src="js/views/Home.js"></script>
         <script type="text/javascript" src="js/views/Placement.js"></script>
+        <script type="text/javascript" src="js/views/Caution.js"></script>
+        <script type="text/javascript" src="js/views/Confirm.js"></script>
         <script type="text/javascript" src="js/CoordinateConverter.js"></script>
         <script type="text/javascript" src="js/Sites.js"></script>
     </body>

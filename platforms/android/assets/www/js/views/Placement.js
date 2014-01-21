@@ -17,9 +17,9 @@ $(function () {
         },
 
         events: {
-            "click #btnPlace": "onPlaceClicked",
-            "click #btnOmit": "onOmitClicked",
-            "click #btnCancel": "onCancelClicked"
+            "click #btnPlacementOk": "onOkClicked",
+            "click #btnPlacementOmit": "onOmitClicked",
+            "click #btnPlacementCancel": "onCancelClicked"
         },
 
         render: function() {
@@ -27,18 +27,19 @@ $(function () {
             return this;
         },
 
-        onPlaceClicked: function() {
-            alert("Place");
-            app.pageRouter.navigate('home', true);
+        onOkClicked: function() {
+            if (this.model.get("outsideTarget")) {
+                app.pageRouter.navigate('caution', true);
+            } else {
+                app.pageRouter.navigate('confirm', true);
+            }
         },
 
         onOmitClicked: function() {
-            alert("Omit");
-            app.pageRouter.navigate('home', true);
+            alert("Omit is not implemented");
         },
 
         onCancelClicked: function() {
-            alert("Cancel");
             app.pageRouter.navigate('home', true);
         }
     });

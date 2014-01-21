@@ -1,24 +1,22 @@
-/**
- * Created by Ian on 1/20/14.
- */
+/* Created by Ian on 1/20/14.*/
 $(function () {
     'use strict';
 
-    app.views.Confirm = Backbone.View.extend({
+    app.views.Caution = Backbone.View.extend({
 
         tagName: "div",
 
         className: "view",
 
-        template: _.template($('#confirm-template').html()),
+        template: _.template($('#caution-template').html()),
 
         initialize: function() {
 
         },
 
         events: {
-            "click #btnConfirmOk": "onOkClicked",
-            "click #btnConfirmCancel": "onCancelClicked"
+            "click #btnCautionOk": "onOkClicked",
+            "click #btnCautionCancel": "onCancelClicked"
         },
 
         render: function() {
@@ -27,8 +25,7 @@ $(function () {
         },
 
         onOkClicked: function() {
-            // TODO: Save the data
-            app.pageRouter.navigate('home', true);
+            app.pageRouter.navigate('confirm', true);
         },
 
         onCancelClicked: function() {

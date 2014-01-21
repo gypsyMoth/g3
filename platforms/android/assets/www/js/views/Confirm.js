@@ -10,15 +10,15 @@ $(function () {
 
         className: "view",
 
-        template: _.template($('#placement-template').html()),
+        template: _.template($('#confirm-template').html()),
 
         initialize: function() {
 
         },
 
         events: {
-            "click #btnPlace": "onConfirmClicked",
-            "click #btnCancel": "onCancelClicked"
+            "click #btnConfirmOk": "onOkClicked",
+            "click #btnConfirmCancel": "onCancelClicked"
         },
 
         render: function() {
@@ -26,18 +26,12 @@ $(function () {
             return this;
         },
 
-        onPlaceClicked: function() {
-            alert("Place");
-            app.pageRouter.navigate('home', true);
-        },
-
-        onOmitClicked: function() {
-            alert("Omit");
+        onOkClicked: function() {
+            // TODO: Save the data
             app.pageRouter.navigate('home', true);
         },
 
         onCancelClicked: function() {
-            alert("Cancel");
             app.pageRouter.navigate('home', true);
         }
     });
