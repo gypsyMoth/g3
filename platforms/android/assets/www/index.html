@@ -28,7 +28,11 @@
                 <div id="homeFooter" class="homeFooter">
                     <div id="distanceDiv" class="homeDiv">
                         <span id="distanceSpan" class="message">
-                            <%= nearestSite.Distance + " (&plusmn" + currentLatLon.Accuracy + ") meters " + nearestSite.Bearing%>
+                            <% if(nearestSite.Found) { %>
+                            <%=nearestSite.Distance + " (&plusmn" + currentLatLon.Accuracy + ") meters " + nearestSite.Bearing%>
+                            <% } else { %>
+                            <%="No sites found in zone " + currentUtm.Zone%>
+                            <% } %>
                         </span>
                     </div>
 
@@ -118,6 +122,7 @@
         <script type="text/javascript" src="js/Router.js"></script>
         <script type="text/javascript" src="js/models/Splash.js"></script>
         <script type="text/javascript" src="js/models/CurrentPosition.js"></script>
+        <script type="text/javascript" src="js/models/Filesystem.js"></script>
         <script type="text/javascript" src="js/views/Splash.js"></script>
         <script type="text/javascript" src="js/views/Home.js"></script>
         <script type="text/javascript" src="js/views/Extras.js"></script>
@@ -126,5 +131,6 @@
         <script type="text/javascript" src="js/views/Confirm.js"></script>
         <script type="text/javascript" src="js/CoordinateConverter.js"></script>
         <script type="text/javascript" src="js/Sites.js"></script>
+        <script type="text/javascript" src="js/DB.js"></script>
     </body>
 </html>

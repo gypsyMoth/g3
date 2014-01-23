@@ -13,16 +13,28 @@
         initialize: function() {
             this.message = '';
             this.gotSignal = false;
-            var dots = '...';
             var that = this;
-            setInterval(function() {
-                    if (dots.length < 3) {
-                        dots += '.';
-                    } else {
-                        dots = '';
-                    }
-                    that.set('message', 'Acquiring Satellites' + dots);
-            }, 1000);
+            //setInterval(that.showSearching(that), 250);
+
+            that.set('message', 'Initializing filesystem...');
+            app.db.initialize().then(function() {
+                that.set('message', 'Acquiring Satellites');
+                app.startGeolocation();
+            });
         }
-    });
+
+//        showSearching: function(that) {
+//            var dots = '...';
+//            if (dots === '...') {
+//                dots = '   ';
+//            } else {
+//                dots = that.pad(3, (dots + '.'), ' ');
+//            }
+//            that.set('message', 'Acquiring Satellites' + dots);
+//        },
+//
+//        pad: function (width, string, padding) {
+//            return (width <= string.length) ? string : pad(width, string + padding, padding)
+//        }
+    })
 })();

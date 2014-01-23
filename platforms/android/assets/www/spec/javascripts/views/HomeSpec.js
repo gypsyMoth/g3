@@ -1,7 +1,7 @@
 /**
  * Created by Ian on 1/21/14.
  */
-$(describe("Home View tests", function() {
+$(describe("Home View", function() {
 
    var model;
    var view;

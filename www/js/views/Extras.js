@@ -10,10 +10,10 @@
 
         className: "view",
 
-//        template: _.template($('#extras-template').html()),
+        hasFiles: false,
 
-        initialize: function() {
-
+        initialize: function(options) {
+            this.template = options.template;
         },
 
         events: {
@@ -29,18 +29,20 @@
         },
 
         onLoadLocalClicked: function() {
-            alert("Load Local Sites");
+            app.db.loadSites('WV', 1); //.then( function() {
             app.pageRouter.navigate('home', {trigger: true, replace: true});
+            //});
         },
 
         onDownloadClicked: function() {
-            alert("Download Sites");
-            app.pageRouter.navigate('home', {trigger: true, replace: true});
+            app.db.downloadSites('WV', 1).then( function() {
+                app.pageRouter.navigate('home', {trigger: true, replace: true});
+            });
         },
 
         onUploadClicked: function() {
-            alert("Upload Data");
-            app.pageRouter.navigate('home', {trigger: true, replace: true});
+            alert("Upload Data not implemented");
+            //app.pageRouter.navigate('home', {trigger: true, replace: true});
         },
 
         onCancelClicked: function() {

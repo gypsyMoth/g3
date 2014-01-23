@@ -13,7 +13,6 @@ $(function () {
         initialize: function() {
             this.listenTo(this.model, 'change:message', this.render);
             this.listenTo(this.model, 'change:gotSignal', this.gotGpsSignal);
-            app.startGeolocation();
         },
 
         events: {

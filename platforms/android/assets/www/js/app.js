@@ -2,11 +2,14 @@ var app = {
     views: {},
     models: {},
     router: {},
-    Root: "",
+    //Root: "",
+    //Filesystem: "",
     CoordinateConverter: {},
     Sites: {},
+    db: {},
     SitesList: [],
     Here: {},
+    isInitialized: false,
     startGeolocation: function() {},
     onDeviceReady: function() {}
 };
@@ -19,8 +22,6 @@ $(document).on("ready", function () {
 
     app.pageRouter = new app.Router();
     Backbone.history.start();
-
-    app.Root = "";
 
     app.SitesList = [
         {"zone":15,"xth":"329229","yth":"3475979","quad":"FIREP","site_id":1,"grid":"30","trap_type":"Milk Carton","moth_count":0},
@@ -48,19 +49,28 @@ $(document).on("ready", function () {
         }});
         app.Here.set({currentUtm: utm});
         app.Here.set({nearestSite: app.Sites.Nearest(utm, app.SitesList)});
-    },
+    };
 
     app.stopGeolocation = function() {
         if (app.watchId !== null) {
             navigator.geolocation.clearWatch(app.watchId);
             app.watchId = null;
         }
-    },
+    };
 
     app.onDeviceReady = function() {
-        app.Startup = new app.models.Splash();
-        app.Here = new app.models.CurrentPosition();
-        app.pageRouter.navigate('splash', true);
+        console.log("G3 Device Ready!");
+        if (app.isInitialized) {
+            app.pageRouter.navigate('home', true);
+        } else {
+            app.Startup = new app.models.Splash();
+            app.Here = new app.models.CurrentPosition();
+            app.pageRouter.navigate('splash', true);
+        }
+    };
+
+    app.fail = function(error) {
+        console.log('G3 error: ' + error.message);
     };
 
     document.addEventListener('deviceready', app.onDeviceReady, false);

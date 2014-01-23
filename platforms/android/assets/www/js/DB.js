@@ -1,57 +1,103 @@
 /*Created by Ian on 1/15/14.*/
 
-app.DB = (function () {
+app.db = (function () {
     var my = {};
 
-    var state = '';
-    var bidunit = null;
+    var PERSISTENT;
 
-    var filename = function() {
-      return state + "_" + bidunit + ".json";
+    my.initialize = function() {
+        return getFileSystem().then(getRootDirectory);
     };
 
-    my.getSites = function(state, bidunit) {
-        state = state;
-        bidunit = bidunit;
+    var getFileSystem = function() {
+        var deferred = $.Deferred();
+        checkIfFileSystemIsDefined();
+
+        var grantedBytes = 0;
         window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, app.fail);
+        //window.webkitStorageInfo.requestQuota(PERSISTENT, 1024*1024, function(grantedBytes) {
+        window.requestFileSystem(PERSISTENT, grantedBytes, function(fileSystem) {
+                app.Filesystem = fileSystem;
+                deferred.resolve();
+            }, app.fail);
+        //});
+        return deferred.promise();
     };
 
-    var onFileSystemSuccess = function(fileSystem) {
-        window.rootFS = fileSystem.root;
-
-        //Get app directory
-        fileSystem.root.getDirectory("com.phonegap.g3", {create: true }, gotApplicationDirectory, app.fail);
+    var checkIfFileSystemIsDefined = function() {
+        if (typeof LocalFileSystem === 'undefined') {
+            PERSISTENT = window.PERSISTENT;
+        } else {
+            PERSISTENT = LocalFileSystem.PERSISTENT ;
+        }
     };
 
-    var gotApplicationDirectory = function(dirEntry) {
-        //Read in a data file
-        app.AppHome = dirEntry;
-        dirEntry.getFile(filename, { create: false }, fileDoesNotExist, fileDoesNotExist);
+    var getRootDirectory = function() {
+        var deferred = $.Deferred();
+        app.Filesystem.root.getDirectory("com.phonegap.g3", {create: true }, function(dirEntry) {
+            app.Root = dirEntry;
+            deferred.resolve();
+        }, app.fail);
+        return deferred.promise();
+    };
+
+    my.countFiles = function() {
+        var deferred = $.Deferred();
+        var directoryReader = app.Root.createReader();
+        var fileCount = directoryReader.readEntries(function(entries) {
+           app.fileCount = entries.length;
+           deferred.resolve();
+        }, app.fail);
+        return deferred.promise();
+    };
+
+    my.loadSites = function(state, bidunit) {
+        //var deferred = $.Deferred();
+        app.Root.getFile(makeFilename(state, bidunit),
+            { create: false },
+            loadLocal,
+            app.fail
+        );
+        //return deferred.promise();
+    };
+
+    var makeFilename = function(state, bidunit) {
+        return state + "_" + bidunit + "json";
     };
 
     var loadLocal = function (fileEntry){
-        fileEntry.file(gotFile, app.fail);
+        fileEntry.file(loadFile, app.fail);
     };
 
-    var gotFile = function(file) {
+    var loadFile = function(file) {
+        //var deferred = $.Deferred();
         var reader = new FileReader();
         reader.onloadend = function(evt) {
-            Sites.List = JSON.parse(evt.target.result);
+            console.log("G3 " + evt.target.result);
+            app.SitesList = JSON.parse(evt.target.result);
+            //deferred.resolve();
         };
         reader.readAsText(file);
+        //return deferred;
     };
 
-    var fileDoesNotExist = function (){
+    my.downloadSites = function (state, bidunit){
+
+        var deferred = $.Deferred();
+
         var fileTransfer = new FileTransfer();
         var uri = encodeURI("http://yt.ento.vt.edu/SlowTheSpread/gadgetsites/" + state + "/" + bidunit + "?format=json");
 
         fileTransfer.download(
             uri,
-            app.AppHome.fullPath + "/" + app.testFile,
+            app.Root.fullPath + "/" + makeFilename(state, bidunit),
             function(entry) {
                 loadLocal(entry);
+                deferred.resolve();
             }, app.fail
         );
+        return deferred.promise();
     };
+
+    return my;
 }());
