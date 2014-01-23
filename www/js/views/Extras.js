@@ -1,7 +1,7 @@
 /**
  * Created by Ian on 1/22/14.
  */
-$(function () {
+(function () {
     'use strict';
 
     app.views.Extras = Backbone.View.extend({
@@ -10,7 +10,7 @@ $(function () {
 
         className: "view",
 
-        template: _.template($('#extras-template').html()),
+//        template: _.template($('#extras-template').html()),
 
         initialize: function() {
 
@@ -47,4 +47,4 @@ $(function () {
             app.pageRouter.navigate('home', {trigger: true, replace: true});
         }
     });
-});
+})();

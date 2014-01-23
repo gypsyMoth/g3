@@ -18,7 +18,7 @@ app.Router = Backbone.Router.extend({
     },
 
     extras: function() {
-        this.loadView(new app.views.Extras({model: app.Here}));
+        this.loadView(new app.views.Extras({model: app.Here, template: _.template($('#extras-template').html())}));
     },
 
     placement : function() {
