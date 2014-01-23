@@ -26,7 +26,7 @@ $(function () {
         },
 
         gotGpsSignal: function() {
-            app.pageRouter.navigate('home', true);
+            app.pageRouter.navigate('home', {trigger: true, replace: true});
         }
     });
 });

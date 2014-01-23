@@ -24,7 +24,7 @@
                DistanceOutside: 0,
                Site: { quad: '', site_id: ''}
            },
-           message: ''
+           message: 'Test message'
        }
     });
 })();

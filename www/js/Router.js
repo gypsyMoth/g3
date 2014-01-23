@@ -3,6 +3,7 @@ app.Router = Backbone.Router.extend({
     routes : {
         "splash" : "splash",
         "home" : "home",
+        "extras" : "extras",
         "placement" : "placement",
         "caution" : "caution",
         "confirm" : "confirm"
@@ -14,6 +15,10 @@ app.Router = Backbone.Router.extend({
 
     home : function() {
         this.loadView(new app.views.Home({model: app.Here, template: _.template($('#home-template').html())}));
+    },
+
+    extras: function() {
+        this.loadView(new app.views.Extras({model: app.Here}));
     },
 
     placement : function() {

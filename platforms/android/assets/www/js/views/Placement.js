@@ -30,9 +30,9 @@ $(function () {
         onOkClicked: function() {
             var site = this.model.get("nearestSite");
             if (site.DistanceOutside > 0) {
-                app.pageRouter.navigate('caution', true);
+                app.pageRouter.navigate('caution', {trigger: true, replace: true});
             } else {
-                app.pageRouter.navigate('confirm', true);
+                app.pageRouter.navigate('confirm', {trigger: true, replace: true});
             }
         },
 
@@ -41,7 +41,7 @@ $(function () {
         },
 
         onCancelClicked: function() {
-            app.pageRouter.navigate('home', true);
+            app.pageRouter.navigate('home', {trigger: true, replace: true});
         }
     });
 });

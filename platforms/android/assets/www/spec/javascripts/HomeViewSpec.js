@@ -26,19 +26,6 @@ $(describe("Home View tests", function() {
            {"zone":15,"xth":"300000","yth":"3000000","quad":"TEST","site_id":1,"grid":"300","trap_type":"Delta","moth_count":0},
         ];
 
-        var loadPoint = function(longitude, latitude, accuracy) {
-          var p = app.CoordinateConverter.datumShift({ Lon: longitude, Lat: latitude});
-          var utm = app.CoordinateConverter.project(p);
-          model.set({currentLatLon: {
-              Latitude: latitude,
-              Longitude: longitude,
-              Accuracy: accuracy
-          }});
-          model.set({currentUtm: utm});
-          model.set({nearestSite: app.Sites.Nearest(utm, app.SitesList)});
-        };
-
-       //this.model.set({nearestSite: app.Sites.Nearest(utm, app.SitesList)});
        var utm = {
            Easting: 300000,
            Northing: 3000000,
@@ -53,13 +40,36 @@ $(describe("Home View tests", function() {
            Found: true
        };
 
+       var colorToHex = function(color) {
+           if (color.substr(0, 1) === '#') {
+               return color;
+           }
+           var digits = /(.*?)rgb\((\d+), (\d+), (\d+)\)/.exec(color);
+
+           var red = parseInt(digits[2]);
+           var green = parseInt(digits[3]);
+           var blue = parseInt(digits[4]);
+
+           var rgb = blue | (green << 8) | (red << 16);
+           return digits[1] + '#' + rgb.toString(16);
+       };
+
        it("Shows green when we're within the target", function() {
-           loadPoint();
            testSite.DistanceOutside = 0;
            model.set({currentUtm: utm});
            model.set({nearestSite: testSite});
-           var v = view.render().checkTargetCircle();
-           expect($(v).find('#siteDiv').css('background-color')).toEqual('#799839');
+           view.render();
+           var actualColor = colorToHex(view.$el.find('#siteDiv').css('background-color'));
+           expect(actualColor).toEqual('#799839');
+       });
+
+       it("Shows red when we're outside the target", function() {
+           testSite.DistanceOutside = 1;
+           model.set({currentUtm: utm});
+           model.set({nearestSite: testSite});
+           view.render();
+           var actualColor = (view.$el.find('#siteDiv').css('background-color'));
+           expect(actualColor).toEqual('red');
        });
    });
 }));

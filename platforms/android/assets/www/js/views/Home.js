@@ -15,28 +15,31 @@
         },
 
         events: {
-            "click #homeImage": "onImageClicked"
+            "click #homeImage": "onImageClicked",
+            "click #btnHomeExtras": "onExtrasClicked"
         },
 
         onImageClicked: function() {
             app.stopGeolocation();
-            app.pageRouter.navigate('placement', true);
+            app.pageRouter.navigate('placement', {trigger: true, replace: true});
+        },
+
+        onExtrasClicked: function() {
+            app.stopGeolocation();
+            app.pageRouter.navigate('extras', {trigger: true, replace: true});
         },
 
         render: function() {
-
-            //var e = this.template(this.model.toJSON());
             this.$el.html(this.template(this.model.toJSON()));
             this.checkTargetCircle(null);
             return this;
         },
 
-        checkTargetCircle: function (html) {
+        checkTargetCircle: function () {
             var site = this.model.get('nearestSite');
             var isOut = site.DistanceOutside > 0;
             this.$el.find('#siteDiv').css('background-color', isOut ? 'red' : '#799839');
             this.$el.find('#homeImage').attr('src', isOut ? 'img/redTree.gif' : 'img/greenTree.gif');
-            return html;
         }
     });
 })();

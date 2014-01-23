@@ -15,12 +15,18 @@
         },
 
         events: {
-            "click #homeImage": "onImageClicked"
+            "click #homeImage": "onImageClicked",
+            "click #btnHomeExtras": "onExtrasClicked"
         },
 
         onImageClicked: function() {
             app.stopGeolocation();
-            app.pageRouter.navigate('placement', true);
+            app.pageRouter.navigate('placement', {trigger: true, replace: true});
+        },
+
+        onExtrasClicked: function() {
+            app.stopGeolocation();
+            app.pageRouter.navigate('extras', {trigger: true, replace: true});
         },
 
         render: function() {

@@ -37,6 +37,7 @@
                     </div>
 
                     <div id="MessageDiv" class="homeDiv">
+                        <input type="button" id="btnHomeExtras">
                         <span id="MessageSpan" class="message"><%= message %></span>
                     </div>
                 </div>
@@ -98,6 +99,14 @@
                     <input type="button" id="btnCautionCancel" class="cancelButton" value="Cancel">
                 </div>
             </script>
+            <script type="text/template" id="extras-template">
+                <div id="extrasFooter" class="formFooter">
+                    <input type="button" id="btnExtrasLoadLocal" class="gadgetButton" value="Load Sites">
+                    <input type="button" id="btnExtrasDownload" class="gadgetButton" value="Download Sites">
+                    <input type="button" id="btnExtrasUpload" class="gadgetButton" value="Upload">
+                    <input type="button" id="btnExtrasCancel" class="cancelButton" value="Cancel">
+                </div>
+            </script>
         </div>
 
         <script type="text/javascript" src="phonegap.js"></script>
@@ -111,6 +120,7 @@
         <script type="text/javascript" src="js/models/CurrentPosition.js"></script>
         <script type="text/javascript" src="js/views/Splash.js"></script>
         <script type="text/javascript" src="js/views/Home.js"></script>
+        <script type="text/javascript" src="js/views/Extras.js"></script>
         <script type="text/javascript" src="js/views/Placement.js"></script>
         <script type="text/javascript" src="js/views/Caution.js"></script>
         <script type="text/javascript" src="js/views/Confirm.js"></script>

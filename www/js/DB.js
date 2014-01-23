@@ -1,8 +1,6 @@
-/**
- * Created by Ian on 1/15/14.
- */
+/*Created by Ian on 1/15/14.*/
 
-var DB = (function () {
+app.DB = (function () {
     var my = {};
 
     var state = '';
@@ -33,29 +31,18 @@ var DB = (function () {
     };
 
     var loadLocal = function (fileEntry){
-//        var msg = "Loading " + fileEntry.name + " from local...";
-//        console.log(msg);
-//        var element = document.getElementById('locationSpan');
-//        element.innerHTML = msg;
-
         fileEntry.file(gotFile, app.fail);
     };
 
     var gotFile = function(file) {
         var reader = new FileReader();
         reader.onloadend = function(evt) {
-//            console.log(evt.target.result);
             Sites.List = JSON.parse(evt.target.result);
         };
         reader.readAsText(file);
     };
 
     var fileDoesNotExist = function (){
-//        var msg = "Downloading sites...";
-//        console.log(msg);
-//        var element = document.getElementById('locationSpan');
-//        element.innerHTML = msg;
-
         var fileTransfer = new FileTransfer();
         var uri = encodeURI("http://yt.ento.vt.edu/SlowTheSpread/gadgetsites/" + state + "/" + bidunit + "?format=json");
 
@@ -63,7 +50,6 @@ var DB = (function () {
             uri,
             app.AppHome.fullPath + "/" + app.testFile,
             function(entry) {
-//                console.log("download complete: " + entry.fullPath);
                 loadLocal(entry);
             }, app.fail
         );

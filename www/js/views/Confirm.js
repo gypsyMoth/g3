@@ -28,11 +28,11 @@ $(function () {
 
         onOkClicked: function() {
             // TODO: Save the data
-            app.pageRouter.navigate('home', true);
+            app.pageRouter.navigate('home', {trigger: true, replace: true});
         },
 
         onCancelClicked: function() {
-            app.pageRouter.navigate('home', true);
+            app.pageRouter.navigate('home', {trigger: true, replace: true});
         }
     });
 });

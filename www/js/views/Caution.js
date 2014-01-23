@@ -25,11 +25,11 @@ $(function () {
         },
 
         onOkClicked: function() {
-            app.pageRouter.navigate('confirm', true);
+            app.pageRouter.navigate('confirm', {trigger: true, replace: true});
         },
 
         onCancelClicked: function() {
-            app.pageRouter.navigate('home', true);
+            app.pageRouter.navigate('home', {trigger: true, replace: true});
         }
     });
 });
