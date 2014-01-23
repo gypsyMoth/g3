@@ -21,7 +21,7 @@
                Distance: '',
                Found: false,
                Bearing: 'X',
-               DistanceOutside: false,
+               DistanceOutside: 0,
                Site: { quad: '', site_id: ''}
            },
            message: ''
