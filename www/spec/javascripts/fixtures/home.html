@@ -14,12 +14,12 @@
     <div id="homeFooter" class="homeFooter">
         <div id="distanceDiv" class="homeDiv">
                         <span id="distanceSpan" class="message">
-                            <%= nearestSite.Distance + " (&plusmn" + currentLatLon.Accuracy + ") meters " + nearestSite.Bearing%>
+                            <%= relativePosition.Distance + " (&plusmn" + currentLatLon.Accuracy + ") meters " + relativePosition.Bearing%>
                         </span>
         </div>
 
         <div id="siteDiv" class="homeDiv siteDiv">
-            <span id="siteSpan" class="siteSpan"><%= nearestSite.Site.quad + ":" + nearestSite.Site.site_id %></span>
+            <span id="siteSpan" class="siteSpan"><%= site.quad + ":" + site.site_id %></span>
         </div>
 
         <div id="MessageDiv" class="homeDiv">

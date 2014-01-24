@@ -28,8 +28,8 @@
                 <div id="homeFooter" class="homeFooter">
                     <div id="distanceDiv" class="homeDiv">
                         <span id="distanceSpan" class="message">
-                            <% if(nearestSite.Found) { %>
-                            <%=nearestSite.Distance + " (&plusmn" + currentLatLon.Accuracy + ") meters " + nearestSite.Bearing%>
+                            <% if(relativePosition.Found) { %>
+                            <%=relativePosition.Distance + " (&plusmn" + currentLatLon.Accuracy + ") meters " + relativePosition.Bearing%>
                             <% } else { %>
                             <%="No sites found in zone " + currentUtm.Zone%>
                             <% } %>
@@ -37,7 +37,7 @@
                     </div>
 
                     <div id="siteDiv" class="homeDiv siteDiv">
-                        <span id="siteSpan" class="siteSpan"><%= nearestSite.Site.quad + ":" + nearestSite.Site.site_id %></span>
+                        <span id="siteSpan" class="siteSpan"><%= site.quad + ":" + site.site_id %></span>
                     </div>
 
                     <div id="messageDiv" class="homeDiv">
@@ -50,10 +50,10 @@
                 <div id="placementTop" class="formHeader">
                     <span class="message">Confirm placement of</span><br />
                     <select id="selectTraptype">
-                        <option selected="selected"><%= nearestSite.Site.trap_type%></option>
-                        <option><%= nearestSite.Site.trap_type === 'Delta' ? 'Milk Carton' : 'Delta'%></option>
+                        <option selected="selected"><%= site.trap_type%></option>
+                        <option><%= site.trap_type === 'Delta' ? 'Milk Carton' : 'Delta'%></option>
                     </select>
-                    <span class="message">at site <%=nearestSite.Site.quad + ':' + nearestSite.Site.site_id%></span><br />
+                    <span class="message">at site <%=site.quad + ':' + site.site_id%></span><br />
                     <span class="message"><%= currentUtm.Easting + 'E ' + currentUtm.Northing + 'N' %></span>
                 </div>
                 <div id="placementBottom" class="formFooter">
@@ -76,8 +76,8 @@
             <script type="text/template" id="confirm-template">
                 <div id="confirmHeader" class="formHeader">
                     <span id="confirmMessage" class="message">
-                        Confirm placement of <%=nearestSite.Site.trap_type%> at
-                        site <%=nearestSite.Site.quad%>:<%=nearestSite.Site.site_id%>,
+                        Confirm placement of <%=site.trap_type%> at
+                        site <%=site.quad%>:<%=site.site_id%>,
                         coordinates <%=currentUtm.Easting%> E, <%=currentUtm.Northing%> N?
                     </span>
                 </div>
@@ -94,7 +94,7 @@
 
                 <div id="cautionHeader" class="formHeader">
                     <span id="cautionMessage" class="message">
-                        You are <%=nearestSite.DistanceOutside %> meters outside the target circle.  Proceed?
+                        You are <%=relativePosition.DistanceOutside %> meters outside the target circle.  Proceed?
                     </span>
                 </div>
 

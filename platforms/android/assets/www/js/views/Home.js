@@ -36,9 +36,9 @@
         },
 
         checkTargetCircle: function () {
-            var site = this.model.get('nearestSite');
-            var isOut = site.DistanceOutside > 0;
-            this.$el.find('#siteDiv').css('background-color', isOut ? 'red' : '#799839');
+            var relativePosition = this.model.get('relativePosition');
+            var isOut = relativePosition.DistanceOutside > 0;
+            this.$el.find('#siteDiv').css('background-color', isOut ? '#FF0000' : '#799839');
             this.$el.find('#homeImage').attr('src', isOut ? 'img/redTree.gif' : 'img/greenTree.gif');
         }
     });

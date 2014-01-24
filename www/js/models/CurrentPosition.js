@@ -17,35 +17,37 @@
                Northing: '',
                Zone: ''
            },
-           nearestSite: {
+           relativePosition: {
                Distance: '',
                Found: false,
                Bearing: 'X',
-               DistanceOutside: 0,
-               Site: { quad: '', site_id: ''}
+               DistanceOutside: 0
+           },
+           site: {
+               quad: '',
+               site_id: ''
            },
            message: ''
        },
 
         initialize: function() {
-           this.listenTo(this, 'change:nearestSite', this.updateMessage);
+           this.listenTo(this, 'change:relativePosition', this.updateMessage);
         },
 
         updateMessage: function() {
-            var nearestSite = this.get('nearestSite');
+            var site = this.get('site');
             var message;
-            if (typeof nearestSite === 'undefined') {
+            if (typeof site === 'undefined') {
                 message = 'No sites loaded, or wrong UTM zone';
-            } else if (typeof nearestSite.Site.xact === 'undefined') {
+            } else if (typeof site.xact === 'undefined') {
                 message = 'No trap at this site';
-            } else if (typeof nearestSite.Site.visit === 'undefined') {
-                var traptype = nearestSite.Site.trap_type;
-                var date = this.formatDate(nearestSite.Site.txn_date);
+            } else if (typeof site.visit === 'undefined') {
+                var traptype = site.trap_type;
+                var date = this.formatDate(site.txn_date);
                 message = traptype + ' trap placed here on ' + date;
             } else {
                 message = 'Invalid site';
             }
-
             this.set('message', message);
         },
 
@@ -54,6 +56,11 @@
             var parts = [];
             parts = dateString.split('-');
             return parts[1] + '/' + parts[2].substring(0,2) + '/' + parts[0].substring(2,4);
+        },
+
+        saveSites: function() {
+            var site = this.get('relativePosition');
+            var currentUtm = this.get('currentUtm');
         }
     });
 })();

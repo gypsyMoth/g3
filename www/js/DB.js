@@ -99,5 +99,9 @@ app.db = (function () {
         return deferred.promise();
     };
 
+    my.saveSites = function (sitesList, filename)  {
+
+    };
+
     return my;
 }());

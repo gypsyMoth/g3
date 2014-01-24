@@ -28,19 +28,10 @@ describe("db", function() {
                         .always(done);
                 });
 
-//                it("Can load sites from a file on local storage", function(done) {
-//                    app.SitesList = [];
-//                    app.db.loadLocal().then( function() {
-//                        expect(app.SitesList.length).toEqual
-//                    });
-//                });
 
-                //This won't work, since we can't test against the phonegap API
-//                it("Can download a sites file from the server", function(done) {
-//                   app.db.downloadSites().then( function() {
-//                    expect(app.db.currentFile).toBeDefined();
-//                   });
-//                });
+                it("has a method to save sites to local storage", function() {
+                    expect(app.db.saveSites).toBeDefined();
+                });
             })
         );
     });

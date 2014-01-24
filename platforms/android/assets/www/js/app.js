@@ -48,7 +48,7 @@ $(document).on("ready", function () {
             Accuracy: position.coords.accuracy
         }});
         app.Here.set({currentUtm: utm});
-        app.Here.set({nearestSite: app.Sites.Nearest(utm, app.SitesList)});
+        app.Here.set({relativePosition: app.Sites.Nearest(utm, app.SitesList)});
     };
 
     app.stopGeolocation = function() {

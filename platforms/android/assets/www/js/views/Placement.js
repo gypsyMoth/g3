@@ -28,7 +28,7 @@ $(function () {
         },
 
         onOkClicked: function() {
-            var site = this.model.get("nearestSite");
+            var site = this.model.get("relativePosition");
             if (site.DistanceOutside > 0) {
                 app.pageRouter.navigate('caution', {trigger: true, replace: true});
             } else {

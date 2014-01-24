@@ -31,7 +31,7 @@ app.Sites = (function () {
             bearing = getBearingString(pCurrent, {x: nearest.xth, y: nearest.yth});
         }
         return {
-            Site: nearest,
+            site: nearest,
             Distance: Math.round(minDistance,0),
             Bearing: bearing,
             DistanceOutside: Math.round(outside, 0),

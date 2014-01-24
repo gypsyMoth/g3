@@ -2,32 +2,34 @@
  * Created by Ian on 1/17/14.
  */
 
-describe("Tests for CurrentPosition", function() {
-   it("Can be created", function() {
-       var p = new app.models.CurrentPosition();
-       expect(p).toBeDefined();
+describe("CurrentPosition", function() {
+    var current;
+
+    beforeEach( function() {
+        current = new app.models.CurrentPosition();
+    });
+
+    it("Can be created", function() {
+       expect(current).toBeDefined();
    });
 
-    describe("Changes the message when the nearest site changes", function() {
-        var position = new app.models.CurrentPosition();
-
-
+    describe("Changes the message when the nearest site changes", function() {        //var position = new app.models.CurrentPosition();
 
         var expectMessageToMatchSite = function(site, expectedMessage) {
-            var siteHeader = {
+            var relativePosition = {
                 Distance: '10',
                 Found: false,
                 Bearing: 'N',
                 DistanceOutside: 0
             };
-            siteHeader.Site = site;
-            position.set({nearestSite: siteHeader});
-            var message = position.get('message');
+            current.set('site', site);
+            current.set({relativePosition: relativePosition});
+            var message = current.get('message');
             expect(message).toEqual(expectedMessage);
         };
 
         it ("Formats the date correctly", function() {
-            var formattedDate = position.formatDate("2013-02-06T00:00:00-00:00");
+            var formattedDate = current.formatDate("2013-02-06T00:00:00-00:00");
             expect(formattedDate).toEqual('02/06/13');
         });
 
@@ -79,5 +81,15 @@ describe("Tests for CurrentPosition", function() {
             };
             expectMessageToMatchSite(milkCarton, 'Milk Carton trap placed here on 02/06/13');
         });
+    });
+
+    describe("Save changes to the sites list", function() {
+       it("Has a saveSites method defined", function() {
+          expect(current.saveSites).toBeDefined();
+       });
+
+       it("Can set the coordinates of the nearest site to the current coordinates", function() {
+
+       });
     });
 });
