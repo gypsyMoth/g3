@@ -65,9 +65,11 @@ div.homeDiv {
     font-size: 3em;
     font-weight: bolder;
 }
+
 .message {
     font-size: 1.5em;
 }
+
 
 .messageDiv {
     height: 100%;
@@ -76,14 +78,14 @@ div.homeDiv {
 }
 
 #messageSpan {
-
+    font-size: 2em;
 }
 
 #btnHomeExtras {
     float:left;
-    background-color: #C0C4BE;
-    height: 20%;
-    width: 12%;
+    background-color: yellowgreen;
+    height: 4em;
+    width: 3em;
     margin: 1% 1% 1% 1%;
     position: fixed;
     left: 0;
