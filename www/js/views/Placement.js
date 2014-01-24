@@ -10,12 +10,14 @@
 
         initialize: function(options) {
             this.template = options.template;
+            this.setOperationData();
         },
 
         events: {
             "click #btnPlacementOk": "onOkClicked",
             "click #btnPlacementOmit": "onOmitClicked",
-            "click #btnPlacementCancel": "onCancelClicked"
+            "click #btnPlacementCancel": "onCancelClicked",
+            "change #selectTraptype": "onTraptypeChanged"
         },
 
         render: function() {
@@ -40,8 +42,21 @@
             app.pageRouter.navigate('home', {trigger: true, replace: true});
         },
 
+        onTraptypeChanged: function(e) {
+            var op = this.model.get('operation');
+            var newValue = e.target.options[e.target.selectedIndex].text;
+            op.traptype = newValue;
+        },
+
         setOperationData: function() {
             var op = this.model.get('operation');
+            var utm = this.model.get('currentUtm');
+            var site = this.model.get('site');
+            op.easting = utm.Easting;
+            op.northing = utm.Northing;
+            op.traptype = site.trap_type;
+            op.date = app.DateFormatter.getSitesFormatDate();
         }
+
     });
 })();

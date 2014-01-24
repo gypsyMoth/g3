@@ -1,6 +1,6 @@
 /* Created by Ian on 1/15/14.*/
 
-describe("db", function() {
+describe("DB Module", function() {
 
     describe("Init", function() {
         app.db.initialize().then(

@@ -1,7 +1,5 @@
-/**
- * Created by Ian on 1/18/14.
- */
-$(function () {
+/*Created by Ian on 1/18/14.*/
+(function () {
     'use strict';
 
     app.views.Placement = Backbone.View.extend({
@@ -10,16 +8,16 @@ $(function () {
 
         className: "view",
 
-        template: _.template($('#placement-template').html()),
-
-        initialize: function() {
-
+        initialize: function(options) {
+            this.template = options.template;
+            this.setOperationData();
         },
 
         events: {
             "click #btnPlacementOk": "onOkClicked",
             "click #btnPlacementOmit": "onOmitClicked",
-            "click #btnPlacementCancel": "onCancelClicked"
+            "click #btnPlacementCancel": "onCancelClicked",
+            "change #selectTraptype": "onTraptypeChanged"
         },
 
         render: function() {
@@ -42,6 +40,23 @@ $(function () {
 
         onCancelClicked: function() {
             app.pageRouter.navigate('home', {trigger: true, replace: true});
+        },
+
+        onTraptypeChanged: function(e) {
+            var op = this.model.get('operation');
+            var newValue = e.target.options[e.target.selectedIndex].text;
+            op.traptype = newValue;
+        },
+
+        setOperationData: function() {
+            var op = this.model.get('operation');
+            var utm = this.model.get('currentUtm');
+            var site = this.model.get('site');
+            op.easting = utm.Easting;
+            op.northing = utm.Northing;
+            op.traptype = site.trap_type;
+            op.date = app.DateFormatter.getSitesFormatDate();
         }
+
     });
-});
+})();

@@ -27,6 +27,12 @@
                quad: '',
                site_id: ''
            },
+           operation: {
+               easting: '',
+               northing: '',
+               date: '',
+               traptype: ''
+           },
            message: ''
        },
 
@@ -43,7 +49,7 @@
                 message = 'No trap at this site';
             } else if (typeof site.visit === 'undefined') {
                 var traptype = site.trap_type;
-                var date = this.formatDate(site.txn_date);
+                var date = app.DateFormatter.getScreenFormatDate(site.txn_date);
                 message = traptype + ' trap placed here on ' + date;
             } else {
                 message = 'Invalid site';
@@ -51,16 +57,11 @@
             this.set('message', message);
         },
 
-        formatDate: function(dateString) {
-            //"2013-02-06T00:00:00-00:00"
-            var parts = [];
-            parts = dateString.split('-');
-            return parts[1] + '/' + parts[2].substring(0,2) + '/' + parts[0].substring(2,4);
-        },
-
         saveSites: function() {
-            var site = this.get('relativePosition');
-            var currentUtm = this.get('currentUtm');
+            var site = this.get('site');
+            var op = this.get('operation');
+            site.xact = op.easting;
+            site.yact = op.northing;
         }
     });
 })();

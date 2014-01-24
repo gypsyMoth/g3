@@ -1,12 +1,12 @@
-/* Created by Ian on 1/23/14.*/
+/* Created by Ian on 1/24/14.*/
+$(describe("Confirm View", function() {
 
-$(describe("Extras View", function() {
     var view;
 
     beforeEach(function() {
-        loadFixtures('extras.html');
+        loadFixtures('confirm.html');
         $('body').append();
-        view = new app.views.Extras({model: new app.models.CurrentPosition(), template: _.template($('#extras-template').html())});
+        view = new app.views.Confirm({model: new app.models.CurrentPosition(), template: _.template($('#confirm-template').html())});
     });
 
     it("Can be instantiated", function() {

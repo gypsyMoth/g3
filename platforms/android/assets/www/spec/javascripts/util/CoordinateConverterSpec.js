@@ -1,7 +1,7 @@
 /**
  * Created by Ian on 12/22/13.
  */
-describe( "Coordinate Converter", function () {
+describe( "CoordinateConverter Module", function () {
 
     describe( "Project WGS84 Lat/Lon to Nad27 UTM", function () {
 

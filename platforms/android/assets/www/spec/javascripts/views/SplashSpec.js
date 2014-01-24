@@ -1,12 +1,12 @@
-/* Created by Ian on 1/23/14.*/
+/* Created by Ian on 1/24/14.*/
+$(describe("Splash View", function() {
 
-$(describe("Extras View", function() {
     var view;
 
     beforeEach(function() {
-        loadFixtures('extras.html');
+        loadFixtures('splash.html');
         $('body').append();
-        view = new app.views.Extras({model: new app.models.CurrentPosition(), template: _.template($('#extras-template').html())});
+        view = new app.views.Splash({model: new app.models.Splash(), template: _.template($('#splash-template').html())});
     });
 
     it("Can be instantiated", function() {

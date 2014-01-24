@@ -2,15 +2,12 @@
  * Created by Ian on 1/21/14.
  */
 $(describe("Home View", function() {
-
-   var model;
    var view;
 
    beforeEach(function() {
       loadFixtures('home.html');
       $('body').append();
-      model = new app.models.CurrentPosition();
-      view = new app.views.Home({model: model, template: _.template($('#home-template').html())});
+      view = new app.views.Home({model: new app.models.CurrentPosition(), template: _.template($('#home-template').html())});
    });
 
    it("Can be instantiated", function() {
@@ -20,6 +17,13 @@ $(describe("Home View", function() {
    it("Has a model", function() {
        expect(view.model).toBeDefined();
    });
+
+   it("Clears the operation on initial load", function() {
+       view.model.set({operation: {easting: 123456, northing: 1234567, date: '01/01/14', traptype: 'Delta'}});
+       view = new app.views.Home({model: new app.models.CurrentPosition(), template: _.template($('#home-template').html())});
+       var op = view.model.get('operation');
+       expect(op).toEqual({easting: '', northing: '', date: '', traptype: ''});
+   })
 
    describe("Target Circle Tests", function() {
         var site = {
@@ -62,9 +66,9 @@ $(describe("Home View", function() {
 
        var expectColorToMatchDistanceOutside = function(distanceOutside, color) {
            relativePosition.DistanceOutside = distanceOutside;
-           model.set({currentUtm: utm});
-           model.set({site: site});
-           model.set({relativePosition: relativePosition});
+           view.model.set({currentUtm: utm});
+           view.model.set({site: site});
+           view.model.set({relativePosition: relativePosition});
            view.render();
            var actualColor = colorToHex(view.$el.find('#siteDiv').css('background-color'));
            expect(actualColor).toEqual(color);

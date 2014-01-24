@@ -2,20 +2,16 @@ var app = {
     views: {},
     models: {},
     router: {},
-    //Root: "",
-    //Filesystem: "",
     CoordinateConverter: {},
     Sites: {},
     db: {},
+    DateFormatter: {},
     SitesList: [],
     Here: {},
     isInitialized: false,
     startGeolocation: function() {},
     onDeviceReady: function() {}
 };
-
-// Allow the application to raise custom events
-//_.extend(app, Backbone.Events);
 
 $(document).on("ready", function () {
     'use strict';

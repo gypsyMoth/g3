@@ -76,9 +76,9 @@
             <script type="text/template" id="confirm-template">
                 <div id="confirmHeader" class="formHeader">
                     <span id="confirmMessage" class="message">
-                        Confirm placement of <%=site.trap_type%> at
+                        Confirm placement of <%=operation.traptype%> at
                         site <%=site.quad%>:<%=site.site_id%>,
-                        coordinates <%=currentUtm.Easting%> E, <%=currentUtm.Northing%> N?
+                        coordinates <%=operation.easting%> E, <%=operation.northing%> N?
                     </span>
                 </div>
                 <div id="confirmFooter" class="formFooter">
@@ -113,24 +113,29 @@
             </script>
         </div>
 
+        <!--Libs-->
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/lib/jquery-2.0.3.min.js"></script>
         <script type="text/javascript" src="js/lib/underscore-min.js"></script>
         <script type="text/javascript" src="js/lib/backbone-min.js"></script>
-
+        <!--App-->
         <script type="text/javascript" src="js/app.js"></script>
         <script type="text/javascript" src="js/Router.js"></script>
+        <!--Models-->
         <script type="text/javascript" src="js/models/Splash.js"></script>
         <script type="text/javascript" src="js/models/CurrentPosition.js"></script>
         <script type="text/javascript" src="js/models/Filesystem.js"></script>
+        <!--Views-->
         <script type="text/javascript" src="js/views/Splash.js"></script>
         <script type="text/javascript" src="js/views/Home.js"></script>
         <script type="text/javascript" src="js/views/Extras.js"></script>
         <script type="text/javascript" src="js/views/Placement.js"></script>
         <script type="text/javascript" src="js/views/Caution.js"></script>
         <script type="text/javascript" src="js/views/Confirm.js"></script>
-        <script type="text/javascript" src="js/CoordinateConverter.js"></script>
-        <script type="text/javascript" src="js/Sites.js"></script>
-        <script type="text/javascript" src="js/DB.js"></script>
+        <!--Utils-->
+        <script type="text/javascript" src="js/util/CoordinateConverter.js"></script>
+        <script type="text/javascript" src="js/util/Sites.js"></script>
+        <script type="text/javascript" src="js/util/DB.js"></script>
+        <script type="text/javascript" src="js/util/Date.js"></script>
     </body>
 </html>

@@ -36,11 +36,6 @@ describe("CurrentPosition Model", function() {
             expect(message).toEqual(expectedMessage);
         };
 
-        it ("Formats the date correctly", function() {
-            var formattedDate = current.formatDate("2013-02-06T00:00:00-00:00");
-            expect(formattedDate).toEqual('02/06/13');
-        });
-
         it ("Displays unaddressed message", function() {
             expectMessageToMatchSite(unaddressed, 'No trap at this site');
         });
@@ -81,25 +76,27 @@ describe("CurrentPosition Model", function() {
     });
 
     describe("Save changes to the sites list", function() {
-       it("Has a saveSites method defined", function() {
-          expect(current.saveSites).toBeDefined();
-       });
+        it("Has a saveSites method defined", function() {
+            expect(current.saveSites).toBeDefined();
+        });
 
-       it("Can set the coordinates of the nearest site to the current coordinates", function() {
-            current.set('site', unaddressed);
-            var utm = {
-                Easting: 123456,
-                Northing: 1234567,
-                Zone: 15
-            };
+        it("Writes the operation values to site on commit", function() {
+            var model = new app.models.CurrentPosition();
+            model.set({currentUtm: {Easting: 123456, Northing: 1234567, Zone: 15}});
+            model.set({site: {"zone":15,"xth":"329229","yth":"3475979","quad":"FIREP","site_id":1,"grid":"30","trap_type":"Delta","moth_count":0}});
+            model.set({operation: {easting: 123456, northing: 1234567, traptype: 'Milk Carton', date: '2014-01-24T00:00:00-00:00'}});
 
-            current.set({operation: {easting: 123456, northing: 1234567}});
-            current.saveSites();
-            var site = current.get('site');
-           expect(site.xact).toBeDefined();
-           expect(site.xact).toEqual(utm.Easting);
-           expect(site.yact).toBeDefined();
-           expect(site.yact).toEqual(utm.Northing);
-       });
+            model.saveSites();
+
+            var site = model.get('site');
+            expect(site.xact).toBeDefined();
+            expect(site.xact).toEqual(123456);
+            expect(site.yact).toBeDefined();
+            expect(site.yact).toEqual(1234567);
+            expect(site.txn_date).toBeDefined();
+            expect(site.txn_date).toEqual('2014-01-24T00:00:00-00:00');
+            expect(site.trap_type).toBeDefined();
+            expect(site.trap_type).toEqual('Milk Carton');
+        });
     });
 });
