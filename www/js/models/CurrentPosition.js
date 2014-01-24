@@ -27,6 +27,12 @@
                quad: '',
                site_id: ''
            },
+           operation: {
+               easting: '',
+               northing: '',
+               date: '',
+               traptype: ''
+           },
            message: ''
        },
 
@@ -59,8 +65,10 @@
         },
 
         saveSites: function() {
-            var site = this.get('relativePosition');
-            var currentUtm = this.get('currentUtm');
+            var site = this.get('site');
+            var op = this.get('operation');
+            site.xact = op.easting;
+            site.yact = op.northing;
         }
     });
 })();

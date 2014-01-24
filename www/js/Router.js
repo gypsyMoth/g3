@@ -10,7 +10,7 @@ app.Router = Backbone.Router.extend({
     },
 
     splash: function() {
-        this.loadView(new app.views.Splash({model: app.Startup}));
+        this.loadView(new app.views.Splash({model: app.Startup, template: _.template($('#splash-template').html())}));
     },
 
     home : function() {
@@ -22,15 +22,15 @@ app.Router = Backbone.Router.extend({
     },
 
     placement : function() {
-        this.loadView(new app.views.Placement({model: app.Here}));
+        this.loadView(new app.views.Placement({model: app.Here, template: _.template($('#placement-template').html())}));
     },
 
     caution: function() {
-        this.loadView(new app.views.Caution({model: app.Here}));
+        this.loadView(new app.views.Caution({model: app.Here, template: _.template($('#caution-template').html())}));
     },
 
     confirm: function() {
-        this.loadView(new app.views.Confirm({model: app.Here}));
+        this.loadView(new app.views.Confirm({model: app.Here, template: _.template($('#confirm-template').html())}));
     },
 
     loadView : function(view) {

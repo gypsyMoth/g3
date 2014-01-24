@@ -72,6 +72,7 @@ $(describe("Home View", function() {
 
        it("Shows green when we're within the target", function() {
             expectColorToMatchDistanceOutside(0, '#799839');
+           expectColorToMatchDistanceOutside(-1, '#799839');
        });
 
        it("Shows red when we're outside the target", function() {

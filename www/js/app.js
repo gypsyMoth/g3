@@ -42,13 +42,13 @@ $(document).on("ready", function () {
         app.Startup.set('gotSignal', true); //Tell the splash screen we're good now
         var p = app.CoordinateConverter.datumShift({ Lon:position.coords.longitude, Lat:position.coords.latitude});
         var utm = app.CoordinateConverter.project(p);
-        app.Here.set({currentLatLon: {
+        var latLon = {
             Latitude: position.coords.latitude,
             Longitude: position.coords.longitude,
             Accuracy: position.coords.accuracy
-        }});
-        app.Here.set({currentUtm: utm});
-        app.Here.set({relativePosition: app.Sites.Nearest(utm, app.SitesList)});
+        };
+        var nearest = app.Sites.Nearest(utm, app.SitesList);
+        app.Here.set({currentLatLon: latLon, currentUtm: utm, relativePosition: nearest.relativePosition, site: nearest.site});
     };
 
     app.stopGeolocation = function() {

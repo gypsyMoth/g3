@@ -32,10 +32,12 @@ app.Sites = (function () {
         }
         return {
             site: nearest,
-            Distance: Math.round(minDistance,0),
-            Bearing: bearing,
-            DistanceOutside: Math.round(outside, 0),
-            Found: foundSite
+            relativePosition: {
+                Distance: Math.round(minDistance,0),
+                Bearing: bearing,
+                DistanceOutside: Math.round(outside, 0),
+                Found: foundSite
+            }
         };
     };
 

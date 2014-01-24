@@ -1,9 +1,17 @@
-/**
- * Created by Ian on 1/17/14.
- */
-
-describe("CurrentPosition", function() {
+/* Created by Ian on 1/17/14.*/
+describe("CurrentPosition Model", function() {
     var current;
+
+    var unaddressed = {
+        "zone":15,
+        "xth":"329229",
+        "yth":"3475979",
+        "quad":"FIREP",
+        "site_id":1,
+        "grid":"30",
+        "trap_type":"Milk Carton",
+        "moth_count":0
+    };
 
     beforeEach( function() {
         current = new app.models.CurrentPosition();
@@ -34,17 +42,6 @@ describe("CurrentPosition", function() {
         });
 
         it ("Displays unaddressed message", function() {
-
-            var unaddressed = {
-                "zone":15,
-                "xth":"329229",
-                "yth":"3475979",
-                "quad":"FIREP",
-                "site_id":1,
-                "grid":"30",
-                "trap_type":"Milk Carton",
-                "moth_count":0
-            };
             expectMessageToMatchSite(unaddressed, 'No trap at this site');
         });
 
@@ -89,7 +86,20 @@ describe("CurrentPosition", function() {
        });
 
        it("Can set the coordinates of the nearest site to the current coordinates", function() {
+            current.set('site', unaddressed);
+            var utm = {
+                Easting: 123456,
+                Northing: 1234567,
+                Zone: 15
+            };
 
+            current.set({operation: {easting: 123456, northing: 1234567}});
+            current.saveSites();
+            var site = current.get('site');
+           expect(site.xact).toBeDefined();
+           expect(site.xact).toEqual(utm.Easting);
+           expect(site.yact).toBeDefined();
+           expect(site.yact).toEqual(utm.Northing);
        });
     });
 });

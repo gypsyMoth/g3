@@ -22,7 +22,7 @@ describe( "Sites Module", function () {
             expect(pOut.xth).toBeDefined();
             expect(pOut.yth).toBeDefined();
             expect(pOut.zone).toBeDefined();
-            expect(nearest.Distance).toBeDefined();
+            expect(nearest.relativePosition.Distance).toBeDefined();
         });
 
         it ("Returns the nearest site and correct distance, in the current zone, even if there are sites in multiple zones", function() {
@@ -30,7 +30,7 @@ describe( "Sites Module", function () {
             var nearest = app.Sites.Nearest(pIn, list);
             var pOut = nearest.site;
             expect(pOut).toEqual(list[2]);
-            expect(nearest.Distance).toEqual(6000);
+            expect(nearest.relativePosition.Distance).toEqual(6000);
         });
 
         it("Returns Found = false when no sites in zone", function() {
@@ -42,7 +42,7 @@ describe( "Sites Module", function () {
             var pIn = {Easting: 528000, Northing: 4170000, Zone: 15};
             var nearest = app.Sites.Nearest(pIn, list);
             var pOut = nearest.site;
-            expect(nearest.Found).toEqual(false);
+            expect(nearest.relativePosition.Found).toEqual(false);
         });
     });
 
@@ -54,7 +54,7 @@ describe( "Sites Module", function () {
         var bearingTest = function(currentLocation, expectedBearing) {
             var nearest = app.Sites.Nearest(currentLocation, list);
             var pOut = nearest.site;
-            expect(nearest.Bearing).toEqual(expectedBearing);
+            expect(nearest.relativePosition.Bearing).toEqual(expectedBearing);
         };
 
         it("Returns 'N' when we're north of the point", function() {
@@ -82,14 +82,14 @@ describe( "Sites Module", function () {
            var pIn = {Easting: 445999, Northing: 4118000, Zone: 17}; // 1 meter away
            var nearest = app.Sites.Nearest(pIn, list);
            var pOut = nearest.site;
-           expect(nearest.DistanceOutside).toBeLessThan(0);
+           expect(nearest.relativePosition.DistanceOutside).toBeLessThan(0);
        });
 
         it("Is > 0 when the current position is greater than 30% of the grid distance of the nearest site", function() {
             var pIn = {Easting: 445099, Northing: 4118000, Zone: 17}; // 901 meters away
             var nearest = app.Sites.Nearest(pIn, list);
             var pOut = nearest.site;
-            expect(nearest.DistanceOutside).toBeGreaterThan(0);
+            expect(nearest.relativePosition.DistanceOutside).toBeGreaterThan(0);
         });
 
     });

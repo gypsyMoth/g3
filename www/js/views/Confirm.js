@@ -1,7 +1,7 @@
 /**
  * Created by Ian on 1/20/14.
  */
-$(function () {
+(function () {
     'use strict';
 
     app.views.Confirm = Backbone.View.extend({
@@ -10,10 +10,8 @@ $(function () {
 
         className: "view",
 
-        template: _.template($('#confirm-template').html()),
-
-        initialize: function() {
-
+        initialize: function(options) {
+            this.template = options.template;
         },
 
         events: {
@@ -35,4 +33,4 @@ $(function () {
             app.pageRouter.navigate('home', {trigger: true, replace: true});
         }
     });
-});
+})();

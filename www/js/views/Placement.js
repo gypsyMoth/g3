@@ -1,7 +1,5 @@
-/**
- * Created by Ian on 1/18/14.
- */
-$(function () {
+/*Created by Ian on 1/18/14.*/
+(function () {
     'use strict';
 
     app.views.Placement = Backbone.View.extend({
@@ -10,10 +8,8 @@ $(function () {
 
         className: "view",
 
-        template: _.template($('#placement-template').html()),
-
-        initialize: function() {
-
+        initialize: function(options) {
+            this.template = options.template;
         },
 
         events: {
@@ -42,6 +38,10 @@ $(function () {
 
         onCancelClicked: function() {
             app.pageRouter.navigate('home', {trigger: true, replace: true});
+        },
+
+        setOperationData: function() {
+            var op = this.model.get('operation');
         }
     });
-});
+})();
