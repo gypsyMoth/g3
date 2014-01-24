@@ -64,7 +64,6 @@
             site.yact = op.northing;
             site.txn_date = op.date;
             site.trap_type = op.traptype;
-            //this.set({site: site});
         }
     });
 })();

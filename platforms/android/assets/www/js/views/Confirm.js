@@ -25,7 +25,7 @@
         },
 
         onOkClicked: function() {
-            // TODO: Save the data
+            this.model.saveSites();
             app.pageRouter.navigate('home', {trigger: true, replace: true});
         },
 

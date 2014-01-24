@@ -16,4 +16,12 @@ $(describe("Confirm View", function() {
     it("Has a model", function() {
         expect(view.model).toBeDefined();
     });
+
+    it("Calls CurrentPosition.saveSites() when confirm is clicked", function() {
+        spyOn(view.model, "saveSites");
+        view.render();
+        view.onOkClicked();
+        expect(view.model.saveSites).toHaveBeenCalled();
+    });
+
 }));

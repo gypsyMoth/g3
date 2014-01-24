@@ -62,6 +62,9 @@
             var op = this.get('operation');
             site.xact = op.easting;
             site.yact = op.northing;
+            site.txn_date = op.date;
+            site.trap_type = op.traptype;
+            //this.set({site: site});
         }
     });
 })();

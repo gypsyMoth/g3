@@ -2,42 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20da09c5-c3ea-40cf-8e84-b3fc505237dd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/util/Date.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/spec/javascripts/util/DateSpec.js" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\GitHub\g3\platforms\android\assets\www\js\CoordinateConverter.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\GitHub\g3\platforms\android\assets\www\js\DB.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\GitHub\g3\platforms\android\assets\www\js\Sites.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\GitHub\g3\platforms\android\assets\www\spec\javascripts\CoordinateConverterSpec.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\GitHub\g3\platforms\android\assets\www\spec\javascripts\DBSpec.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\GitHub\g3\platforms\android\assets\www\spec\javascripts\SitesSpec.js" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\Ian\Documents\GitHub\g3\www\js\CoordinateConverter.js" afterPath="$PROJECT_DIR$/www/js/util/CoordinateConverter.js" />
-      <change type="MOVED" beforePath="C:\Users\Ian\Documents\GitHub\g3\www\js\DB.js" afterPath="$PROJECT_DIR$/www/js/util/DB.js" />
-      <change type="MOVED" beforePath="C:\Users\Ian\Documents\GitHub\g3\www\js\Sites.js" afterPath="$PROJECT_DIR$/www/js/util/Sites.js" />
-      <change type="MOVED" beforePath="C:\Users\Ian\Documents\GitHub\g3\www\spec\javascripts\CoordinateConverterSpec.js" afterPath="$PROJECT_DIR$/www/spec/javascripts/util/CoordinateConverterSpec.js" />
-      <change type="MOVED" beforePath="C:\Users\Ian\Documents\GitHub\g3\www\spec\javascripts\DBSpec.js" afterPath="$PROJECT_DIR$/www/spec/javascripts/util/DBSpec.js" />
-      <change type="MOVED" beforePath="C:\Users\Ian\Documents\GitHub\g3\www\spec\javascripts\SitesSpec.js" afterPath="$PROJECT_DIR$/www/spec/javascripts/util/SitesSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/views/Caution.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/views/Caution.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/views/Confirm.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/views/Confirm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/views/Confirm.js" afterPath="$PROJECT_DIR$/www/js/views/Confirm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/javascripts/views/ConfirmSpec.js" afterPath="$PROJECT_DIR$/www/spec/javascripts/views/ConfirmSpec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/views/ConfirmSpec.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/views/ConfirmSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/models/CurrentPosition.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/models/CurrentPosition.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/models/CurrentPosition.js" afterPath="$PROJECT_DIR$/www/js/models/CurrentPosition.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/models/CurrentPositionSpec.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/models/CurrentPositionSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/javascripts/models/CurrentPositionSpec.js" afterPath="$PROJECT_DIR$/www/spec/javascripts/models/CurrentPositionSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/views/ExtrasSpec.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/views/ExtrasSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/views/HomeSpec.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/views/HomeSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/views/Placement.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/views/Placement.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/views/Placement.js" afterPath="$PROJECT_DIR$/www/js/views/Placement.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/javascripts/views/PlacementSpec.js" afterPath="$PROJECT_DIR$/www/spec/javascripts/views/PlacementSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/Router.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/Router.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/views/Splash.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/views/Splash.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/app.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/index.html" afterPath="$PROJECT_DIR$/platforms/android/assets/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/javascripts/fixtures/placement.html" afterPath="$PROJECT_DIR$/www/spec/javascripts/fixtures/placement.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec.html" afterPath="$PROJECT_DIR$/platforms/android/assets/www/spec.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec.html" afterPath="$PROJECT_DIR$/www/spec.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/views/Home.js" afterPath="$PROJECT_DIR$/www/js/views/Home.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/javascripts/views/HomeSpec.js" afterPath="$PROJECT_DIR$/www/spec/javascripts/views/HomeSpec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/views/PlacementSpec.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/views/PlacementSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="g3.iws" />
@@ -64,32 +36,8 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="119" selection-start="4932" selection-end="4932" vertical-scroll-proportion="-16.653847" vertical-offset="1148" max-vertical-offset="2499">
-              <folding>
-                <marker date="1390592739698" expanded="true" signature="878:902" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="941:1028" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="1066:1168" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="1308:1622" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="1367:1599" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="1433:1572" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="1678:1767" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="1825:2806" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="1884:2366" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="1949:2339" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="2430:2563" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="2622:2783" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="2953:3522" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="3078:3290" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="3584:3914" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="4060:4398" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="4123:4375" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="4458:4673" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="4799:4930" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="4991:5220" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="5054:5197" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="5281:5496" placeholder="..." />
-                <marker date="1390592739698" expanded="true" signature="5640:6076" placeholder="..." />
-              </folding>
+            <state line="93" column="0" selection-start="4932" selection-end="4932" vertical-scroll-proportion="-16.653847" vertical-offset="1148" max-vertical-offset="2499">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -98,9 +46,7 @@
         <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/PlacementSpec.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="42" column="51" selection-start="2093" selection-end="2093" vertical-scroll-proportion="0.0" vertical-offset="231" max-vertical-offset="884">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -108,8 +54,19 @@
       <file leaf-file-name="CurrentPosition.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/models/CurrentPosition.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="25" selection-start="1756" selection-end="1756" vertical-scroll-proportion="0.0" vertical-offset="551" max-vertical-offset="1275">
+            <state line="44" column="0" selection-start="1025" selection-end="1603" vertical-scroll-proportion="0.0" vertical-offset="589" max-vertical-offset="1258">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Home.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/views/Home.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="59" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.0" vertical-offset="530" max-vertical-offset="1258">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -117,25 +74,25 @@
       <file leaf-file-name="CurrentPositionSpec.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/spec/javascripts/models/CurrentPositionSpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="29" selection-start="3175" selection-end="3175" vertical-scroll-proportion="0.0" vertical-offset="1125" max-vertical-offset="1819">
+            <state line="90" column="29" selection-start="3175" selection-end="3175" vertical-scroll-proportion="0.0" vertical-offset="1133" max-vertical-offset="1819">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConfirmSpec.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/ConfirmSpec.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="22" selection-start="642" selection-end="642" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Confirm.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Confirm.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/views/Confirm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="35" selection-start="606" selection-end="606" vertical-scroll-proportion="0.75867766" vertical-offset="0" max-vertical-offset="714">
+            <state line="27" column="35" selection-start="606" selection-end="606" vertical-scroll-proportion="0.0" vertical-offset="88" max-vertical-offset="714">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeSpec.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/HomeSpec.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="150" column="70" selection-start="5614" selection-end="5614" vertical-scroll-proportion="0.8913738" vertical-offset="1992" max-vertical-offset="2720">
               <folding />
             </state>
           </provider>
@@ -145,41 +102,6 @@
         <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/CautionSpec.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="confirm.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/spec/javascripts/fixtures/confirm.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="306">
-              <folding>
-                <marker date="1390579840618" expanded="true" signature="98:422" placeholder="..." />
-                <marker date="1390579840618" expanded="true" signature="161:411" placeholder="..." />
-                <marker date="1390579840618" expanded="true" signature="470:649" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Placement.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/js/views/Placement.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="0" selection-start="1462" selection-end="1462" vertical-scroll-proportion="0.0" vertical-offset="313" max-vertical-offset="1139">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CoordinateConverterSpec.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/spec/javascripts/util/CoordinateConverterSpec.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="70" selection-start="684" selection-end="715" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
               <folding />
             </state>
           </provider>
@@ -203,8 +125,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/www/spec/javascripts/views/HomeSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/javascripts/views/CautionSpec.js" />
         <option value="$PROJECT_DIR$/www/spec/javascripts/views/ExtrasSpec.js" />
         <option value="$PROJECT_DIR$/www/spec/javascripts/views/SplashSpec.js" />
         <option value="$PROJECT_DIR$/www/spec.html" />
@@ -215,10 +135,12 @@
         <option value="$PROJECT_DIR$/www/js/views/Placement.js" />
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/spec/javascripts/views/PlacementSpec.js" />
-        <option value="$PROJECT_DIR$/www/js/models/CurrentPosition.js" />
         <option value="$PROJECT_DIR$/www/spec/javascripts/models/CurrentPositionSpec.js" />
         <option value="$PROJECT_DIR$/www/spec/javascripts/views/ConfirmSpec.js" />
         <option value="$PROJECT_DIR$/www/js/views/Confirm.js" />
+        <option value="$PROJECT_DIR$/www/js/models/CurrentPosition.js" />
+        <option value="$PROJECT_DIR$/www/js/views/Home.js" />
+        <option value="$PROJECT_DIR$/www/spec/javascripts/views/HomeSpec.js" />
       </list>
     </option>
   </component>
@@ -504,13 +426,13 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="editor.preferences.appearance" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -553,14 +475,6 @@
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -571,15 +485,23 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="CHROME" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
@@ -667,30 +589,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/util/DateSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="50" selection-start="303" selection-end="303" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
-          <folding>
-            <element signature="e#0#37#0" expanded="false" />
-            <marker date="1390585553003" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/util/Sites.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="0" selection-start="2485" selection-end="2506" vertical-scroll-proportion="0.0" vertical-offset="823" max-vertical-offset="1428">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/util/Date.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="15" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
-          <folding>
-            <element signature="e#0#37#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="4" column="15" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/app.js">
@@ -702,18 +603,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/spec.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="11" selection-start="3380" selection-end="3380" vertical-scroll-proportion="-18.038462" vertical-offset="517" max-vertical-offset="1122">
-          <folding />
-        </state>
+        <state line="58" column="11" selection-start="3380" selection-end="3380" vertical-scroll-proportion="-18.038462" vertical-offset="517" max-vertical-offset="1122" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/spec/javascripts/fixtures/confirm.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="605">
           <folding>
-            <marker date="1390579840618" expanded="true" signature="98:422" placeholder="..." />
-            <marker date="1390579840618" expanded="true" signature="161:411" placeholder="..." />
-            <marker date="1390579840618" expanded="true" signature="470:649" placeholder="..." />
+            <marker date="1390579840618" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1390579840618" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1390579840618" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -721,9 +620,7 @@
     <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/CautionSpec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="605">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -737,73 +634,20 @@
     <entry file="file://$PROJECT_DIR$/www/js/views/Placement.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="0" selection-start="1462" selection-end="1462" vertical-scroll-proportion="0.0" vertical-offset="313" max-vertical-offset="1139">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="119" selection-start="4932" selection-end="4932" vertical-scroll-proportion="-16.653847" vertical-offset="1148" max-vertical-offset="2499">
-          <folding>
-            <marker date="1390592739698" expanded="true" signature="878:902" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="941:1028" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="1066:1168" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="1308:1622" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="1367:1599" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="1433:1572" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="1678:1767" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="1825:2806" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="1884:2366" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="1949:2339" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="2430:2563" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="2622:2783" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="2953:3522" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="3078:3290" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="3584:3914" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="4060:4398" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="4123:4375" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="4458:4673" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="4799:4930" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="4991:5220" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="5054:5197" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="5281:5496" placeholder="..." />
-            <marker date="1390592739698" expanded="true" signature="5640:6076" placeholder="..." />
-          </folding>
+        <state line="93" column="0" selection-start="4932" selection-end="4932" vertical-scroll-proportion="-16.653847" vertical-offset="1148" max-vertical-offset="2499">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/spec/javascripts/fixtures/placement.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="26" selection-start="306" selection-end="306" vertical-scroll-proportion="0.14680484" vertical-offset="0" max-vertical-offset="579">
-          <folding>
-            <marker date="1390588745370" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1390588745370" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1390588745370" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/PlacementSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="51" selection-start="2093" selection-end="2093" vertical-scroll-proportion="0.0" vertical-offset="231" max-vertical-offset="884">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/models/CurrentPosition.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="25" selection-start="1756" selection-end="1756" vertical-scroll-proportion="0.0" vertical-offset="551" max-vertical-offset="1275">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/models/CurrentPositionSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="29" selection-start="3175" selection-end="3175" vertical-scroll-proportion="0.0" vertical-offset="1125" max-vertical-offset="1819">
           <folding />
         </state>
       </provider>
@@ -817,7 +661,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/views/Confirm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="35" selection-start="606" selection-end="606" vertical-scroll-proportion="0.75867766" vertical-offset="0" max-vertical-offset="714">
+        <state line="27" column="35" selection-start="606" selection-end="606" vertical-scroll-proportion="0.0" vertical-offset="88" max-vertical-offset="714">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/PlacementSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="51" selection-start="2093" selection-end="2093" vertical-scroll-proportion="0.0" vertical-offset="231" max-vertical-offset="884">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/models/CurrentPositionSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="29" selection-start="3175" selection-end="3175" vertical-scroll-proportion="0.0" vertical-offset="1125" max-vertical-offset="1819">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/models/CurrentPosition.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="0" selection-start="1025" selection-end="1603" vertical-scroll-proportion="0.0" vertical-offset="589" max-vertical-offset="1258">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/views/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="59" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.0" vertical-offset="530" max-vertical-offset="1258">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/HomeSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="150" column="70" selection-start="5614" selection-end="5614" vertical-scroll-proportion="0.8913738" vertical-offset="1992" max-vertical-offset="2720">
           <folding />
         </state>
       </provider>

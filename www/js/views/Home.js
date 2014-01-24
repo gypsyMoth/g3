@@ -38,8 +38,31 @@
         checkTargetCircle: function () {
             var relativePosition = this.model.get('relativePosition');
             var isOut = relativePosition.DistanceOutside > 0;
-            this.$el.find('#siteDiv').css('background-color', isOut ? '#FF0000' : '#799839');
-            this.$el.find('#homeImage').attr('src', isOut ? 'img/redTree.gif' : 'img/greenTree.gif');
+            var site = this.model.get('site');
+
+            var color = this.getColor(isOut);
+            var imageSource = this.getOperation(isOut, site);
+
+            this.$el.find('#siteDiv').css('background-color', color);
+            this.$el.find('#homeImage').attr('src', imageSource);
+        },
+
+        getColor: function(isOut) {
+            return isOut ? '#FF0000' : '#799839';
+        },
+
+        getOperation: function(isOut, site) {
+            var imagePath = 'img/';
+            imagePath += isOut ? 'red' : 'green';
+
+            if (typeof site.xact === 'undefined') {
+                imagePath += 'Tree';
+            } else if (typeof site.visit === 'undefined') {
+                site.trap_type;
+                imagePath += site.trap_type === 'Delta' ? 'Delta' : 'MilkCarton';
+            }
+            imagePath += '.gif';
+            return imagePath;
         }
     });
 })();
