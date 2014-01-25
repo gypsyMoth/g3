@@ -3,7 +3,7 @@ var app = {
     models: {},
     router: {},
     CoordinateConverter: {},
-    Sites: {},
+    NearestNeighbor: {},
     db: {},
     DateFormatter: {},
     SitesList: [],
@@ -43,7 +43,7 @@ $(document).on("ready", function () {
             Longitude: position.coords.longitude,
             Accuracy: position.coords.accuracy
         };
-        var nearest = app.Sites.Nearest(utm, app.SitesList);
+        var nearest = app.NearestNeighbor.Nearest(utm, app.SitesList);
         app.Here.set({currentLatLon: latLon, currentUtm: utm, relativePosition: nearest.relativePosition, site: nearest.site});
     };
 

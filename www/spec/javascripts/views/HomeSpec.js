@@ -92,7 +92,7 @@ $(describe("Home View", function() {
                expectImageToMatchOperation(site, 0, 'img/greenTree.gif');
            });
 
-           it("Shows red tree when we're outside the target and the site is unaddresed", function() {
+           it("Shows red tree when we're outside the target and the site is unaddressed", function() {
                expectColorToMatchDistanceOutside(site, 1, '#FF0000');
                expectImageToMatchOperation(site, 1, 'img/redTree.gif');
            });
@@ -119,7 +119,7 @@ $(describe("Home View", function() {
                expectImageToMatchOperation(site, 0, 'img/greenDelta.gif');
            });
 
-           it("Shows red tree when we're outside the target and the site has a delta placement", function() {
+           it("Shows red delta when we're outside the target and the site has a delta placement", function() {
                expectColorToMatchDistanceOutside(site, 1, '#FF0000');
                expectImageToMatchOperation(site, 1, 'img/redDelta.gif');
            });

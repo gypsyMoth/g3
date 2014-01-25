@@ -1,44 +1,57 @@
 /**
  * Created by Ian on 12/28/13.
  */
-app.Sites = (function () {
+app.NearestNeighbor = (function () {
     var my = {};
 
     my.Nearest = function(currentLocation, sites) {
-        var outside = true;
+        var distanceOutside = 0;
         var bearing = "X";
-        var minDistance = Number.MAX_VALUE;
-        var pCurrent = {x: currentLocation.Easting, y: currentLocation.Northing};
-        var nearest = {
-            quad: '',
-            site_id: ''
-        };
-        var foundSite = false;
+        var minimumDistance = Number.MAX_VALUE;
+        var currentPoint = {x: currentLocation.Easting, y: currentLocation.Northing};
+        var nearestSite;
+        var point;
+        var distance;
+        var site;
+        var siteFound = false;
+
         for (var i = 0, len = sites.length; i < len; i++) {
-            var s = sites[i];
-            if (s.zone === currentLocation.Zone) {
-                foundSite = true;
-                var p = {x: s.xth, y: s.yth};
-                var d = getDistance(p, pCurrent);
-                if (d < minDistance) {
-                    nearest = s;
-                    minDistance = d;
+            site = sites[i];
+            if (site.zone === currentLocation.Zone) {
+                siteFound = true;
+                point = getPoint(site);
+                distance = getDistance(point, currentPoint);
+                if (distance < minimumDistance) {
+                    nearestSite = site;
+                    minimumDistance = distance;
                 }
             }
         }
-        if (foundSite) {
-            outside = minDistance - (nearest.grid * 0.3);
-            bearing = getBearingString(pCurrent, {x: nearest.xth, y: nearest.yth});
+
+        if (siteFound) {
+            distanceOutside = minimumDistance - (nearestSite.grid * 0.3);
+            bearing = getBearingString(currentPoint, getPoint(nearestSite));
         }
+
         return {
-            site: nearest,
+            site: nearestSite,
             relativePosition: {
-                Distance: Math.round(minDistance,0),
+                Distance: Math.round(minimumDistance),
                 Bearing: bearing,
-                DistanceOutside: Math.round(outside, 0),
-                Found: foundSite
+                DistanceOutside: Math.round(distanceOutside),
+                Found: siteFound
             }
         };
+    };
+
+    var getPoint = function(site) {
+        var point;
+        if (typeof (site.xact) === 'undefined' || typeof (site.yact) === 'undefined') {
+            point = {x: site.xth, y: site.yth};
+        } else {
+            point = {x: site.xact, y: site.yact};
+        }
+        return point;
     };
 
     var getDistance = function(p2, p1) {
