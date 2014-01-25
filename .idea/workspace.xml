@@ -118,10 +118,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name=".travis.yml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.travis.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="25" selection-start="89" selection-end="89" vertical-scroll-proportion="0.13578275" vertical-offset="0" max-vertical-offset="626">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="1" selection-start="572" selection-end="572" vertical-scroll-proportion="0.79333335" vertical-offset="0" max-vertical-offset="600">
+            <state line="28" column="1" selection-start="572" selection-end="572" vertical-scroll-proportion="-18.307692" vertical-offset="0" max-vertical-offset="595">
               <folding />
             </state>
           </provider>
@@ -548,6 +557,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="1" selection-start="572" selection-end="572" vertical-scroll-proportion="-18.307692" vertical-offset="0" max-vertical-offset="595">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Gruntfile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="2" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
@@ -560,13 +576,6 @@
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="25" selection-start="89" selection-end="89" vertical-scroll-proportion="0.13578275" vertical-offset="0" max-vertical-offset="626">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="1" selection-start="572" selection-end="572" vertical-scroll-proportion="0.79333335" vertical-offset="0" max-vertical-offset="600">
           <folding />
         </state>
       </provider>
