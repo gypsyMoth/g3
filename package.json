@@ -4,7 +4,7 @@
   "description": "STS Trapper Gadget ",
   "main": "app.js",
   "scripts": {
-      "test": "grunt travis --verbose"
+    "test": "grunt travis --verbose"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/lobsteropteryx/g3/issues"
   },
-  "homepage": "https://github.com/lobsteropteryx/g3"
+  "homepage": "https://github.com/lobsteropteryx/g3",
+  "devDependencies": {
+    "grunt": "~0.4.2"
+  }
 }
