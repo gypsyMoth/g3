@@ -12,7 +12,7 @@ module.exports = function(grunt) {
                     'www/*js'
                 ],
                 options: {
-                    specs: 'www/spec/javascripts/*Spec.js',
+                    specs: 'www/spec/javascripts/**/*Spec.js',
                     keepRunner : true
                     //helpers: 'test/spec/*.js'
                 }
