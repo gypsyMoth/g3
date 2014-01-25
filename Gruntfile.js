@@ -27,7 +27,7 @@ module.exports = function(grunt) {
 //    grunt.registerTask('travis', [
 //        /*'jshint',*/'jasmine'
 //    ]);
-    grunt.registerTask('test', [jasmine'])
-    grunt.registerTask('default', ['test'])
+    grunt.registerTask('test', ['jasmine']);
+    grunt.registerTask('default', ['test']);
 
 };
