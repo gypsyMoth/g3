@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "STS Trapper Gadget ",
   "main": "app.js",
-//  "scripts": {
-//    "test": "grunt travis --verbose"
-//  },
   "scripts": { "test": "grunt test" },
   "repository": {
     "type": "git",
