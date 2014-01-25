@@ -9,12 +9,12 @@ module.exports = function(grunt) {
         jasmine: {
             components: {
                 src: [
-                    'www/*js'
+                    'www/js/**/*js'
                 ],
                 options: {
                     specs: 'www/spec/javascripts/**/*Spec.js',
-                    keepRunner : true
-                    //helpers: 'test/spec/*.js'
+                    keepRunner : true,
+                    helpers: 'www/spec/*.js'
                 }
             }
         }
