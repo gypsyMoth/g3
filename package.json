@@ -1,0 +1,26 @@
+{
+  "name": "g3",
+  "version": "0.0.1",
+  "description": "STS Trapper Gadget ",
+  "main": "app.js",
+  "scripts": {
+      "test": "grunt travis --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lobsteropteryx/g3.git"
+  },
+  "keywords": [
+    "Slow",
+    "the",
+    "Spread",
+    "GIS",
+    "Projection"
+  ],
+  "author": "Ian Firkin",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/lobsteropteryx/g3/issues"
+  },
+  "homepage": "https://github.com/lobsteropteryx/g3"
+}
