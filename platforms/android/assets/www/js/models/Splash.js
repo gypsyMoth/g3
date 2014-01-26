@@ -17,10 +17,13 @@
             //setInterval(that.showSearching(that), 250);
 
             that.set('message', 'Initializing filesystem...');
-            app.db.initialize().then(function() {
-                that.set('message', 'Acquiring Satellites');
-                app.startGeolocation();
-            });
+                app.db.initialize().then( function() {
+                    that.set('message', 'Loading sites from file...');
+                    app.SitesList = app.db.loadSites('TX', 1).then( function() {
+                        that.set('message', 'Acquiring Satellites');
+                        app.startGeolocation();
+                    });
+                });
         }
 
 //        showSearching: function(that) {
@@ -36,5 +39,5 @@
 //        pad: function (width, string, padding) {
 //            return (width <= string.length) ? string : pad(width, string + padding, padding)
 //        }
-    })
+    });
 })();

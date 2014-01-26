@@ -2,7 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20da09c5-c3ea-40cf-8e84-b3fc505237dd" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\Users\Ian\Documents\GitHub\g3\platforms\android\assets\www\spec\javascripts\appSpec.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/views/Confirm.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/views/Confirm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/views/Confirm.js" afterPath="$PROJECT_DIR$/www/js/views/Confirm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/views/ConfirmSpec.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/views/ConfirmSpec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/javascripts/views/ConfirmSpec.js" afterPath="$PROJECT_DIR$/www/spec/javascripts/views/ConfirmSpec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/util/DB.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/util/DB.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/util/DB.js" afterPath="$PROJECT_DIR$/www/js/util/DB.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/util/DBSpec.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/util/DBSpec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/javascripts/util/DBSpec.js" afterPath="$PROJECT_DIR$/www/spec/javascripts/util/DBSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gruntfile.js" afterPath="$PROJECT_DIR$/Gruntfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/models/Splash.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/models/Splash.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/models/Splash.js" afterPath="$PROJECT_DIR$/www/js/models/Splash.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/app.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="g3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,15 +73,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CurrentPosition.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/js/models/CurrentPosition.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="0" selection-start="1025" selection-end="1603" vertical-scroll-proportion="0.0" vertical-offset="589" max-vertical-offset="1258">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Home.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/views/Home.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -81,7 +87,21 @@
       <file leaf-file-name="DBSpec.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/spec/javascripts/util/DBSpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="19" selection-start="1365" selection-end="1365" vertical-scroll-proportion="0.0" vertical-offset="20" max-vertical-offset="782">
+            <state line="37" column="19" selection-start="1433" selection-end="1433" vertical-scroll-proportion="0.0" vertical-offset="173" max-vertical-offset="799">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <marker date="1390668953196" expanded="true" signature="66:1469" placeholder="{...}" />
+                <marker date="1390668953196" expanded="true" signature="151:1459" placeholder="{...}" />
+                <marker date="1390668953196" expanded="true" signature="1101:1447" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConfirmSpec.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/ConfirmSpec.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="0" selection-start="737" selection-end="1399" vertical-scroll-proportion="0.0" vertical-offset="186" max-vertical-offset="799">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -89,33 +109,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DB.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Confirm.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/views/Confirm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="0" selection-start="875" selection-end="875" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="782">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DB.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/util/DB.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1904">
+            <state line="117" column="59" selection-start="3984" selection-end="3984" vertical-scroll-proportion="0.5926518" vertical-offset="1618" max-vertical-offset="2244">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Gruntfile.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Gruntfile.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="9" selection-start="515" selection-end="515" vertical-scroll-proportion="0.46166134" vertical-offset="0" max-vertical-offset="626">
-              <folding>
-                <element signature="e#0#37#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".travis.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.travis.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="25" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="187">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -123,7 +132,27 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="3" selection-start="2542" selection-end="2542" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1326">
+            <state line="22" column="0" selection-start="448" selection-end="448" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Splash.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/views/Splash.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="17" selection-start="429" selection-end="429" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Splash.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/models/Splash.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="9" selection-start="854" selection-end="854" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
               <folding />
             </state>
           </provider>
@@ -132,7 +161,7 @@
       <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="0" selection-start="594" selection-end="594" vertical-scroll-proportion="-18.307692" vertical-offset="0" max-vertical-offset="578">
+            <state line="23" column="22" selection-start="526" selection-end="526" vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="612">
               <folding />
             </state>
           </provider>
@@ -156,22 +185,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/www/spec/javascripts/views/ConfirmSpec.js" />
-        <option value="$PROJECT_DIR$/www/js/views/Confirm.js" />
-        <option value="$PROJECT_DIR$/www/js/models/CurrentPosition.js" />
-        <option value="$PROJECT_DIR$/www/js/views/Home.js" />
         <option value="$PROJECT_DIR$/www/js/util/Sites.js" />
-        <option value="$PROJECT_DIR$/www/js/app.js" />
         <option value="$PROJECT_DIR$/www/spec.html" />
         <option value="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/util/SitesSpec.js" />
         <option value="$PROJECT_DIR$/www/spec/javascripts/views/HomeSpec.js" />
         <option value="$PROJECT_DIR$/www/js/util/NearestNeighbor.js" />
         <option value="$PROJECT_DIR$/www/spec/javascripts/util/NearestNeighborSpec.js" />
         <option value="$PROJECT_DIR$/www/index.html" />
-        <option value="$PROJECT_DIR$/www/spec/javascripts/util/DBSpec.js" />
         <option value="$PROJECT_DIR$/travis.yml" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/Gruntfile.js" />
+        <option value="$PROJECT_DIR$/www/js/views/Confirm.js" />
+        <option value="$PROJECT_DIR$/www/spec/javascripts/views/ConfirmSpec.js" />
+        <option value="$PROJECT_DIR$/www/spec/javascripts/util/DBSpec.js" />
+        <option value="$PROJECT_DIR$/www/js/models/Splash.js" />
+        <option value="$PROJECT_DIR$/www/js/app.js" />
+        <option value="$PROJECT_DIR$/www/js/util/DB.js" />
       </list>
     </option>
   </component>
@@ -283,37 +312,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jasmine-jquery" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="g3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="g3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -332,6 +331,50 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -478,7 +521,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297546" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2489019" sideWeight="0.6702454" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17203514" sideWeight="0.6702454" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46625766" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -506,27 +549,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/PlacementSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="51" selection-start="2093" selection-end="2093" vertical-scroll-proportion="0.0" vertical-offset="231" max-vertical-offset="884">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/models/CurrentPositionSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="29" selection-start="3175" selection-end="3175" vertical-scroll-proportion="0.0" vertical-offset="1125" max-vertical-offset="1819">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/models/CurrentPosition.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="1025" selection-end="1603" vertical-scroll-proportion="0.0" vertical-offset="589" max-vertical-offset="1258">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/views/Home.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="43" column="59" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.0" vertical-offset="530" max-vertical-offset="1258">
@@ -587,24 +609,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/util/DBSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="19" selection-start="1365" selection-end="1365" vertical-scroll-proportion="0.0" vertical-offset="20" max-vertical-offset="782">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/util/DB.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1904">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/spec.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="34" column="74" selection-start="1831" selection-end="1831" vertical-scroll-proportion="-2.3461537" vertical-offset="517" max-vertical-offset="1122">
@@ -619,13 +623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="594" selection-end="594" vertical-scroll-proportion="-18.307692" vertical-offset="0" max-vertical-offset="578">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/spec/javascripts/util/NearestNeighborSpec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="44" column="58" selection-start="1589" selection-end="1589" vertical-scroll-proportion="0.4054054" vertical-offset="508" max-vertical-offset="2108">
@@ -633,18 +630,78 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="3" selection-start="2542" selection-end="2542" vertical-scroll-proportion="0.0" vertical-offset="653" max-vertical-offset="1326">
+        <state line="23" column="22" selection-start="526" selection-end="526" vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="612">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Gruntfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="9" selection-start="515" selection-end="515" vertical-scroll-proportion="0.46166134" vertical-offset="0" max-vertical-offset="626">
+        <state line="25" column="0" selection-start="695" selection-end="695" vertical-scroll-proportion="0.62460065" vertical-offset="0" max-vertical-offset="629">
           <folding>
             <element signature="e#0#37#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/views/Confirm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="0" selection-start="875" selection-end="875" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="782">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/ConfirmSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="737" selection-end="1399" vertical-scroll-proportion="0.0" vertical-offset="186" max-vertical-offset="799">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/util/DBSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="19" selection-start="1433" selection-end="1433" vertical-scroll-proportion="0.0" vertical-offset="173" max-vertical-offset="799">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1390668953196" expanded="true" signature="66:1469" placeholder="{...}" />
+            <marker date="1390668953196" expanded="true" signature="151:1459" placeholder="{...}" />
+            <marker date="1390668953196" expanded="true" signature="1101:1447" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/views/Splash.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="17" selection-start="429" selection-end="429" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/models/Splash.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="9" selection-start="854" selection-end="854" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="448" selection-end="448" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/util/DB.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="117" column="59" selection-start="3984" selection-end="3984" vertical-scroll-proportion="0.5926518" vertical-offset="1618" max-vertical-offset="2244">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>

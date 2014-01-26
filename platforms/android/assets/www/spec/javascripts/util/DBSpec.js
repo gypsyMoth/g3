@@ -28,12 +28,13 @@ describe("DB Module", function() {
             });
 
             describe("Saving sites to the local filesystem", function() {
-                it("Has a method to save sites to local storage", function() {
-                    expect(app.db.saveSites).toBeDefined();
+
+                it("Has a property to hold the currently loaded sites file", function() {
+                    expect(app.db.sitesFile).toBeDefined();
                 });
 
-                it("Keeps track of the currently loaded sites file", function() {
-
+                it("Has a method to save sites to local storage", function() {
+                    expect(app.db.saveSites).toBeDefined();
                 });
             });
         })

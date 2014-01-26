@@ -19,12 +19,6 @@ $(document).on("ready", function () {
     app.pageRouter = new app.Router();
     Backbone.history.start();
 
-    app.SitesList = [
-        {"zone":15,"xth":"329229","yth":"3475979","quad":"FIREP","site_id":1,"grid":"30","trap_type":"Milk Carton","moth_count":0},
-        {"zone":15,"xth":"329180","yth":"3475941","quad":"DITCH","site_id":2,"grid":"30","trap_type":"Milk Carton","moth_count":0},
-        {"zone":15,"xth":"528000","yth":"4176000","quad":"TEST","site_id":3,"grid":"8000","trap_type":"Milk Carton","moth_count":0}
-    ];
-
     app.startGeolocation = function() {
         app.watchId = app.watchId || navigator.geolocation.watchPosition(app.onPositionUpdate,
             function(error) {
@@ -56,6 +50,7 @@ $(document).on("ready", function () {
 
     app.onDeviceReady = function() {
         console.log("G3 Device Ready!");
+
         if (app.isInitialized) {
             app.pageRouter.navigate('home', true);
         } else {
