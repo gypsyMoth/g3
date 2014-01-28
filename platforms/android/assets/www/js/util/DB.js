@@ -7,6 +7,8 @@ app.db = (function () {
 
     my.sitesFile = 'TX_1.json';
 
+    my.activityLog = "trans_log.txt";
+
     my.initialize = function() {
         return getFileSystem().then(getRootDirectory);
     };
@@ -36,12 +38,29 @@ app.db = (function () {
 
     var getRootDirectory = function() {
         var deferred = $.Deferred();
-        app.Filesystem.root.getDirectory("com.phonegap.g3", {create: true, exclusive: false }, function(dirEntry) {
+        app.Filesystem.root.getDirectory("G3", {create: true, exclusive: false }, function(dirEntry) {
             app.Root = dirEntry;
+            console.log("G3 " + dirEntry.fullPath);
             deferred.resolve();
         }, app.fail);
         return deferred.promise();
     };
+
+//    var listSubDirectories = function(dirEntry) {
+//        var directoryReader = dirEntry.createReader();
+//        console.log(dirEntry.name + "\r\n");
+//        directoryReader.readEntries(
+//            function success(entries) {
+//                for (var i=0; i<entries.length; i++) {
+//                    listSubDirectories(entries[i]);
+//                    //console.log(entries[i].name);
+//                }
+//            },
+//            function fail() {
+//                console.log("Failed to list dirs: " + error.code);
+//            }
+//        );
+//    };
 
     my.countFiles = function() {
         var deferred = $.Deferred();
@@ -84,8 +103,8 @@ app.db = (function () {
         var deferred = $.Deferred();
         var reader = new FileReader();
         reader.onloadend = function(evt) {
-            console.log("G3 " + evt.target.result);
             app.SitesList = JSON.parse(evt.target.result);
+            console.log("G3 Loaded:" + JSON.stringify(app.SitesList));
             deferred.resolve();
         };
         reader.readAsText(file);
@@ -96,29 +115,69 @@ app.db = (function () {
         var deferred = $.Deferred();
         var fileTransfer = new FileTransfer();
         var uri = encodeURI("http://yt.ento.vt.edu/SlowTheSpread/gadgetsites/" + state + "/" + bidunit + "?format=json");
+        var filename = app.Root.fullPath + '/' + makeFilename(state, bidunit);
 
         fileTransfer.download(
             uri,
-            app.Root.fullPath + "/" + makeFilename(state, bidunit),
+            filename,
             function(entry) {
-                getFile(entry).then(loadFile).then(deferred.resolve());
-            }, app.fail
+                console.log("G3 file downloaded; filename = " + filename + "; fileentry = " + entry.fullPath);
+                getFile(entry).then(loadFile).then(function() {
+                    deferred.resolve();
+                });
+            },
+            function(error) {
+                if (error.code === 3) {
+                    alert("No network connection");
+                } else {
+                    console.log(error.code);
+                }
+                deferred.reject();
+            }
         );
         return deferred.promise();
     };
 
     my.saveSites = function (sitesList) {
         var deferred = new $.Deferred();
-        app.Root.getFile(this.sitesFile, {create: true, exclusive: false}, function(fileEntry) {
-            fileEntry.createWriter(function(writerObject) {
-                writerObject.onwriteend = function(evt) {
-                    deferred.resolve();
-                    console.log("G3 Wrote sites file");
-                };
-                var stringList = JSON.stringify(sitesList);
-                console.log(stringList);
-                writerObject.write(stringList);
-            }, app.fail);
+        var data = JSON.stringify(sitesList);
+        getFileEntry(app.Root, this.sitesFile, {create: true, exclusive: false}).then(function(fileEntry) {
+            writeFile(fileEntry, data).then( function() {
+                deferred.resolve();
+            });
+        });
+        return deferred.promise();
+    };
+
+    my.logOperation = function(data) {
+        var deferred = $.Deferred;
+        getFileEntry(app.Root, this.activityLog, {create: true, exclusive: false}).then(function(fileEntry) {
+            appendFile(fileEntry, data).then( function() {
+                deferred.resolve();
+            });
+        });
+        return deferred.promise();
+    };
+
+    var writeFile = function(fileEntry, data) {
+        var deferred = $.Deferred;
+        fileEntry.createWriter(function(writer) {
+            writer.onwriteend = function(evt) {
+                deferred.resolve();
+            };
+            writer.write(data);
+        }, app.fail);
+        return deferred.promise();
+    };
+
+    var appendFile = function(fileEntry, data) {
+        var deferred = $.Deferred;
+        fileEntry.createWriter(function(writer) {
+            writer.onwriteend = function(evt) {
+                deferred.resolve();
+            };
+            writer.seek(writer.length)
+            writer.write(data);
         }, app.fail);
         return deferred.promise();
     };

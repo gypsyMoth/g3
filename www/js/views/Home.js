@@ -10,8 +10,8 @@
 
         initialize: function(options) {
             this.template = options.template;
-            app.startGeolocation();
             this.listenTo(this.model, 'change', this.render);
+            app.startGeolocation();
         },
 
         events: {
@@ -20,8 +20,23 @@
         },
 
         onImageClicked: function() {
-            app.stopGeolocation();
-            app.pageRouter.navigate('placement', {trigger: true, replace: true});
+            var site = this.model.get('site');
+            var operation = this.getOperation(site);
+            switch (operation) {
+                case app.operationTypes.ERROR:
+                    break;
+                case app.operationTypes.UNADDRESSED:
+                    app.stopGeolocation();
+                    app.pageRouter.navigate('placement', {trigger: true, replace: true});
+                    break;
+                case app.operationTypes.PLACED || app.operationTypes.MIDSEASON:
+                    alert("Inspections are not implemented");
+                    break;
+                case app.operationTypes.FINAL:
+                    break;
+                case app.operationTypes.OMITTED:
+                    break;
+            }
         },
 
         onExtrasClicked: function() {
@@ -41,7 +56,7 @@
             var site = this.model.get('site');
 
             var color = this.getColor(isOut);
-            var imageSource = this.getOperation(isOut, site);
+            var imageSource = this.getOperationImage(isOut, site);
 
             this.$el.find('#siteDiv').css('background-color', color);
             this.$el.find('#homeImage').attr('src', imageSource);
@@ -51,18 +66,43 @@
             return isOut ? '#FF0000' : '#799839';
         },
 
-        getOperation: function(isOut, site) {
+        getOperationImage: function(isOut, site) {
             var imagePath = 'img/';
             imagePath += isOut ? 'red' : 'green';
-
-            if (typeof site.xact === 'undefined') {
-                imagePath += 'Tree';
-            } else if (typeof site.visit === 'undefined') {
-                site.trap_type;
-                imagePath += site.trap_type === 'Delta' ? 'Delta' : 'MilkCarton';
-            }
+            imagePath += this.getImageType(site);
             imagePath += '.gif';
             return imagePath;
+        },
+
+        getImageType: function(site) {
+            var imagePath = '';
+            if (typeof site.xact === 'undefined') {
+                imagePath = 'Tree';
+            } else if (typeof site.visit === 'undefined') {
+                site.trap_type;
+                imagePath = site.trap_type === 'Delta' ? 'Delta' : 'MilkCarton';
+            }
+            return imagePath;
+        },
+
+        getOperation: function(site) {
+            var operationType = '';
+            if (site.quad === '') {
+                operationType = app.operationTypes.ERROR;
+            } else if (typeof site.xact === 'undefined') {
+                operationType = app.operationTypes.UNADDRESSED;
+            } else if (typeof site.visit === 'undefined') {
+                if (typeof site.omit_reason === 'undefined') {
+                    operationType = app.operationTypes.PLACED;
+                } else {
+                    operationType = app.operationTypes.OMITTED;
+                }
+            } else if (site.visit === 'MIDSEASON') {
+                operationType = app.operationTypes.MIDSEASON;
+            } else {
+                operationType = app.operationTypes.FINAL;
+            }
+            return operationType;
         }
     });
 })();

@@ -29,9 +29,9 @@
         },
 
         onLoadLocalClicked: function() {
-            app.db.loadSites('WV', 1); //.then( function() {
-            app.pageRouter.navigate('home', {trigger: true, replace: true});
-            //});
+            app.db.loadSites('TX', 2).then( function() {
+                app.pageRouter.navigate('home', {trigger: true, replace: true});
+            });
         },
 
         onDownloadClicked: function() {

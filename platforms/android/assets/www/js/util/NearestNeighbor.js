@@ -9,7 +9,7 @@ app.NearestNeighbor = (function () {
         var bearing = "X";
         var minimumDistance = Number.MAX_VALUE;
         var currentPoint = {x: currentLocation.Easting, y: currentLocation.Northing};
-        var nearestSite;
+        var nearestSite = {quad: '', site: ''};
         var point;
         var distance;
         var site;

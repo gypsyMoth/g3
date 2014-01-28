@@ -37,6 +37,20 @@ describe("DB Module", function() {
                     expect(app.db.saveSites).toBeDefined();
                 });
             });
+
+            describe("Appending to transaction log", function() {
+               it("Has a method to write a transaction to the log", function() {
+                   expect(app.db.logOperation).toBeDefined();
+               });
+
+               it("Has a property to store the name of the activity log", function() {
+                   expect(app.db.activityLog).toBeDefined();
+               });
+
+               it("Can append data to the activity log", function() {
+
+               });
+            });
         })
     );
 });

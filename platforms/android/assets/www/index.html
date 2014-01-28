@@ -48,7 +48,13 @@
                     </div>
 
                     <div id="siteDiv" class="homeDiv siteDiv">
-                        <span id="siteSpan" class="siteSpan"><%= site.quad + ":" + site.site_id %></span>
+                        <span id="siteSpan" class="siteSpan">
+                            <% if(site.quad !== '') { %>
+                            <%= site.quad + ":" + site.site_id %>
+                            <% } else { %>
+                            <%= "No Site" %>
+                            <% } %>
+                        </span>
                     </div>
 
                     <div id="messageDiv" class="homeDiv">

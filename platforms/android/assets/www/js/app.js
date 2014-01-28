@@ -9,6 +9,16 @@ var app = {
     SitesList: [],
     Here: {},
     isInitialized: false,
+
+    operationTypes: {
+        ERROR: 'ERROR',
+        UNADDRESSED: 'UNADDRESSED',
+        PLACED: 'PLACED',
+        OMITTED: 'OMITTED',
+        MIDSEASON: 'MIDSEASON',
+        FINAL: 'FINAL'
+    },
+
     startGeolocation: function() {},
     onDeviceReady: function() {}
 };
@@ -24,7 +34,7 @@ $(document).on("ready", function () {
             function(error) {
                 console.log(error.message);
             },
-            {enableHighAccuracy:true, timeout:1000, maximumAge:0 }
+            {enableHighAccuracy:true, timeout:3000, maximumAge:0 }
         );
     };
 
@@ -35,9 +45,13 @@ $(document).on("ready", function () {
         var latLon = {
             Latitude: position.coords.latitude,
             Longitude: position.coords.longitude,
-            Accuracy: position.coords.accuracy
+            Accuracy: Math.round(position.coords.accuracy)
         };
         var nearest = app.NearestNeighbor.Nearest(utm, app.SitesList);
+
+        console.log(JSON.stringify(app.SitesList));
+        console.log(JSON.stringify(nearest));
+
         app.Here.set({currentLatLon: latLon, currentUtm: utm, relativePosition: nearest.relativePosition, site: nearest.site});
     };
 
