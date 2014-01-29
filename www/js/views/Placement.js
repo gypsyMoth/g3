@@ -52,8 +52,11 @@
             var op = this.model.get('operation');
             var utm = this.model.get('currentUtm');
             var site = this.model.get('site');
+            var latlon = this.model.get('currentLatLon');
+            op.zone = utm.Zone;
             op.easting = utm.Easting;
             op.northing = utm.Northing;
+            op.accuracy = latlon.Accuracy;
             op.traptype = site.trap_type;
             op.date = app.DateFormatter.getSitesFormatDate();
         }

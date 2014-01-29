@@ -5,6 +5,7 @@ var app = {
     CoordinateConverter: {},
     NearestNeighbor: {},
     db: {},
+    encoder: {},
     DateFormatter: {},
     SitesList: [],
     Here: {},
@@ -20,7 +21,15 @@ var app = {
     },
 
     startGeolocation: function() {},
-    onDeviceReady: function() {}
+    onDeviceReady: function() {},
+
+    rpad: function (string, width, padding) {
+        return (width <= string.length) ? string : this.rpad(string + padding, width, padding)
+    },
+
+    lpad: function (string, width, padding) {
+        return (width <= string.length) ? string : this.lpad(padding + string, width, padding)
+    }
 };
 
 $(document).on("ready", function () {
@@ -48,10 +57,6 @@ $(document).on("ready", function () {
             Accuracy: Math.round(position.coords.accuracy)
         };
         var nearest = app.NearestNeighbor.Nearest(utm, app.SitesList);
-
-        console.log(JSON.stringify(app.SitesList));
-        console.log(JSON.stringify(nearest));
-
         app.Here.set({currentLatLon: latLon, currentUtm: utm, relativePosition: nearest.relativePosition, site: nearest.site});
     };
 

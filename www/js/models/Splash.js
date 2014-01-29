@@ -45,8 +45,6 @@
 //            that.set('message', 'Acquiring Satellites' + dots);
 //        },
 //
-//        pad: function (width, string, padding) {
-//            return (width <= string.length) ? string : pad(width, string + padding, padding)
-//        }
+
     });
 })();

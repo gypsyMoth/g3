@@ -26,11 +26,11 @@
 
         onOkClicked: function() {
             this.model.saveSites();
-            app.db.saveSites(app.SitesList);
-            app.pageRouter.navigate('home', {trigger: true, replace: true});
-//            .then( function() {
-//                app.pageRouter.navigate('home', {trigger: true, replace: true});
-//            });
+            app.db.logOperation(this.model.codedString()).then( function() {
+                app.db.saveSites(app.SitesList).then( function() {
+                    app.pageRouter.navigate('home', {trigger: true, replace: true});
+                });
+            });
         },
 
         onCancelClicked: function() {

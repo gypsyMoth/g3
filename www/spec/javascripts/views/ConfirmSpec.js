@@ -24,8 +24,7 @@ $(describe("Confirm View", function() {
         expect(view.model.saveSites).toHaveBeenCalled();
     });
 
-    it("Calls db.saveSites() when confirm is clicked", function() {
-        spyOn(app.db, "saveSites");
+    describe("Saving data to filesystem", function() {
 
         app.SitesList = [
             {"zone":15,"xth":"329229","yth":"3475979","quad":"FIREP","site_id":1,"grid":"30","trap_type":"Milk Carton","moth_count":0},
@@ -33,9 +32,26 @@ $(describe("Confirm View", function() {
             {"zone":15,"xth":"528000","yth":"4176000","quad":"TEST","site_id":3,"grid":"8000","trap_type":"Milk Carton","moth_count":0}
         ];
 
-        view.render();
-        view.onOkClicked();
-        expect(app.db.saveSites).toHaveBeenCalled();
-    });
+        xit("Calls db.saveSites() when confirm is clicked", function(done) {
+            spyOn(app.db, "saveSites");
+            view.render();
+            view.onOkClicked().then( function() {
+                expect(app.db.saveSites).toHaveBeenCalled();
+            },
+            function(error){
+                console.log(expect());
+                expect("initialize received error: " + error).toFail();
+            })
+            .always(done);
+        });
 
+        xit("Calls db.logOperation() when confirm is clicked", function() {
+           spyOn(app.db, "logOperation");
+            view.render();
+            view.onOkClicked();
+            expect(app.db.logOperation).toHaveBeenCalled();
+
+        });
+
+    });
 }));

@@ -14,7 +14,7 @@ app.db = (function () {
     };
 
     var getFileSystem = function() {
-        var deferred = $.Deferred();
+        var deferred = new $.Deferred();
         checkIfFileSystemIsDefined();
 
         var grantedBytes = 0;
@@ -37,7 +37,7 @@ app.db = (function () {
     };
 
     var getRootDirectory = function() {
-        var deferred = $.Deferred();
+        var deferred = new $.Deferred();
         app.Filesystem.root.getDirectory("G3", {create: true, exclusive: false }, function(dirEntry) {
             app.Root = dirEntry;
             console.log("G3 " + dirEntry.fullPath);
@@ -46,24 +46,8 @@ app.db = (function () {
         return deferred.promise();
     };
 
-//    var listSubDirectories = function(dirEntry) {
-//        var directoryReader = dirEntry.createReader();
-//        console.log(dirEntry.name + "\r\n");
-//        directoryReader.readEntries(
-//            function success(entries) {
-//                for (var i=0; i<entries.length; i++) {
-//                    listSubDirectories(entries[i]);
-//                    //console.log(entries[i].name);
-//                }
-//            },
-//            function fail() {
-//                console.log("Failed to list dirs: " + error.code);
-//            }
-//        );
-//    };
-
     my.countFiles = function() {
-        var deferred = $.Deferred();
+        var deferred = new $.Deferred();
         var directoryReader = app.Root.createReader();
         var fileCount = directoryReader.readEntries(function(entries) {
            app.fileCount = entries.length;
@@ -73,7 +57,7 @@ app.db = (function () {
     };
 
     my.loadSites = function(state, bidunit) {
-        var deferred = $.Deferred();
+        var deferred = new $.Deferred();
         getFileEntry(app.Root, makeFilename(state, bidunit), {create: false}).then(getFile).then(loadFile).then(deferred.resolve());
         return deferred.promise();
     };
@@ -83,7 +67,7 @@ app.db = (function () {
     };
 
     var getFileEntry = function(dirEntry, filename, params) {
-        var deferred = $.Deferred();
+        var deferred = new $.Deferred();
         dirEntry.getFile(filename, params,
         function gotFileEntry(fileEntry) {
             deferred.resolve(fileEntry);
@@ -92,7 +76,7 @@ app.db = (function () {
     };
 
     var getFile = function(fileEntry) {
-        var deferred = $.Deferred();
+        var deferred = new $.Deferred();
         fileEntry.file( function success(file) {
             deferred.resolve(file);
         }, app.fail);
@@ -100,7 +84,7 @@ app.db = (function () {
     };
 
     var loadFile = function(file) {
-        var deferred = $.Deferred();
+        var deferred = new $.Deferred();
         var reader = new FileReader();
         reader.onloadend = function(evt) {
             app.SitesList = JSON.parse(evt.target.result);
@@ -112,7 +96,7 @@ app.db = (function () {
     };
 
     my.downloadSites = function (state, bidunit){
-        var deferred = $.Deferred();
+        var deferred = new $.Deferred();
         var fileTransfer = new FileTransfer();
         var uri = encodeURI("http://yt.ento.vt.edu/SlowTheSpread/gadgetsites/" + state + "/" + bidunit + "?format=json");
         var filename = app.Root.fullPath + '/' + makeFilename(state, bidunit);
@@ -138,7 +122,7 @@ app.db = (function () {
         return deferred.promise();
     };
 
-    my.saveSites = function (sitesList) {
+    my.saveSites = function(sitesList) {
         var deferred = new $.Deferred();
         var data = JSON.stringify(sitesList);
         getFileEntry(app.Root, this.sitesFile, {create: true, exclusive: false}).then(function(fileEntry) {
@@ -149,18 +133,8 @@ app.db = (function () {
         return deferred.promise();
     };
 
-    my.logOperation = function(data) {
-        var deferred = $.Deferred;
-        getFileEntry(app.Root, this.activityLog, {create: true, exclusive: false}).then(function(fileEntry) {
-            appendFile(fileEntry, data).then( function() {
-                deferred.resolve();
-            });
-        });
-        return deferred.promise();
-    };
-
     var writeFile = function(fileEntry, data) {
-        var deferred = $.Deferred;
+        var deferred = new $.Deferred;
         fileEntry.createWriter(function(writer) {
             writer.onwriteend = function(evt) {
                 deferred.resolve();
@@ -170,13 +144,23 @@ app.db = (function () {
         return deferred.promise();
     };
 
+    my.logOperation = function(data) {
+        var deferred = new $.Deferred;
+        getFileEntry(app.Root, this.activityLog, {create: true, exclusive: false}).then(function(fileEntry) {
+            appendFile(fileEntry, data).then( function() {
+                deferred.resolve();
+            });
+        });
+        return deferred.promise();
+    };
+
     var appendFile = function(fileEntry, data) {
-        var deferred = $.Deferred;
+        var deferred = new $.Deferred;
         fileEntry.createWriter(function(writer) {
             writer.onwriteend = function(evt) {
                 deferred.resolve();
             };
-            writer.seek(writer.length)
+            writer.seek(writer.length);
             writer.write(data);
         }, app.fail);
         return deferred.promise();

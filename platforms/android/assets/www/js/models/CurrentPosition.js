@@ -30,6 +30,7 @@
            operation: {
                easting: '',
                northing: '',
+               zone: '',
                date: '',
                traptype: ''
            },
@@ -60,10 +61,48 @@
         saveSites: function() {
             var site = this.get('site');
             var op = this.get('operation');
+            site.zone = op.zone;
             site.xact = op.easting;
             site.yact = op.northing;
             site.txn_date = op.date;
             site.trap_type = op.traptype;
+        },
+
+        codedString: function() {
+            var op = this.get('operation');
+            var site = this.get('site');
+            var rel = this.get('relativePosition');
+
+            var ret = this.constants.BANG + ',';
+            ret += this.constants.ROW + ',';
+            ret += this.constants.MESSAGE + ',';
+            ret += op.zone + ',';
+            ret += this.constants.HEMISPHERE + ',';
+            ret += op.easting + ',';
+            ret += op.northing + ',';
+            ret += app.rpad((op.accuracy + '.'), 5, '0') + ',';
+            ret += app.DateFormatter.getOperationFormatDate() + ',';
+            ret += '00:00:00' + ',';
+            ret += this.constants.PLACEHOLDER + ',';
+            ret += this.constants.ZERO + ',';
+            ret += app.rpad(site.quad, 5, ' ') + app.lpad(site.site_id, 4, '0');
+            ret += op.traptype === 'Delta' ? 'D' : 'M';
+            ret += rel.DistanceOutside > 0 ? 'B' : '';
+            ret += ',' + this.constants.DOLLAR;
+            ret += '\r\n';
+            return ret;
+        },
+
+        constants: {
+            "BANG": "#",
+            "ROW": "000",
+            "MESSAGE": "01234567890123",
+            "HEMISPHERE": "North",
+            "PLACEHOLDER": "",
+            "ZERO": "0",
+            "DOLLAR": "$"
         }
+
+
     });
 })();

@@ -46,10 +46,6 @@ describe("DB Module", function() {
                it("Has a property to store the name of the activity log", function() {
                    expect(app.db.activityLog).toBeDefined();
                });
-
-               it("Can append data to the activity log", function() {
-
-               });
             });
         })
     );
