@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="20da09c5-c3ea-40cf-8e84-b3fc505237dd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gruntfile.js" afterPath="$PROJECT_DIR$/Gruntfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_SpecRunner.html" afterPath="$PROJECT_DIR$/_SpecRunner.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/.idea/workspace.xml" afterPath="$PROJECT_DIR$/www/.idea/workspace.xml" />
     </list>
     <ignored path="g3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -103,7 +100,7 @@
       <file leaf-file-name="Gruntfile.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Gruntfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="17" selection-start="756" selection-end="756" vertical-scroll-proportion="0.5974441" vertical-offset="0" max-vertical-offset="731">
+            <state line="20" column="53" selection-start="686" selection-end="686" vertical-scroll-proportion="0.543131" vertical-offset="0" max-vertical-offset="748">
               <folding />
             </state>
           </provider>
@@ -529,7 +526,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gruntfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="17" selection-start="756" selection-end="756" vertical-scroll-proportion="0.5974441" vertical-offset="0" max-vertical-offset="731">
+        <state line="20" column="53" selection-start="686" selection-end="686" vertical-scroll-proportion="0.543131" vertical-offset="0" max-vertical-offset="748">
           <folding />
         </state>
       </provider>

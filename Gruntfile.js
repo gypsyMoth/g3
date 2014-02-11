@@ -15,9 +15,10 @@ module.exports = function(grunt) {
                     specs: 'www/spec/javascripts/**/*Spec.js',
                     keepRunner : true,
                     helpers: 'www/spec/*.js',
-                    vendor: ['www/spec/javascripts/lib/jasmine-jquery.js',
-                        'www/js/lib/backbone-min.js',
+                    vendor: [
                         'www/js/lib/jquery-2.0.3.min.js',
+                        'www/spec/javascripts/lib/jasmine-jquery.js',
+                        'www/js/lib/backbone-min.js',
                         'www/js/lib/underscore-min.js'
                     ]
                 }
