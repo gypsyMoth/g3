@@ -8,9 +8,9 @@
         Ian Firkin
         Slow the Spread of the Gypsy Moth
     </author>
-    <feature name="http://api.phonegap.com/1.0/device" />
+<!--     <feature name="http://api.phonegap.com/1.0/device" />
     <feature name="http://api.phonegap.com/1.0/file"/>
-    <feature name="http://api.phonegap.com/1.0/geolocation"/>
+    <feature name="http://api.phonegap.com/1.0/geolocation"/> -->
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
