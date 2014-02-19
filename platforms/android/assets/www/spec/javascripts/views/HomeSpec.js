@@ -76,7 +76,7 @@ $(describe("Home View", function() {
        view.model.set({operation: {easting: 123456, northing: 1234567, date: '01/01/14', traptype: 'Delta'}});
        view = new app.views.Home({model: new app.models.CurrentPosition(), template: _.template($('#home-template').html())});
        var op = view.model.get('operation');
-       expect(op).toEqual({easting: '', northing: '', date: '', traptype: ''});
+       expect(op).toEqual({easting: '', northing: '', zone: '', date: '', traptype: ''});
    });
 
    describe("Determine operation based on site", function() {
