@@ -19,6 +19,10 @@
     <description>
         Phonegap implementation of the STS Trapper Gadget
     </description>
+    <name>G3</name>
+    <description>
+        Phonegap implementation of the STS Trapper Gadget
+    </description>
     <author email="imf@vt.edu" href="http://gmsts.org">
         Ian Firkin
         Slow the Spread of the Gypsy Moth

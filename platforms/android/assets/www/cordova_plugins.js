@@ -118,8 +118,15 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file/www/resolveLocalFileSystemURI.js",
         "id": "org.apache.cordova.file.resolveLocalFileSystemURI",
-        "clobbers": [
-            "window.resolveLocalFileSystemURI"
+        "merges": [
+            "window"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.file/www/android/FileSystem.js",
+        "id": "org.apache.cordova.file.androidFileSystem",
+        "merges": [
+            "window.FileSystem"
         ]
     },
     {
@@ -140,8 +147,8 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "org.apache.cordova.file": "0.2.5",
-    "org.apache.cordova.file-transfer": "0.4.0"
+    "org.apache.cordova.file": "1.0.0",
+    "org.apache.cordova.file-transfer": "0.4.1"
 }
 // BOTTOM OF METADATA
 });

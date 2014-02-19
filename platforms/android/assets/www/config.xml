@@ -2,16 +2,16 @@
 <widget id="com.phonegap.g3" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 
     <name>G3</name>
+
     <description>
         Phonegap implementation of the STS Trapper Gadget
     </description>
+
     <author email="imf@vt.edu" href="http://gmsts.org">
         Ian Firkin
         Slow the Spread of the Gypsy Moth
     </author>
-<!--     <feature name="http://api.phonegap.com/1.0/device" />
-    <feature name="http://api.phonegap.com/1.0/file"/>
-    <feature name="http://api.phonegap.com/1.0/geolocation"/> -->
+
     <preference name="phonegap-version" value="3.3.0" /> 
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
@@ -48,11 +48,6 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" /> -->
-
-<!--     <gap:plugin name="Compass" value="org.apache.cordova.core.CompassListener" />
-    <gap:plugin name="Geolocation" value="org.apache.cordova.core.GeoBroker" />
-    <gap:plugin name="File" value="org.apache.cordova.file.FileUtils" />
-    <gap:plugin name="FileTransfer" value="org.apache.cordova.core.FileTransfer" /> -->
 
     <icon src="icon.png" />
     <icon gap:density="ldpi" gap:platform="android" src="res/icon/android/icon-36-ldpi.png" />
