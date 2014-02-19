@@ -1,0 +1,16 @@
+﻿html, body {
+    width:100%;
+    height:100%;
+    margin:0;
+    font-family: 'MS Sans Serif', Geneva, sans-serif;
+}
+
+.view {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 1%;
+}
+
+
+

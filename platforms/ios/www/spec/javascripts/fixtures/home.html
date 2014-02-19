@@ -1,0 +1,29 @@
+<script type="text/template" id="home-template">
+    <div id="homeHeader" class="homeHeader">
+        <div id="locationDiv" class="homeDiv">
+                    <span id="locationSpan" class="locationSpan">
+                        <%= currentUtm.Zone + ", " + currentUtm.Easting + "E, " + currentUtm.Northing + "N" %>
+                    </span>
+        </div>
+    </div>
+
+    <div id="ActionDiv" class="actionDiv">
+        <img id="homeImage" src="img/greenTree.gif"/>
+    </div>
+
+    <div id="homeFooter" class="homeFooter">
+        <div id="distanceDiv" class="homeDiv">
+                        <span id="distanceSpan" class="message">
+                            <%= relativePosition.Distance + " (&plusmn" + currentLatLon.Accuracy + ") meters " + relativePosition.Bearing%>
+                        </span>
+        </div>
+
+        <div id="siteDiv" class="homeDiv siteDiv">
+            <span id="siteSpan" class="siteSpan"><%= site.quad + ":" + site.site_id %></span>
+        </div>
+
+        <div id="MessageDiv" class="homeDiv">
+            <span id="MessageSpan" class="message"><%= message %></span>
+        </div>
+    </div>
+</script>
