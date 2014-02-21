@@ -1,7 +1,5 @@
-/**
- * Created by Ian on 1/24/14.
- */
-app.DateFormatter = (function () {
+define (function () {
+
     var my = {};
 
     my.getSitesFormatDate = function() {

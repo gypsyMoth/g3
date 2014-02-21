@@ -1,7 +1,4 @@
-/**
- * Created by Ian on 1/23/14.
- */
-(function () {
+define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
     'use strict';
 
     app.models.Filesystem = Backbone.Model.extend({
@@ -15,4 +12,4 @@
         }
 
     });
-})();
+});

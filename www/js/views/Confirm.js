@@ -1,7 +1,4 @@
-/**
- * Created by Ian on 1/20/14.
- */
-(function () {
+define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
     'use strict';
 
     app.views.Confirm = Backbone.View.extend({
@@ -37,4 +34,4 @@
             app.pageRouter.navigate('home', {trigger: true, replace: true});
         }
     });
-})();
+});

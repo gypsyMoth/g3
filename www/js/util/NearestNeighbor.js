@@ -1,7 +1,4 @@
-/**
- * Created by Ian on 12/28/13.
- */
-app.NearestNeighbor = (function () {
+define (function () {
     var my = {};
 
     my.Nearest = function(currentLocation, sites) {
@@ -89,4 +86,4 @@ app.NearestNeighbor = (function () {
     };
 
     return my;
-}());
+});

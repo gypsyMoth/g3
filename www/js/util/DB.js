@@ -1,6 +1,4 @@
-/*Created by Ian on 1/15/14.*/
-
-app.db = (function () {
+define (['jquery', 'src/app'], function ($, app) {
     var my = {};
 
     var PERSISTENT;
@@ -167,4 +165,4 @@ app.db = (function () {
     };
 
     return my;
-}());
+});

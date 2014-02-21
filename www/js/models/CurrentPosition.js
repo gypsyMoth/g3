@@ -1,8 +1,5 @@
-/**
- * Created by Ian on 1/15/14.
-*/
 
-(function () {
+define(['underscore', 'backbone', 'src/app', 'src/util/Date'], function(_, Backbone, app, Date) {
     'use strict';
 
     app.models.CurrentPosition = Backbone.Model.extend({
@@ -50,7 +47,7 @@
                 message = 'No trap at this site';
             } else if (typeof site.visit === 'undefined') {
                 var traptype = site.trap_type;
-                var date = app.DateFormatter.getScreenFormatDate(site.txn_date);
+                var date = Date.getScreenFormatDate(site.txn_date);
                 message = traptype + ' trap placed here on ' + date;
             } else {
                 message = 'Invalid site';
@@ -105,4 +102,4 @@
 
 
     });
-})();
+});

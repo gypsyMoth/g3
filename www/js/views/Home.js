@@ -1,5 +1,4 @@
-/* Created by Ian on 1/15/14.*/
-(function () {
+define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
     'use strict';
 
     app.views.Home = Backbone.View.extend({
@@ -105,4 +104,4 @@
             return operationType;
         }
     });
-})();
+});

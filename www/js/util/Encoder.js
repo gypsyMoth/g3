@@ -1,8 +1,4 @@
-/**
- * Created by Ian on 1/28/14.
- */
-
-app.encoder = (function () {
+define (function () {
     var my = {};
 
     my.constants = {
@@ -25,4 +21,4 @@ app.encoder = (function () {
 
     return my;
 
-})();
+});

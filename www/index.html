@@ -121,11 +121,40 @@
 
         <!--Libs-->
         <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/lib/require.js"></script>
+
+        <!--Require kickoff-->
+        <script>
+            require.config({
+                baseUrl: "/js/",
+                paths: {
+                    jquery: 'lib/jquery-2.0.3.min',
+                    underscore: 'lib/underscore-min',
+                    backbone: 'lib/backbone-min'
+                },
+                shim: {
+                    underscore: {
+                        exports: "_"
+                    },
+                    backbone: {
+                        deps: ['underscore', 'jquery'],
+                        exports: 'Backbone'
+                    }
+                }
+            });
+
+            require(['underscore', 'backbone', 'app'], function (_, Backbone, app) {
+                app.initialize();
+            });
+        </script>
+
+
         <script type="text/javascript" src="js/lib/jquery-2.0.3.min.js"></script>
         <script type="text/javascript" src="js/lib/underscore-min.js"></script>
         <script type="text/javascript" src="js/lib/backbone-min.js"></script>
         <!--App-->
-        <script type="text/javascript" src="js/app.js"></script>
+        <!--<script type="text/javascript" src="js/app.js"></script>-->
+
         <script type="text/javascript" src="js/Router.js"></script>
         <!--Models-->
         <script type="text/javascript" src="js/models/Splash.js"></script>

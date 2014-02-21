@@ -1,7 +1,4 @@
-/**
- * Created by Ian on 1/20/14.
- */
-(function () {
+define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
     'use strict';
 
     app.models.Splash = Backbone.Model.extend({
@@ -39,4 +36,4 @@
 //
 
     });
-})();
+});

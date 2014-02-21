@@ -1,5 +1,4 @@
-/*Created by Ian on 1/18/14.*/
-(function () {
+define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
     'use strict';
 
     app.views.Placement = Backbone.View.extend({
@@ -62,4 +61,4 @@
         }
 
     });
-})();
+});
