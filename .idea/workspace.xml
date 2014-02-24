@@ -23,10 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CurrentPosition.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/js/models/CurrentPosition.js">
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="1" selection-end="98" vertical-scroll-proportion="-0.68" vertical-offset="0" max-vertical-offset="1870">
+            <state line="37" column="0" selection-start="999" selection-end="999" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
               <folding />
             </state>
           </provider>
@@ -41,55 +41,73 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CoordinateConverterSpec.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/spec/javascripts/util/CoordinateConverterSpec.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="72" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CautionSpec.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/CautionSpec.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="47" selection-start="47" selection-end="47" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="618">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CurrentPositionSpec.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/spec/javascripts/models/CurrentPositionSpec.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="30" selection-start="771" selection-end="774" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1853">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="specRunner.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/spec/javascripts/specRunner.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="48" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.0" vertical-offset="419" max-vertical-offset="1173">
+            <state line="50" column="27" selection-start="1534" selection-end="1534" vertical-scroll-proportion="0.0" vertical-offset="606" max-vertical-offset="1258">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="boot.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/spec/javascripts/lib/jasmine-2.0.0/boot.js">
+      <file leaf-file-name="Splash.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/views/Splash.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="5" selection-start="3296" selection-end="3296" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="3179">
+            <state line="14" column="0" selection-start="437" selection-end="437" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="spec.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/spec.html">
+      <file leaf-file-name="Placement.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/views/Placement.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="8" selection-start="482" selection-end="586" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="1037">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1207">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Splash.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/js/models/Splash.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="30" selection-start="328" selection-end="328" vertical-scroll-proportion="0.26941362" vertical-offset="0" max-vertical-offset="782">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CurrentPosition.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/models/CurrentPosition.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="56" column="0" selection-start="1715" selection-end="1715" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1870">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SplashSpec.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/SplashSpec.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="67" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Home.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/views/Home.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="32" selection-start="356" selection-end="372" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1921">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlacementSpec.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/PlacementSpec.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="40" selection-start="1084" selection-end="1084" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
               <folding />
             </state>
           </provider>
@@ -113,8 +131,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/www/spec/javascripts/views/ConfirmSpec.js" />
-        <option value="$PROJECT_DIR$/www/spec/javascripts/views/HomeSpec.js" />
         <option value="$PROJECT_DIR$/Gruntfile.js" />
         <option value="$PROJECT_DIR$/platforms/android/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/platforms/android/res/xml/config.xml" />
@@ -134,19 +150,24 @@
         <option value="$PROJECT_DIR$/www/js/util/DB.js" />
         <option value="$PROJECT_DIR$/www/spec/javascripts/util/DBSpec.js" />
         <option value="$PROJECT_DIR$/www/spec/javascripts/models/CurrentPositionSpec.js" />
-        <option value="$PROJECT_DIR$/www/js/models/CurrentPosition.js" />
         <option value="$PROJECT_DIR$/www/js/models/FileSystem.js" />
-        <option value="$PROJECT_DIR$/www/js/models/Splash.js" />
         <option value="$PROJECT_DIR$/www/js/views/Caution.js" />
         <option value="$PROJECT_DIR$/www/js/views/Confirm.js" />
         <option value="$PROJECT_DIR$/www/js/views/Extras.js" />
         <option value="$PROJECT_DIR$/www/js/views/Home.js" />
-        <option value="$PROJECT_DIR$/www/js/views/Placement.js" />
-        <option value="$PROJECT_DIR$/www/js/views/Splash.js" />
         <option value="$PROJECT_DIR$/www/js/Router.js" />
         <option value="$PROJECT_DIR$/www/spec.html" />
-        <option value="$PROJECT_DIR$/www/spec/javascripts/specRunner.js" />
         <option value="$PROJECT_DIR$/www/spec/javascripts/views/CautionSpec.js" />
+        <option value="$PROJECT_DIR$/www/js/models/CurrentPosition.js" />
+        <option value="$PROJECT_DIR$/www/spec/javascripts/views/ConfirmSpec.js" />
+        <option value="$PROJECT_DIR$/www/spec/javascripts/views/ExtrasSpec.js" />
+        <option value="$PROJECT_DIR$/www/spec/javascripts/views/HomeSpec.js" />
+        <option value="$PROJECT_DIR$/www/spec/javascripts/specRunner.js" />
+        <option value="$PROJECT_DIR$/www/js/views/Placement.js" />
+        <option value="$PROJECT_DIR$/www/spec/javascripts/views/PlacementSpec.js" />
+        <option value="$PROJECT_DIR$/www/js/views/Splash.js" />
+        <option value="$PROJECT_DIR$/www/spec/javascripts/views/SplashSpec.js" />
+        <option value="$PROJECT_DIR$/www/js/models/Splash.js" />
       </list>
     </option>
   </component>
@@ -576,31 +597,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/platforms/android/cordova/android_sdk_version">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/android/proguard-project.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/android/project.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/org.apache.cordova.file/doc/index.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-2.6602871" vertical-offset="1668" max-vertical-offset="2295" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/org.apache.cordova.file/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="652" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/plugins/org.apache.cordova.file/www/android/FileSystem.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663" />
@@ -794,13 +790,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="19" selection-start="83" selection-end="83" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/util/DB.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="0" selection-start="257" selection-end="257" vertical-scroll-proportion="-8.16" vertical-offset="0" max-vertical-offset="2941">
@@ -815,79 +804,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/views/Splash.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="734" selection-end="734" vertical-scroll-proportion="0.78129953" vertical-offset="0" max-vertical-offset="631">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/views/Placement.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="2" selection-start="2027" selection-end="2027" vertical-scroll-proportion="0.8435583" vertical-offset="521" max-vertical-offset="1173">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/views/Home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="2" selection-start="3738" selection-end="3738" vertical-scroll-proportion="0.8174847" vertical-offset="1269" max-vertical-offset="1921">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/views/Extras.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="2" selection-start="1445" selection-end="1445" vertical-scroll-proportion="0.8435583" vertical-offset="266" max-vertical-offset="918">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/views/Confirm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="8" selection-start="8" selection-end="8" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/views/Caution.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="2" selection-start="820" selection-end="820" vertical-scroll-proportion="0.8082822" vertical-offset="0" max-vertical-offset="652">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/models/Splash.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="2" selection-start="1210" selection-end="1210" vertical-scroll-proportion="0.9907975" vertical-offset="0" max-vertical-offset="748">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/models/FileSystem.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="74" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/models/CurrentPosition.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="1" selection-end="98" vertical-scroll-proportion="-0.68" vertical-offset="0" max-vertical-offset="1870">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/Router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="28" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/util/CoordinateConverterSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="72" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
           <folding />
         </state>
       </provider>
@@ -913,13 +832,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/specRunner.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="48" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.0" vertical-offset="419" max-vertical-offset="1173">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/spec/javascripts/models/CurrentPositionSpec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="30" selection-start="771" selection-end="774" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1853">
@@ -927,9 +839,128 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/util/CoordinateConverterSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="72" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/views/Caution.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="74" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/views/Confirm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="429" selection-end="429" vertical-scroll-proportion="0.44325152" vertical-offset="0" max-vertical-offset="731">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/ConfirmSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="538" selection-end="538" vertical-scroll-proportion="0.41530946" vertical-offset="0" max-vertical-offset="1105">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/views/Extras.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="23" selection-start="164" selection-end="164" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/HomeSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="72" selection-end="7829" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3485">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/ExtrasSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="595" selection-end="595" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/CautionSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="47" selection-start="47" selection-end="47" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="618">
+        <state line="0" column="0" selection-start="0" selection-end="69" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/Router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="28" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/models/CurrentPosition.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="0" selection-start="1715" selection-end="1715" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1870">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/specRunner.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="27" selection-start="1534" selection-end="1534" vertical-scroll-proportion="0.0" vertical-offset="606" max-vertical-offset="1258">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/views/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="32" selection-start="356" selection-end="372" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1921">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="0" selection-start="999" selection-end="999" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/views/Placement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1207">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/PlacementSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="40" selection-start="1084" selection-end="1084" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/views/Splash.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="437" selection-end="437" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/SplashSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="67" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/models/Splash.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="30" selection-start="328" selection-end="328" vertical-scroll-proportion="0.26941362" vertical-offset="0" max-vertical-offset="782">
           <folding />
         </state>
       </provider>

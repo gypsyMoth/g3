@@ -78,7 +78,7 @@ define(['underscore', 'backbone', 'src/app', 'src/util/Date'], function(_, Backb
             ret += op.easting + ',';
             ret += op.northing + ',';
             ret += app.rpad((op.accuracy + '.'), 5, '0') + ',';
-            ret += app.DateFormatter.getOperationFormatDate() + ',';
+            ret += Date.getOperationFormatDate() + ',';
             ret += '00:00:00' + ',';
             ret += this.constants.PLACEHOLDER + ',';
             ret += this.constants.ZERO + ',';

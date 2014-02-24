@@ -1,7 +1,7 @@
-define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
+define(['underscore', 'backbone', 'src/app', 'src/util/Date'], function(_, Backbone, app, Date) {
     'use strict';
 
-    app.views.Placement = Backbone.View.extend({
+    var PlacementView = Backbone.View.extend({
 
         tagName: "div",
 
@@ -57,8 +57,10 @@ define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
             op.northing = utm.Northing;
             op.accuracy = latlon.Accuracy;
             op.traptype = site.trap_type;
-            op.date = app.DateFormatter.getSitesFormatDate();
+            op.date = Date.getSitesFormatDate();
         }
 
     });
+
+    return PlacementView;
 });

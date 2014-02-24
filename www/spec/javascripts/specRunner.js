@@ -4,7 +4,7 @@
         //urlArgs: 'cb=' + Math.random(),
         //baseUrl: "../www/",
         paths: {
-            'src': '../../js/',
+            'src': '../../js',
             'jquery': '../../js/lib/jquery-2.0.3.min',
             'underscore': '../../js/lib/underscore-min',
             'backbone': '../../js/lib/backbone-min',
@@ -46,7 +46,12 @@
         'util/EncoderSpec',
         'util/NearestNeighborSpec',
         'models/CurrentPositionSpec',
-        'views/CautionSpec'
+        'views/CautionSpec',
+        'views/ConfirmSpec',
+        'views/ExtrasSpec',
+        'views/HomeSpec',
+        'views/PlacementSpec',
+        'views/SplashSpec'
     ];
 
     require(['boot', 'jasmine-jquery'], function () {

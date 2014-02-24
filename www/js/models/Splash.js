@@ -1,7 +1,7 @@
-define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
+define(['underscore', 'backbone', 'src/app', 'src/util/DB'], function(_, Backbone, app, db) {
     'use strict';
 
-    app.models.Splash = Backbone.Model.extend({
+    var SplashModel = Backbone.Model.extend({
         defaults: {
             message: 'Acquiring Satellites',
             gotSignal: false
@@ -14,10 +14,10 @@ define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
             //setInterval(that.showSearching(that), 250);
 
             that.set('message', 'Initializing filesystem...');
-                app.db.initialize().then( function() {
+                db.initialize().then( function() {
                     that.set('message', 'Loading sites from file...');
 
-                    app.SitesList = app.db.loadSites('TX', 1).then( function() {
+                    app.SitesList = db.loadSites('TX', 1).then( function() {
                         that.set('message', 'Acquiring Satellites');
                         app.startGeolocation();
                     });
@@ -36,4 +36,6 @@ define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
 //
 
     });
+
+    return SplashModel;
 });

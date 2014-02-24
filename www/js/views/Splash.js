@@ -1,7 +1,7 @@
 define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
     'use strict';
 
-    app.views.Splash = Backbone.View.extend({
+    var SplashView = Backbone.View.extend({
 
         tagName: "div",
 
@@ -26,4 +26,6 @@ define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
             app.pageRouter.navigate('home', {trigger: true, replace: true});
         }
     });
+
+    return SplashView;
 });
