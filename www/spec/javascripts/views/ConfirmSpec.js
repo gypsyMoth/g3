@@ -1,4 +1,9 @@
-define(["jquery", "src/app", "src/models/CurrentPosition", "src/views/Confirm"], function($, app, CurrentPosition) {
+define(["jquery",
+    "src/app",
+    "src/models/CurrentPosition",
+    'src/util/DB',
+    "src/views/Confirm"
+], function($, app, CurrentPosition, db, ConfirmView) {
 
     $(describe("Confirm View", function() {
 
@@ -7,7 +12,7 @@ define(["jquery", "src/app", "src/models/CurrentPosition", "src/views/Confirm"],
         beforeEach(function() {
             loadFixtures('confirm.html');
             $('body').append();
-            view = new app.views.Confirm({model: new app.models.CurrentPosition(), template: _.template($('#confirm-template').html())});
+            view = new ConfirmView({model: new CurrentPosition(), template: _.template($('#confirm-template').html())});
         });
 
         it("Can be instantiated", function() {
@@ -34,10 +39,10 @@ define(["jquery", "src/app", "src/models/CurrentPosition", "src/views/Confirm"],
             ];
 
             xit("Calls db.saveSites() when confirm is clicked", function(done) {
-                spyOn(app.db, "saveSites");
+                spyOn(db, "saveSites");
                 view.render();
                 view.onOkClicked().then( function() {
-                    expect(app.db.saveSites).toHaveBeenCalled();
+                    expect(db.saveSites).toHaveBeenCalled();
                 },
                 function(error){
                     console.log(expect());
@@ -47,10 +52,10 @@ define(["jquery", "src/app", "src/models/CurrentPosition", "src/views/Confirm"],
             });
 
             xit("Calls db.logOperation() when confirm is clicked", function() {
-               spyOn(app.db, "logOperation");
+               spyOn(db, "logOperation");
                 view.render();
                 view.onOkClicked();
-                expect(app.db.logOperation).toHaveBeenCalled();
+                expect(db.logOperation).toHaveBeenCalled();
 
             });
 

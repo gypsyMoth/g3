@@ -1,4 +1,8 @@
-define(["jquery", "src/app", "src/views/Home"], function($, app) {
+define(["jquery",
+    "src/app",
+    "src/models/CurrentPosition",
+    "src/views/Home"
+], function($, app, CurrentPosition, HomeView) {
 
     $(describe("Home View", function() {
        var view;
@@ -60,7 +64,7 @@ define(["jquery", "src/app", "src/views/Home"], function($, app) {
        beforeEach(function() {
           loadFixtures('home.html');
           $('body').append();
-          view = new app.views.Home({model: new app.models.CurrentPosition(), template: _.template($('#home-template').html())});
+          view = new HomeView({model: new CurrentPosition(), template: _.template($('#home-template').html())});
        });
 
        it("Can be instantiated", function() {
@@ -73,7 +77,7 @@ define(["jquery", "src/app", "src/views/Home"], function($, app) {
 
        it("Clears the operation on initial load", function() {
            view.model.set({operation: {easting: 123456, northing: 1234567, date: '01/01/14', traptype: 'Delta'}});
-           view = new app.views.Home({model: new app.models.CurrentPosition(), template: _.template($('#home-template').html())});
+           view = new HomeView({model: new CurrentPosition(), template: _.template($('#home-template').html())});
            var op = view.model.get('operation');
            expect(op).toEqual({easting: '', northing: '', zone: '', date: '', traptype: ''});
        });

@@ -1,4 +1,4 @@
-define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
+define(['underscore', 'backbone', 'src/App'], function(_, Backbone, App) {
     'use strict';
 
     var SplashView = Backbone.View.extend({
@@ -23,7 +23,7 @@ define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
         },
 
         gotGpsSignal: function() {
-            app.pageRouter.navigate('home', {trigger: true, replace: true});
+            App.pageRouter.navigate('home', {trigger: true, replace: true});
         }
     });
 

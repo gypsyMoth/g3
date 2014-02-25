@@ -1,7 +1,7 @@
-define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
+define(['underscore', 'backbone', 'src/App'], function(_, Backbone, App) {
     'use strict';
 
-    app.views.Home = Backbone.View.extend({
+    var Home = Backbone.View.extend({
 
         tagName: "div",
 
@@ -10,7 +10,7 @@ define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
         initialize: function(options) {
             this.template = options.template;
             this.listenTo(this.model, 'change', this.render);
-            app.startGeolocation();
+            App.startGeolocation();
         },
 
         events: {
@@ -22,25 +22,25 @@ define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
             var site = this.model.get('site');
             var operation = this.getOperation(site);
             switch (operation) {
-                case app.operationTypes.ERROR:
+                case App.operationTypes.ERROR:
                     break;
-                case app.operationTypes.UNADDRESSED:
-                    app.stopGeolocation();
-                    app.pageRouter.navigate('placement', {trigger: true, replace: true});
+                case App.operationTypes.UNADDRESSED:
+                    App.stopGeolocation();
+                    App.pageRouter.navigate('placement', {trigger: true, replace: true});
                     break;
-                case app.operationTypes.PLACED || app.operationTypes.MIDSEASON:
+                case App.operationTypes.PLACED || App.operationTypes.MIDSEASON:
                     alert("Inspections are not implemented");
                     break;
-                case app.operationTypes.FINAL:
+                case App.operationTypes.FINAL:
                     break;
-                case app.operationTypes.OMITTED:
+                case App.operationTypes.OMITTED:
                     break;
             }
         },
 
         onExtrasClicked: function() {
-            app.stopGeolocation();
-            app.pageRouter.navigate('extras', {trigger: true, replace: true});
+            App.stopGeolocation();
+            App.pageRouter.navigate('extras', {trigger: true, replace: true});
         },
 
         render: function() {
@@ -87,21 +87,23 @@ define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
         getOperation: function(site) {
             var operationType = '';
             if (site.quad === '') {
-                operationType = app.operationTypes.ERROR;
+                operationType = App.operationTypes.ERROR;
             } else if (typeof site.xact === 'undefined') {
-                operationType = app.operationTypes.UNADDRESSED;
+                operationType = App.operationTypes.UNADDRESSED;
             } else if (typeof site.visit === 'undefined') {
                 if (typeof site.omit_reason === 'undefined') {
-                    operationType = app.operationTypes.PLACED;
+                    operationType = App.operationTypes.PLACED;
                 } else {
-                    operationType = app.operationTypes.OMITTED;
+                    operationType = App.operationTypes.OMITTED;
                 }
             } else if (site.visit === 'MIDSEASON') {
-                operationType = app.operationTypes.MIDSEASON;
+                operationType = App.operationTypes.MIDSEASON;
             } else {
-                operationType = app.operationTypes.FINAL;
+                operationType = App.operationTypes.FINAL;
             }
             return operationType;
         }
     });
+
+    return Home;
 });

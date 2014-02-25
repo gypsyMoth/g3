@@ -1,4 +1,4 @@
-define(["src/app", "src/models/CurrentPosition"], function(app) {
+define(["src/app", "src/models/CurrentPosition"], function(app, CurrentPosition) {
 
     describe("CurrentPosition Model", function() {
         var current;
@@ -15,7 +15,7 @@ define(["src/app", "src/models/CurrentPosition"], function(app) {
         };
 
         beforeEach( function() {
-            current = new app.models.CurrentPosition();
+            current = new CurrentPosition();
         });
 
         it("Can be created", function() {
@@ -82,7 +82,7 @@ define(["src/app", "src/models/CurrentPosition"], function(app) {
             });
 
             it("Writes the operation values to site on commit", function() {
-                var model = new app.models.CurrentPosition();
+                var model = new CurrentPosition();
                 model.set({currentUtm: {Easting: 123456, Northing: 1234567, Zone: 15}});
                 model.set({site: {"zone":15,"xth":"329229","yth":"3475979","quad":"FIREP","site_id":1,"grid":"30","trap_type":"Delta","moth_count":0}});
                 model.set({operation: {easting: 123456, northing: 1234567, traptype: 'Milk Carton', date: '2014-01-24T00:00:00-00:00'}});

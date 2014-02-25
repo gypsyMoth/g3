@@ -1,4 +1,4 @@
-define (['jquery', 'src/app'], function ($, app) {
+define (['jquery', 'src/App'], function ($, App) { 'use strict'
     var my = {};
 
     var PERSISTENT;
@@ -19,9 +19,9 @@ define (['jquery', 'src/app'], function ($, app) {
         window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
         //window.webkitStorageInfo.requestQuota(PERSISTENT, 1024*1024, function(grantedBytes) {
         window.requestFileSystem(PERSISTENT, grantedBytes, function(fileSystem) {
-                app.Filesystem = fileSystem;
+                App.Filesystem = fileSystem;
                 deferred.resolve();
-            }, app.fail);
+            }, App.fail);
         //});
         return deferred.promise();
     };
@@ -36,27 +36,27 @@ define (['jquery', 'src/app'], function ($, app) {
 
     var getRootDirectory = function() {
         var deferred = new $.Deferred();
-        app.Filesystem.root.getDirectory("G3", {create: true, exclusive: false }, function(dirEntry) {
-            app.Root = dirEntry;
+        App.Filesystem.root.getDirectory("G3", {create: true, exclusive: false }, function(dirEntry) {
+            App.Root = dirEntry;
             console.log("G3 " + dirEntry.fullPath);
             deferred.resolve();
-        }, app.fail);
+        }, App.fail);
         return deferred.promise();
     };
 
     my.countFiles = function() {
         var deferred = new $.Deferred();
-        var directoryReader = app.Root.createReader();
+        var directoryReader = App.Root.createReader();
         var fileCount = directoryReader.readEntries(function(entries) {
-           app.fileCount = entries.length;
+           App.fileCount = entries.length;
            deferred.resolve();
-        }, app.fail);
+        }, App.fail);
         return deferred.promise();
     };
 
     my.loadSites = function(state, bidunit) {
         var deferred = new $.Deferred();
-        getFileEntry(app.Root, makeFilename(state, bidunit), {create: false}).then(getFile).then(loadFile).then(deferred.resolve());
+        getFileEntry(App.Root, makeFilename(state, bidunit), {create: false}).then(getFile).then(loadFile).then(deferred.resolve());
         return deferred.promise();
     };
 
@@ -77,7 +77,7 @@ define (['jquery', 'src/app'], function ($, app) {
         var deferred = new $.Deferred();
         fileEntry.file( function success(file) {
             deferred.resolve(file);
-        }, app.fail);
+        }, App.fail);
         return deferred.promise();
     };
 
@@ -85,8 +85,8 @@ define (['jquery', 'src/app'], function ($, app) {
         var deferred = new $.Deferred();
         var reader = new FileReader();
         reader.onloadend = function(evt) {
-            app.SitesList = JSON.parse(evt.target.result);
-            console.log("G3 Loaded:" + JSON.stringify(app.SitesList));
+            App.SitesList = JSON.parse(evt.target.result);
+            console.log("G3 Loaded:" + JSON.stringify(App.SitesList));
             deferred.resolve();
         };
         reader.readAsText(file);
@@ -97,7 +97,7 @@ define (['jquery', 'src/app'], function ($, app) {
         var deferred = new $.Deferred();
         var fileTransfer = new FileTransfer();
         var uri = encodeURI("http://yt.ento.vt.edu/SlowTheSpread/gadgetsites/" + state + "/" + bidunit + "?format=json");
-        var filename = app.Root.fullPath + '/' + makeFilename(state, bidunit);
+        var filename = App.Root.fullPath + '/' + makeFilename(state, bidunit);
 
         fileTransfer.download(
             uri,
@@ -123,7 +123,7 @@ define (['jquery', 'src/app'], function ($, app) {
     my.saveSites = function(sitesList) {
         var deferred = new $.Deferred();
         var data = JSON.stringify(sitesList);
-        getFileEntry(app.Root, this.sitesFile, {create: true, exclusive: false}).then(function(fileEntry) {
+        getFileEntry(App.Root, this.sitesFile, {create: true, exclusive: false}).then(function(fileEntry) {
             writeFile(fileEntry, data).then( function() {
                 deferred.resolve();
             });
@@ -138,13 +138,13 @@ define (['jquery', 'src/app'], function ($, app) {
                 deferred.resolve();
             };
             writer.write(data);
-        }, app.fail);
+        }, App.fail);
         return deferred.promise();
     };
 
     my.logOperation = function(data) {
         var deferred = new $.Deferred;
-        getFileEntry(app.Root, this.activityLog, {create: true, exclusive: false}).then(function(fileEntry) {
+        getFileEntry(App.Root, this.activityLog, {create: true, exclusive: false}).then(function(fileEntry) {
             appendFile(fileEntry, data).then( function() {
                 deferred.resolve();
             });
@@ -160,7 +160,7 @@ define (['jquery', 'src/app'], function ($, app) {
             };
             writer.seek(writer.length);
             writer.write(data);
-        }, app.fail);
+        }, App.fail);
         return deferred.promise();
     };
 

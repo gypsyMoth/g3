@@ -1,4 +1,4 @@
-define(['underscore', 'backbone', 'src/app', 'src/util/Date'], function(_, Backbone, app, Date) {
+define(['underscore', 'backbone', 'src/App', 'src/util/Date'], function(_, Backbone, App, Date) {
     'use strict';
 
     var PlacementView = Backbone.View.extend({
@@ -27,9 +27,9 @@ define(['underscore', 'backbone', 'src/app', 'src/util/Date'], function(_, Backb
         onOkClicked: function() {
             var site = this.model.get("relativePosition");
             if (site.DistanceOutside > 0) {
-                app.pageRouter.navigate('caution', {trigger: true, replace: true});
+                App.pageRouter.navigate('caution', {trigger: true, replace: true});
             } else {
-                app.pageRouter.navigate('confirm', {trigger: true, replace: true});
+                App.pageRouter.navigate('confirm', {trigger: true, replace: true});
             }
         },
 
@@ -38,7 +38,7 @@ define(['underscore', 'backbone', 'src/app', 'src/util/Date'], function(_, Backb
         },
 
         onCancelClicked: function() {
-            app.pageRouter.navigate('home', {trigger: true, replace: true});
+            App.pageRouter.navigate('home', {trigger: true, replace: true});
         },
 
         onTraptypeChanged: function(e) {

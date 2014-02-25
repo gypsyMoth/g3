@@ -1,4 +1,4 @@
-define(["jquery", "src/app", "src/models/Splash", "src/views/Splash"], function($, app, SplashModel, SplashView) {
+define(["jquery", "src/models/Splash", "src/views/Splash"], function($, SplashModel, SplashView) {
     $(describe("Splash View", function() {
 
         var view;

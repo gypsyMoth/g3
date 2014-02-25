@@ -1,7 +1,7 @@
 define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
     'use strict';
 
-    app.views.Caution = Backbone.View.extend({
+    var Caution = Backbone.View.extend({
 
         tagName: "div",
 
@@ -29,4 +29,6 @@ define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
             app.pageRouter.navigate('home', {trigger: true, replace: true});
         }
     });
+
+    return Caution;
 });

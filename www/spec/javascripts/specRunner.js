@@ -54,13 +54,15 @@
         'views/SplashSpec'
     ];
 
-    require(['boot', 'jasmine-jquery'], function () {
+    require(['src/app', 'boot', 'jasmine-jquery'], function (App) {
 
         // Load the specs
         require(specs, function () {
 
             // Initialize the HTML Reporter and execute the environment (setup by `boot.js`)
             window.onload();
+
+            App.initialize();
         });
     });
 

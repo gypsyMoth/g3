@@ -1,4 +1,4 @@
-define(["jquery", "src/app", "src/views/Caution"], function($, app) {
+define(["jquery", "src/app", "src/models/CurrentPosition", "src/views/Caution"], function($, app, CurrentPosition, CautionView) {
 
     $(describe("Caution View", function() {
 
@@ -7,7 +7,7 @@ define(["jquery", "src/app", "src/views/Caution"], function($, app) {
         beforeEach(function() {
             loadFixtures('caution.html');
             $('body').append();
-            view = new app.views.Caution({model: new app.models.CurrentPosition(), template: _.template($('#caution-template').html())});
+            view = new CautionView({model: new CurrentPosition(), template: _.template($('#caution-template').html())});
         });
 
         it("Can be instantiated", function() {

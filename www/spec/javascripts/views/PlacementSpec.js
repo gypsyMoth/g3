@@ -1,4 +1,8 @@
-define(["jquery", "src/app", "src/views/Placement"], function($, app, PlacementView) {
+define(["jquery",
+    "src/app",
+    "src/models/CurrentPosition",
+    "src/views/Placement"
+], function($, app, CurrentPosition, PlacementView) {
     $(describe("Placement View", function() {
 
         var view;
@@ -6,7 +10,7 @@ define(["jquery", "src/app", "src/views/Placement"], function($, app, PlacementV
         beforeEach(function() {
             loadFixtures('placement.html');
             $('body').append();
-            view = new PlacementView({model: new app.models.CurrentPosition(), template: _.template($('#placement-template').html())});
+            view = new PlacementView({model: new CurrentPosition(), template: _.template($('#placement-template').html())});
         });
 
         it("Can be instantiated", function() {
@@ -20,7 +24,7 @@ define(["jquery", "src/app", "src/views/Placement"], function($, app, PlacementV
         describe("Updates the current operation", function() {
 
             it("Sets the operation values on startup", function() {
-                var model = new app.models.CurrentPosition();
+                var model = new CurrentPosition();
                 model.set({currentUtm: {Easting: 123456, Northing: 1234567, Zone: 15}});
                 model.set({site: {"zone":15,"xth":"329229","yth":"3475979","quad":"FIREP","site_id":1,"grid":"30","trap_type":"Delta","moth_count":0}});
                 view = new PlacementView({model: model, template: _.template($('#placement-template').html())});
