@@ -20,10 +20,10 @@ app.db = (function () {
         var grantedBytes = 0;
         window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
         //window.webkitStorageInfo.requestQuota(PERSISTENT, 1024*1024, function(grantedBytes) {
-        window.requestFileSystem(PERSISTENT, grantedBytes, function(fileSystem) {
-                app.Filesystem = fileSystem;
-                deferred.resolve();
-            }, app.fail);
+        window.requestFileSystem(PERSISTENT, grantedBytes, function (fileSystem) {
+            app.Filesystem = fileSystem;
+            deferred.resolve();
+        }, app.fail);
         //});
         return deferred.promise();
     };

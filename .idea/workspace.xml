@@ -35,33 +35,8 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="141" column="85" selection-start="7664" selection-end="7664" vertical-scroll-proportion="-15.269231" vertical-offset="2000" max-vertical-offset="2618">
-              <folding>
-                <marker date="1392842304051" expanded="true" signature="878:902" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="941:1028" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="1066:1168" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="1308:1622" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="1367:1599" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="1433:1572" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="1678:1767" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="1825:3041" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="1884:2366" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="1949:2339" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="2430:2798" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="2492:2771" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="2857:3018" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="3188:3757" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="3313:3525" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="3819:4149" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="4295:4633" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="4358:4610" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="4693:4908" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="5034:5165" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="5226:5455" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="5289:5432" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="5516:5731" placeholder="..." />
-                <marker date="1392842304051" expanded="true" signature="5875:6311" placeholder="..." />
-              </folding>
+            <state line="141" column="85" selection-start="7664" selection-end="7664" vertical-scroll-proportion="0.0" vertical-offset="2397" max-vertical-offset="2618">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -69,7 +44,7 @@
       <file leaf-file-name="android.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugins/android.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="477" selection-start="477" selection-end="477" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="102">
+            <state line="0" column="477" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
               <folding />
             </state>
           </provider>
@@ -79,9 +54,7 @@
         <entry file="file://$PROJECT_DIR$/plugins/org.apache.cordova.file/test/cordova-incl.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="946" max-vertical-offset="1564">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -89,7 +62,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugins/org.apache.cordova.file/test/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1190">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190">
               <folding />
             </state>
           </provider>
@@ -98,16 +71,16 @@
       <file leaf-file-name="plugin.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugins/org.apache.cordova.file/plugin.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="84" selection-start="3037" selection-end="3044" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4539">
+            <state line="88" column="84" selection-start="3037" selection-end="3044" vertical-scroll-proportion="0.0" vertical-offset="1496" max-vertical-offset="4539">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RELEASENOTES.md" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/plugins/org.apache.cordova.file/RELEASENOTES.md">
+      <file leaf-file-name="DB.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/js/util/DB.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="0" selection-start="2270" selection-end="2270" vertical-scroll-proportion="0.9780776" vertical-offset="287" max-vertical-offset="2244">
+            <state line="26" column="13" selection-start="793" selection-end="793" vertical-scroll-proportion="0.78647685" vertical-offset="0" max-vertical-offset="2975">
               <folding />
             </state>
           </provider>
@@ -125,7 +98,7 @@
       <file leaf-file-name="config.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.cordova/config.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="102">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
               <folding />
             </state>
           </provider>
@@ -134,7 +107,7 @@
       <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="612">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
               <folding />
             </state>
           </provider>
@@ -167,7 +140,6 @@
         <option value="$PROJECT_DIR$/www/js/models/Splash.js" />
         <option value="$PROJECT_DIR$/www/js/views/Confirm.js" />
         <option value="$PROJECT_DIR$/www/js/app.js" />
-        <option value="$PROJECT_DIR$/www/js/util/DB.js" />
         <option value="$PROJECT_DIR$/www/js/views/Placement.js" />
         <option value="$PROJECT_DIR$/www/js/util/Date.js" />
         <option value="$PROJECT_DIR$/www/js/models/CurrentPosition.js" />
@@ -177,14 +149,13 @@
         <option value="$PROJECT_DIR$/platforms/android/res/xml/config.xml" />
         <option value="$PROJECT_DIR$/www/config.xml" />
         <option value="$PROJECT_DIR$/www/index.html" />
+        <option value="$PROJECT_DIR$/www/js/util/DB.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="784" />
+    <option name="width" value="1366" />
+    <option name="height" value="728" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -241,7 +212,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
+              <option name="myItemId" value="www" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -255,11 +226,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
+              <option name="myItemId" value="www" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="org.apache.cordova.file-transfer" />
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -273,11 +244,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
+              <option name="myItemId" value="www" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="org.apache.cordova.file" />
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -337,6 +312,14 @@
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
       <method />
     </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -347,23 +330,15 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="CHROME" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
@@ -415,14 +390,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="0" />
+    <frame x="0" y="0" width="1366" height="728" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28330892" sideWeight="0.6702454" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28296295" sideWeight="0.6702454" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46625766" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -431,12 +406,12 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297546" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -460,23 +435,17 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/HomeSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="89" selection-start="3182" selection-end="3182" vertical-scroll-proportion="0.0" vertical-offset="1649" max-vertical-offset="3485">
-          <folding />
-        </state>
+        <state line="97" column="89" selection-start="3182" selection-end="3182" vertical-scroll-proportion="0.0" vertical-offset="1649" max-vertical-offset="3485" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/spec/javascripts/util/CoordinateConverterSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Gruntfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="53" selection-start="686" selection-end="686" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="748">
-          <folding />
-        </state>
+        <state line="20" column="53" selection-start="686" selection-end="686" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="748" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/app.js">
@@ -513,16 +482,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/models/Splash.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="0" selection-start="1806" selection-end="1806" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="935">
-          <folding />
-        </state>
+        <state line="47" column="0" selection-start="1806" selection-end="1806" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="935" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/views/Placement.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="9" selection-start="1986" selection-end="1986" vertical-scroll-proportion="0.0" vertical-offset="462" max-vertical-offset="1190">
-          <folding />
-        </state>
+        <state line="61" column="9" selection-start="1986" selection-end="1986" vertical-scroll-proportion="0.0" vertical-offset="462" max-vertical-offset="1190" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/app.js">
@@ -534,23 +499,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/util/Date.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="29" selection-start="1048" selection-end="1048" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1139">
-          <folding />
-        </state>
+        <state line="33" column="29" selection-start="1048" selection-end="1048" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1139" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/models/CurrentPosition.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="26" selection-start="3008" selection-end="3008" vertical-scroll-proportion="0.0" vertical-offset="1326" max-vertical-offset="1921">
-          <folding />
-        </state>
+        <state line="91" column="26" selection-start="3008" selection-end="3008" vertical-scroll-proportion="0.0" vertical-offset="1326" max-vertical-offset="1921" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/views/Confirm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0" vertical-offset="88" max-vertical-offset="782">
-          <folding />
-        </state>
+        <state line="15" column="0" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0" vertical-offset="88" max-vertical-offset="782" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/views/Home.js">
@@ -562,167 +521,107 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/HomeSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="89" selection-start="3182" selection-end="3182" vertical-scroll-proportion="0.0" vertical-offset="1207" max-vertical-offset="3485">
-          <folding />
-        </state>
+        <state line="97" column="89" selection-start="3182" selection-end="3182" vertical-scroll-proportion="0.0" vertical-offset="1207" max-vertical-offset="3485" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/spec/javascripts/util/CoordinateConverterSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Gruntfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="53" selection-start="686" selection-end="686" vertical-scroll-proportion="0.0" vertical-offset="96" max-vertical-offset="748">
-          <folding />
-        </state>
+        <state line="20" column="53" selection-start="686" selection-end="686" vertical-scroll-proportion="0.0" vertical-offset="96" max-vertical-offset="748" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1666">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1666" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/CordovaLib/src/org/apache/cordova/FileHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2873">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2873" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/CordovaLib/.project">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/CordovaLib/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1666">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1666" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/android/FileSystem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/android/assets/www/cordova_plugins.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="26" selection-start="4278" selection-end="4278" vertical-scroll-proportion="0.6610429" vertical-offset="2051" max-vertical-offset="2703">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/assets/www/phonegap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="29750">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="29750" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/cordova/android_sdk_version">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/proguard-project.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/project.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/util/DB.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2975">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugins/org.apache.cordova.file/doc/index.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-2.6602871" vertical-offset="1668" max-vertical-offset="2295">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-2.6602871" vertical-offset="1668" max-vertical-offset="2295" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugins/org.apache.cordova.file/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="652">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="652" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugins/org.apache.cordova.file/www/android/FileSystem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugins/org.apache.cordova.file/src/android/FileUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="15572">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="15572" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugins/org.apache.cordova.file/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="652">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="652" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="1192" selection-end="1192" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-          <folding />
-        </state>
+        <state line="14" column="0" selection-start="1192" selection-end="1192" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/CordovaLib/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/assets/www/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0" vertical-offset="582" max-vertical-offset="1547">
-          <folding />
-        </state>
+        <state line="5" column="0" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0" vertical-offset="582" max-vertical-offset="1547" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/platforms/android/res/xml/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="53" selection-start="1396" selection-end="1396" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1411">
-          <folding />
-        </state>
+        <state line="31" column="53" selection-start="1396" selection-end="1396" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1411" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/config.xml">
@@ -755,33 +654,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="141" column="85" selection-start="7664" selection-end="7664" vertical-scroll-proportion="-15.269231" vertical-offset="2000" max-vertical-offset="2618">
-          <folding>
-            <marker date="1392842304051" expanded="true" signature="878:902" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="941:1028" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="1066:1168" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="1308:1622" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="1367:1599" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="1433:1572" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="1678:1767" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="1825:3041" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="1884:2366" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="1949:2339" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="2430:2798" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="2492:2771" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="2857:3018" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="3188:3757" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="3313:3525" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="3819:4149" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="4295:4633" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="4358:4610" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="4693:4908" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="5034:5165" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="5226:5455" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="5289:5432" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="5516:5731" placeholder="..." />
-            <marker date="1392842304051" expanded="true" signature="5875:6311" placeholder="..." />
-          </folding>
+        <state line="141" column="85" selection-start="7664" selection-end="7664" vertical-scroll-proportion="0.0" vertical-offset="2397" max-vertical-offset="2618">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -795,29 +669,30 @@
     <entry file="file://$PROJECT_DIR$/plugins/org.apache.cordova.file/test/cordova-incl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1564">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugins/org.apache.cordova.file-transfer/.fetch.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugins/org.apache.cordova.file/.fetch.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugins/org.apache.cordova.file/test/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/org.apache.cordova.file/RELEASENOTES.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="0" selection-start="2270" selection-end="2270" vertical-scroll-proportion="1.0800744" vertical-offset="287" max-vertical-offset="2244">
           <folding />
         </state>
       </provider>
@@ -829,9 +704,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/org.apache.cordova.file/RELEASENOTES.md">
+    <entry file="file://$PROJECT_DIR$/www/js/util/DB.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="0" selection-start="2270" selection-end="2270" vertical-scroll-proportion="0.9780776" vertical-offset="287" max-vertical-offset="2244">
+        <state line="26" column="13" selection-start="793" selection-end="793" vertical-scroll-proportion="0.78647685" vertical-offset="0" max-vertical-offset="2975">
           <folding />
         </state>
       </provider>
