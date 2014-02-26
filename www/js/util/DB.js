@@ -13,7 +13,7 @@ app.db = (function () {
         return getFileSystem().then(getRootDirectory);
     };
 
-    var getFileSystem = function() {
+    var getFileSystem = function () {
         var deferred = new $.Deferred();
         checkIfFileSystemIsDefined();
 
@@ -32,7 +32,7 @@ app.db = (function () {
         if (typeof LocalFileSystem === 'undefined') {
             PERSISTENT = window.PERSISTENT;
         } else {
-            PERSISTENT = LocalFileSystem.PERSISTENT ;
+            PERSISTENT = LocalFileSystem.PERSISTENT;
         }
     };
 
@@ -46,7 +46,7 @@ app.db = (function () {
         return deferred.promise();
     };
 
-    my.countFiles = function() {
+    my.countFiles = function () {
         var deferred = new $.Deferred();
         var directoryReader = app.Root.createReader();
         var fileCount = directoryReader.readEntries(function(entries) {
