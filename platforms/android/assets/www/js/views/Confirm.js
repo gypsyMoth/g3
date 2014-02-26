@@ -1,4 +1,8 @@
-define(['underscore', 'backbone', 'src/app', 'src/util/DB'], function(_, Backbone, app, db) {
+define(['underscore', 
+    'backbone', 
+    'src/App', 
+    'src/util/DB'
+], function(_, Backbone, App, DB) {
     'use strict';
 
     var Confirm = Backbone.View.extend({
@@ -23,15 +27,15 @@ define(['underscore', 'backbone', 'src/app', 'src/util/DB'], function(_, Backbon
 
         onOkClicked: function() {
             this.model.saveSites();
-            db.logOperation(this.model.codedString()).then( function() {
-                db.saveSites(app.SitesList).then( function() {
-                    app.pageRouter.navigate('home', {trigger: true, replace: true});
+            DB.logOperation(this.model.codedString()).then( function() {
+                DB.saveSites(App.SitesList).then( function() {
+                    App.pageRouter.navigate('home', {trigger: true, replace: true});
                 });
             });
         },
 
         onCancelClicked: function() {
-            app.pageRouter.navigate('home', {trigger: true, replace: true});
+            App.pageRouter.navigate('home', {trigger: true, replace: true});
         }
     });
 

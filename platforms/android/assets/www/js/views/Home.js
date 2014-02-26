@@ -1,4 +1,7 @@
-define(['underscore', 'backbone', 'src/App'], function(_, Backbone, App) {
+define(['underscore',
+    'backbone',
+    'src/App'
+], function(_, Backbone, App) {
     'use strict';
 
     var Home = Backbone.View.extend({
@@ -78,7 +81,6 @@ define(['underscore', 'backbone', 'src/App'], function(_, Backbone, App) {
             if (typeof site.xact === 'undefined') {
                 imagePath = 'Tree';
             } else if (typeof site.visit === 'undefined') {
-                site.trap_type;
                 imagePath = site.trap_type === 'Delta' ? 'Delta' : 'MilkCarton';
             }
             return imagePath;

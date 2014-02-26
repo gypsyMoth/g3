@@ -1,4 +1,8 @@
-define(['underscore', 'backbone', 'src/App', 'src/util/Date'], function(_, Backbone, App, Date) {
+define(['underscore',
+    'backbone',
+    'src/App',
+    'src/util/Date'
+], function(_, Backbone, App, Date) {
     'use strict';
 
     var PlacementView = Backbone.View.extend({

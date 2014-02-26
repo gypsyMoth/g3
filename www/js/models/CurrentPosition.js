@@ -1,5 +1,8 @@
-
-define(['underscore', 'backbone', 'src/util/Encoder', 'src/util/Date'], function(_, Backbone, Encoder, Date) {
+define(['underscore',
+    'backbone',
+    'src/util/Encoder',
+    'src/util/Date'
+], function(_, Backbone, Encoder, Date) {
     'use strict';
 
     var CurrentPosition = Backbone.Model.extend({

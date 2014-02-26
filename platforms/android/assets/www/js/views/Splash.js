@@ -1,4 +1,7 @@
-define(['underscore', 'backbone', 'src/App'], function(_, Backbone, App) {
+define(['underscore',
+    'backbone',
+    'src/App'
+], function(_, Backbone, App) {
     'use strict';
 
     var SplashView = Backbone.View.extend({

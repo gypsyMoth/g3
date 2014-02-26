@@ -59,9 +59,7 @@ define(['jquery',
 
         onDeviceReady: function () {
             this.pageRouter = new Router();
-            Backbone.history.start({
-                pushState: false
-            });
+            Backbone.history.start();
 
             if (this.isInitialized) {
                 this.pageRouter.navigate('home', true);
@@ -91,4 +89,6 @@ define(['jquery',
     };
 
     return app;
+}, function(err) {
+    console.error(err.message);
 });

@@ -1,4 +1,5 @@
-define (['jquery'], function ($) { 'use strict'
+define (['jquery'], function ($) {
+    'use strict';
     var my = {};
 
     var PERSISTENT;

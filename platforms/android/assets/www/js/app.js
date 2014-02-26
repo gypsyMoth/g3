@@ -46,7 +46,7 @@ define(['jquery',
 
         onPositionUpdate: function (position) {
             this.Startup.set('gotSignal', true); //Tell the splash screen we're good now
-            var p = CoordinateConverter.datumShift({ Lon:position.coords.longitude, Lat:position.coords.latitude});
+            var p = CoordinateConverter.datumShift({ Lon: position.coords.longitude, Lat: position.coords.latitude});
             var utm = CoordinateConverter.project(p);
             var latLon = {
                 Latitude: position.coords.latitude,
@@ -59,9 +59,7 @@ define(['jquery',
 
         onDeviceReady: function () {
             this.pageRouter = new Router();
-            Backbone.history.start({
-                pushState: false
-            });
+            Backbone.history.start();
 
             if (this.isInitialized) {
                 this.pageRouter.navigate('home', true);
@@ -91,4 +89,6 @@ define(['jquery',
     };
 
     return app;
+}, function(err) {
+    console.error(err.message);
 });

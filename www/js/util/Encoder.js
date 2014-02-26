@@ -19,12 +19,12 @@ define (function () {
     };
 
     my.rpad = function (string, width, padding) {
-        return (width <= string.length) ? string : this.rpad(string + padding, width, padding)
-    },
+        return (width <= string.length) ? string : this.rpad(string + padding, width, padding);
+    };
 
     my.lpad = function (string, width, padding) {
-        return (width <= string.length) ? string : this.lpad(padding + string, width, padding)
-    }
+        return (width <= string.length) ? string : this.lpad(padding + string, width, padding);
+    };
 
     return my;
 

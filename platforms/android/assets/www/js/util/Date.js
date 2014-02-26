@@ -24,7 +24,7 @@ define (function () {
         var mon = this.getMonthString(mm);
         var yyyy = today.getFullYear().toString();
         return mon + '-' + dd + '-' + yyyy;
-    }
+    };
 
     my.getMonthString = function(month) {
         switch (month) {
@@ -53,7 +53,7 @@ define (function () {
             case 12:
                 return 'Dec';
         }
-    }
+    };
 
     return my;
 }());

@@ -1,4 +1,8 @@
-define(['underscore', 'backbone', 'src/util/DB', 'src/app'], function(_, Backbone, db) {
+define(['underscore', 
+    'backbone', 
+    'src/util/DB', 
+    'src/App'
+], function(_, Backbone, DB, App) {
     'use strict';
 
     var Extras = Backbone.View.extend({
@@ -26,25 +30,25 @@ define(['underscore', 'backbone', 'src/util/DB', 'src/app'], function(_, Backbon
         },
 
         onLoadLocalClicked: function() {
-            db.loadSites('TX', 2).then( function(data) {
+            DB.loadSites('TX', 2).then( function(data) {
                 App.SitesList = data;
-                app.pageRouter.navigate('home', {trigger: true, replace: true});
+                App.pageRouter.navigate('home', {trigger: true, replace: true});
             });
         },
 
         onDownloadClicked: function() {
-            db.downloadSites('WV', 1).then( function() {
-                app.pageRouter.navigate('home', {trigger: true, replace: true});
+            DB.downloadSites('WV', 1).then( function() {
+                App.pageRouter.navigate('home', {trigger: true, replace: true});
             });
         },
 
         onUploadClicked: function() {
             alert("Upload Data not implemented");
-            //app.pageRouter.navigate('home', {trigger: true, replace: true});
+            //App.pageRouter.navigate('home', {trigger: true, replace: true});
         },
 
         onCancelClicked: function() {
-            app.pageRouter.navigate('home', {trigger: true, replace: true});
+            App.pageRouter.navigate('home', {trigger: true, replace: true});
         }
     });
 
