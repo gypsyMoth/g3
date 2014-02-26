@@ -1,16 +1,15 @@
-/*Created by Ian on 1/15/14.*/
-
-app.db = (function () {
+define (['jquery'], function ($) { 'use strict'
     var my = {};
 
     var PERSISTENT;
 
+    my.root = '';
+    my.filesystem = '';
     my.sitesFile = 'TX_1.json';
-
     my.activityLog = "trans_log.txt";
 
     my.initialize = function() {
-        return getFileSystem().then(getRootDirectory);
+        return getFileSystem().done(getRootDirectory());
     };
 
     var getFileSystem = function() {
@@ -21,9 +20,9 @@ app.db = (function () {
         window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
         //window.webkitStorageInfo.requestQuota(PERSISTENT, 1024*1024, function(grantedBytes) {
         window.requestFileSystem(PERSISTENT, grantedBytes, function(fileSystem) {
-                app.Filesystem = fileSystem;
+                my.filesystem = fileSystem;
                 deferred.resolve();
-            }, app.fail);
+            }, my.fail);
         //});
         return deferred.promise();
     };
@@ -38,27 +37,28 @@ app.db = (function () {
 
     var getRootDirectory = function() {
         var deferred = new $.Deferred();
-        app.Filesystem.root.getDirectory("G3", {create: true, exclusive: false }, function(dirEntry) {
-            app.Root = dirEntry;
-            console.log("G3 " + dirEntry.fullPath);
+        my.filesystem.root.getDirectory("G3", {create: true, exclusive: false }, function(dirEntry) {
+            my.root = dirEntry;
             deferred.resolve();
-        }, app.fail);
+        }, my.fail);
         return deferred.promise();
     };
 
     my.countFiles = function() {
         var deferred = new $.Deferred();
-        var directoryReader = app.Root.createReader();
+        var directoryReader = my.root.createReader();
         var fileCount = directoryReader.readEntries(function(entries) {
-           app.fileCount = entries.length;
+           my.fileCount = entries.length;
            deferred.resolve();
-        }, app.fail);
+        }, my.fail);
         return deferred.promise();
     };
 
     my.loadSites = function(state, bidunit) {
         var deferred = new $.Deferred();
-        getFileEntry(app.Root, makeFilename(state, bidunit), {create: false}).then(getFile).then(loadFile).then(deferred.resolve());
+        getFileEntry(my.root, makeFilename(state, bidunit), {create: false}).then(getFile).then(loadFile).then(function(data) {
+            deferred.resolve(data);
+        });
         return deferred.promise();
     };
 
@@ -79,7 +79,7 @@ app.db = (function () {
         var deferred = new $.Deferred();
         fileEntry.file( function success(file) {
             deferred.resolve(file);
-        }, app.fail);
+        }, my.fail);
         return deferred.promise();
     };
 
@@ -87,9 +87,7 @@ app.db = (function () {
         var deferred = new $.Deferred();
         var reader = new FileReader();
         reader.onloadend = function(evt) {
-            app.SitesList = JSON.parse(evt.target.result);
-            console.log("G3 Loaded:" + JSON.stringify(app.SitesList));
-            deferred.resolve();
+            deferred.resolve(JSON.parse(evt.target.result));
         };
         reader.readAsText(file);
         return deferred.promise();
@@ -99,7 +97,7 @@ app.db = (function () {
         var deferred = new $.Deferred();
         var fileTransfer = new FileTransfer();
         var uri = encodeURI("http://yt.ento.vt.edu/SlowTheSpread/gadgetsites/" + state + "/" + bidunit + "?format=json");
-        var filename = app.Root.fullPath + '/' + makeFilename(state, bidunit);
+        var filename = my.root.fullPath + '/' + makeFilename(state, bidunit);
 
         fileTransfer.download(
             uri,
@@ -125,7 +123,7 @@ app.db = (function () {
     my.saveSites = function(sitesList) {
         var deferred = new $.Deferred();
         var data = JSON.stringify(sitesList);
-        getFileEntry(app.Root, this.sitesFile, {create: true, exclusive: false}).then(function(fileEntry) {
+        getFileEntry(my.root, my.sitesFile, {create: true, exclusive: false}).then(function(fileEntry) {
             writeFile(fileEntry, data).then( function() {
                 deferred.resolve();
             });
@@ -140,13 +138,13 @@ app.db = (function () {
                 deferred.resolve();
             };
             writer.write(data);
-        }, app.fail);
+        }, my.fail);
         return deferred.promise();
     };
 
     my.logOperation = function(data) {
         var deferred = new $.Deferred;
-        getFileEntry(app.Root, this.activityLog, {create: true, exclusive: false}).then(function(fileEntry) {
+        getFileEntry(my.root, my.activityLog, {create: true, exclusive: false}).then(function(fileEntry) {
             appendFile(fileEntry, data).then( function() {
                 deferred.resolve();
             });
@@ -162,9 +160,13 @@ app.db = (function () {
             };
             writer.seek(writer.length);
             writer.write(data);
-        }, app.fail);
+        }, my.fail);
         return deferred.promise();
     };
 
+    my.fail = function(error) {
+        throw error;
+    };
+
     return my;
-}());
+});

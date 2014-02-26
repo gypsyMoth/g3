@@ -1,11 +1,8 @@
-/**
- * Created by Ian on 1/15/14.
-*/
 
-(function () {
+define(['underscore', 'backbone', 'src/util/Encoder', 'src/util/Date'], function(_, Backbone, Encoder, Date) {
     'use strict';
 
-    app.models.CurrentPosition = Backbone.Model.extend({
+    var CurrentPosition = Backbone.Model.extend({
        defaults: {
            currentLatLon: {
              Latitude: '',
@@ -50,7 +47,7 @@
                 message = 'No trap at this site';
             } else if (typeof site.visit === 'undefined') {
                 var traptype = site.trap_type;
-                var date = app.DateFormatter.getScreenFormatDate(site.txn_date);
+                var date = Date.getScreenFormatDate(site.txn_date);
                 message = traptype + ' trap placed here on ' + date;
             } else {
                 message = 'Invalid site';
@@ -80,12 +77,12 @@
             ret += this.constants.HEMISPHERE + ',';
             ret += op.easting + ',';
             ret += op.northing + ',';
-            ret += app.rpad((op.accuracy + '.'), 5, '0') + ',';
-            ret += app.DateFormatter.getOperationFormatDate() + ',';
+            ret += Encoder.rpad((op.accuracy + '.'), 5, '0') + ',';
+            ret += Date.getOperationFormatDate() + ',';
             ret += '00:00:00' + ',';
             ret += this.constants.PLACEHOLDER + ',';
             ret += this.constants.ZERO + ',';
-            ret += app.rpad(site.quad, 5, ' ') + app.lpad(site.site_id, 4, '0');
+            ret += Encoder.rpad(site.quad, 5, ' ') + Encoder.lpad(site.site_id, 4, '0');
             ret += op.traptype === 'Delta' ? 'D' : 'M';
             ret += rel.DistanceOutside > 0 ? 'B' : '';
             ret += ',' + this.constants.DOLLAR;
@@ -102,7 +99,7 @@
             "ZERO": "0",
             "DOLLAR": "$"
         }
-
-
     });
-})();
+
+    return CurrentPosition;
+});

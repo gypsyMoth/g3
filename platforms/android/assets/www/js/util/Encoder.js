@@ -1,8 +1,4 @@
-/**
- * Created by Ian on 1/28/14.
- */
-
-app.encoder = (function () {
+define (function () {
     var my = {};
 
     my.constants = {
@@ -20,9 +16,16 @@ app.encoder = (function () {
         ret += my.constants.ROW;
         ret += my.constants.MESSAGE;
         ret += my.constants.HEMISPHERE;
-
     };
+
+    my.rpad = function (string, width, padding) {
+        return (width <= string.length) ? string : this.rpad(string + padding, width, padding)
+    },
+
+    my.lpad = function (string, width, padding) {
+        return (width <= string.length) ? string : this.lpad(padding + string, width, padding)
+    }
 
     return my;
 
-})();
+});

@@ -26,7 +26,8 @@ define(['underscore', 'backbone', 'src/util/DB', 'src/app'], function(_, Backbon
         },
 
         onLoadLocalClicked: function() {
-            db.loadSites('TX', 2).then( function() {
+            db.loadSites('TX', 2).then( function(data) {
+                App.SitesList = data;
                 app.pageRouter.navigate('home', {trigger: true, replace: true});
             });
         },

@@ -1,8 +1,7 @@
-/* Created by Ian on 1/20/14.*/
-(function () {
+define(['underscore', 'backbone', 'src/App'], function(_, Backbone, App) {
     'use strict';
 
-    app.views.Splash = Backbone.View.extend({
+    var SplashView = Backbone.View.extend({
 
         tagName: "div",
 
@@ -24,7 +23,9 @@
         },
 
         gotGpsSignal: function() {
-            app.pageRouter.navigate('home', {trigger: true, replace: true});
+            App.pageRouter.navigate('home', {trigger: true, replace: true});
         }
     });
-})();
+
+    return SplashView;
+});

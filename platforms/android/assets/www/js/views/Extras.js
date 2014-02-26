@@ -1,10 +1,7 @@
-/**
- * Created by Ian on 1/22/14.
- */
-(function () {
+define(['underscore', 'backbone', 'src/util/DB', 'src/app'], function(_, Backbone, db) {
     'use strict';
 
-    app.views.Extras = Backbone.View.extend({
+    var Extras = Backbone.View.extend({
 
         tagName: "div",
 
@@ -29,13 +26,14 @@
         },
 
         onLoadLocalClicked: function() {
-            app.db.loadSites('TX', 2).then( function() {
+            db.loadSites('TX', 2).then( function(data) {
+                App.SitesList = data;
                 app.pageRouter.navigate('home', {trigger: true, replace: true});
             });
         },
 
         onDownloadClicked: function() {
-            app.db.downloadSites('WV', 1).then( function() {
+            db.downloadSites('WV', 1).then( function() {
                 app.pageRouter.navigate('home', {trigger: true, replace: true});
             });
         },
@@ -49,4 +47,6 @@
             app.pageRouter.navigate('home', {trigger: true, replace: true});
         }
     });
-})();
+
+    return Extras;
+});
