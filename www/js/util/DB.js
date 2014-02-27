@@ -4,13 +4,13 @@ define (['jquery'], function ($) {
 
     var PERSISTENT;
 
-    my.root = '';
-    my.filesystem = '';
+    //my.root = '';
+    //my.filesystem = '';
     my.sitesFile = 'TX_1.json';
     my.activityLog = "trans_log.txt";
 
     my.initialize = function() {
-        return getFileSystem().done(getRootDirectory());
+        return getFileSystem().then(getRootDirectory);
     };
 
     var getFileSystem = function() {

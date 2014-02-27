@@ -30,15 +30,19 @@ define(['underscore',
         },
 
         onLoadLocalClicked: function() {
-            DB.loadSites('TX', 2).then( function(data) {
-                App.SitesList = data;
-                App.pageRouter.navigate('home', {trigger: true, replace: true});
+            DB.initialize().then(function() {
+                DB.loadSites('TX', 2).then( function(data) {
+                    App.SitesList = data;
+                    App.pageRouter.navigate('home', {trigger: true, replace: true});
+                });
             });
         },
 
         onDownloadClicked: function() {
-            DB.downloadSites('WV', 1).then( function() {
-                App.pageRouter.navigate('home', {trigger: true, replace: true});
+            DB.initialize().then(function() {
+                DB.downloadSites('WV', 1).then( function() {
+                    App.pageRouter.navigate('home', {trigger: true, replace: true});
+                });
             });
         },
 

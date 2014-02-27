@@ -27,9 +27,11 @@ define(['underscore',
 
         onOkClicked: function() {
             this.model.saveSites();
-            DB.logOperation(this.model.codedString()).then( function() {
-                DB.saveSites(App.SitesList).then( function() {
-                    App.pageRouter.navigate('home', {trigger: true, replace: true});
+            DB.initialize().then(function() {
+                DB.logOperation(this.model.codedString()).then( function() {
+                    DB.saveSites(App.SitesList).then( function() {
+                        App.pageRouter.navigate('home', {trigger: true, replace: true});
+                    });
                 });
             });
         },
