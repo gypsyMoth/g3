@@ -2,15 +2,13 @@ define(['jquery',
     'underscore',
     'backbone',
     'src/Router',
-    'src/util/CoordinateConverter',
-    'src/util/NearestNeighbor',
+    'src/util/Geolocation',
     'src/util/DB',
-    'src/models/CurrentPosition',
     'src/models/Splash'
-    ], function($, _, Backbone, Router, CoordinateConverter, NearestNeighbor, DB, CurrentPosition, SplashModel) {
+    ], function($, _, Backbone, Router, Geolocation, DB, Splash) {
     'use strict';
 
-    var app = {
+     return {
         SitesList: [],
         Here: {},
         isInitialized: false,
@@ -28,35 +26,6 @@ define(['jquery',
             document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
         },
 
-        startGeolocation: function () {
-            this.watchId = this.watchId || navigator.geolocation.watchPosition(this.onPositionUpdate,
-                function (error) {
-                    console.log(error.message);
-                },
-                {enableHighAccuracy: true, timeout: 3000, maximumAge: 0 }
-            );
-        },
-
-        stopGeolocation: function () {
-            if (this.watchId !== null) {
-                navigator.geolocation.clearWatch(this.watchId);
-                this.watchId = null;
-            }
-        },
-
-        onPositionUpdate: function (position) {
-            this.Startup.set('gotSignal', true); //Tell the splash screen we're good now
-            var p = CoordinateConverter.datumShift({ Lon: position.coords.longitude, Lat: position.coords.latitude});
-            var utm = CoordinateConverter.project(p);
-            var latLon = {
-                Latitude: position.coords.latitude,
-                Longitude: position.coords.longitude,
-                Accuracy: Math.round(position.coords.accuracy)
-            };
-            var nearest = NearestNeighbor.Nearest(utm, this.SitesList);
-            this.Here.set({currentLatLon: latLon, currentUtm: utm, relativePosition: nearest.relativePosition, site: nearest.site});
-        },
-
         onDeviceReady: function () {
             this.pageRouter = new Router();
             Backbone.history.start();
@@ -65,20 +34,19 @@ define(['jquery',
                 this.pageRouter.navigate('home', true);
             } else {
                 this.showSplash();
-                this.Here = new CurrentPosition();
                 this.pageRouter.navigate('splash', true);
             }
         },
 
         showSplash: function () {
-            this.Startup = new SplashModel();
+            this.Startup = new Splash();
             this.Startup.set('message', 'Initializing filesystem...');
 
             DB.initialize().then(function () {
                 this.Startup.set('message', 'Loading sites from file...');
                 this.SitesList = DB.loadSites('TX', 1).then(function () {
                     this.Startup.set('message', 'Acquiring Satellites');
-                    this.startGeolocation();
+                    Geolocation.start();
                 });
             });
         },
@@ -87,8 +55,4 @@ define(['jquery',
             console.log('G3 error: ' + error.message);
         }
     };
-
-    return app;
-}, function(err) {
-    console.error(err.message);
 });

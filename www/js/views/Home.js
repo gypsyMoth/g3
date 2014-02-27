@@ -1,7 +1,8 @@
 define(['underscore',
     'backbone',
-    'src/App'
-], function(_, Backbone, App) {
+    'src/App',
+    'src/util/Geolocation'
+], function(_, Backbone, App, Geolocation) {
     'use strict';
 
     var Home = Backbone.View.extend({
@@ -13,7 +14,7 @@ define(['underscore',
         initialize: function(options) {
             this.template = options.template;
             this.listenTo(this.model, 'change', this.render);
-            App.startGeolocation();
+            Geolocation.start();
         },
 
         events: {
@@ -28,7 +29,7 @@ define(['underscore',
                 case App.operationTypes.ERROR:
                     break;
                 case App.operationTypes.UNADDRESSED:
-                    App.stopGeolocation();
+                    App.stop();
                     App.pageRouter.navigate('placement', {trigger: true, replace: true});
                     break;
                 case App.operationTypes.PLACED || App.operationTypes.MIDSEASON:
@@ -42,7 +43,7 @@ define(['underscore',
         },
 
         onExtrasClicked: function() {
-            App.stopGeolocation();
+            Geolocation.stop();
             App.pageRouter.navigate('extras', {trigger: true, replace: true});
         },
 

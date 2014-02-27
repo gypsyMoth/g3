@@ -1,14 +1,16 @@
 define(['jquery',
     'underscore',
     'backbone',
-    'src/App',
+    'src/util/Geolocation',
+    'src/models/FileSystem',
+    'src/models/Splash',
     'src/views/Splash',
     'src/views/Home',
     'src/views/Extras',
     'src/views/Placement',
     'src/views/Caution',
     'src/views/Confirm'
-], function($, _, Backbone, App, SplashView, HomeView, ExtrasView, PlacementView, CautionView, ConfirmView) {
+], function($, _, Backbone, Geolocation, Filesystem, Splash, SplashView, HomeView, ExtrasView, PlacementView, CautionView, ConfirmView) {
     'use strict';
 
     var Router = Backbone.Router.extend({
@@ -22,27 +24,27 @@ define(['jquery',
         },
 
         splash: function() {
-            this.loadView(new SplashView({model: App.Startup, template: _.template($('#splash-template').html())}));
+            this.loadView(new SplashView({model: new Splash(), template: _.template($('#splash-template').html())}));
         },
 
         home : function() {
-            this.loadView(new HomeView({model: App.Here, template: _.template($('#home-template').html())}));
+            this.loadView(new HomeView({model: Geolocation.Here, template: _.template($('#home-template').html())}));
         },
 
         extras: function() {
-            this.loadView(new ExtrasView({model: new App.models.Filesystem, template: _.template($('#extras-template').html())}));
+            this.loadView(new ExtrasView({model: new Filesystem(), template: _.template($('#extras-template').html())}));
         },
 
         placement : function() {
-            this.loadView(new PlacementView({model: App.Here, template: _.template($('#placement-template').html())}));
+            this.loadView(new PlacementView({model: Geolocation.Here, template: _.template($('#placement-template').html())}));
         },
 
         caution: function() {
-            this.loadView(new CautionView({model: App.Here, template: _.template($('#caution-template').html())}));
+            this.loadView(new CautionView({model: Geolocation.Here, template: _.template($('#caution-template').html())}));
         },
 
         confirm: function() {
-            this.loadView(new ConfirmView({model: App.Here, template: _.template($('#confirm-template').html())}));
+            this.loadView(new ConfirmView({model: Geolocation.Here, template: _.template($('#confirm-template').html())}));
         },
 
         loadView : function(view) {

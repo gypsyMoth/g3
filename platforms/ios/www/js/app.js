@@ -20,7 +20,7 @@ var app = {
         FINAL: 'FINAL'
     },
 
-    startGeolocation: function() {},
+    start: function() {},
     onDeviceReady: function() {},
 
     rpad: function (string, width, padding) {
@@ -38,7 +38,7 @@ $(document).on("ready", function () {
     app.pageRouter = new app.Router();
     Backbone.history.start();
 
-    app.startGeolocation = function() {
+    app.start = function() {
         app.watchId = app.watchId || navigator.geolocation.watchPosition(app.onPositionUpdate,
             function(error) {
                 console.log(error.message);
@@ -60,7 +60,7 @@ $(document).on("ready", function () {
         app.Here.set({currentLatLon: latLon, currentUtm: utm, relativePosition: nearest.relativePosition, site: nearest.site});
     };
 
-    app.stopGeolocation = function() {
+    app.stop = function() {
         if (app.watchId !== null) {
             navigator.geolocation.clearWatch(app.watchId);
             app.watchId = null;

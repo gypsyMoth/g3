@@ -1,7 +1,6 @@
-define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
-    'use strict';
+define(['underscore', 'backbone'], function(_, Backbone) { 'use strict';
 
-    app.models.Filesystem = Backbone.Model.extend({
+    var FilesystemModel = Backbone.Model.extend({
         defaults: {
             canDownload: false,
             fileCount: ''
@@ -10,6 +9,7 @@ define(['underscore', 'backbone', 'src/app'], function(_, Backbone, app) {
         initialize: function(options) {
 
         }
-
     });
+
+    return FilesystemModel;
 });

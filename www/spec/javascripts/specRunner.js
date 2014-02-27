@@ -44,6 +44,7 @@
         'util/DateSpec',
         'util/DBSpec',
         'util/EncoderSpec',
+        'util/GeolocationSpec',
         'util/NearestNeighborSpec',
         'models/CurrentPositionSpec',
         'views/CautionSpec',
