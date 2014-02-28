@@ -1,4 +1,4 @@
-define (function () {
+define (function () { 'use strict';
 
     var my = {};
 
@@ -56,4 +56,4 @@ define (function () {
     };
 
     return my;
-}());
+});

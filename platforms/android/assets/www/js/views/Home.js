@@ -1,9 +1,8 @@
 define(['underscore',
     'backbone',
-    'src/App',
-    'src/util/Geolocation'
-], function(_, Backbone, App, Geolocation) {
-    'use strict';
+    'src/util/Geolocation',
+    'src/util/Encoder'
+], function(_, Backbone, Geolocation, Encoder) { 'use strict';
 
     var Home = Backbone.View.extend({
 
@@ -26,30 +25,30 @@ define(['underscore',
             var site = this.model.get('site');
             var operation = this.getOperation(site);
             switch (operation) {
-                case App.operationTypes.ERROR:
+                case Encoder.operationTypes.ERROR:
                     break;
-                case App.operationTypes.UNADDRESSED:
-                    App.stop();
-                    App.pageRouter.navigate('placement', {trigger: true, replace: true});
+                case Encoder.operationTypes.UNADDRESSED:
+                    Geolocation.stop();
+                    Backbone.history.navigate('placement', {trigger: true, replace: true});
                     break;
-                case App.operationTypes.PLACED || App.operationTypes.MIDSEASON:
+                case Encoder.operationTypes.PLACED || Encoder.operationTypes.MIDSEASON:
                     alert("Inspections are not implemented");
                     break;
-                case App.operationTypes.FINAL:
+                case Encoder.operationTypes.FINAL:
                     break;
-                case App.operationTypes.OMITTED:
+                case Encoder.operationTypes.OMITTED:
                     break;
             }
         },
 
         onExtrasClicked: function() {
             Geolocation.stop();
-            App.pageRouter.navigate('extras', {trigger: true, replace: true});
+            Backbone.history.navigate('extras', {trigger: true, replace: true});
         },
 
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
-            this.checkTargetCircle(null);
+            this.checkTargetCircle();
             return this;
         },
 
@@ -57,7 +56,6 @@ define(['underscore',
             var relativePosition = this.model.get('relativePosition');
             var isOut = relativePosition.DistanceOutside > 0;
             var site = this.model.get('site');
-
             var color = this.getColor(isOut);
             var imageSource = this.getOperationImage(isOut, site);
 
@@ -90,19 +88,19 @@ define(['underscore',
         getOperation: function(site) {
             var operationType = '';
             if (site.quad === '') {
-                operationType = App.operationTypes.ERROR;
+                operationType = Encoder.operationTypes.ERROR;
             } else if (typeof site.xact === 'undefined') {
-                operationType = App.operationTypes.UNADDRESSED;
+                operationType = Encoder.operationTypes.UNADDRESSED;
             } else if (typeof site.visit === 'undefined') {
                 if (typeof site.omit_reason === 'undefined') {
-                    operationType = App.operationTypes.PLACED;
+                    operationType = Encoder.operationTypes.PLACED;
                 } else {
-                    operationType = App.operationTypes.OMITTED;
+                    operationType = Encoder.operationTypes.OMITTED;
                 }
             } else if (site.visit === 'MIDSEASON') {
-                operationType = App.operationTypes.MIDSEASON;
+                operationType = Encoder.operationTypes.MIDSEASON;
             } else {
-                operationType = App.operationTypes.FINAL;
+                operationType = Encoder.operationTypes.FINAL;
             }
             return operationType;
         }

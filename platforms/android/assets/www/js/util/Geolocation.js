@@ -8,8 +8,6 @@ define(['jquery',
 
     var my = {};
 
-    //_.extend(my, Backbone.Events);
-
     my.watchId = null;
     my.gotSignal = false;
     my.Here = new CurrentPosition();
@@ -33,7 +31,7 @@ define(['jquery',
         };
 
     my.onPositionUpdate = function (position) {
-            my.gotSignal = true;
+            this.gotSignal = true;
             var p = CoordinateConverter.datumShift({ Lon: position.coords.longitude, Lat: position.coords.latitude});
             var utm = CoordinateConverter.project(p);
             var latLon = {
@@ -41,7 +39,7 @@ define(['jquery',
                 Longitude: position.coords.longitude,
                 Accuracy: Math.round(position.coords.accuracy)
             };
-            var nearest = NearestNeighbor.Nearest(utm, my.SitesList);
+            var nearest = NearestNeighbor.Nearest(utm, this.SitesList);
             this.Here.set({currentLatLon: latLon, currentUtm: utm, relativePosition: nearest.relativePosition, site: nearest.site});
         };
 

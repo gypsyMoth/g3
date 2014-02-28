@@ -1,4 +1,4 @@
-define (function () {
+define (function () { 'use strict';
     var my = {};
 
     my.Nearest = function(currentLocation, sites) {
@@ -11,8 +11,9 @@ define (function () {
         var distance;
         var site;
         var siteFound = false;
+        var i, len;
 
-        for (var i = 0, len = sites.length; i < len; i++) {
+        for (i = 0, len = sites.length; i < len; i++) {
             site = sites[i];
             if (site.zone === currentLocation.Zone) {
                 siteFound = true;

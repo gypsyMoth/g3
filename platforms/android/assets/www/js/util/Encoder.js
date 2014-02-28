@@ -1,7 +1,7 @@
-define (function () {
+define (function () { 'use strict';
     var my = {};
 
-    my.constants = {
+    my.transactionLog = {
         "BANG": "#",
         "ROW": "000",
         "MESSAGE": "01234567890123",
@@ -9,6 +9,15 @@ define (function () {
         "PLACEHOLDER": "",
         "ZERO": "0",
         "DOLLAR": "$"
+    };
+
+    my.operationTypes = {
+        ERROR: 'ERROR',
+        UNADDRESSED: 'UNADDRESSED',
+        PLACED: 'PLACED',
+        OMITTED: 'OMITTED',
+        MIDSEASON: 'MIDSEASON',
+        FINAL: 'FINAL'
     };
 
     my.getString = function(currentPosition) {

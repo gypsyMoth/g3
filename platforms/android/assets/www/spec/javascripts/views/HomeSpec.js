@@ -1,8 +1,8 @@
 define(["jquery",
-    "src/app",
+    "underscore",
     "src/models/CurrentPosition",
     "src/views/Home"
-], function($, app, CurrentPosition, HomeView) {
+], function($, _, CurrentPosition, HomeView) { 'use strict';
 
     $(describe("Home View", function() {
        var view;
@@ -164,11 +164,7 @@ define(["jquery",
                    expectColorToMatchDistanceOutside(site, 1, '#FF0000');
                    expectImageToMatchOperation(site, 1, 'img/redTree.gif');
                });
-
-    //           it ("Displays the placement view when the users clicks", function() {
-    //
-    //           });
-           })
+           });
 
            describe("Delta", function() {
                var site = testSites.placedDelta;
@@ -198,7 +194,7 @@ define(["jquery",
                    expectColorToMatchDistanceOutside(site, 1, '#FF0000');
                    expectImageToMatchOperation(site, 1, 'img/redMilkCarton.gif');
                });
-           })
+           });
        });
     }));
 });

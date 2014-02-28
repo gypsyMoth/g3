@@ -4,8 +4,8 @@ define (['jquery'], function ($) {
 
     var PERSISTENT;
 
-    //my.root = '';
-    //my.filesystem = '';
+    my.root = null;
+    my.filesystem = null;
     my.sitesFile = 'TX_1.json';
     my.activityLog = "trans_log.txt";
 
@@ -166,7 +166,7 @@ define (['jquery'], function ($) {
     };
 
     my.fail = function(error) {
-        console.error(error.message);
+        console.error(error.code);
         throw error;
     };
 

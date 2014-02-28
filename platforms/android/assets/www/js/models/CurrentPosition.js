@@ -73,34 +73,24 @@ define(['underscore',
             var site = this.get('site');
             var rel = this.get('relativePosition');
 
-            var ret = this.constants.BANG + ',';
-            ret += this.constants.ROW + ',';
-            ret += this.constants.MESSAGE + ',';
+            var ret = Encoder.transactionLog.BANG + ',';
+            ret += Encoder.transactionLog.ROW + ',';
+            ret += Encoder.transactionLog.MESSAGE + ',';
             ret += op.zone + ',';
-            ret += this.constants.HEMISPHERE + ',';
+            ret += Encoder.transactionLog.HEMISPHERE + ',';
             ret += op.easting + ',';
             ret += op.northing + ',';
             ret += Encoder.rpad((op.accuracy + '.'), 5, '0') + ',';
             ret += Date.getOperationFormatDate() + ',';
             ret += '00:00:00' + ',';
-            ret += this.constants.PLACEHOLDER + ',';
-            ret += this.constants.ZERO + ',';
+            ret += Encoder.transactionLog.PLACEHOLDER + ',';
+            ret += Encoder.transactionLog.ZERO + ',';
             ret += Encoder.rpad(site.quad, 5, ' ') + Encoder.lpad(site.site_id, 4, '0');
             ret += op.traptype === 'Delta' ? 'D' : 'M';
             ret += rel.DistanceOutside > 0 ? 'B' : '';
-            ret += ',' + this.constants.DOLLAR;
+            ret += ',' + Encoder.transactionLog.DOLLAR;
             ret += '\r\n';
             return ret;
-        },
-
-        constants: {
-            "BANG": "#",
-            "ROW": "000",
-            "MESSAGE": "01234567890123",
-            "HEMISPHERE": "North",
-            "PLACEHOLDER": "",
-            "ZERO": "0",
-            "DOLLAR": "$"
         }
     });
 

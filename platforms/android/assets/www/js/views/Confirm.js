@@ -1,8 +1,8 @@
 define(['underscore', 
-    'backbone', 
-    'src/App', 
-    'src/util/DB'
-], function(_, Backbone, App, DB) {
+    'backbone',
+    'src/util/DB',
+    'src/util/Geolocation'
+], function(_, Backbone, DB, Geolocation) {
     'use strict';
 
     var Confirm = Backbone.View.extend({
@@ -29,15 +29,15 @@ define(['underscore',
             this.model.saveSites();
             DB.initialize().then(function() {
                 DB.logOperation(this.model.codedString()).then( function() {
-                    DB.saveSites(App.SitesList).then( function() {
-                        App.pageRouter.navigate('home', {trigger: true, replace: true});
+                    DB.saveSites(Geolocation.SitesList).then( function() {
+                        Backbone.history.navigate('home', {trigger: true, replace: true});
                     });
                 });
             });
         },
 
         onCancelClicked: function() {
-            App.pageRouter.navigate('home', {trigger: true, replace: true});
+            Backbone.history.navigate('home', {trigger: true, replace: true});
         }
     });
 

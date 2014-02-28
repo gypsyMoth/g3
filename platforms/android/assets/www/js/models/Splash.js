@@ -1,9 +1,8 @@
-define(['underscore', 'backbone'], function(_, Backbone) {
-    'use strict';
+define(['underscore', 'backbone'], function(_, Backbone) { 'use strict';
 
     var SplashModel = Backbone.Model.extend({
         defaults: {
-            message: 'Acquiring Satellites'
+            message: 'Slow the Spread of the Gypsy Moth'
             //gotSignal: false
         }
 

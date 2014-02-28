@@ -17,7 +17,6 @@ require.config({
     }
 });
 
-require(['src/App'], function (App) {
-    'use strict';
+require(['src/App'], function (App) { 'use strict';
     App.initialize();
 });
