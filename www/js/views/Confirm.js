@@ -28,13 +28,13 @@ define(['underscore',
 
         onOkClicked: function() {
             this.model.saveSites();
-            DB.initialize().then(function() {
+            DB.initialize().then(_.bind(function() {
                 DB.logOperation(this.model.codedString()).then( function() {
                     DB.saveSites(Geolocation.SitesList).then( function() {
                         Controller.router.navigate('home', {trigger: true, replace: true});
                     });
                 });
-            });
+            }), this);
         },
 
         onCancelClicked: function() {
