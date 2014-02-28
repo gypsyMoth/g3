@@ -8,51 +8,64 @@ define(['jquery',
     ], function($, _, Backbone, Router, Geolocation, DB, Splash) {
     'use strict';
 
-     return {
-        SitesList: [],
-        Here: {},
-        isInitialized: false,
+     var my = {};
+    _.extend(my, Backbone.Events);
 
-        operationTypes: {
-            ERROR: 'ERROR',
-            UNADDRESSED: 'UNADDRESSED',
-            PLACED: 'PLACED',
-            OMITTED: 'OMITTED',
-            MIDSEASON: 'MIDSEASON',
-            FINAL: 'FINAL'
-        },
 
-        initialize: function () {
-            document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-        },
+    //my.SitesList= [];
+    //my.Here= {};
+    my.isInitialized = false;
 
-        onDeviceReady: function () {
-            this.pageRouter = new Router();
-            Backbone.history.start();
+    my.operationTypes = {
+        ERROR: 'ERROR',
+        UNADDRESSED: 'UNADDRESSED',
+        PLACED: 'PLACED',
+        OMITTED: 'OMITTED',
+        MIDSEASON: 'MIDSEASON',
+        FINAL: 'FINAL'
+    };
 
-            if (this.isInitialized) {
-                this.pageRouter.navigate('home', true);
-            } else {
-                this.showSplash();
-                this.pageRouter.navigate('splash', true);
-            }
-        },
+    my.initialize = function () {
+        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+    };
 
-        showSplash: function () {
-            this.Startup = new Splash();
-            this.Startup.set('message', 'Initializing filesystem...');
+    my.onDeviceReady = function () {
+        this.pageRouter = new Router();
+        Backbone.history.start();
 
-            DB.initialize().then(function () {
-                this.Startup.set('message', 'Loading sites from file...');
-                this.SitesList = DB.loadSites('TX', 1).then(function () {
-                    this.Startup.set('message', 'Acquiring Satellites');
-                    Geolocation.start();
-                });
-            });
-        },
-
-        fail: function (error) {
-            console.log('G3 error: ' + error.message);
+        if (this.isInitialized) {
+            this.pageRouter.navigate('home', true);
+        } else {
+            this.showSplash();
+            this.pageRouter.navigate('splash', true);
         }
     };
+
+    my.showSplash = function () {
+        this.Startup = new Splash();
+        this.Startup.set('message', 'Initializing filesystem...');
+        DB.initialize().then(_.bind(this.loadSites, this));
+    };
+
+    my.loadSites = function() {
+        this.Startup.set('message', 'Loading sites from file...');
+        Geolocation.SitesList = DB.loadSites('TX', 1).then(_.bind(this.initializeGps, this));
+    };
+
+    my.initializeGps = function() {
+        this.Startup.set('message', 'Acquiring Satellites');
+        this.listenTo(Geolocation.Here, 'change', this.gotGpsSignal);
+        Geolocation.start();
+    };
+
+     my.gotGpsSignal = function() {
+         console.log("got gps");
+         this.pageRouter.navigate('home', {trigger: true, replace: true});
+     };
+
+    my.fail = function (error) {
+        console.log('G3 error: ' + error.message);
+    };
+
+    return my;
 });

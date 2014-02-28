@@ -3,8 +3,8 @@ define(['underscore', 'backbone'], function(_, Backbone) {
 
     var SplashModel = Backbone.Model.extend({
         defaults: {
-            message: 'Acquiring Satellites',
-            gotSignal: false
+            message: 'Acquiring Satellites'
+            //gotSignal: false
         }
 
 //        initialize: function() {

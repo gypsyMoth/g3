@@ -133,7 +133,7 @@ define (['jquery'], function ($) {
     };
 
     var writeFile = function(fileEntry, data) {
-        var deferred = new $.Deferred;
+        var deferred = new $.Deferred();
         fileEntry.createWriter(function(writer) {
             writer.onwriteend = function(evt) {
                 deferred.resolve();
@@ -144,7 +144,7 @@ define (['jquery'], function ($) {
     };
 
     my.logOperation = function(data) {
-        var deferred = new $.Deferred;
+        var deferred = new $.Deferred();
         getFileEntry(my.root, my.activityLog, {create: true, exclusive: false}).then(function(fileEntry) {
             appendFile(fileEntry, data).then( function() {
                 deferred.resolve();
@@ -154,7 +154,7 @@ define (['jquery'], function ($) {
     };
 
     var appendFile = function(fileEntry, data) {
-        var deferred = new $.Deferred;
+        var deferred = new $.Deferred();
         fileEntry.createWriter(function(writer) {
             writer.onwriteend = function(evt) {
                 deferred.resolve();
@@ -166,6 +166,7 @@ define (['jquery'], function ($) {
     };
 
     my.fail = function(error) {
+        console.error(error.message);
         throw error;
     };
 

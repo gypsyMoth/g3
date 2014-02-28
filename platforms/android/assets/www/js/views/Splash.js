@@ -13,7 +13,7 @@ define(['underscore',
         initialize: function(options) {
             this.template = options.template;
             this.listenTo(this.model, 'change:message', this.render);
-            this.listenTo(this.model, 'change:gotSignal', this.gotGpsSignal);
+            //this.listenTo(this.model, 'change:gotSignal', this.gotGpsSignal);
         },
 
         events: {
@@ -23,11 +23,11 @@ define(['underscore',
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
             return this;
-        },
-
-        gotGpsSignal: function() {
-            App.pageRouter.navigate('home', {trigger: true, replace: true});
         }
+
+//        gotGpsSignal: function() {
+//            App.pageRouter.navigate('home', {trigger: true, replace: true});
+//        }
     });
 
     return SplashView;
