@@ -4,9 +4,10 @@ define(['jquery',
     'src/Router',
     'src/util/Geolocation',
     'src/util/DB',
+    'src/util/Controller',
     'src/models/Splash',
     'src/views/Splash'
-    ], function($, _, Backbone, Router, Geolocation, DB, Splash, SplashView) { 'use strict';
+    ], function($, _, Backbone, Router, Geolocation, DB, Controller, Splash, SplashView) { 'use strict';
 
      var my = {};
     _.extend(my, Backbone.Events);
@@ -18,11 +19,11 @@ define(['jquery',
     };
 
     my.onDeviceReady = function () {
-        this.pageRouter = new Router();
+        Controller.router = new Router();
         Backbone.history.start();
 
         if (this.isInitialized) {
-            Backbone.history.navigate('home', {trigger: true, replace: true});
+            Controller.router.navigate('home', {trigger: true, replace: true});
         } else {
             this.showSplash();
         }
@@ -30,7 +31,7 @@ define(['jquery',
 
     my.showSplash = function () {
         this.Startup = new Splash();
-        this.pageRouter.loadView(new SplashView({model: this.Startup, template: _.template($('#splash-template').html())}));
+        Controller.router.loadView(new SplashView({model: this.Startup, template: _.template($('#splash-template').html())}));
         this.Startup.set('message', 'Initializing filesystem...');
         DB.initialize().then(_.bind(this.loadSites, this));
     };
@@ -50,7 +51,7 @@ define(['jquery',
     };
 
      my.gotGpsSignal = function() {
-         Backbone.history.navigate('home', {trigger: true, replace: true});
+         Controller.router.navigate('home', {trigger: true, replace: true});
      };
 
     my.fail = function (error) {

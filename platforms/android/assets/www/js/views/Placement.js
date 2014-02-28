@@ -1,7 +1,8 @@
 define(['underscore',
     'backbone',
-    'src/util/Date'
-], function(_, Backbone, Date) { 'use strict';
+    'src/util/Date',
+    'src/util/Controller'
+], function(_, Backbone, Date, Controller) { 'use strict';
 
     var PlacementView = Backbone.View.extend({
 
@@ -29,9 +30,9 @@ define(['underscore',
         onOkClicked: function() {
             var site = this.model.get("relativePosition");
             if (site.DistanceOutside > 0) {
-                Backbone.history.navigate('caution', {trigger: true, replace: true});
+                Controller.router.navigate('caution', {trigger: true, replace: true});
             } else {
-                Backbone.history.navigate('confirm', {trigger: true, replace: true});
+                Controller.router.navigate('confirm', {trigger: true, replace: true});
             }
         },
 
@@ -40,7 +41,7 @@ define(['underscore',
         },
 
         onCancelClicked: function() {
-            Backbone.history.navigate('home', {trigger: true, replace: true});
+            Controller.router.navigate('home', {trigger: true, replace: true});
         },
 
         onTraptypeChanged: function(e) {

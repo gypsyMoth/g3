@@ -1,8 +1,9 @@
 define(['underscore', 
     'backbone', 
     'src/util/DB',
-    'src/util/Geolocation'
-], function(_, Backbone, DB, Geolocation) { 'use strict';
+    'src/util/Geolocation',
+    'src/util/Controller'
+], function(_, Backbone, DB, Geolocation, Controller) { 'use strict';
 
     var Extras = Backbone.View.extend({
 
@@ -32,7 +33,7 @@ define(['underscore',
             DB.initialize().then(function() {
                 DB.loadSites('TX', 2).then( function(data) {
                     Geolocation.SitesList = data;
-                    Backbone.history.navigate('home', {trigger: true, replace: true});
+                    Controller.router.navigate('home', {trigger: true, replace: true});
                 });
             });
         },
@@ -40,18 +41,18 @@ define(['underscore',
         onDownloadClicked: function() {
             DB.initialize().then(function() {
                 DB.downloadSites('WV', 1).then( function() {
-                    Backbone.history.navigate('home', {trigger: true, replace: true});
+                    Controller.router.navigate('home', {trigger: true, replace: true});
                 });
             });
         },
 
         onUploadClicked: function() {
             alert("Upload Data not implemented");
-            //Backbone.history.navigate('home', {trigger: true, replace: true});
+            //Controller.router.navigate('home', {trigger: true, replace: true});
         },
 
         onCancelClicked: function() {
-            Backbone.history.navigate('home', {trigger: true, replace: true});
+            Controller.router.navigate('home', {trigger: true, replace: true});
         }
     });
 

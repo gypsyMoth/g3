@@ -1,6 +1,7 @@
 define(['underscore',
-    'backbone'
-], function(_, Backbone) { 'use strict';
+    'backbone',
+    'src/util/Controller'
+], function(_, Backbone, Controller) { 'use strict';
 
     var Caution = Backbone.View.extend({
 
@@ -23,11 +24,11 @@ define(['underscore',
         },
 
         onOkClicked: function() {
-            Backbone.history.navigate('confirm', {trigger: true, replace: true});
+            Controller.router.navigate('confirm', {trigger: true, replace: true});
         },
 
         onCancelClicked: function() {
-            Backbone.history.navigate('home', {trigger: true, replace: true});
+            Controller.router.navigate('home', {trigger: true, replace: true});
         }
     });
 

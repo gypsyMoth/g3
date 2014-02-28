@@ -1,8 +1,9 @@
 define(['underscore',
     'backbone',
     'src/util/Geolocation',
-    'src/util/Encoder'
-], function(_, Backbone, Geolocation, Encoder) { 'use strict';
+    'src/util/Encoder',
+    'src/util/Controller'
+], function(_, Backbone, Geolocation, Encoder, Controller) { 'use strict';
 
     var Home = Backbone.View.extend({
 
@@ -29,7 +30,7 @@ define(['underscore',
                     break;
                 case Encoder.operationTypes.UNADDRESSED:
                     Geolocation.stop();
-                    Backbone.history.navigate('placement', {trigger: true, replace: true});
+                    Controller.router.navigate('placement', {trigger: true, replace: true});
                     break;
                 case Encoder.operationTypes.PLACED || Encoder.operationTypes.MIDSEASON:
                     alert("Inspections are not implemented");
@@ -43,7 +44,7 @@ define(['underscore',
 
         onExtrasClicked: function() {
             Geolocation.stop();
-            Backbone.history.navigate('extras', {trigger: true, replace: true});
+            Controller.router.navigate('extras', {trigger: true, replace: true});
         },
 
         render: function() {
