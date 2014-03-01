@@ -1,8 +1,11 @@
-/* Created by Ian on 1/15/14.*/
-(function () {
-    'use strict';
+define(['underscore',
+    'backbone',
+    'src/util/Geolocation',
+    'src/util/Encoder',
+    'src/util/Controller'
+], function(_, Backbone, Geolocation, Encoder, Controller) { 'use strict';
 
-    app.views.Home = Backbone.View.extend({
+    var Home = Backbone.View.extend({
 
         tagName: "div",
 
@@ -11,7 +14,7 @@
         initialize: function(options) {
             this.template = options.template;
             this.listenTo(this.model, 'change', this.render);
-            app.startGeolocation();
+            Geolocation.start();
         },
 
         events: {
@@ -23,30 +26,30 @@
             var site = this.model.get('site');
             var operation = this.getOperation(site);
             switch (operation) {
-                case app.operationTypes.ERROR:
+                case Encoder.operationTypes.ERROR:
                     break;
-                case app.operationTypes.UNADDRESSED:
-                    app.stopGeolocation();
-                    app.pageRouter.navigate('placement', {trigger: true, replace: true});
+                case Encoder.operationTypes.UNADDRESSED:
+                    Geolocation.stop();
+                    Controller.router.navigate('placement', {trigger: true, replace: true});
                     break;
-                case app.operationTypes.PLACED || app.operationTypes.MIDSEASON:
+                case Encoder.operationTypes.PLACED || Encoder.operationTypes.MIDSEASON:
                     alert("Inspections are not implemented");
                     break;
-                case app.operationTypes.FINAL:
+                case Encoder.operationTypes.FINAL:
                     break;
-                case app.operationTypes.OMITTED:
+                case Encoder.operationTypes.OMITTED:
                     break;
             }
         },
 
         onExtrasClicked: function() {
-            app.stopGeolocation();
-            app.pageRouter.navigate('extras', {trigger: true, replace: true});
+            Geolocation.stop();
+            Controller.router.navigate('extras', {trigger: true, replace: true});
         },
 
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
-            this.checkTargetCircle(null);
+            this.checkTargetCircle();
             return this;
         },
 
@@ -54,7 +57,6 @@
             var relativePosition = this.model.get('relativePosition');
             var isOut = relativePosition.DistanceOutside > 0;
             var site = this.model.get('site');
-
             var color = this.getColor(isOut);
             var imageSource = this.getOperationImage(isOut, site);
 
@@ -79,7 +81,6 @@
             if (typeof site.xact === 'undefined') {
                 imagePath = 'Tree';
             } else if (typeof site.visit === 'undefined') {
-                site.trap_type;
                 imagePath = site.trap_type === 'Delta' ? 'Delta' : 'MilkCarton';
             }
             return imagePath;
@@ -88,21 +89,23 @@
         getOperation: function(site) {
             var operationType = '';
             if (site.quad === '') {
-                operationType = app.operationTypes.ERROR;
+                operationType = Encoder.operationTypes.ERROR;
             } else if (typeof site.xact === 'undefined') {
-                operationType = app.operationTypes.UNADDRESSED;
+                operationType = Encoder.operationTypes.UNADDRESSED;
             } else if (typeof site.visit === 'undefined') {
                 if (typeof site.omit_reason === 'undefined') {
-                    operationType = app.operationTypes.PLACED;
+                    operationType = Encoder.operationTypes.PLACED;
                 } else {
-                    operationType = app.operationTypes.OMITTED;
+                    operationType = Encoder.operationTypes.OMITTED;
                 }
             } else if (site.visit === 'MIDSEASON') {
-                operationType = app.operationTypes.MIDSEASON;
+                operationType = Encoder.operationTypes.MIDSEASON;
             } else {
-                operationType = app.operationTypes.FINAL;
+                operationType = Encoder.operationTypes.FINAL;
             }
             return operationType;
         }
     });
-})();
+
+    return Home;
+});

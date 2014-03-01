@@ -11,7 +11,7 @@
         initialize: function(options) {
             this.template = options.template;
             this.listenTo(this.model, 'change', this.render);
-            app.startGeolocation();
+            app.start();
         },
 
         events: {
@@ -26,7 +26,7 @@
                 case app.operationTypes.ERROR:
                     break;
                 case app.operationTypes.UNADDRESSED:
-                    app.stopGeolocation();
+                    app.stop();
                     app.pageRouter.navigate('placement', {trigger: true, replace: true});
                     break;
                 case app.operationTypes.PLACED || app.operationTypes.MIDSEASON:
@@ -40,7 +40,7 @@
         },
 
         onExtrasClicked: function() {
-            app.stopGeolocation();
+            app.stop();
             app.pageRouter.navigate('extras', {trigger: true, replace: true});
         },
 

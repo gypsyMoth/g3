@@ -1,10 +1,11 @@
-/**
- * Created by Ian on 1/22/14.
- */
-(function () {
-    'use strict';
+define(['underscore', 
+    'backbone', 
+    'src/util/DB',
+    'src/util/Geolocation',
+    'src/util/Controller'
+], function(_, Backbone, DB, Geolocation, Controller) { 'use strict';
 
-    app.views.Extras = Backbone.View.extend({
+    var Extras = Backbone.View.extend({
 
         tagName: "div",
 
@@ -29,24 +30,31 @@
         },
 
         onLoadLocalClicked: function() {
-            app.db.loadSites('TX', 2).then( function() {
-                app.pageRouter.navigate('home', {trigger: true, replace: true});
+            DB.initialize().then(function() {
+                DB.loadSites('TX', 2).then( function(data) {
+                    Geolocation.SitesList = data;
+                    Controller.router.navigate('home', {trigger: true, replace: true});
+                });
             });
         },
 
         onDownloadClicked: function() {
-            app.db.downloadSites('WV', 1).then( function() {
-                app.pageRouter.navigate('home', {trigger: true, replace: true});
+            DB.initialize().then(function() {
+                DB.downloadSites('WV', 1).then( function() {
+                    Controller.router.navigate('home', {trigger: true, replace: true});
+                });
             });
         },
 
         onUploadClicked: function() {
             alert("Upload Data not implemented");
-            //app.pageRouter.navigate('home', {trigger: true, replace: true});
+            //Controller.router.navigate('home', {trigger: true, replace: true});
         },
 
         onCancelClicked: function() {
-            app.pageRouter.navigate('home', {trigger: true, replace: true});
+            Controller.router.navigate('home', {trigger: true, replace: true});
         }
     });
-})();
+
+    return Extras;
+});

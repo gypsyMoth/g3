@@ -1,7 +1,5 @@
-/**
- * Created by Ian on 1/24/14.
- */
-app.DateFormatter = (function () {
+define (function () { 'use strict';
+
     var my = {};
 
     my.getSitesFormatDate = function() {
@@ -26,7 +24,7 @@ app.DateFormatter = (function () {
         var mon = this.getMonthString(mm);
         var yyyy = today.getFullYear().toString();
         return mon + '-' + dd + '-' + yyyy;
-    }
+    };
 
     my.getMonthString = function(month) {
         switch (month) {
@@ -55,7 +53,7 @@ app.DateFormatter = (function () {
             case 12:
                 return 'Dec';
         }
-    }
+    };
 
     return my;
-}());
+});

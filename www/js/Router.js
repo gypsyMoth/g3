@@ -1,41 +1,58 @@
-/*Created by Ian on 1/18/14.*/
-app.Router = Backbone.Router.extend({
-    routes : {
-        "splash" : "splash",
-        "home" : "home",
-        "extras" : "extras",
-        "placement" : "placement",
-        "caution" : "caution",
-        "confirm" : "confirm"
-    },
+define(['jquery',
+    'underscore',
+    'backbone',
+    'src/util/Geolocation',
+    'src/models/FileSystem',
+    'src/models/Splash',
+    'src/views/Splash',
+    'src/views/Home',
+    'src/views/Extras',
+    'src/views/Placement',
+    'src/views/Caution',
+    'src/views/Confirm'
+], function($, _, Backbone, Geolocation, Filesystem, Splash, SplashView, HomeView, ExtrasView, PlacementView, CautionView, ConfirmView) {
+    'use strict';
 
-    splash: function() {
-        this.loadView(new app.views.Splash({model: app.Startup, template: _.template($('#splash-template').html())}));
-    },
+    var Router = Backbone.Router.extend({
+        routes : {
+            "splash" : "splash",
+            "home" : "home",
+            "extras" : "extras",
+            "placement" : "placement",
+            "caution" : "caution",
+            "confirm" : "confirm"
+        },
 
-    home : function() {
-        this.loadView(new app.views.Home({model: app.Here, template: _.template($('#home-template').html())}));
-    },
+        splash: function() {
+            this.loadView(new SplashView({model: new Splash(), template: _.template($('#splash-template').html())}));
+        },
 
-    extras: function() {
-        this.loadView(new app.views.Extras({model: new app.models.Filesystem, template: _.template($('#extras-template').html())}));
-    },
+        home : function() {
+            this.loadView(new HomeView({model: Geolocation.Here, template: _.template($('#home-template').html())}));
+        },
 
-    placement : function() {
-        this.loadView(new app.views.Placement({model: app.Here, template: _.template($('#placement-template').html())}));
-    },
+        extras: function() {
+            this.loadView(new ExtrasView({model: new Filesystem(), template: _.template($('#extras-template').html())}));
+        },
 
-    caution: function() {
-        this.loadView(new app.views.Caution({model: app.Here, template: _.template($('#caution-template').html())}));
-    },
+        placement : function() {
+            this.loadView(new PlacementView({model: Geolocation.Here, template: _.template($('#placement-template').html())}));
+        },
 
-    confirm: function() {
-        this.loadView(new app.views.Confirm({model: app.Here, template: _.template($('#confirm-template').html())}));
-    },
+        caution: function() {
+            this.loadView(new CautionView({model: Geolocation.Here, template: _.template($('#caution-template').html())}));
+        },
 
-    loadView : function(view) {
-        this.view && this.view.remove();
-        this.view = view;
-        $("#content").append(this.view.render().el);
-    }
+        confirm: function() {
+            this.loadView(new ConfirmView({model: Geolocation.Here, template: _.template($('#confirm-template').html())}));
+        },
+
+        loadView : function(view) {
+            this.view && this.view.remove();
+            this.view = view;
+            $("#content").append(this.view.render().el);
+        }
+    });
+
+    return Router;
 });

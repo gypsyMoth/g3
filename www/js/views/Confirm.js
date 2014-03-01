@@ -1,10 +1,12 @@
-/**
- * Created by Ian on 1/20/14.
- */
-(function () {
+define(['underscore', 
+    'backbone',
+    'src/util/DB',
+    'src/util/Geolocation',
+    'src/util/Controller'
+], function(_, Backbone, DB, Geolocation, Controller) {
     'use strict';
 
-    app.views.Confirm = Backbone.View.extend({
+    var Confirm = Backbone.View.extend({
 
         tagName: "div",
 
@@ -25,16 +27,21 @@
         },
 
         onOkClicked: function() {
-            this.model.saveSites();
-            app.db.logOperation(this.model.codedString()).then( function() {
-                app.db.saveSites(app.SitesList).then( function() {
-                    app.pageRouter.navigate('home', {trigger: true, replace: true});
+            var that = this;
+            that.model.saveSites();
+            DB.initialize().then(function() {
+                DB.logOperation(that.model.codedString()).then( function() {
+                    DB.saveSites(Geolocation.SitesList).then( function() {
+                        Controller.router.navigate('home', {trigger: true, replace: true});
+                    });
                 });
             });
         },
 
         onCancelClicked: function() {
-            app.pageRouter.navigate('home', {trigger: true, replace: true});
+            Controller.router.navigate('home', {trigger: true, replace: true});
         }
     });
-})();
+
+    return Confirm;
+});

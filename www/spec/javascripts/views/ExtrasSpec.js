@@ -1,19 +1,19 @@
-/* Created by Ian on 1/23/14.*/
+define(["jquery", "src/app", "src/models/CurrentPosition", "src/views/Extras"], function($, app, CurrentPosition, ExtrasView) {
+    $(describe("Extras View", function() {
+        var view;
 
-$(describe("Extras View", function() {
-    var view;
+        beforeEach(function() {
+            loadFixtures('extras.html');
+            $('body').append();
+            view = new ExtrasView({model: new CurrentPosition(), template: _.template($('#extras-template').html())});
+        });
 
-    beforeEach(function() {
-        loadFixtures('extras.html');
-        $('body').append();
-        view = new app.views.Extras({model: new app.models.CurrentPosition(), template: _.template($('#extras-template').html())});
-    });
+        it("Can be instantiated", function() {
+            expect(view).toBeDefined();
+        });
 
-    it("Can be instantiated", function() {
-        expect(view).toBeDefined();
-    });
-
-    it("Has a model", function() {
-        expect(view.model).toBeDefined();
-    });
-}));
+        it("Has a model", function() {
+            expect(view.model).toBeDefined();
+        });
+    }));
+});

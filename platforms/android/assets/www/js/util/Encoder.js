@@ -1,11 +1,7 @@
-/**
- * Created by Ian on 1/28/14.
- */
-
-app.encoder = (function () {
+define (function () { 'use strict';
     var my = {};
 
-    my.constants = {
+    my.transactionLog = {
         "BANG": "#",
         "ROW": "000",
         "MESSAGE": "01234567890123",
@@ -15,14 +11,30 @@ app.encoder = (function () {
         "DOLLAR": "$"
     };
 
+    my.operationTypes = {
+        ERROR: 'ERROR',
+        UNADDRESSED: 'UNADDRESSED',
+        PLACED: 'PLACED',
+        OMITTED: 'OMITTED',
+        MIDSEASON: 'MIDSEASON',
+        FINAL: 'FINAL'
+    };
+
     my.getString = function(currentPosition) {
         var ret = my.constants.BANG;
         ret += my.constants.ROW;
         ret += my.constants.MESSAGE;
         ret += my.constants.HEMISPHERE;
+    };
 
+    my.rpad = function (string, width, padding) {
+        return (width <= string.length) ? string : this.rpad(string + padding, width, padding);
+    };
+
+    my.lpad = function (string, width, padding) {
+        return (width <= string.length) ? string : this.lpad(padding + string, width, padding);
     };
 
     return my;
 
-})();
+});

@@ -1,8 +1,10 @@
-/*Created by Ian on 1/18/14.*/
-(function () {
-    'use strict';
+define(['underscore',
+    'backbone',
+    'src/util/Date',
+    'src/util/Controller'
+], function(_, Backbone, Date, Controller) { 'use strict';
 
-    app.views.Placement = Backbone.View.extend({
+    var PlacementView = Backbone.View.extend({
 
         tagName: "div",
 
@@ -28,9 +30,9 @@
         onOkClicked: function() {
             var site = this.model.get("relativePosition");
             if (site.DistanceOutside > 0) {
-                app.pageRouter.navigate('caution', {trigger: true, replace: true});
+                Controller.router.navigate('caution', {trigger: true, replace: true});
             } else {
-                app.pageRouter.navigate('confirm', {trigger: true, replace: true});
+                Controller.router.navigate('confirm', {trigger: true, replace: true});
             }
         },
 
@@ -39,7 +41,7 @@
         },
 
         onCancelClicked: function() {
-            app.pageRouter.navigate('home', {trigger: true, replace: true});
+            Controller.router.navigate('home', {trigger: true, replace: true});
         },
 
         onTraptypeChanged: function(e) {
@@ -58,8 +60,9 @@
             op.northing = utm.Northing;
             op.accuracy = latlon.Accuracy;
             op.traptype = site.trap_type;
-            op.date = app.DateFormatter.getSitesFormatDate();
+            op.date = Date.getSitesFormatDate();
         }
-
     });
-})();
+
+    return PlacementView;
+});

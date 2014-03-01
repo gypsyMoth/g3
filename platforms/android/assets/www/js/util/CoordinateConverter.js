@@ -1,8 +1,5 @@
-/**
- * Created by Ian on 12/22/13.
- */
+define (function () { 'use strict';
 
-app.CoordinateConverter = (function () {
     var my = {};
 
     //Constants
@@ -135,4 +132,4 @@ app.CoordinateConverter = (function () {
     };
 
     return my;
-}());
+});
