@@ -27,9 +27,10 @@ define(['underscore',
         },
 
         onOkClicked: function() {
-            this.model.saveSites();
+            var that = this;
+            that.model.saveSites();
             DB.initialize().then(function() {
-                DB.logOperation(this.model.codedString()).then( function() {
+                DB.logOperation(that.model.codedString()).then( function() {
                     DB.saveSites(Geolocation.SitesList).then( function() {
                         Controller.router.navigate('home', {trigger: true, replace: true});
                     });
