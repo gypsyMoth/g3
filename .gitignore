@@ -1,5 +1,5 @@
 ## Ignore WebStorm project files
-.idea/
+.idea/*
 
 ## Ignore local properties files
 platforms/android/local.properties
