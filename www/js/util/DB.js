@@ -13,24 +13,17 @@ define (['jquery'], function ($) {
         return getFileSystem().then(getRootDirectory);
     };
 
-    var getFileSystem = function () {
+    var getFileSystem = function() {
         var deferred = new $.Deferred();
         checkIfFileSystemIsDefined();
 
         var grantedBytes = 0;
         window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
         //window.webkitStorageInfo.requestQuota(PERSISTENT, 1024*1024, function(grantedBytes) {
-<<<<<<< HEAD
-        window.requestFileSystem(PERSISTENT, grantedBytes, function (fileSystem) {
-            app.Filesystem = fileSystem;
-            deferred.resolve();
-        }, app.fail);
-=======
         window.requestFileSystem(PERSISTENT, grantedBytes, function(fileSystem) {
                 my.filesystem = fileSystem;
                 deferred.resolve();
             }, my.fail);
->>>>>>> require
         //});
         return deferred.promise();
     };
@@ -39,7 +32,7 @@ define (['jquery'], function ($) {
         if (typeof LocalFileSystem === 'undefined') {
             PERSISTENT = window.PERSISTENT;
         } else {
-            PERSISTENT = LocalFileSystem.PERSISTENT;
+            PERSISTENT = LocalFileSystem.PERSISTENT ;
         }
     };
 
@@ -52,7 +45,7 @@ define (['jquery'], function ($) {
         return deferred.promise();
     };
 
-    my.countFiles = function () {
+    my.countFiles = function() {
         var deferred = new $.Deferred();
         var directoryReader = my.root.createReader();
         var fileCount = directoryReader.readEntries(function(entries) {
