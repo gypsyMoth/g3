@@ -137,6 +137,7 @@ module.exports = [
         ]
     },
     {
+<<<<<<< HEAD
         "file": "plugins/org.apache.cordova.geolocation/www/Coordinates.js",
         "id": "org.apache.cordova.geolocation.Coordinates",
         "clobbers": [
@@ -162,6 +163,19 @@ module.exports = [
         "id": "org.apache.cordova.geolocation.geolocation",
         "clobbers": [
             "navigator.geolocation"
+=======
+        "file": "plugins/org.apache.cordova.file-transfer/www/FileTransferError.js",
+        "id": "org.apache.cordova.file-transfer.FileTransferError",
+        "clobbers": [
+            "window.FileTransferError"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.file-transfer/www/FileTransfer.js",
+        "id": "org.apache.cordova.file-transfer.FileTransfer",
+        "clobbers": [
+            "window.FileTransfer"
+>>>>>>> e77cce2b72a4764908905ee197c6e92dc82378ec
         ]
     }
 ];
@@ -169,7 +183,11 @@ module.exports.metadata =
 // TOP OF METADATA
 {
     "org.apache.cordova.file": "1.0.0",
+<<<<<<< HEAD
     "org.apache.cordova.geolocation": "0.3.6"
+=======
+    "org.apache.cordova.file-transfer": "0.4.1"
+>>>>>>> e77cce2b72a4764908905ee197c6e92dc82378ec
 }
 // BOTTOM OF METADATA
 });

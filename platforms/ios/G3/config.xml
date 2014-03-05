@@ -79,7 +79,12 @@
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="*" />
+<<<<<<< HEAD
     <feature name="Geolocation">
         <param name="ios-package" value="CDVLocation" />
+=======
+    <feature name="FileTransfer">
+        <param name="ios-package" value="CDVFileTransfer" />
+>>>>>>> e77cce2b72a4764908905ee197c6e92dc82378ec
     </feature>
 </widget>
