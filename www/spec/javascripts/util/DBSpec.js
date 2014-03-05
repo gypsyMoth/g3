@@ -1,13 +1,13 @@
-define(["src/util/DB"], function(db) {
+define(["src/util/DB"], function(db) { 'use strict';
 
-    xdescribe("DB Module", function() {
+    describe("DB Module", function() {
 
         db.initialize().then(
             describe("After initialization", function() {
                 it("Has filesystem and root defined", function(done) {
                     db.initialize().then( function() {
-                    expect(Filesystem).toBeDefined();
-                    expect(Root).toBeDefined();
+                    expect(db.filesystem).toBeDefined();
+                    expect(db.root).toBeDefined();
                },
                function(error){
                 console.log(expect());
@@ -18,7 +18,7 @@ define(["src/util/DB"], function(db) {
 
                 it("Can check for files in local storage", function(done) {
                     db.countFiles().then( function() {
-                            expect(fileCount).toBeDefined();
+                            expect(db.fileCount).toBeDefined();
                         },
                         function(error){
                             console.log(expect());

@@ -6,6 +6,7 @@ define (['jquery'], function ($) {
 
     my.root = null;
     my.filesystem = null;
+    my.filecount = 0;
     my.sitesFile = 'TX_1.json';
     my.activityLog = "trans_log.txt";
 
@@ -20,10 +21,12 @@ define (['jquery'], function ($) {
         var grantedBytes = 0;
         window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
         //window.webkitStorageInfo.requestQuota(PERSISTENT, 1024*1024, function(grantedBytes) {
-        window.requestFileSystem(PERSISTENT, grantedBytes, function(fileSystem) {
-                my.filesystem = fileSystem;
-                deferred.resolve();
-            }, my.fail);
+            window.requestFileSystem(PERSISTENT, grantedBytes, function(fileSystem) {
+                    my.filesystem = fileSystem;
+                    deferred.resolve();
+                }, function(error) {
+                    console.error("getFileSystem: " + error.code);
+            });
         //});
         return deferred.promise();
     };
@@ -41,7 +44,9 @@ define (['jquery'], function ($) {
         my.filesystem.root.getDirectory("G3", {create: true, exclusive: false }, function(dirEntry) {
             my.root = dirEntry;
             deferred.resolve();
-        }, my.fail);
+        }, function(error) {
+            console.error("getRootDirectory: " + error.code);
+        });
         return deferred.promise();
     };
 
