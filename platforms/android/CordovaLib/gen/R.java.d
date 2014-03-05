@@ -1,1 +1,1 @@
- : C:\Users\Ian\Documents\g3-test\g3\platforms\android\CordovaLib\bin\AndroidManifest.xml \
+ : C:\Dev\Repo\g3\platforms\android\CordovaLib\bin\AndroidManifest.xml \
