@@ -21,6 +21,7 @@ define(['underscore',
             "click #btnExtrasLoadLocal": "onLoadLocalClicked",
             "click #btnExtrasDownload": "onDownloadClicked",
             "click #btnExtrasUpload": "onUploadClicked",
+			"click #btnExtrasHistory": "onHistoryClicked",
             "click #btnExtrasCancel": "onCancelClicked"
         },
 
@@ -49,6 +50,10 @@ define(['underscore',
         onUploadClicked: function() {
             alert("Upload Data not implemented");
             //Controller.router.navigate('home', {trigger: true, replace: true});
+        },
+		
+		onHistoryClicked: function() {
+            Controller.router.navigate('history', {trigger: true, replace: true});
         },
 
         onCancelClicked: function() {
