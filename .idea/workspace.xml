@@ -2,50 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20da09c5-c3ea-40cf-8e84-b3fc505237dd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/G3/Plugins/org.apache.cordova.geolocation/CDVLocation.h" afterPath="$PROJECT_DIR$/platforms/ios/G3/Plugins/org.apache.cordova.geolocation/CDVLocation.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/ios/CDVLocation.h" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/ios/CDVLocation.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/G3/Plugins/org.apache.cordova.geolocation/CDVLocation.m" afterPath="$PROJECT_DIR$/platforms/ios/G3/Plugins/org.apache.cordova.geolocation/CDVLocation.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/ios/CDVLocation.m" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/ios/CDVLocation.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/AndroidManifest.xml" afterPath="$PROJECT_DIR$/platforms/android/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.geolocation/www/Coordinates.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.geolocation/www/Coordinates.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/.staging/www/plugins/org.apache.cordova.geolocation/www/Coordinates.js" afterPath="$PROJECT_DIR$/platforms/ios/.staging/www/plugins/org.apache.cordova.geolocation/www/Coordinates.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/www/Coordinates.js" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/www/Coordinates.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/amazon/CordovaLocationListener.java" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/amazon/CordovaLocationListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/android/CordovaLocationListener.java" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/android/CordovaLocationListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/util/DB.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/util/DB.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/util/DB.js" afterPath="$PROJECT_DIR$/www/js/util/DB.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/amazon/GPSListener.java" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/amazon/GPSListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/android/GPSListener.java" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/android/GPSListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/amazon/GeoBroker.java" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/amazon/GeoBroker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/android/GeoBroker.java" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/android/GeoBroker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/wp/GeoLocation.cs" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/wp/GeoLocation.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/firefoxos/GeolocationProxy.js" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/firefoxos/GeolocationProxy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/windows8/GeolocationProxy.js" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/windows8/GeolocationProxy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/www/blackberry10/GeolocationProxy.js" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/www/blackberry10/GeolocationProxy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/LICENSE" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/amazon/NetworkListener.java" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/amazon/NetworkListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/android/NetworkListener.java" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/android/NetworkListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/DirectoryEntry.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/DirectoryEntry.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/DirectoryReader.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/DirectoryReader.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/Entry.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/Entry.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/File.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/File.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileEntry.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileEntry.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileError.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileError.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileReader.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileReader.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileSystem.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileSystem.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/android/FileSystem.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/android/FileSystem.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer/www/FileTransfer.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer/www/FileTransfer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer/www/FileTransferError.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer/www/FileTransferError.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileUploadOptions.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileUploadOptions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileUploadResult.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileUploadResult.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileWriter.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileWriter.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/Flags.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/Flags.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/LocalFileSystem.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/LocalFileSystem.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/Metadata.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/Metadata.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.geolocation/www/Position.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.geolocation/www/Position.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/.staging/www/plugins/org.apache.cordova.geolocation/www/Position.js" afterPath="$PROJECT_DIR$/platforms/ios/.staging/www/plugins/org.apache.cordova.geolocation/www/Position.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/www/Position.js" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/www/Position.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.geolocation/www/PositionError.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.geolocation/www/PositionError.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/.staging/www/plugins/org.apache.cordova.geolocation/www/PositionError.js" afterPath="$PROJECT_DIR$/platforms/ios/.staging/www/plugins/org.apache.cordova.geolocation/www/PositionError.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/www/PositionError.js" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/www/PositionError.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/README.md" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/RELEASENOTES.md" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/RELEASENOTES.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/android.json" afterPath="$PROJECT_DIR$/plugins/android.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/G3/config.xml" afterPath="$PROJECT_DIR$/platforms/ios/G3/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/ProgressEvent.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/ProgressEvent.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/cordova_plugins.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/cordova_plugins.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/.staging/www/cordova_plugins.js" afterPath="$PROJECT_DIR$/platforms/ios/.staging/www/cordova_plugins.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/ubuntu/geolocation.cpp" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/ubuntu/geolocation.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/ubuntu/geolocation.h" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/src/ubuntu/geolocation.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.geolocation/www/geolocation.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.geolocation/www/geolocation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/.staging/www/plugins/org.apache.cordova.geolocation/www/geolocation.js" afterPath="$PROJECT_DIR$/platforms/ios/.staging/www/plugins/org.apache.cordova.geolocation/www/geolocation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/www/geolocation.js" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/www/geolocation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/doc/index.md" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/doc/index.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/ios.json" afterPath="$PROJECT_DIR$/plugins/ios.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/package.json" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/plugin.xml" afterPath="$PROJECT_DIR$/plugins/org.apache.cordova.geolocation/plugin.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/ios/G3.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/platforms/ios/G3.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/requestFileSystem.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/requestFileSystem.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/resolveLocalFileSystemURI.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/resolveLocalFileSystemURI.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="g3.iws" />
@@ -87,10 +69,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="App.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="App.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="26" selection-start="1684" selection-end="1684" vertical-scroll-proportion="0.0" vertical-offset="901" max-vertical-offset="1139">
+            <state line="53" column="26" selection-start="1684" selection-end="1684" vertical-scroll-proportion="1.6381818" vertical-offset="0" max-vertical-offset="1139">
               <folding />
             </state>
           </provider>
@@ -99,16 +81,16 @@
       <file leaf-file-name="DB.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/util/DB.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="173" column="3" selection-start="5583" selection-end="5583" vertical-scroll-proportion="0.0" vertical-offset="2446" max-vertical-offset="3043">
+            <state line="35" column="9" selection-start="1116" selection-end="1116" vertical-scroll-proportion="0.0" vertical-offset="370" max-vertical-offset="3043">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="config.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="58" selection-start="1876" selection-end="1876" vertical-scroll-proportion="1.179396" vertical-offset="50" max-vertical-offset="1547">
+            <state line="42" column="58" selection-start="1876" selection-end="1876" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1547">
               <folding />
             </state>
           </provider>
@@ -246,6 +228,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -288,13 +271,30 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="merges" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -349,14 +349,6 @@
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -367,15 +359,23 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="CHROME" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
@@ -428,13 +428,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="728" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28666666" sideWeight="0.6702454" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28666666" sideWeight="0.6702454" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46625766" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.05305466" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -670,16 +670,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/views/Extras.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="3" selection-start="1756" selection-end="1756" vertical-scroll-proportion="0.0" vertical-offset="543" max-vertical-offset="1105">
-          <folding />
-        </state>
+        <state line="59" column="3" selection-start="1756" selection-end="1756" vertical-scroll-proportion="0.0" vertical-offset="543" max-vertical-offset="1105" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/ConfirmSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="11" selection-start="667" selection-end="667" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190">
-          <folding />
-        </state>
+        <state line="23" column="11" selection-start="667" selection-end="667" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/ExtrasSpec.js">
@@ -724,30 +720,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/App.js">
+    <entry file="file://$PROJECT_DIR$/plugins/android.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="26" selection-start="1684" selection-end="1684" vertical-scroll-proportion="0.0" vertical-offset="543" max-vertical-offset="1139">
+        <state line="0" column="170" selection-start="170" selection-end="170" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="503" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="58" selection-start="1876" selection-end="1876" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1547">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/util/DB.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="173" column="3" selection-start="5583" selection-end="5583" vertical-scroll-proportion="0.0" vertical-offset="2446" max-vertical-offset="3043">
+        <state line="35" column="9" selection-start="1116" selection-end="1116" vertical-scroll-proportion="0.0" vertical-offset="370" max-vertical-offset="3043">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/android.json">
+    <entry file="file://$PROJECT_DIR$/www/js/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="170" selection-start="170" selection-end="170" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="503">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="58" selection-start="1876" selection-end="1876" vertical-scroll-proportion="1.179396" vertical-offset="50" max-vertical-offset="1547">
+        <state line="53" column="26" selection-start="1684" selection-end="1684" vertical-scroll-proportion="1.6381818" vertical-offset="0" max-vertical-offset="1139">
           <folding />
         </state>
       </provider>
