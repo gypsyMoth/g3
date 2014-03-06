@@ -16,12 +16,17 @@ define(['underscore',
         },
 
         events: {
+            "click #btnHistoryNext": "onNextClicked",
             "click #btnHistoryClose": "onCloseClicked"
         },
 
         render: function() {
-            this.$el.html(this.template());
+            this.$el.html(this.template(this.model.toJSON()));
             return this;
+        },
+
+        onNextClicked: function() {
+            Controller.router.navigate('home', {trigger: true, replace: true});
         },
 
         onCloseClicked: function() {

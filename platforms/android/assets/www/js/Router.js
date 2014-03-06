@@ -4,6 +4,7 @@ define(['jquery',
     'src/util/Geolocation',
     'src/models/FileSystem',
     'src/models/Splash',
+    'src/models/Transaction',
     'src/views/Splash',
     'src/views/Home',
     'src/views/Extras',
@@ -11,7 +12,7 @@ define(['jquery',
     'src/views/Caution',
     'src/views/Confirm',
 	'src/views/History'
-], function($, _, Backbone, Geolocation, Filesystem, Splash, SplashView, HomeView, ExtrasView, PlacementView, CautionView, ConfirmView, HistoryView) {
+], function($, _, Backbone, Geolocation, Filesystem, Splash, Transaction, SplashView, HomeView, ExtrasView, PlacementView, CautionView, ConfirmView, HistoryView) {
     'use strict';
 
     var Router = Backbone.Router.extend({
@@ -50,7 +51,7 @@ define(['jquery',
         },
 		
 		history: function() {
-			this.loadView(new HistoryView({template: _.template($('#history-template').html())}));
+			this.loadView(new HistoryView({model: new Transaction(), template: _.template($('#history-template').html())}));
 		},
 
         loadView : function(view) {

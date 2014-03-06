@@ -14,7 +14,14 @@ define (function () { 'use strict';
         //"2013-02-06T00:00:00-00:00"
         var parts = [];
         parts = dateString.split('-');
-        return parts[1] + '/' + parts[2].substring(0,2) + '/' + parts[0].substring(2,4);
+        var day = '';
+        if (parts[2].length === 5){
+            day = parts[2].substring(0,2);
+        }
+        else {
+            day = parts[2].substring(0,1);
+        }
+        return parts[1] + '/' + day + '/' + parts[0].substring(2,4);
     };
 
     my.getOperationFormatDate = function() {

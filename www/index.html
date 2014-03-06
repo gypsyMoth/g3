@@ -121,11 +121,14 @@
 			<script type="text/template" id="history-template">
                 <div id="historyHeader" class="formHeader">
                     <span id="historyMessage" class="message">
-                        No History Yet!
+                    There are <%=transactions%> transactions.
                     </span>
                 </div>
                 <div id="historyFooter" class="formFooter">
-                    <input type="button" id="btnHistoryClose" class="cancelButton" value="Cancel">
+                    <% if(transactions > 5) { %>
+                    <input type="button" id="btnHistoryNext" class="gadgetButton" value="Next">
+                    <% } %>
+                    <input type="button" id="btnHistoryClose" class="cancelButton" value="Exit">
                 </div>
             </script>
         </div>
