@@ -2,7 +2,7 @@ define(['underscore',
     'backbone',
     'src/util/Encoder',
     'src/util/Date'
-], function(_, Backbone, Encoder, Date) {
+], function(_, Backbone, Encoder, DateFormatter) {
     'use strict';
 
     var CurrentPosition = Backbone.Model.extend({
@@ -50,7 +50,7 @@ define(['underscore',
                 message = 'No trap at this site';
             } else if (typeof site.visit === 'undefined') {
                 var traptype = site.trap_type;
-                var date = Date.getScreenFormatDate(site.txn_date);
+                var date = DateFormatter.getScreenFormatDate(site.txn_date);
                 message = traptype + ' trap placed here on ' + date;
             } else {
                 message = 'Invalid site';
@@ -81,7 +81,7 @@ define(['underscore',
             ret += op.easting + ',';
             ret += op.northing + ',';
             ret += Encoder.rpad((op.accuracy + '.'), 5, '0') + ',';
-            ret += Date.getOperationFormatDate() + ',';
+            ret += DateFormatter.getOperationFormatDate(Date.now()) + ',';
             ret += '00:00:00' + ',';
             ret += Encoder.transactionLog.PLACEHOLDER + ',';
             ret += Encoder.transactionLog.ZERO + ',';
