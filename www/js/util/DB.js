@@ -1,4 +1,4 @@
-define (['jquery'], function ($) {
+define (['jquery', 'underscore'], function ($, _) {
     'use strict';
     var my = {};
 
@@ -41,7 +41,8 @@ define (['jquery'], function ($) {
 
     var getRootDirectory = function() {
         var deferred = new $.Deferred();
-        my.filesystem.root.getDirectory("G3", {create: true, exclusive: false }, function(dirEntry) {
+        console.log(my.filesystem.root.toURL());
+        my.filesystem.root.getDirectory("G3", {create: true, exclusive: false}, function(dirEntry) {
             my.root = dirEntry;
             deferred.resolve();
         }, function(error) {
@@ -50,19 +51,35 @@ define (['jquery'], function ($) {
         return deferred.promise();
     };
 
-    my.countFiles = function() {
+    my.getSitesFiles = function() {
         var deferred = new $.Deferred();
+        var sitesFiles = [];
         var directoryReader = my.root.createReader();
-        var fileCount = directoryReader.readEntries(function(entries) {
-           my.fileCount = entries.length;
-           deferred.resolve();
+        directoryReader.readEntries(function(entries) {
+           sitesFiles = my.filterSitesFiles(entries);
+           deferred.resolve(sitesFiles);
         }, my.fail);
         return deferred.promise();
     };
 
-    my.loadSites = function(state, bidunit) {
+    my.filterSitesFiles = function(entries) {
+        var reg = /([^\s]+(\.(json|JSON))$)/;
+        return _.filter(entries, function(entry) {
+            return entry.isFile && reg.test(entry.name);
+        });
+    };
+
+//    my.loadSites = function(state, bidunit) {
+//        var deferred = new $.Deferred();
+//        getFileEntry(my.root, makeFilename(state, bidunit), {create: false}).then(getFile).then(loadFile).then(function(data) {
+//            deferred.resolve(data);
+//        });
+//        return deferred.promise();
+//    };
+
+    my.loadSites = function(fileEntry) {
         var deferred = new $.Deferred();
-        getFileEntry(my.root, makeFilename(state, bidunit), {create: false}).then(getFile).then(loadFile).then(function(data) {
+        getFile(fileEntry).then(loadFile).then(function(data) {
             deferred.resolve(data);
         });
         return deferred.promise();
