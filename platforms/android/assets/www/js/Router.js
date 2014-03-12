@@ -4,13 +4,15 @@ define(['jquery',
     'src/util/Geolocation',
     'src/models/FileSystem',
     'src/models/Splash',
+    'src/util/Transactions',
     'src/views/Splash',
     'src/views/Home',
     'src/views/Extras',
     'src/views/Placement',
     'src/views/Caution',
-    'src/views/Confirm'
-], function($, _, Backbone, Geolocation, Filesystem, Splash, SplashView, HomeView, ExtrasView, PlacementView, CautionView, ConfirmView) {
+    'src/views/Confirm',
+	'src/views/History'
+], function($, _, Backbone, Geolocation, Filesystem, Splash, Transactions, SplashView, HomeView, ExtrasView, PlacementView, CautionView, ConfirmView, HistoryView) {
     'use strict';
 
     var Router = Backbone.Router.extend({
@@ -20,7 +22,8 @@ define(['jquery',
             "extras" : "extras",
             "placement" : "placement",
             "caution" : "caution",
-            "confirm" : "confirm"
+            "confirm" : "confirm",
+			"history" : "history"
         },
 
         splash: function() {
@@ -46,6 +49,10 @@ define(['jquery',
         confirm: function() {
             this.loadView(new ConfirmView({model: Geolocation.Here, template: _.template($('#confirm-template').html())}));
         },
+		
+		history: function() {
+            this.loadView(new HistoryView({collection: new Transactions(), template: _.template($('#history-template').html())}));
+		},
 
         loadView : function(view) {
             this.view && this.view.remove();

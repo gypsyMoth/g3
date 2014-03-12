@@ -2,8 +2,9 @@ define(['underscore',
     'backbone', 
     'src/util/DB',
     'src/util/Geolocation',
-    'src/util/Controller'
-], function(_, Backbone, DB, Geolocation, Controller) { 'use strict';
+    'src/util/Controller',
+    'src/util/Transactions'
+], function(_, Backbone, DB, Geolocation, Controller, Transactions) { 'use strict';
 
     var Extras = Backbone.View.extend({
 
@@ -21,6 +22,7 @@ define(['underscore',
             "click #btnExtrasLoadLocal": "onLoadLocalClicked",
             "click #btnExtrasDownload": "onDownloadClicked",
             "click #btnExtrasUpload": "onUploadClicked",
+			"click #btnExtrasHistory": "onHistoryClicked",
             "click #btnExtrasCancel": "onCancelClicked"
         },
 
@@ -49,6 +51,10 @@ define(['underscore',
         onUploadClicked: function() {
             alert("Upload Data not implemented");
             //Controller.router.navigate('home', {trigger: true, replace: true});
+        },
+		
+		onHistoryClicked: function() {
+            Controller.router.navigate('history', {trigger: true, replace: true});
         },
 
         onCancelClicked: function() {
