@@ -49,6 +49,7 @@
         'util/NearestNeighborSpec',
         'models/CurrentPositionSpec',
         'models/RelativePositionSpec',
+        'models/SitesFileSpec',
         'views/CautionSpec',
         'views/ConfirmSpec',
         'views/ExtrasSpec',

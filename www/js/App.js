@@ -56,7 +56,7 @@ define(['jquery',
         this.Startup.set('message', 'Loading sites from file...');
         DB.getSitesFiles().then(_.bind(function(sitesFiles) {
             if (sitesFiles.length > 0) {
-                _.bind(loadSites, this, (sitesFiles[0]))();
+                _.bind(loadSites, this, (sitesFiles.first().get('fileEntry')))();
             } else {
                 exitApplication("No sites files found; please load at least one set of sites.");
             }
