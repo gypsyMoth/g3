@@ -2,7 +2,7 @@ define(['underscore',
     'backbone',
     'src/util/Date',
     'src/util/Controller'
-], function(_, Backbone, Date, Controller) { 'use strict';
+], function(_, Backbone, DateFormatter, Controller) { 'use strict';
 
     var PlacementView = Backbone.View.extend({
 
@@ -60,7 +60,7 @@ define(['underscore',
             op.northing = utm.Northing;
             op.accuracy = latlon.Accuracy;
             op.traptype = site.trap_type;
-            op.date = Date.getSitesFormatDate();
+            op.date = DateFormatter.getSitesFormatDate(Date.now());
         }
     });
 

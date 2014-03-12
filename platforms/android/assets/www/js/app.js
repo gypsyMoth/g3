@@ -38,9 +38,22 @@ define(['jquery',
 
     my.loadSites = function() {
         this.Startup.set('message', 'Loading sites from file...');
-        DB.loadSites('TX', 1).then(_.bind(function(data) {
-            Geolocation.SitesList = data;
-            _.bind(this.initializeGps, this)();
+
+        DB.getSitesFiles().then(_.bind(function(sitesFiles) {
+            if (sitesFiles.length > 0) {
+                DB.loadSites(sitesFiles[0]).then(_.bind(function(data) {
+                    Geolocation.SitesList = data;
+                    _.bind(this.initializeGps, this)();
+                }, this));
+            } else {
+                alert("No sites files found; please load at least one set of sites.");
+                if(navigator.app){
+                    navigator.app.exitApp();
+                }else if(navigator.device){
+                    navigator.device.exitApp();
+                }
+            }
+
         }, this));
     };
 
