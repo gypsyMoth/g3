@@ -114,7 +114,27 @@
                     <input type="button" id="btnExtrasLoadLocal" class="gadgetButton" value="Load Sites">
                     <input type="button" id="btnExtrasDownload" class="gadgetButton" value="Download Sites">
                     <input type="button" id="btnExtrasUpload" class="gadgetButton" value="Upload">
+					<input type="button" id="btnExtrasHistory" class="gadgetButton" value="History">
                     <input type="button" id="btnExtrasCancel" class="cancelButton" value="Cancel">
+                </div>
+            </script>
+			<script type="text/template" id="history-template">
+                <div id="historyHeader" class="formHeader">
+                    <table class="table">
+                        <tbody>
+                            <% _.each(transactions, function(trans) { %>
+                            <tr>
+                                <td>A <%= trans.get("trap") %> trap was placed here on <%= trans.get("date") %>.</td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="historyFooter" class="formFooter">
+                    <% if(transactions.length > 5) { %>
+                        <input type="button" id="btnHistoryNext" class="gadgetButton" value="Next">
+                    <% } %>
+                    <input type="button" id="btnHistoryClose" class="cancelButton" value="Exit">
                 </div>
             </script>
         </div>
