@@ -2,8 +2,9 @@ define(['underscore',
     'backbone', 
     'src/util/DB',
     'src/util/Geolocation',
-    'src/util/Controller'
-], function(_, Backbone, DB, Geolocation, Controller) { 'use strict';
+    'src/util/Controller',
+    'src/util/Transactions'
+], function(_, Backbone, DB, Geolocation, Controller, Transactions) { 'use strict';
 
     var Extras = Backbone.View.extend({
 

@@ -120,13 +120,19 @@
             </script>
 			<script type="text/template" id="history-template">
                 <div id="historyHeader" class="formHeader">
-                    <span id="historyMessage" class="message">
-                    There are <%=transactions%> transactions.
-                    </span>
+                    <table class="table">
+                        <tbody>
+                            <% _.each(transactions, function(trans) { %>
+                            <tr>
+                                <td>A <%= trans.get("trap") %> trap was placed here on <%= trans.get("date") %>.</td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
                 </div>
                 <div id="historyFooter" class="formFooter">
-                    <% if(transactions > 5) { %>
-                    <input type="button" id="btnHistoryNext" class="gadgetButton" value="Next">
+                    <% if(transactions.length > 5) { %>
+                        <input type="button" id="btnHistoryNext" class="gadgetButton" value="Next">
                     <% } %>
                     <input type="button" id="btnHistoryClose" class="cancelButton" value="Exit">
                 </div>

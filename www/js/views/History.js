@@ -21,7 +21,7 @@ define(['underscore',
         },
 
         render: function() {
-            this.$el.html(this.template(this.model.toJSON()));
+            this.$el.html(this.template({transactions: this.collection.models}));
             return this;
         },
 
