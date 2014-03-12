@@ -1,3 +1,6 @@
+## Ignore Phonegap build output
+platforms/android/assets/*
+
 ## Ignore WebStorm project files
 .idea/*
 

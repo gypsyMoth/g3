@@ -2,10 +2,175 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20da09c5-c3ea-40cf-8e84-b3fc505237dd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/spec/javascripts/views/HomeSpec.js" afterPath="$PROJECT_DIR$/www/spec/javascripts/views/HomeSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/gen/R.java.d" afterPath="$PROJECT_DIR$/platforms/android/CordovaLib/gen/R.java.d" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/gen/R.java.d" afterPath="$PROJECT_DIR$/platforms/android/gen/R.java.d" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/local.properties" afterPath="$PROJECT_DIR$/platforms/android/CordovaLib/local.properties" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/local.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/G3/TX_1.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/build.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/config.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/cordova.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/cordova_plugins.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/css/buttons.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/css/caution.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/css/gadget.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/css/home.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/css/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/css/jquery/jquery.mobile-1.3.2.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/css/jquery/jquery.mobile.structure-1.3.2.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/css/jquery/jquery.mobile.theme-1.3.2.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/auxRibbon.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/caution.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/caution.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/extras.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/greenDelta.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/greenMilkCarton.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/greenTree.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/omittedTree.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/redDelta.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/redMilkCarton.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/redTree.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/splash.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/img/splash.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/App.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/Main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/Router.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/lib/backbone-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/lib/jquery-2.0.3.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/lib/moment.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/lib/require-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/lib/require.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/lib/text.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/lib/underscore-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/models/CurrentPosition.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/models/FileSystem.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/models/RelativePosition.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/models/Splash.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/models/Transaction.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/util/Controller.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/util/CoordinateConverter.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/util/DB.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/util/Date.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/util/Encoder.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/util/Geolocation.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/util/NearestNeighbor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/util/Transactions.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/views/Caution.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/views/Confirm.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/views/Extras.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/views/History.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/views/Home.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/views/Placement.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/views/Splash.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/jsTestDriver.conf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/main.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/phonegap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer/www/FileTransfer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer/www/FileTransferError.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/DirectoryEntry.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/DirectoryReader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/Entry.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/File.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileEntry.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileError.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileReader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileSystem.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileUploadOptions.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileUploadResult.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileWriter.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/Flags.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/LocalFileSystem.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/Metadata.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/ProgressEvent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/android/FileSystem.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/requestFileSystem.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.file/www/resolveLocalFileSystemURI.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.geolocation/www/Coordinates.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.geolocation/www/Position.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.geolocation/www/PositionError.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/org.apache.cordova.geolocation/www/geolocation.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/r.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/icon/android/icon-36-ldpi.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/icon/android/icon-48-mdpi.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/icon/android/icon-72-hdpi.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/icon/android/icon-96-xhdpi.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/icon/bada-wac/icon-48-type5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/icon/bada-wac/icon-50-type3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/icon/bada-wac/icon-80-type4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/icon/bada/icon-128.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/icon/blackberry/icon-80.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/icon/ios/icon-57-2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/icon/ios/icon-57.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/icon/ios/icon-72-2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/icon/ios/icon-72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/icon/tizen/icon-128.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/icon/webos/icon-64.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/icon/windows-phone/icon-173-tile.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/icon/windows-phone/icon-48.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/icon/windows-phone/icon-62-tile.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/android/screen-hdpi-landscape.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/android/screen-hdpi-portrait.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/android/screen-ldpi-landscape.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/android/screen-ldpi-portrait.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/android/screen-mdpi-landscape.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/android/screen-mdpi-portrait.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/android/screen-xhdpi-landscape.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/android/screen-xhdpi-portrait.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/bada-wac/screen-type3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/bada-wac/screen-type4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/bada-wac/screen-type5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/bada/screen-portrait.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/blackberry/screen-225.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/ios/screen-ipad-landscape-2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/ios/screen-ipad-landscape.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/ios/screen-ipad-portrait-2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/ios/screen-ipad-portrait.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/ios/screen-iphone-landscape-2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/ios/screen-iphone-landscape.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/ios/screen-iphone-portrait-2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/ios/screen-iphone-portrait-568h-2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/ios/screen-iphone-portrait.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/tizen/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/webos/screen-64.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/res/screen/windows-phone/screen-portrait.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/AppSpec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/fixtures/caution.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/fixtures/confirm.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/fixtures/extras.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/fixtures/home.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/fixtures/placement.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/fixtures/splash.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/helper.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/lib/jasmine-1.2.0/JasmineAdapter.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/lib/jasmine-1.2.0/MIT.LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/lib/jasmine-1.2.0/jasmine-html.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/lib/jasmine-1.2.0/jasmine.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/lib/jasmine-1.2.0/jasmine.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/lib/jasmine-2.0.0/boot.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/lib/jasmine-2.0.0/console.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/lib/jasmine-2.0.0/jasmine-html.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/lib/jasmine-2.0.0/jasmine.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/lib/jasmine-2.0.0/jasmine.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/lib/jasmine-2.0.0/jasmine_favicon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/lib/jasmine-jquery/jasmine-jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/lib/jasmine-jquery/jquery-2.0.3.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/models/CurrentPositionSpec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/models/RelativePositionSpec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/specRunner.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/util/CoordinateConverterSpec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/util/DBSpec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/util/DateSpec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/util/EncoderSpec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/util/GeolocationSpec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/util/NearestNeighborSpec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/views/CautionSpec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/views/ConfirmSpec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/views/ExtrasSpec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/views/HomeSpec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/views/PlacementSpec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/platforms/android/assets/www/spec/javascripts/views/SplashSpec.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="g3.iws" />
@@ -38,15 +203,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="App.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/js/App.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="3" selection-start="2440" selection-end="2440" vertical-scroll-proportion="0.0" vertical-offset="952" max-vertical-offset="1462">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Home.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/views/Home.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -56,10 +212,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeSpec.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="HomeSpec.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/HomeSpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="185" column="70" selection-start="7343" selection-end="7343" vertical-scroll-proportion="0.53846157" vertical-offset="2907" max-vertical-offset="3417">
+            <state line="193" column="10" selection-start="7704" selection-end="7704" vertical-scroll-proportion="0.0" vertical-offset="2907" max-vertical-offset="3417">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="32" selection-start="134" selection-end="134" vertical-scroll-proportion="0.22417583" vertical-offset="0" max-vertical-offset="2924">
               <folding />
             </state>
           </provider>
@@ -192,7 +357,6 @@
         <option value="$PROJECT_DIR$/www/js/views/Caution.js" />
         <option value="$PROJECT_DIR$/www/js/views/Extras.js" />
         <option value="$PROJECT_DIR$/www/js/views/Confirm.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/www/spec/javascripts/AppSpec.js" />
         <option value="$PROJECT_DIR$/platforms/android/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/platforms/android/src/org/apache/cordova/geolocation/GeoBroker.java" />
@@ -214,6 +378,7 @@
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/platforms/android/CordovaLib/local.properties" />
         <option value="$PROJECT_DIR$/www/spec/javascripts/views/HomeSpec.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -276,7 +441,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
+              <option name="myItemId" value="platforms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="g3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platforms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -415,14 +598,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1358" height="728" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.67202574" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28837556" sideWeight="0.6702454" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28837556" sideWeight="0.6702454" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46625766" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19292605" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -567,11 +750,6 @@
     <entry file="file://$PROJECT_DIR$/www/js/views/Extras.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="59" column="3" selection-start="1756" selection-end="1756" vertical-scroll-proportion="0.0" vertical-offset="543" max-vertical-offset="1105" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="7" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="2873" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/spec/javascripts/AppSpec.js">
@@ -796,7 +974,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/spec/javascripts/views/HomeSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="185" column="70" selection-start="7343" selection-end="7343" vertical-scroll-proportion="0.53846157" vertical-offset="2907" max-vertical-offset="3417">
+        <state line="193" column="10" selection-start="7704" selection-end="7704" vertical-scroll-proportion="0.0" vertical-offset="2907" max-vertical-offset="3417">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="32" selection-start="134" selection-end="134" vertical-scroll-proportion="0.22417583" vertical-offset="0" max-vertical-offset="2924">
           <folding />
         </state>
       </provider>
