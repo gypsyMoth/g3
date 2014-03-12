@@ -33,27 +33,33 @@ define(['jquery',
         this.Startup = new Splash();
         Controller.router.loadView(new SplashView({model: this.Startup, template: _.template($('#splash-template').html())}));
         this.Startup.set('message', 'Initializing filesystem...');
-        DB.initialize().then(_.bind(this.loadSites, this));
+        DB.initialize().then(_.bind(this.initSites, this));
     };
 
-    my.loadSites = function() {
-        this.Startup.set('message', 'Loading sites from file...');
+    function exitApplication(message) {
+        alert(message);
+        if (navigator.app) {
+            navigator.app.exitApp();
+        } else if (navigator.device) {
+            navigator.device.exitApp();
+        }
+    }
 
+    function loadSites(sitesFile) {
+        DB.loadSites(sitesFile).then(_.bind(function (data) {
+            Geolocation.SitesList = data;
+            _.bind(this.initializeGps, this)();
+        }, this));
+    }
+
+    my.initSites = function() {
+        this.Startup.set('message', 'Loading sites from file...');
         DB.getSitesFiles().then(_.bind(function(sitesFiles) {
             if (sitesFiles.length > 0) {
-                DB.loadSites(sitesFiles[0]).then(_.bind(function(data) {
-                    Geolocation.SitesList = data;
-                    _.bind(this.initializeGps, this)();
-                }, this));
+                _.bind(loadSites, this, (sitesFiles[0]))();
             } else {
-                alert("No sites files found; please load at least one set of sites.");
-                if(navigator.app){
-                    navigator.app.exitApp();
-                }else if(navigator.device){
-                    navigator.device.exitApp();
-                }
+                exitApplication("No sites files found; please load at least one set of sites.");
             }
-
         }, this));
     };
 
