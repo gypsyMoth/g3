@@ -1,35 +1,56 @@
-define (['src/models/RelativePosition'], function (RelativePosition) { 'use strict';
+define (['underscore', 'src/models/RelativePosition'], function (_, RelativePosition) { 'use strict';
     var my = {};
+
+    my.nearestSites = [];
 
     my.Nearest = function(currentLocation, sites) {
         
-        var nearestSites  = initializeNearestSites(5),
-             currentPoint = {x: currentLocation.Easting, y: currentLocation.Northing},
+        var currentPoint = {x: currentLocation.Easting, y: currentLocation.Northing},
              nearestSite = {quad: '', site: ''},
              point,
              distance,
              site,
              i,
-             len;
+             len,
+             furthestSite;
+
+        my.nearestSites = initializeNearestSites(5);
 
         for (i = 0, len = sites.length; i < len; i++) {
             site = sites[i];
             if (site.zone === currentLocation.Zone) {
-                //siteFound = true;
                 point = getPoint(site);
                 distance = getDistance(point, currentPoint);
-
-                if (distance < nearestSites[0].relativePosition.get('distance')) {
-                    nearestSites[0].site = site;
-                    nearestSites[0].relativePosition.set('distance', Math.round(distance));
-                    nearestSites[0].relativePosition.set('distanceOutside', Math.round(distance - (site.grid * 0.3)));
-                    nearestSites[0].relativePosition.set('bearing', getBearingString(currentPoint, getPoint(site)));
-                    nearestSites[0].relativePosition.set('found', true);
+                furthestSite = isCloser(distance);
+                if (furthestSite !== 'undefined') {
+                    assignSite(furthestSite, distance, site, currentPoint);
                 }
             }
         }
+        my.nearestSites = _.sortBy(my.nearestSites, function(site){return site.relativePosition.get('distance'); });
 
-        return nearestSites[0];
+        return my.nearestSites;
+    };
+
+    var isCloser = function(distance) {
+        var furthestSite = null;        
+        my.nearestSites = _.sortBy(my.nearestSites, function(site){return -(site.relativePosition.get('distance')); });
+
+        _.each(my.nearestSites, function(site) {
+            if (distance < site.relativePosition.get('distance')) {
+                furthestSite = site;
+            }
+        });
+        
+        return furthestSite;
+    };
+
+    var assignSite = function (furthest, distance, site, currentPoint) {
+        furthest.site = site;
+        furthest.relativePosition.set('distance', Math.round(distance));
+        furthest.relativePosition.set('distanceOutside', Math.round(distance - (site.grid * 0.3)));
+        furthest.relativePosition.set('bearing', getBearingString(currentPoint, getPoint(site)));
+        furthest.relativePosition.set('found', true);
     };
     
     var initializeNearestSites = function(numberOfPoints) {

@@ -40,7 +40,7 @@ define(['jquery',
                 Accuracy: Math.round(position.coords.accuracy)
             };
             var nearest = NearestNeighbor.Nearest(utm, this.SitesList);
-            this.Here.set({currentLatLon: latLon, currentUtm: utm, relativePosition: nearest.relativePosition, site: nearest.site});
+            this.Here.set({currentLatLon: latLon, currentUtm: utm, relativePosition: nearest[0].relativePosition, site: nearest[0].site});
         };
 
     return my;
