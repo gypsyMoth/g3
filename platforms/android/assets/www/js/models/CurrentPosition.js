@@ -1,8 +1,9 @@
 define(['underscore',
     'backbone',
     'src/util/Encoder',
-    'src/util/Date'
-], function(_, Backbone, Encoder, DateFormatter) {
+    'src/util/Date',
+    'src/models/RelativePosition'
+], function(_, Backbone, Encoder, DateFormatter, RelativePositionModel) {
     'use strict';
 
     var CurrentPosition = Backbone.Model.extend({
@@ -17,12 +18,7 @@ define(['underscore',
                Northing: '',
                Zone: ''
            },
-           relativePosition: {
-               Distance: '',
-               Found: false,
-               Bearing: 'X',
-               DistanceOutside: 0
-           },
+           relativePosition: new RelativePositionModel(),
            site: {
                quad: '',
                site_id: ''
@@ -87,7 +83,7 @@ define(['underscore',
             ret += Encoder.transactionLog.ZERO + ',';
             ret += Encoder.rpad(site.quad, 5, ' ') + Encoder.lpad(site.site_id, 4, '0');
             ret += op.traptype === 'Delta' ? 'D' : 'M';
-            ret += rel.DistanceOutside > 0 ? 'B' : '';
+            ret += rel.get('distanceOutside') > 0 ? 'B' : '';
             ret += ',' + Encoder.transactionLog.DOLLAR;
             ret += '\r\n';
             return ret;

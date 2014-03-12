@@ -55,7 +55,7 @@ define(['underscore',
 
         checkTargetCircle: function () {
             var relativePosition = this.model.get('relativePosition');
-            var isOut = relativePosition.DistanceOutside > 0;
+            var isOut = relativePosition.get('distanceOutside') > 0;
             var site = this.model.get('site');
             var color = this.getColor(isOut);
             var imageSource = this.getOperationImage(isOut, site);

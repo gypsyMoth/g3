@@ -22,7 +22,7 @@ define(['src/util/NearestNeighbor'], function(NearestNeighbor) {
                 }];
                 var pIn = {Easting: 500000, Northing: 4000000, Zone: 17};
                 var nearest = NearestNeighbor.Nearest(pIn, list);
-                expect(nearest.relativePosition.Distance).toEqual(100);
+                expect(nearest.relativePosition.get('distance')).toEqual(100);
             });
     
             it ("Returns the distance between the site and the grid node, if there is no actual point", function() {
@@ -38,7 +38,7 @@ define(['src/util/NearestNeighbor'], function(NearestNeighbor) {
                 }];
                 var pIn = {Easting: 500000, Northing: 4000000, Zone: 17};
                 var nearest = NearestNeighbor.Nearest(pIn, list);
-                expect(nearest.relativePosition.Distance).toEqual(100);
+                expect(nearest.relativePosition.get('distance')).toEqual(100);
             });
     
             it ("Returns the nearest site and correct distance in the current zone, even if there are sites in multiple zones", function() {
@@ -52,7 +52,7 @@ define(['src/util/NearestNeighbor'], function(NearestNeighbor) {
                 var nearest = NearestNeighbor.Nearest(pIn, list);
                 var pOut = nearest.site;
                 expect(pOut).toEqual(list[2]);
-                expect(nearest.relativePosition.Distance).toEqual(6000);
+                expect(nearest.relativePosition.get('distance')).toEqual(6000);
             });
     
             it("Returns Found = false when no sites in zone", function() {
@@ -64,7 +64,7 @@ define(['src/util/NearestNeighbor'], function(NearestNeighbor) {
                 var pIn = {Easting: 528000, Northing: 4170000, Zone: 15};
                 var nearest = NearestNeighbor.Nearest(pIn, list);
                 var pOut = nearest.site;
-                expect(nearest.relativePosition.Found).toEqual(false);
+                expect(nearest.relativePosition.get('found')).toEqual(false);
             });
         });
     
@@ -76,7 +76,7 @@ define(['src/util/NearestNeighbor'], function(NearestNeighbor) {
             var bearingTest = function(currentLocation, expectedBearing) {
                 var nearest = NearestNeighbor.Nearest(currentLocation, list);
                 var pOut = nearest.site;
-                expect(nearest.relativePosition.Bearing).toEqual(expectedBearing);
+                expect(nearest.relativePosition.get('bearing')).toEqual(expectedBearing);
             };
     
             it("Returns 'N' when we're north of the point", function() {
@@ -104,14 +104,14 @@ define(['src/util/NearestNeighbor'], function(NearestNeighbor) {
                var pIn = {Easting: 445999, Northing: 4118000, Zone: 17}; // 1 meter away
                var nearest = NearestNeighbor.Nearest(pIn, list);
                var pOut = nearest.site;
-               expect(nearest.relativePosition.DistanceOutside).toBeLessThan(0);
+               expect(nearest.relativePosition.get('distanceOutside')).toBeLessThan(0);
            });
     
             it("Is > 0 when the current position is greater than 30% of the grid distance of the nearest site", function() {
                 var pIn = {Easting: 445099, Northing: 4118000, Zone: 17}; // 901 meters away
                 var nearest = NearestNeighbor.Nearest(pIn, list);
                 var pOut = nearest.site;
-                expect(nearest.relativePosition.DistanceOutside).toBeGreaterThan(0);
+                expect(nearest.relativePosition.get('distanceOutside')).toBeGreaterThan(0);
             });
     
         });

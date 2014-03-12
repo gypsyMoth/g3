@@ -48,6 +48,7 @@
         'util/GeolocationSpec',
         'util/NearestNeighborSpec',
         'models/CurrentPositionSpec',
+        'models/RelativePositionSpec',
         'views/CautionSpec',
         'views/ConfirmSpec',
         'views/ExtrasSpec',

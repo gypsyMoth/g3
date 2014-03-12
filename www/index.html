@@ -39,8 +39,8 @@
                 <div id="homeFooter" class="homeFooter">
                     <div id="distanceDiv" class="homeDiv">
                         <span id="distanceSpan" class="message">
-                            <% if(relativePosition.Found) { %>
-                            <%=relativePosition.Distance + " (&plusmn" + currentLatLon.Accuracy + ") meters " + relativePosition.Bearing%>
+                            <% if(relativePosition.get('found')) { %>
+                            <%=relativePosition.get('distance') + " (&plusmn" + currentLatLon.Accuracy + ") meters " + relativePosition.get('bearing')%>
                             <% } else { %>
                             <%="No sites found in zone " + currentUtm.Zone%>
                             <% } %>
@@ -100,7 +100,7 @@
 
                 <div id="cautionHeader" class="formHeader">
                     <span id="cautionMessage" class="message">
-                        You are <%=relativePosition.DistanceOutside %> meters outside the target circle.  Proceed?
+                        You are <%=relativePosition.get('distanceOutside') %> meters outside the target circle.  Proceed?
                     </span>
                 </div>
 

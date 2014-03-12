@@ -28,8 +28,8 @@ define(['underscore',
         },
 
         onOkClicked: function() {
-            var site = this.model.get("relativePosition");
-            if (site.DistanceOutside > 0) {
+            var relativePosition = this.model.get("relativePosition");
+            if (relativePosition.get('distanceOutside') > 0) {
                 Controller.router.navigate('caution', {trigger: true, replace: true});
             } else {
                 Controller.router.navigate('confirm', {trigger: true, replace: true});

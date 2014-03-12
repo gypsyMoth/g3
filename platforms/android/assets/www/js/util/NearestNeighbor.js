@@ -1,45 +1,44 @@
-define (function () { 'use strict';
+define (['src/models/RelativePosition'], function (RelativePosition) { 'use strict';
     var my = {};
 
     my.Nearest = function(currentLocation, sites) {
-        var distanceOutside = 0;
-        var bearing = "X";
-        var minimumDistance = Number.MAX_VALUE;
-        var currentPoint = {x: currentLocation.Easting, y: currentLocation.Northing};
-        var nearestSite = {quad: '', site: ''};
-        var point;
-        var distance;
-        var site;
-        var siteFound = false;
-        var i, len;
+        
+        var nearestSites  = initializeNearestSites(5),
+             currentPoint = {x: currentLocation.Easting, y: currentLocation.Northing},
+             nearestSite = {quad: '', site: ''},
+             point,
+             distance,
+             site,
+             i,
+             len;
 
         for (i = 0, len = sites.length; i < len; i++) {
             site = sites[i];
             if (site.zone === currentLocation.Zone) {
-                siteFound = true;
+                //siteFound = true;
                 point = getPoint(site);
                 distance = getDistance(point, currentPoint);
-                if (distance < minimumDistance) {
-                    nearestSite = site;
-                    minimumDistance = distance;
+
+                if (distance < nearestSites[0].relativePosition.get('distance')) {
+                    nearestSites[0].site = site;
+                    nearestSites[0].relativePosition.set('distance', Math.round(distance));
+                    nearestSites[0].relativePosition.set('distanceOutside', Math.round(distance - (site.grid * 0.3)));
+                    nearestSites[0].relativePosition.set('bearing', getBearingString(currentPoint, getPoint(site)));
+                    nearestSites[0].relativePosition.set('found', true);
                 }
             }
         }
 
-        if (siteFound) {
-            distanceOutside = minimumDistance - (nearestSite.grid * 0.3);
-            bearing = getBearingString(currentPoint, getPoint(nearestSite));
+        return nearestSites[0];
+    };
+    
+    var initializeNearestSites = function(numberOfPoints) {
+        var nearestPoints = [],
+            i;
+        for (i = 0; i < numberOfPoints; i++) {
+            nearestPoints.push({site: null, relativePosition: new RelativePosition()});
         }
-
-        return {
-            site: nearestSite,
-            relativePosition: {
-                Distance: Math.round(minimumDistance),
-                Bearing: bearing,
-                DistanceOutside: Math.round(distanceOutside),
-                Found: siteFound
-            }
-        };
+        return nearestPoints;
     };
 
     var getPoint = function(site) {
