@@ -55,7 +55,8 @@
         'views/ExtrasSpec',
         'views/HomeSpec',
         'views/PlacementSpec',
-        'views/SplashSpec'
+        'views/SplashSpec',
+        'views/LoadSitesSpec'
     ];
 
     require(['src/app', 'boot', 'jasmine-jquery'], function (App) {

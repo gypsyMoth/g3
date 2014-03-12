@@ -2,18 +2,34 @@ define(['jquery',
     'underscore',
     'backbone',
     'src/util/Geolocation',
+    'src/util/DB',
     'src/models/FileSystem',
     'src/models/Splash',
     'src/util/Transactions',
+    'src/collections/SitesFileCollection',
     'src/views/Splash',
     'src/views/Home',
     'src/views/Extras',
     'src/views/Placement',
     'src/views/Caution',
     'src/views/Confirm',
-	'src/views/History'
-], function($, _, Backbone, Geolocation, Filesystem, Splash, Transactions, SplashView, HomeView, ExtrasView, PlacementView, CautionView, ConfirmView, HistoryView) {
-    'use strict';
+	'src/views/History',
+    'src/views/LoadSites'
+], function($, _, Backbone,
+            Geolocation,
+            DB,
+            Filesystem,
+            Splash,
+            Transactions,
+            SitesFileCollection,
+            SplashView,
+            HomeView,
+            ExtrasView,
+            PlacementView,
+            CautionView,
+            ConfirmView,
+            HistoryView,
+            LoadSitesView) { 'use strict';
 
     var Router = Backbone.Router.extend({
         routes : {
@@ -23,7 +39,8 @@ define(['jquery',
             "placement" : "placement",
             "caution" : "caution",
             "confirm" : "confirm",
-			"history" : "history"
+			"history" : "history",
+            "loadSites" : "loadSites"
         },
 
         splash: function() {
@@ -52,7 +69,13 @@ define(['jquery',
 		
 		history: function() {
             this.loadView(new HistoryView({collection: new Transactions(), template: _.template($('#history-template').html())}));
-		},
+        },
+
+        loadSites: function() {
+            DB.getSitesFiles().then(_.bind(function(sitesFiles) {
+                this.loadView(new LoadSitesView({collection: sitesFiles, template: _.template($('#loadSites-template').html())}));
+            }, this));
+        },
 
         loadView : function(view) {
             this.view && this.view.remove();
