@@ -1,8 +1,9 @@
 define(["jquery",
     "underscore",
     "src/models/CurrentPosition",
+    "src/models/RelativePosition",
     "src/views/Home"
-], function($, _, CurrentPosition, HomeView) { 'use strict';
+], function($, _, CurrentPosition, RelativePosition, HomeView) { 'use strict';
 
     $(describe("Home View", function() {
        var view;
@@ -110,12 +111,7 @@ define(["jquery",
                Zone: 15
            };
 
-           var relativePosition = {
-               Distance: 100,
-               Bearing: 'N',
-               DistanceOutside: 0,
-               Found: true
-           };
+           var relativePosition = new  RelativePosition();
 
            var colorToHex = function(color) {
                if (color.substr(0, 1) === '#') {
@@ -132,7 +128,7 @@ define(["jquery",
            };
 
            var initModel = function(site, distanceOutside) {
-               relativePosition.DistanceOutside = distanceOutside;
+               relativePosition.set('distanceOutside', distanceOutside);
                view.model.set({currentUtm: utm});
                view.model.set({site: site});
                view.model.set({relativePosition: relativePosition});
