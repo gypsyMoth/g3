@@ -48,12 +48,14 @@
         'util/GeolocationSpec',
         'util/NearestNeighborSpec',
         'models/CurrentPositionSpec',
+        'models/TransactionSpec',
         'views/CautionSpec',
         'views/ConfirmSpec',
         'views/ExtrasSpec',
         'views/HomeSpec',
         'views/PlacementSpec',
-        'views/SplashSpec'
+        'views/SplashSpec',
+        'views/HistorySpec'
     ];
 
     require(['src/app', 'boot', 'jasmine-jquery'], function (App) {
