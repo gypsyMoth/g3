@@ -80,19 +80,19 @@ define(['src/util/NearestNeighbor'], function(NearestNeighbor) {
             };
     
             it("Returns 'N' when we're north of the point", function() {
-                  bearingTest({Easting: 446000, Northing: 4119000, Zone: 17}, "N");
+                  bearingTest({Easting: 446000, Northing: 4119000, Zone: 17}, "S");
             });
     
             it("Returns 'S' when we're south of the point", function() {
-                bearingTest({Easting: 446000, Northing: 4117000, Zone: 17}, "S");
+                bearingTest({Easting: 446000, Northing: 4117000, Zone: 17}, "N");
             });
     
             it("Returns 'E' when we're east of the point", function() {
-                bearingTest({Easting: 447000, Northing: 4118000, Zone: 17}, "E");
+                bearingTest({Easting: 447000, Northing: 4118000, Zone: 17}, "W");
             });
     
             it("Returns 'W' when we're west of the point", function() {
-                bearingTest({Easting: 445000, Northing: 4118000, Zone: 17}, "W");
+                bearingTest({Easting: 445000, Northing: 4118000, Zone: 17}, "E");
             });
         });
     

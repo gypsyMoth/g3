@@ -48,7 +48,7 @@ define (['underscore', 'src/models/RelativePosition'], function (_, RelativePosi
         furthest.site = site;
         furthest.relativePosition.set('distance', Math.round(distance));
         furthest.relativePosition.set('distanceOutside', Math.round(distance - (site.grid * 0.3)));
-        furthest.relativePosition.set('bearing', getBearingString(currentPoint, getPoint(site)));
+        furthest.relativePosition.set('bearing', getBearingString(getPoint(site), currentPoint));
         furthest.relativePosition.set('found', true);
     };
     
