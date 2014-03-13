@@ -13,7 +13,7 @@ define(['underscore',
 
         initialize: function(options) {
             this.template = options.template;
-            this.listenTo(this.model, 'change', this.render);
+            this.listenTo(this.model, 'change:relativePosition', this.render);
             Geolocation.start();
         },
 
