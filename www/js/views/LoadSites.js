@@ -39,6 +39,7 @@ define(['jquery',
         onOkClicked: function() {
             DB.loadSites(this.selectedItem.get('fileEntry')).then(_.bind(function (data) {
                 Geolocation.SitesList = data;
+                Geolocation.findNearest();
                 Controller.router.navigate('home', {trigger: true, replace: true});
             }, this));
 
