@@ -40,8 +40,8 @@
                 <div id="homeFooter" class="homeFooter">
                     <div id="distanceDiv" class="homeDiv">
                         <span id="distanceSpan" class="message">
-                            <% if(relativePosition.Found) { %>
-                            <%=relativePosition.Distance + " (&plusmn" + currentLatLon.Accuracy + ") meters " + relativePosition.Bearing%>
+                            <% if(relativePosition.get('found')) { %>
+                            <%=relativePosition.get('distance') + " (&plusmn" + currentLatLon.Accuracy + ") meters " + relativePosition.get('bearing')%>
                             <% } else { %>
                             <%="No sites found in zone " + currentUtm.Zone%>
                             <% } %>
@@ -101,7 +101,7 @@
 
                 <div id="cautionHeader" class="formHeader">
                     <span id="cautionMessage" class="message">
-                        You are <%=relativePosition.DistanceOutside %> meters outside the target circle.  Proceed?
+                        You are <%=relativePosition.get('distanceOutside') %> meters outside the target circle.  Proceed?
                     </span>
                 </div>
 
@@ -112,13 +112,26 @@
             </script>
             <script type="text/template" id="extras-template">
                 <div id="extrasFooter" class="formFooter">
-                    <input type="button" id="btnExtrasLoadLocal" class="gadgetButton" value="Load Sites">
-                    <input type="button" id="btnExtrasDownload" class="gadgetButton" value="Download Sites">
-                    <input type="button" id="btnExtrasUpload" class="gadgetButton" value="Upload">
-					<input type="button" id="btnExtrasHistory" class="gadgetButton" value="History">
+                    <input type="button" id="btnExtrasLoadSites" class="gadgetButton" value="Trapping Area">
+                    <input type="button" id="btnExtrasHistory" class="gadgetButton" value="History">
                     <input type="button" id="btnExtrasCancel" class="cancelButton" value="Cancel">
                 </div>
             </script>
+            <script type="text/template" id="loadSites-template">
+                <div id="loadSitesHeader" class="formHeader">
+                    <select id="selectSitesFile">
+                        <% _.each(sitesFiles, function(sitesFile) { %>
+                        <option><%= sitesFile.get('fileEntry').name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+
+                <div id="loadSitesFooter" class="formFooter">
+                    <input type="button" id="btnLoadSitesOk" class="gadgetButton" value="Ok">
+                    <input type="button" id="btnLoadSitesCancel" class="cancelButton" value="Cancel">
+                </div>
+            </script>
+
 			<script type="text/template" id="history-template">
                 <div id="historyDiv" class="historyHeader">
                     <%if (pages.total === 0) { %>

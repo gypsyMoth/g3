@@ -49,12 +49,15 @@
         'util/NearestNeighborSpec',
         'models/CurrentPositionSpec',
         'models/TransactionSpec',
+        'models/RelativePositionSpec',
+        'models/SitesFileSpec',
         'views/CautionSpec',
         'views/ConfirmSpec',
         'views/ExtrasSpec',
         'views/HomeSpec',
         'views/PlacementSpec',
         'views/SplashSpec',
+        'views/LoadSitesSpec',
         'views/HistorySpec'
     ];
 

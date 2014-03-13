@@ -13,7 +13,7 @@ define(['underscore',
 
         initialize: function(options) {
             this.template = options.template;
-            this.listenTo(this.model, 'change', this.render);
+            this.listenTo(this.model, 'change:relativePosition', this.render);
             Geolocation.start();
         },
 
@@ -55,7 +55,7 @@ define(['underscore',
 
         checkTargetCircle: function () {
             var relativePosition = this.model.get('relativePosition');
-            var isOut = relativePosition.DistanceOutside > 0;
+            var isOut = relativePosition.get('distanceOutside') > 0;
             var site = this.model.get('site');
             var color = this.getColor(isOut);
             var imageSource = this.getOperationImage(isOut, site);
