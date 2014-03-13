@@ -13,8 +13,11 @@ define(['jquery',
 
         className: "view",
 
+        selectedItem: null,
+
         initialize: function(options) {
             this.template = options.template;
+            this.selectedItem = this.collection.first();
         },
 
         events: {
@@ -29,14 +32,15 @@ define(['jquery',
         },
 
         onSitesFileChanged: function(e) {
-            //var newValue = e.target.options[e.target.selectedIndex].text;
+            var selectedFileName = e.target.options[e.target.selectedIndex].text;
+            this.selectedItem = this.collection.find(function(model) {return model.get('fileEntry').name === selectedFileName; });
         },
 
         onOkClicked: function() {
-            //DB.loadSites(sitesFile).then(_.bind(function (data) {
-                //Geolocation.SitesList = data;
+            DB.loadSites(this.selectedItem.get('fileEntry')).then(_.bind(function (data) {
+                Geolocation.SitesList = data;
                 Controller.router.navigate('home', {trigger: true, replace: true});
-            //}, this));
+            }, this));
 
         },
 

@@ -6,7 +6,6 @@ define (['underscore', 'src/models/RelativePosition'], function (_, RelativePosi
     my.Nearest = function(currentLocation, sites) {
         
         var currentPoint = {x: currentLocation.Easting, y: currentLocation.Northing},
-             nearestSite = {quad: '', site: ''},
              point,
              distance,
              site,
@@ -57,7 +56,7 @@ define (['underscore', 'src/models/RelativePosition'], function (_, RelativePosi
         var nearestPoints = [],
             i;
         for (i = 0; i < numberOfPoints; i++) {
-            nearestPoints.push({site: null, relativePosition: new RelativePosition()});
+            nearestPoints.push({site: {quad: '', site: ''}, relativePosition: new RelativePosition()});
         }
         return nearestPoints;
     };
