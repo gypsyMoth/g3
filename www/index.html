@@ -130,6 +130,20 @@
                     <input type="button" id="btnLoadSitesCancel" class="cancelButton" value="Cancel">
                 </div>
             </script>
+            <script type="text/template" id="manualLock-template">
+                <div id="manualLockHeader" class="formHeader">
+                    <select id="selectNearestSite">
+                        <% _.each(sitesFiles, function(sitesFile) { %>
+                        <option><%= sitesFile.get('fileEntry').name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+
+                <div id="manualLockFooter" class="formFooter">
+                    <input type="button" id="btnManualLockOk" class="gadgetButton" value="Ok">
+                    <input type="button" id="btnManualLockCancel" class="cancelButton" value="Cancel">
+                </div>
+            </script>
 
 			<script type="text/template" id="history-template">
                 <div id="historyHeader" class="formHeader">

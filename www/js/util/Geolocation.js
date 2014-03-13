@@ -10,6 +10,7 @@ define(['jquery',
 
     my.watchId = null;
     my.gotSignal = false;
+    my.manualLock = false;
     my.Here = new CurrentPosition();
     my.SitesList = [];
 
@@ -43,13 +44,15 @@ define(['jquery',
         this.Here.set('currentLatLon', latLon);
         this.Here.set('currentUtm', CoordinateConverter.project(p));
 
-        this.findNearest();
+        if (!this.manualLock) {
+            this.findNearest();
+        }
     };
 
     my.findNearest = function() {
         var nearest = NearestNeighbor.Nearest(this.Here.get('currentUtm'), this.SitesList);
-        this.Here.set('site', nearest[0].site);
-        this.Here.set('relativePosition', nearest[0].relativePosition);
+        this.Here.set('site', nearest.first().get('site'));
+        this.Here.set('relativePosition', nearest.first().get('relativePosition'));
     };
 
     return my;

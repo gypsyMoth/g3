@@ -22,7 +22,7 @@ define(['src/util/NearestNeighbor'], function(NearestNeighbor) {
                 }];
                 var pIn = {Easting: 500000, Northing: 4000000, Zone: 17};
                 var nearest = NearestNeighbor.Nearest(pIn, list);
-                expect(nearest[0].relativePosition.get('distance')).toEqual(100);
+                expect(nearest.first().get('relativePosition').get('distance')).toEqual(100);
             });
     
             it ("Returns the distance between the site and the grid node, if there is no actual point", function() {
@@ -38,7 +38,7 @@ define(['src/util/NearestNeighbor'], function(NearestNeighbor) {
                 }];
                 var pIn = {Easting: 500000, Northing: 4000000, Zone: 17};
                 var nearest = NearestNeighbor.Nearest(pIn, list);
-                expect(nearest[0].relativePosition.get('distance')).toEqual(100);
+                expect(nearest.first().get('relativePosition').get('distance')).toEqual(100);
             });
     
             it ("Returns the nearest site and correct distance in the current zone, even if there are sites in multiple zones", function() {
@@ -50,9 +50,9 @@ define(['src/util/NearestNeighbor'], function(NearestNeighbor) {
     
                 var pIn = {Easting: 528000, Northing: 4170000, Zone: 17};
                 var nearest = NearestNeighbor.Nearest(pIn, list);
-                var pOut = nearest[0].site;
+                var pOut = nearest.first().get('site');
                 expect(pOut).toEqual(list[2]);
-                expect(nearest[0].relativePosition.get('distance')).toEqual(6000);
+                expect(nearest.first().get('relativePosition').get('distance')).toEqual(6000);
             });
     
             it("Returns Found = false when no sites in zone", function() {
@@ -63,8 +63,8 @@ define(['src/util/NearestNeighbor'], function(NearestNeighbor) {
                    ];
                 var pIn = {Easting: 528000, Northing: 4170000, Zone: 15};
                 var nearest = NearestNeighbor.Nearest(pIn, list);
-                var pOut = nearest[0].site;
-                expect(nearest[0].relativePosition.get('found')).toEqual(false);
+                var pOut = nearest.first().get('site');
+                expect(nearest.first().get('relativePosition').get('found')).toEqual(false);
             });
         });
     
@@ -75,8 +75,8 @@ define(['src/util/NearestNeighbor'], function(NearestNeighbor) {
     
             var bearingTest = function(currentLocation, expectedBearing) {
                 var nearest = NearestNeighbor.Nearest(currentLocation, list);
-                var pOut = nearest[0].site;
-                expect(nearest[0].relativePosition.get('bearing')).toEqual(expectedBearing);
+                var pOut = nearest.first().get('site');
+                expect(nearest.first().get('relativePosition').get('bearing')).toEqual(expectedBearing);
             };
     
             it("Returns 'N' when we're north of the point", function() {
@@ -103,15 +103,15 @@ define(['src/util/NearestNeighbor'], function(NearestNeighbor) {
            it("Is < 0 the current position is within 30% of the grid distance of the nearest site", function() {
                var pIn = {Easting: 445999, Northing: 4118000, Zone: 17}; // 1 meter away
                var nearest = NearestNeighbor.Nearest(pIn, list);
-               var pOut = nearest[0].site;
-               expect(nearest[0].relativePosition.get('distanceOutside')).toBeLessThan(0);
+               var pOut = nearest.first().get('site');
+               expect(nearest.first().get('relativePosition').get('distanceOutside')).toBeLessThan(0);
            });
     
             it("Is > 0 when the current position is greater than 30% of the grid distance of the nearest site", function() {
                 var pIn = {Easting: 445099, Northing: 4118000, Zone: 17}; // 901 meters away
                 var nearest = NearestNeighbor.Nearest(pIn, list);
-                var pOut = nearest[0].site;
-                expect(nearest[0].relativePosition.get('distanceOutside')).toBeGreaterThan(0);
+                var pOut = nearest.first().get('site');
+                expect(nearest.first().get('relativePosition').get('distanceOutside')).toBeGreaterThan(0);
             });
     
         });
