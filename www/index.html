@@ -39,18 +39,21 @@
                 <div id="homeFooter" class="homeFooter">
                     <div id="distanceDiv" class="homeDiv">
                         <span id="distanceSpan" class="message">
-                            <% if(relativePosition.get('found')) { %>
-                            <%=relativePosition.get('distance') + " (&plusmn" + currentLatLon.Accuracy + ") meters " + relativePosition.get('bearing')%>
+                            <% if(nearestSites.first().get('relativePosition').get('found')) { %>
+                            <%= nearestSites.first().get('relativePosition').get('distance')
+                             + " (&plusmn" + currentLatLon.Accuracy + ") meters "
+                             + nearestSites.first().get('relativePosition').get('bearing')
+                            %>
                             <% } else { %>
-                            <%="No sites found in zone " + currentUtm.Zone%>
+                            <%="No sites found in zone " + currentUtm.Zone %>
                             <% } %>
                         </span>
                     </div>
 
                     <div id="siteDiv" class="homeDiv siteDiv">
                         <span id="siteSpan" class="siteSpan">
-                            <% if(site.quad !== '') { %>
-                            <%= site.quad + ":" + site.site_id %>
+                            <% if(nearestSites.first().get('site').quad  !== '') { %>
+                            <%= nearestSites.first().get('site').quad + ':' + nearestSites.first().get('site').site_id%>
                             <% } else { %>
                             <%= "No Site" %>
                             <% } %>
@@ -67,10 +70,10 @@
                 <div id="placementTop" class="formHeader">
                     <span class="message">Confirm placement of</span><br />
                     <select id="selectTraptype">
-                        <option selected="selected"><%= site.trap_type%></option>
-                        <option><%= site.trap_type === 'Delta' ? 'Milk Carton' : 'Delta'%></option>
+                        <option val="0" selected="selected"><%= nearestSites.first().get('site').trap_type%></option>
+                        <option val="1"><%= nearestSites.first().get('site').trap_type === 'Delta' ? 'Milk Carton' : 'Delta'%></option>
                     </select>
-                    <span class="message">at site <%=site.quad + ':' + site.site_id%></span><br />
+                    <span class="message">at site <%=nearestSites.first().get('site').quad + ':' + nearestSites.first().get('site').site_id%></span><br />
                     <span class="message"><%= currentUtm.Easting + 'E ' + currentUtm.Northing + 'N' %></span>
                 </div>
                 <div id="placementBottom" class="formFooter">
@@ -82,9 +85,9 @@
             <script type="text/template" id="confirm-template">
                 <div id="confirmHeader" class="formHeader">
                     <span id="confirmMessage" class="message">
-                        Confirm placement of <%=operation.traptype%> at
-                        site <%=site.quad%>:<%=site.site_id%>,
-                        coordinates <%=operation.easting%> E, <%=operation.northing%> N?
+                        Confirm placement of <%=nearestSites.first().get('site').trap_type%> at
+                        site <%=nearestSites.first().get('site').quad%>:<%=nearestSites.first().get('site').site_id%>,
+                        coordinates <%=currentUtm.Easting%> E, <%=currentUtm.Northing%> N?
                     </span>
                 </div>
                 <div id="confirmFooter" class="formFooter">
@@ -100,7 +103,7 @@
 
                 <div id="cautionHeader" class="formHeader">
                     <span id="cautionMessage" class="message">
-                        You are <%=relativePosition.get('distanceOutside') %> meters outside the target circle.  Proceed?
+                        You are <%=nearestSites.first().get('relativePosition').get('distanceOutside') %> meters outside the target circle.  Proceed?
                     </span>
                 </div>
 
@@ -109,10 +112,12 @@
                     <input type="button" id="btnCautionCancel" class="cancelButton" value="Cancel">
                 </div>
             </script>
+
             <script type="text/template" id="extras-template">
                 <div id="extrasFooter" class="formFooter">
-                    <input type="button" id="btnExtrasLoadSites" class="gadgetButton" value="Trapping Area">
                     <input type="button" id="btnExtrasHistory" class="gadgetButton" value="History">
+                    <input type="button" id="btnExtrasManualLock" class="gadgetButton" value="Manual Lock">
+                    <input type="button" id="btnExtrasLoadSites" class="gadgetButton" value="Trapping Area">
                     <input type="button" id="btnExtrasCancel" class="cancelButton" value="Cancel">
                 </div>
             </script>

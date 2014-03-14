@@ -24,7 +24,7 @@ define (['underscore',
             if (site.zone === currentLocation.Zone) {
                 point = getPoint(site);
                 distance = getDistance(point, currentPoint);
-                furthestSite = isCloser(distance);
+                furthestSite = getFurthestSite(distance);
                 if (furthestSite !== 'undefined') {
                     assignSite(furthestSite, distance, site, currentPoint);
                 }
@@ -36,7 +36,7 @@ define (['underscore',
         return my.nearestSites;
     };
 
-    var isCloser = function(distance) {
+    var getFurthestSite = function(distance) {
         var furthestSite = null;
         my.nearestSites.comparator = function(site){return -(site.get('relativePosition').get('distance')); };
         my.nearestSites.sort();

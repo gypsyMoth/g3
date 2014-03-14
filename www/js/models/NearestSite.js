@@ -1,12 +1,12 @@
-define(['underscore', 'backbone'], function(_, Backbone) { 'use strict';
+define(['underscore', 'backbone', 'src/models/RelativePosition'], function(_, Backbone, RelativePosition) { 'use strict';
 
     var NearestSite = Backbone.Model.extend({
         defaults: {
             site: {
-                quad: null,
-                site: null
+                quad: '',
+                site: ''
             },
-            relativePosition: null
+            relativePosition: new RelativePosition()
         },
 
         initialize: function(options) {

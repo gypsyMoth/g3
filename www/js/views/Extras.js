@@ -19,11 +19,9 @@ define(['underscore',
         },
 
         events: {
-            //"click #btnExtrasLoadLocal": "onLoadLocalClicked",
-            //"click #btnExtrasDownload": "onDownloadClicked",
-            //"click #btnExtrasUpload": "onUploadClicked",
-			"click #btnExtrasLoadSites": "onLoadSitesClicked",
             "click #btnExtrasHistory": "onHistoryClicked",
+            "click #btnExtrasManualLock": "onManualLockClicked",
+			"click #btnExtrasLoadSites": "onLoadSitesClicked",
             "click #btnExtrasCancel": "onCancelClicked"
         },
 
@@ -32,34 +30,16 @@ define(['underscore',
             return this;
         },
 
-        onLoadSitesClicked: function() {
-            Controller.router.navigate('loadSites', {trigger: true, replace: true});
-        },
-
-//        onLoadLocalClicked: function() {
-//            DB.initialize().then(function() {
-//                DB.loadSites('TX', 2).then( function(data) {
-//                    Geolocation.SitesList = data;
-//                    Controller.router.navigate('home', {trigger: true, replace: true});
-//                });
-//            });
-//        },
-
-//        onDownloadClicked: function() {
-//            DB.initialize().then(function() {
-//                DB.downloadSites('WV', 1).then( function() {
-//                    Controller.router.navigate('home', {trigger: true, replace: true});
-//                });
-//            });
-//        },
-//
-//        onUploadClicked: function() {
-//            alert("Upload Data not implemented");
-//            //Controller.router.navigate('home', {trigger: true, replace: true});
-//        },
-		
 		onHistoryClicked: function() {
             Controller.router.navigate('history', {trigger: true, replace: true});
+        },
+
+        onManualLockClicked: function() {
+            Controller.router.navigate('manualLock', {trigger: true, replace: true});
+        },
+
+        onLoadSitesClicked: function() {
+            Controller.router.navigate('loadSites', {trigger: true, replace: true});
         },
 
         onCancelClicked: function() {

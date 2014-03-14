@@ -50,9 +50,11 @@ define(['jquery',
     };
 
     my.findNearest = function() {
-        var nearest = NearestNeighbor.Nearest(this.Here.get('currentUtm'), this.SitesList);
-        this.Here.set('site', nearest.first().get('site'));
-        this.Here.set('relativePosition', nearest.first().get('relativePosition'));
+
+        this.Here.set('nearestSites', NearestNeighbor.Nearest(this.Here.get('currentUtm'), this.SitesList));
+//        var nearest = NearestNeighbor.Nearest(this.Here.get('currentUtm'), this.SitesList);
+//        this.Here.set('site', nearest.first().get('site'));
+//        this.Here.set('relativePosition', nearest.first().get('relativePosition'));
     };
 
     return my;

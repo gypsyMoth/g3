@@ -13,7 +13,7 @@ define(['underscore',
 
         initialize: function(options) {
             this.template = options.template;
-            this.listenTo(this.model, 'change:relativePosition', this.render);
+            this.listenTo(this.model, 'change', this.render);
             Geolocation.start();
         },
 
@@ -23,7 +23,7 @@ define(['underscore',
         },
 
         onImageClicked: function() {
-            var site = this.model.get('site');
+            var site = this.model.get('nearestSites').first().get('site');
             var operation = this.getOperation(site);
             switch (operation) {
                 case Encoder.operationTypes.ERROR:
@@ -54,14 +54,18 @@ define(['underscore',
         },
 
         checkTargetCircle: function () {
-            var relativePosition = this.model.get('relativePosition');
-            var isOut = relativePosition.get('distanceOutside') > 0;
-            var site = this.model.get('site');
-            var color = this.getColor(isOut);
-            var imageSource = this.getOperationImage(isOut, site);
+            var nearest = this.model.get('nearestSites').first(),
+                relativePosition, isOut, site, color, imageSource;
+            if (nearest !== null) {
+                relativePosition = nearest.get('relativePosition');
+                isOut = relativePosition.get('distanceOutside') > 0;
+                site = nearest.get('site');
+                color = this.getColor(isOut);
+                imageSource = this.getOperationImage(isOut, site);
 
-            this.$el.find('#siteDiv').css('background-color', color);
-            this.$el.find('#homeImage').attr('src', imageSource);
+                this.$el.find('#siteDiv').css('background-color', color);
+                this.$el.find('#homeImage').attr('src', imageSource);
+            }
         },
 
         getColor: function(isOut) {

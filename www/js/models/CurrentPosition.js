@@ -2,9 +2,9 @@ define(['underscore',
     'backbone',
     'src/util/Encoder',
     'src/util/Date',
-    'src/models/RelativePosition'
-], function(_, Backbone, Encoder, DateFormatter, RelativePositionModel) {
-    'use strict';
+    'src/models/NearestSite',
+    'src/collections/NearestSiteCollection'
+], function(_, Backbone, Encoder, DateFormatter, NearestSite, NearestSiteCollection) {'use strict';
 
     var CurrentPosition = Backbone.Model.extend({
        defaults: {
@@ -18,11 +18,7 @@ define(['underscore',
                Northing: '',
                Zone: ''
            },
-           relativePosition: new RelativePositionModel(),
-           site: {
-               quad: '',
-               site_id: ''
-           },
+           nearestSites: new NearestSiteCollection([new NearestSite()]),
            operation: {
                easting: '',
                northing: '',
@@ -34,11 +30,11 @@ define(['underscore',
        },
 
         initialize: function() {
-           this.listenTo(this, 'change:relativePosition', this.updateMessage);
+           this.listenTo(this.get('nearestSites'), 'change', this.updateMessage);
         },
 
         updateMessage: function() {
-            var site = this.get('site');
+            var site = this.get('nearestSites').first().get('site');
             var message;
             if (typeof site === 'undefined') {
                 message = 'No sites loaded, or wrong UTM zone';
@@ -55,7 +51,7 @@ define(['underscore',
         },
 
         saveSites: function() {
-            var site = this.get('site');
+            var site = this.get('nearestSites').first().get('site');
             var op = this.get('operation');
             site.zone = op.zone;
             site.xact = op.easting;
@@ -66,8 +62,8 @@ define(['underscore',
 
         codedString: function() {
             var op = this.get('operation');
-            var site = this.get('site');
-            var rel = this.get('relativePosition');
+            var site = this.get('nearestSites').first().get('site');
+            var rel = this.get('nearestSites').first().get('relativePosition');
 
             var ret = Encoder.transactionLog.BANG + ',';
             ret += Encoder.transactionLog.ROW + ',';

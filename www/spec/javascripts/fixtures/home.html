@@ -14,16 +14,30 @@
     <div id="homeFooter" class="homeFooter">
         <div id="distanceDiv" class="homeDiv">
                         <span id="distanceSpan" class="message">
-                            <%= relativePosition.Distance + " (&plusmn" + currentLatLon.Accuracy + ") meters " + relativePosition.Bearing%>
+                           <% if(nearestSites.first().get('relativePosition').get('found')) { %>
+                            <%= nearestSites.first().get('relativePosition').get('distance')
+                             + " (&plusmn" + currentLatLon.Accuracy + ") meters "
+                             + nearestSites.first().get('relativePosition').get('bearing')
+                            %>
+                            <% } else { %>
+                            <%="No sites found in zone " + currentUtm.Zone %>
+                            <% } %>
                         </span>
         </div>
 
         <div id="siteDiv" class="homeDiv siteDiv">
-            <span id="siteSpan" class="siteSpan"><%= site.quad + ":" + site.site_id %></span>
+                        <span id="siteSpan" class="siteSpan">
+                            <% if(nearestSites.first().get('site').quad  !== '') { %>
+                            <%= nearestSites.first().get('site').quad + ':' + nearestSites.first().get('site').site_id%>
+                            <% } else { %>
+                            <%= "No Site" %>
+                            <% } %>
+                        </span>
         </div>
 
-        <div id="MessageDiv" class="homeDiv">
-            <span id="MessageSpan" class="message"><%= message %></span>
+        <div id="messageDiv" class="homeDiv">
+            <input type="button" id="btnHomeExtras">
+            <span id="messageSpan"><%= message %></span>
         </div>
     </div>
 </script>

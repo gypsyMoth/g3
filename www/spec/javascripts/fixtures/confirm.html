@@ -1,8 +1,8 @@
 <script type="text/template" id="confirm-template">
     <div id="confirmHeader" class="formHeader">
                     <span id="confirmMessage" class="message">
-                        Confirm placement of <%=site.trap_type%> at
-                        site <%=site.quad%>:<%=site.site_id%>,
+                        Confirm placement of <%=nearestSites.first().get('site').trap_type%> at
+                        site <%=nearestSites.first().get('site').quad%>:<%=nearestSites.first().get('site').site_id%>,
                         coordinates <%=currentUtm.Easting%> E, <%=currentUtm.Northing%> N?
                     </span>
     </div>
