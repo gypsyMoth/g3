@@ -1,5 +1,5 @@
 define(["jquery",
-    "src/util/Transactions",
+    "src/collections/Transactions",
     "src/views/History"
 ], function($, Transactions, HistoryView) {
 
