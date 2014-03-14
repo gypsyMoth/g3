@@ -1,0 +1,31 @@
+<script type="text/template" id="history-template">
+    <div id="historyDiv" class="historyHeader">
+        <%if (pages.total === 0) { %>
+        <span id="historyMessage" class="message">No history yet!</span>
+        <% } else { %>
+        <table id="historyTable" class="stripedTable">
+            <tbody>
+            <% _.each(transactions, function(trans) { %>
+            <tr>
+                <td>A <%= trans.get("trap") %> trap was placed here on <%= trans.get("date") %>.</td>
+            </tr>
+            <% }); %>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td>Page <%= pages.page %> of <%= pages.total %></td>
+            </tr>
+            </tfoot>
+        </table>
+        <% } %>
+    </div>
+    <div id="historyFooter" class="formFooter">
+        <% if(pages.previous) { %>
+        <input type="button" id="btnHistoryPrev" class="gadgetButton" value="Previous">
+        <% } %>
+        <% if(pages.next) { %>
+        <input type="button" id="btnHistoryNext" class="gadgetButton" value="Next">
+        <% } %>
+        <input type="button" id="btnHistoryClose" class="cancelButton" value="Exit">
+    </div>
+</script>
