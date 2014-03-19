@@ -7,34 +7,40 @@ define(['underscore',
 ], function(_, Backbone, Encoder, DateFormatter, NearestSite, NearestSiteCollection) {'use strict';
 
     var CurrentPosition = Backbone.Model.extend({
-       defaults: {
-           currentLatLon: {
-             Latitude: '',
-             Longitude: '',
-             Accuracy: ''
-           },
-           currentUtm: {
-               Easting: '',
-               Northing: '',
-               Zone: ''
-           },
-           nearestSites: new NearestSiteCollection([new NearestSite()]),
-           operation: {
-               easting: '',
-               northing: '',
-               zone: '',
-               date: '',
-               traptype: ''
-           },
-           message: ''
+       defaults: function() {
+           return {
+               currentLatLon: {
+                 Latitude: '',
+                 Longitude: '',
+                 Accuracy: ''
+               },
+               currentUtm: {
+                   Easting: '',
+                   Northing: '',
+                   Zone: ''
+               },
+               nearestSites: new NearestSiteCollection(),
+               operation: {
+                   easting: '',
+                   northing: '',
+                   zone: '',
+                   date: '',
+                   traptype: ''
+               },
+               message: '',
+               manualLock: false
+               //selectedSite: new NearestSite()
+           };
        },
 
         initialize: function() {
-           this.listenTo(this.get('nearestSites'), 'change', this.updateMessage);
+           this.set('selectedSite', new NearestSite());
+           this.listenTo(this.get('selectedSite'), 'change', this.updateMessage);
+           //this.get('selectedSite').get('relativePosition').on('change', this.updateMessage, this);
         },
 
         updateMessage: function() {
-            var site = this.get('nearestSites').first().get('site');
+            var site = this.get('selectedSite').get('site');
             var message;
             if (typeof site === 'undefined') {
                 message = 'No sites loaded, or wrong UTM zone';
@@ -62,8 +68,8 @@ define(['underscore',
 
         codedString: function() {
             var op = this.get('operation');
-            var site = this.get('nearestSites').first().get('site');
-            var rel = this.get('nearestSites').first().get('relativePosition');
+            var site = this.get('selectedSite').get('site');
+            var rel = this.get('selectedSite').get('relativePosition');
 
             var ret = Encoder.transactionLog.BANG + ',';
             ret += Encoder.transactionLog.ROW + ',';

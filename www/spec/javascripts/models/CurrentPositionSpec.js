@@ -16,7 +16,15 @@ define(['underscore',
            expect(current).toBeDefined();
        });
 
-        describe("Changes the message when the nearest site changes", function() {        //var position = new app.models.CurrentPosition();
+        it("Has a manualLock property", function() {
+            expect(current.get('manualLock')).toBeDefined();
+        });
+
+        it("Has a selectedSite property", function() {
+            expect(current.get('selectedSite')).toBeDefined();
+        });
+
+        describe("Changes the message when the selected site changes", function() {        //var position = new app.models.CurrentPosition();
 
             var expectMessageToMatchSite = function(site, expectedMessage) {
                 var relativePosition = new RelativePosition({
@@ -26,12 +34,10 @@ define(['underscore',
                     distanceOutside: 0
                 });
 
-                var nearestSites = current.get('nearestSites');
-                nearestSites.add(new NearestSite({site: null, relativePosition: relativePosition}));
-                current.get('nearestSites').first().set('site', site);
-
-                var message = current.get('message');
-                expect(message).toEqual(expectedMessage);
+                var nearest =  new NearestSite({site: site, relativePosition: relativePosition});
+                spyOn(current, 'updateMessage');
+                current.get('selectedSite').set('relativePosition', relativePosition);
+                expect(current.updateMessage).toHaveBeenCalled();
             };
 
             it ("Displays unaddressed message", function() {
@@ -95,6 +101,7 @@ define(['underscore',
                 var nearestSites = new NearestSiteCollection();
                 nearestSites.add(new NearestSite({site: {"zone":15,"xth":"329229","yth":"3475979","quad":"FIREP","site_id":1,"grid":"30","trap_type":"Delta","moth_count":0}}))
                 model.set('nearestSites', nearestSites);
+                model.set('selectedSite', model.get('nearestSites').first());
                 model.saveSites();
 
                 var site = model.get('nearestSites').first().get('site');

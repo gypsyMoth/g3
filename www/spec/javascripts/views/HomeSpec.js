@@ -88,7 +88,7 @@ define(["jquery",
        describe("Determine operation based on site", function() {
 
             it("Returns ERROR when the quad value is equal to an empty string", function() {
-                expect(view.getOperation({quad: '', site: ''})).toEqual('ERROR');
+                expect(view.getOperation({quad: '', site_id: ''})).toEqual('ERROR');
             });
 
             it("Returns UNADDRESSED for an unaddressed site", function() {
@@ -131,7 +131,7 @@ define(["jquery",
                var relativePosition = new RelativePosition({distanceOutside: distanceOutside});
                var nearestSite = new NearestSite({site: site, relativePosition: relativePosition});
                var nearestSites =  new NearestSiteCollection([nearestSite]);
-               view.model = new CurrentPosition({currentUtm: utm, nearestSites: nearestSites});
+               view.model = new CurrentPosition({currentUtm: utm, nearestSites: nearestSites, selectedSite: nearestSite});
                view.render();
            };
 

@@ -39,10 +39,10 @@
                 <div id="homeFooter" class="homeFooter">
                     <div id="distanceDiv" class="homeDiv">
                         <span id="distanceSpan" class="message">
-                            <% if(nearestSites.first().get('relativePosition').get('found')) { %>
-                            <%= nearestSites.first().get('relativePosition').get('distance')
+                            <% if(selectedSite.get('relativePosition').get('found')) { %>
+                            <%= selectedSite.get('relativePosition').get('distance')
                              + " (&plusmn" + currentLatLon.Accuracy + ") meters "
-                             + nearestSites.first().get('relativePosition').get('bearing')
+                             + selectedSite.get('relativePosition').get('bearing')
                             %>
                             <% } else { %>
                             <%="No sites found in zone " + currentUtm.Zone %>
@@ -52,8 +52,8 @@
 
                     <div id="siteDiv" class="homeDiv siteDiv">
                         <span id="siteSpan" class="siteSpan">
-                            <% if(nearestSites.first().get('site').quad  !== '') { %>
-                            <%= nearestSites.first().get('site').quad + ':' + nearestSites.first().get('site').site_id%>
+                            <% if(selectedSite.get('site').quad  !== '') { %>
+                            <%= selectedSite.get('site').quad + ':' + selectedSite.get('site').site_id%>
                             <% } else { %>
                             <%= "No Site" %>
                             <% } %>
@@ -70,10 +70,10 @@
                 <div id="placementTop" class="formHeader">
                     <span class="message">Confirm placement of</span><br />
                     <select id="selectTraptype">
-                        <option val="0" selected="selected"><%= nearestSites.first().get('site').trap_type%></option>
-                        <option val="1"><%= nearestSites.first().get('site').trap_type === 'Delta' ? 'Milk Carton' : 'Delta'%></option>
+                        <option val="0" selected="selected"><%= selectedSite.get('site').trap_type%></option>
+                        <option val="1"><%= selectedSite.get('site').trap_type === 'Delta' ? 'Milk Carton' : 'Delta'%></option>
                     </select>
-                    <span class="message">at site <%=nearestSites.first().get('site').quad + ':' + nearestSites.first().get('site').site_id%></span><br />
+                    <span class="message">at site <%=selectedSite.get('site').quad + ':' + selectedSite.get('site').site_id%></span><br />
                     <span class="message"><%= currentUtm.Easting + 'E ' + currentUtm.Northing + 'N' %></span>
                 </div>
                 <div id="placementBottom" class="formFooter">
@@ -85,8 +85,8 @@
             <script type="text/template" id="confirm-template">
                 <div id="confirmHeader" class="formHeader">
                     <span id="confirmMessage" class="message">
-                        Confirm placement of <%=nearestSites.first().get('site').trap_type%> at
-                        site <%=nearestSites.first().get('site').quad%>:<%=nearestSites.first().get('site').site_id%>,
+                        Confirm placement of <%=selectedSite.get('site').trap_type%> at
+                        site <%=selectedSite.get('site').quad%>:<%=selectedSite.get('site').site_id%>,
                         coordinates <%=currentUtm.Easting%> E, <%=currentUtm.Northing%> N?
                     </span>
                 </div>
@@ -103,7 +103,7 @@
 
                 <div id="cautionHeader" class="formHeader">
                     <span id="cautionMessage" class="message">
-                        You are <%=nearestSites.first().get('relativePosition').get('distanceOutside') %> meters outside the target circle.  Proceed?
+                        You are <%=selectedSite.get('relativePosition').get('distanceOutside') %> meters outside the target circle.  Proceed?
                     </span>
                 </div>
 
@@ -138,9 +138,14 @@
             <script type="text/template" id="manualLock-template">
                 <div id="manualLockHeader" class="formHeader">
                     <select id="selectNearestSite">
-                        <% _.each(sitesFiles, function(sitesFile) { %>
-                        <option><%= sitesFile.get('fileEntry').name %></option>
-                        <% }); %>
+                        <% _.each(nearestSites, function(nearest) {
+                            if (nearest) /*&& nearest.get('site') !== 'undefined' && nearest.get('site') !== 'undefined')*/ {
+                        %>
+                        <option><%= nearest.get('site').quad + ':' + nearest.get('site').site_id %></option>
+                        <%  }
+                           });
+                        %>
+                        <option>Disable Manual Lock</option>
                     </select>
                 </div>
 

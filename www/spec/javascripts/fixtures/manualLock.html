@@ -1,9 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+<script type="text/template" id="manualLock-template">
+    <div id="manualLockHeader" class="formHeader">
+        <select id="selectNearestSite">
+            <% _.each(nearestSites, function(nearest) {
+            if (nearest.get('site') !== 'undefined' && nearest.get('site') !== 'undefined') {
+            %>
+            <option><%= nearest.get('site').quad + ':' + nearest.get('site').site_id %></option>
+            <%  }
+            });
+            %>
+            <option>Disable Manual Lock</option>
+        </select>
+    </div>
 
-</body>
-</html>
+    <div id="manualLockFooter" class="formFooter">
+        <input type="button" id="btnManualLockOk" class="gadgetButton" value="Ok">
+        <input type="button" id="btnManualLockCancel" class="cancelButton" value="Cancel">
+    </div>
+</script>

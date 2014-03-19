@@ -44,7 +44,8 @@ define(['jquery',
             "caution" : "caution",
             "confirm" : "confirm",
 			"history" : "history",
-            "loadSites" : "loadSites"
+            "loadSites" : "loadSites",
+            "manualLock" : "manualLock"
         },
 
         splash: function() {
@@ -81,9 +82,9 @@ define(['jquery',
             }, this));
         },
 
-//        manualLock: function() {
-//            this.loadView(new LoadSitesView({collection: , template: _.template($('#loadSites-template').html())}));
-//        }
+        manualLock: function() {
+            this.loadView(new ManualLockView({model: Geolocation.Here, /*collection: Geolocation.Here.get('nearestSites'),*/ template: _.template($('#manualLock-template').html())}));
+        },
 
         loadView : function(view) {
             this.view && this.view.remove();

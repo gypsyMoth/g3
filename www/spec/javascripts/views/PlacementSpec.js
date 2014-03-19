@@ -26,7 +26,7 @@ define(["jquery",
             it("Sets the operation values on startup", function() {
                 var model = new CurrentPosition();
                 model.set({currentUtm: {Easting: 123456, Northing: 1234567, Zone: 15}});
-                model.get('nearestSites').first().set({site: {"zone":15,"xth":"329229","yth":"3475979","quad":"FIREP","site_id":1,"grid":"30","trap_type":"Delta","moth_count":0}});
+                model.get('selectedSite').set({site: {"zone":15,"xth":"329229","yth":"3475979","quad":"FIREP","site_id":1,"grid":"30","trap_type":"Delta","moth_count":0}});
                 view = new PlacementView({model: model, template: _.template($('#placement-template').html())});
                 var op = view.model.get('operation');
                 expect(op.easting).toEqual(123456);

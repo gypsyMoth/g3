@@ -42,7 +42,6 @@ define(['jquery',
                 Geolocation.findNearest();
                 Controller.router.navigate('home', {trigger: true, replace: true});
             }, this));
-
         },
 
         onCancelClicked: function() {

@@ -13,7 +13,7 @@ define(['underscore',
 
         initialize: function(options) {
             this.template = options.template;
-            this.listenTo(this.model, 'change', this.render);
+            this.listenTo(this.model, 'change:selectedSite', this.render);
             Geolocation.start();
         },
 
@@ -23,7 +23,7 @@ define(['underscore',
         },
 
         onImageClicked: function() {
-            var site = this.model.get('nearestSites').first().get('site');
+            var site = this.model.get('selectedSite').get('site');
             var operation = this.getOperation(site);
             switch (operation) {
                 case Encoder.operationTypes.ERROR:
@@ -54,7 +54,7 @@ define(['underscore',
         },
 
         checkTargetCircle: function () {
-            var nearest = this.model.get('nearestSites').first(),
+            var nearest = this.model.get('selectedSite'),
                 relativePosition, isOut, site, color, imageSource;
             if (nearest !== null) {
                 relativePosition = nearest.get('relativePosition');

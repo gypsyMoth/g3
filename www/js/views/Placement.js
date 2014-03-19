@@ -28,7 +28,7 @@ define(['underscore',
         },
 
         onOkClicked: function() {
-            var relativePosition = this.model.get('nearestSites').first().get('relativePosition');
+            var relativePosition = this.model.get('selectedSite').get('relativePosition');
             if (relativePosition.get('distanceOutside') > 0) {
                 Controller.router.navigate('caution', {trigger: true, replace: true});
             } else {
@@ -53,7 +53,7 @@ define(['underscore',
         setOperationData: function() {
             var op = this.model.get('operation');
             var utm = this.model.get('currentUtm');
-            var site = this.model.get('nearestSites').first().get('site');
+            var site = this.model.get('selectedSite').get('site');
             var latlon = this.model.get('currentLatLon');
             op.zone = utm.Zone;
             op.easting = utm.Easting;

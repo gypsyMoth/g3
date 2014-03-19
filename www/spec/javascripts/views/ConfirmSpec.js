@@ -4,8 +4,9 @@ define(["jquery",
     "src/models/CurrentPosition",
     'src/util/DB',
     'src/util/Geolocation',
+    'src/models/NearestSite',
     "src/views/Confirm"
-], function($, _, app, CurrentPosition, db, Geolocation, ConfirmView) {
+], function($, _, app, CurrentPosition, db, Geolocation, NearestSite, ConfirmView) {
 
     $(describe("Confirm View", function() {
 
@@ -15,6 +16,7 @@ define(["jquery",
             loadFixtures('confirm.html');
             $('body').append();
             view = new ConfirmView({model: new CurrentPosition(), template: _.template($('#confirm-template').html())});
+            view.model.get('nearestSites').add(new NearestSite());
         });
 
         it("Can be instantiated", function() {
