@@ -36,7 +36,8 @@ define(['underscore',
 
                 var nearest =  new NearestSite({site: site, relativePosition: relativePosition});
                 spyOn(current, 'updateMessage');
-                current.get('selectedSite').set('relativePosition', relativePosition);
+                current.set('selectedSite', nearest);
+                //current.get('selectedSite').set('relativePosition', relativePosition);
                 expect(current.updateMessage).toHaveBeenCalled();
             };
 

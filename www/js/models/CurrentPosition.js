@@ -19,7 +19,6 @@ define(['underscore',
                    Northing: '',
                    Zone: ''
                },
-               nearestSites: new NearestSiteCollection(),
                operation: {
                    easting: '',
                    northing: '',
@@ -28,13 +27,15 @@ define(['underscore',
                    traptype: ''
                },
                message: '',
-               manualLock: false
+               manualLock: false,
+               nearestSites: new NearestSiteCollection()
                //selectedSite: new NearestSite()
            };
        },
 
         initialize: function() {
            this.set('selectedSite', new NearestSite());
+           //this.set('nearestSites', new NearestSiteCollection());
            this.listenTo(this.get('selectedSite'), 'change', this.updateMessage);
            //this.get('selectedSite').get('relativePosition').on('change', this.updateMessage, this);
         },

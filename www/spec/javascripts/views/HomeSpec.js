@@ -131,7 +131,8 @@ define(["jquery",
                var relativePosition = new RelativePosition({distanceOutside: distanceOutside});
                var nearestSite = new NearestSite({site: site, relativePosition: relativePosition});
                var nearestSites =  new NearestSiteCollection([nearestSite]);
-               view.model = new CurrentPosition({currentUtm: utm, nearestSites: nearestSites, selectedSite: nearestSite});
+               view.model = new CurrentPosition({currentUtm: utm, nearestSites: nearestSites});
+               view.model.set('selectedSite', nearestSite);
                view.render();
            };
 

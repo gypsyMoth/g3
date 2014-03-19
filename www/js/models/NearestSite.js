@@ -3,7 +3,7 @@ define(['underscore', 'backbone', 'src/models/RelativePosition'], function(_, Ba
     var NearestSite = Backbone.Model.extend({
         defaults: function() {
             return {
-                site: {return {quad: '', site_id: ''}; },
+                site: {quad: '', site_id: ''},
                 relativePosition: new RelativePosition()
             };
         },
