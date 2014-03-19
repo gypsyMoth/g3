@@ -1,18 +1,12 @@
-define(["src/app", "src/models/CurrentPosition"], function(app, CurrentPosition) {
+define(['underscore',
+    'src/models/CurrentPosition',
+    'src/models/RelativePosition',
+    'src/models/NearestSite',
+    'src/collections/NearestSiteCollection'
+], function(_, CurrentPosition, RelativePosition, NearestSite, NearestSiteCollection) { 'use strict';
 
     describe("CurrentPosition Model", function() {
         var current;
-
-        var unaddressed = {
-            "zone":15,
-            "xth":"329229",
-            "yth":"3475979",
-            "quad":"FIREP",
-            "site_id":1,
-            "grid":"30",
-            "trap_type":"Milk Carton",
-            "moth_count":0
-        };
 
         beforeEach( function() {
             current = new CurrentPosition();
@@ -22,22 +16,42 @@ define(["src/app", "src/models/CurrentPosition"], function(app, CurrentPosition)
            expect(current).toBeDefined();
        });
 
-        describe("Changes the message when the nearest site changes", function() {        //var position = new app.models.CurrentPosition();
+        it("Has a manualLock property", function() {
+            expect(current.get('manualLock')).toBeDefined();
+        });
+
+        it("Has a selectedSite property", function() {
+            expect(current.get('selectedSite')).toBeDefined();
+        });
+
+        describe("Changes the message when the selected site changes", function() {        //var position = new app.models.CurrentPosition();
 
             var expectMessageToMatchSite = function(site, expectedMessage) {
-                var relativePosition = {
-                    Distance: '10',
-                    Found: false,
-                    Bearing: 'N',
-                    DistanceOutside: 0
-                };
-                current.set('site', site);
-                current.set({relativePosition: relativePosition});
-                var message = current.get('message');
-                expect(message).toEqual(expectedMessage);
+                var relativePosition = new RelativePosition({
+                    distance: '10',
+                    found: false,
+                    bearing: 'N',
+                    distanceOutside: 0
+                });
+
+                var nearest =  new NearestSite({site: site, relativePosition: relativePosition});
+                spyOn(current, 'updateMessage');
+                current.set('selectedSite', nearest);
+                //current.get('selectedSite').set('relativePosition', relativePosition);
+                expect(current.updateMessage).toHaveBeenCalled();
             };
 
             it ("Displays unaddressed message", function() {
+                var unaddressed = {
+                    "zone":15,
+                    "xth":"329229",
+                    "yth":"3475979",
+                    "quad":"FIREP",
+                    "site_id":1,
+                    "grid":"30",
+                    "trap_type":"Milk Carton",
+                    "moth_count":0
+                };
                 expectMessageToMatchSite(unaddressed, 'No trap at this site');
             });
 
@@ -84,12 +98,14 @@ define(["src/app", "src/models/CurrentPosition"], function(app, CurrentPosition)
             it("Writes the operation values to site on commit", function() {
                 var model = new CurrentPosition();
                 model.set({currentUtm: {Easting: 123456, Northing: 1234567, Zone: 15}});
-                model.set({site: {"zone":15,"xth":"329229","yth":"3475979","quad":"FIREP","site_id":1,"grid":"30","trap_type":"Delta","moth_count":0}});
                 model.set({operation: {easting: 123456, northing: 1234567, traptype: 'Milk Carton', date: '2014-01-24T00:00:00-00:00'}});
-
+                var nearestSites = new NearestSiteCollection();
+                nearestSites.add(new NearestSite({site: {"zone":15,"xth":"329229","yth":"3475979","quad":"FIREP","site_id":1,"grid":"30","trap_type":"Delta","moth_count":0}}))
+                model.set('nearestSites', nearestSites);
+                model.set('selectedSite', model.get('nearestSites').first());
                 model.saveSites();
 
-                var site = model.get('site');
+                var site = model.get('nearestSites').first().get('site');
                 expect(site.xact).toBeDefined();
                 expect(site.xact).toEqual(123456);
                 expect(site.yact).toBeDefined();

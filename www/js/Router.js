@@ -2,6 +2,7 @@ define(['jquery',
     'underscore',
     'backbone',
     'src/util/Geolocation',
+    'src/util/NearestNeighbor',
     'src/util/DB',
     'src/models/FileSystem',
     'src/models/Splash',
@@ -14,9 +15,11 @@ define(['jquery',
     'src/views/Caution',
     'src/views/Confirm',
 	'src/views/History',
-    'src/views/LoadSites'
+    'src/views/LoadSites',
+    'src/views/ManualLock'
 ], function($, _, Backbone,
             Geolocation,
+            NearestNeighbor,
             DB,
             Filesystem,
             Splash,
@@ -29,7 +32,8 @@ define(['jquery',
             CautionView,
             ConfirmView,
             HistoryView,
-            LoadSitesView) { 'use strict';
+            LoadSitesView,
+            ManualLockView) { 'use strict';
 
     var Router = Backbone.Router.extend({
         routes : {
@@ -40,7 +44,8 @@ define(['jquery',
             "caution" : "caution",
             "confirm" : "confirm",
 			"history" : "history",
-            "loadSites" : "loadSites"
+            "loadSites" : "loadSites",
+            "manualLock" : "manualLock"
         },
 
         splash: function() {
@@ -75,6 +80,10 @@ define(['jquery',
             DB.getSitesFiles().then(_.bind(function(sitesFiles) {
                 this.loadView(new LoadSitesView({collection: sitesFiles, template: _.template($('#loadSites-template').html())}));
             }, this));
+        },
+
+        manualLock: function() {
+            this.loadView(new ManualLockView({model: Geolocation.Here, /*collection: Geolocation.Here.get('nearestSites'),*/ template: _.template($('#manualLock-template').html())}));
         },
 
         loadView : function(view) {

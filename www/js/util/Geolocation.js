@@ -10,6 +10,7 @@ define(['jquery',
 
     my.watchId = null;
     my.gotSignal = false;
+    //my.manualLock = false;
     my.Here = new CurrentPosition();
     my.SitesList = [];
 
@@ -42,14 +43,28 @@ define(['jquery',
         var p = CoordinateConverter.datumShift({ Lon: latLon.Longitude, Lat: latLon.Latitude});
         this.Here.set('currentLatLon', latLon);
         this.Here.set('currentUtm', CoordinateConverter.project(p));
-
         this.findNearest();
     };
 
     my.findNearest = function() {
-        var nearest = NearestNeighbor.Nearest(this.Here.get('currentUtm'), this.SitesList);
-        this.Here.set('site', nearest[0].site);
-        this.Here.set('relativePosition', nearest[0].relativePosition);
+        this.Here.set('nearestSites', NearestNeighbor.getNearestSites(this.Here.get('currentUtm'), this.SitesList, 5));
+        if (this.Here.manualLock) {
+            var selectedSite = this.Here.get('selectedSite');
+            selectedSite = this.getSelectedSite(selectedSite);
+            this.Here.set('selectedSite', selectedSite);
+        } else {
+            this.Here.set('selectedSite', this.Here.get('nearestSites').first());
+        }
+    };
+
+    my.getSelectedSite = function(site) {
+        return NearestNeighbor.getSelectedSite(this.Here.get('currentUtm'), site);
+    };
+
+    my.getSiteById = function(quad, site_id) {
+        return _.find(this.SitesList, function(site) {
+            return (site.quad === quad && site.site_id === site_id);
+        });
     };
 
     return my;

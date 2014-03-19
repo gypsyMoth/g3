@@ -1,4 +1,7 @@
-define(["jquery", "src/app", "src/models/CurrentPosition", "src/views/Caution"], function($, app, CurrentPosition, CautionView) {
+define(["jquery",
+    "src/models/CurrentPosition",
+    "src/views/Caution"],
+    function($, CurrentPosition, CautionView) {'use strict';
 
     $(describe("Caution View", function() {
 

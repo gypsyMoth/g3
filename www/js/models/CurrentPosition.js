@@ -2,43 +2,46 @@ define(['underscore',
     'backbone',
     'src/util/Encoder',
     'src/util/Date',
-    'src/models/RelativePosition'
-], function(_, Backbone, Encoder, DateFormatter, RelativePositionModel) {
-    'use strict';
+    'src/models/NearestSite',
+    'src/collections/NearestSiteCollection'
+], function(_, Backbone, Encoder, DateFormatter, NearestSite, NearestSiteCollection) {'use strict';
 
     var CurrentPosition = Backbone.Model.extend({
-       defaults: {
-           currentLatLon: {
-             Latitude: '',
-             Longitude: '',
-             Accuracy: ''
-           },
-           currentUtm: {
-               Easting: '',
-               Northing: '',
-               Zone: ''
-           },
-           relativePosition: new RelativePositionModel(),
-           site: {
-               quad: '',
-               site_id: ''
-           },
-           operation: {
-               easting: '',
-               northing: '',
-               zone: '',
-               date: '',
-               traptype: ''
-           },
-           message: ''
+       defaults: function() {
+           return {
+               currentLatLon: {
+                 Latitude: '',
+                 Longitude: '',
+                 Accuracy: ''
+               },
+               currentUtm: {
+                   Easting: '',
+                   Northing: '',
+                   Zone: ''
+               },
+               operation: {
+                   easting: '',
+                   northing: '',
+                   zone: '',
+                   date: '',
+                   traptype: ''
+               },
+               message: '',
+               manualLock: false,
+               nearestSites: new NearestSiteCollection()
+               //selectedSite: new NearestSite()
+           };
        },
 
         initialize: function() {
-           this.listenTo(this, 'change:relativePosition', this.updateMessage);
+           this.set('selectedSite', new NearestSite());
+           //this.set('nearestSites', new NearestSiteCollection());
+           this.listenTo(this.get('selectedSite'), 'change', this.updateMessage);
+           //this.get('selectedSite').get('relativePosition').on('change', this.updateMessage, this);
         },
 
         updateMessage: function() {
-            var site = this.get('site');
+            var site = this.get('selectedSite').get('site');
             var message;
             if (typeof site === 'undefined') {
                 message = 'No sites loaded, or wrong UTM zone';
@@ -55,7 +58,7 @@ define(['underscore',
         },
 
         saveSites: function() {
-            var site = this.get('site');
+            var site = this.get('nearestSites').first().get('site');
             var op = this.get('operation');
             site.zone = op.zone;
             site.xact = op.easting;
@@ -66,8 +69,8 @@ define(['underscore',
 
         codedString: function() {
             var op = this.get('operation');
-            var site = this.get('site');
-            var rel = this.get('relativePosition');
+            var site = this.get('selectedSite').get('site');
+            var rel = this.get('selectedSite').get('relativePosition');
 
             var ret = Encoder.transactionLog.BANG + ',';
             ret += Encoder.transactionLog.ROW + ',';

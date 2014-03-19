@@ -2,8 +2,10 @@ define(["jquery",
     "underscore",
     "src/models/CurrentPosition",
     "src/models/RelativePosition",
+    "src/models/NearestSite",
+    "src/collections/NearestSiteCollection",
     "src/views/Home"
-], function($, _, CurrentPosition, RelativePosition, HomeView) { 'use strict';
+], function($, _, CurrentPosition, RelativePosition, NearestSite, NearestSiteCollection, HomeView) { 'use strict';
 
     $(describe("Home View", function() {
        var view;
@@ -86,7 +88,7 @@ define(["jquery",
        describe("Determine operation based on site", function() {
 
             it("Returns ERROR when the quad value is equal to an empty string", function() {
-                expect(view.getOperation({quad: '', site: ''})).toEqual('ERROR');
+                expect(view.getOperation({quad: '', site_id: ''})).toEqual('ERROR');
             });
 
             it("Returns UNADDRESSED for an unaddressed site", function() {
@@ -111,8 +113,6 @@ define(["jquery",
                Zone: 15
            };
 
-           var relativePosition = new  RelativePosition();
-
            var colorToHex = function(color) {
                if (color.substr(0, 1) === '#') {
                    return color;
@@ -128,10 +128,11 @@ define(["jquery",
            };
 
            var initModel = function(site, distanceOutside) {
-               relativePosition.set('distanceOutside', distanceOutside);
-               view.model.set({currentUtm: utm});
-               view.model.set({site: site});
-               view.model.set({relativePosition: relativePosition});
+               var relativePosition = new RelativePosition({distanceOutside: distanceOutside});
+               var nearestSite = new NearestSite({site: site, relativePosition: relativePosition});
+               var nearestSites =  new NearestSiteCollection([nearestSite]);
+               view.model = new CurrentPosition({currentUtm: utm, nearestSites: nearestSites});
+               view.model.set('selectedSite', nearestSite);
                view.render();
            };
 

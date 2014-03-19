@@ -14,5 +14,12 @@ define(["src/models/RelativePosition"], function(RelativePosition) { 'use strict
             expect(model.get('found')).toBeDefined();
         });
 
+//        it("Raises the relativePosition:change event when it's properties change", function() {
+//            var model = new RelativePosition();
+//            spyOn(model, 'onChange');
+//            model.set('distance', 9000);
+//            expect(model.onChange).toHaveBeenCalled();
+//        });
+
     });
 });

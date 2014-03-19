@@ -59,6 +59,7 @@
         'views/PlacementSpec',
         'views/SplashSpec',
         'views/LoadSitesSpec',
+        'views/ManualLockSpec',
         'views/HistorySpec'
     ];
 

@@ -36,6 +36,7 @@ define(['underscore',
                     });
                 });
             });
+            Geolocation.manualLock = false;
         },
 
         onCancelClicked: function() {

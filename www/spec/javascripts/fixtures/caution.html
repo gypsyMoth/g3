@@ -6,7 +6,7 @@
 
     <div id="cautionHeader" class="formHeader">
                     <span id="cautionMessage" class="message">
-                        You are <%=relativePosition.DistanceOutside %> meters outside the target circle.  Proceed?
+                        You are <%=nearestSites.first().get('relativePosition').DistanceOutside %> meters outside the target circle.  Proceed?
                     </span>
     </div>
 

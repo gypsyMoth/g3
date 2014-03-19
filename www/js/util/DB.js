@@ -44,7 +44,7 @@ define (['jquery',
 
         var getRootDirectory = function() {
             var deferred = new $.Deferred();
-            console.log(my.filesystem.root.toURL());
+            //console.log(my.filesystem.root.toURL());
             my.filesystem.root.getDirectory("G3", {create: true, exclusive: false}, function(dirEntry) {
                 my.root = dirEntry;
                 deferred.resolve();
@@ -124,7 +124,7 @@ define (['jquery',
                 uri,
                 filename,
                 function(entry) {
-                    console.log("G3 file downloaded; filename = " + filename + "; fileentry = " + entry.fullPath);
+                    //console.log("G3 file downloaded; filename = " + filename + "; fileentry = " + entry.fullPath);
                     getFile(entry).then(loadFile).then(function() {
                         deferred.resolve();
                     });
