@@ -20,5 +20,10 @@ define(["jquery",
         it("Has a collection", function() {
             expect(view.collection).toBeDefined();
         });
+
+        it("Returns paged array of history messages", function(){
+           alert(view.pagination(5,3)[0]);
+           expect(view.pagination(5,3)[0]).toBeDefined;
+        });
     }));
 });

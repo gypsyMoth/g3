@@ -47,6 +47,7 @@
         'util/EncoderSpec',
         'util/GeolocationSpec',
         'util/NearestNeighborSpec',
+        'util/DecoderSpec',
         'models/CurrentPositionSpec',
         'models/TransactionSpec',
         'models/RelativePositionSpec',
