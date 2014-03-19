@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="css/gadget.css" type="text/css" />
         <link rel="stylesheet" href="css/home.css" type="text/css" />
         <link rel="stylesheet" href="css/buttons.css" type="text/css" />
+        <link rel="stylesheet" href="css/history.css" type="text/css" />
     </head>
     <body>
         <div id="content" class="content">
@@ -157,19 +158,31 @@
             </script>
 
 			<script type="text/template" id="history-template">
-                <div id="historyHeader" class="formHeader">
-                    <table class="table">
-                        <tbody>
-                            <% _.each(transactions, function(trans) { %>
-                            <tr>
-                                <td>A <%= trans.get("trap") %> trap was placed here on <%= trans.get("date") %>.</td>
-                            </tr>
-                            <% }); %>
-                        </tbody>
-                    </table>
+                <div id="historyDiv" class="historyHeader">
+                    <%if (pages.total === 0) { %>
+                        <span id="historyMessage" class="message">No history yet!</span>
+                    <% } else { %>
+                        <table id="historyTable" class="stripedTable">
+                            <tbody>
+                                <% _.each(transactions, function(trans) { %>
+                                    <tr>
+                                        <td>A <%= trans.get("trap") %> trap was placed here on <%= trans.get("date") %>.</td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td>Page <%= pages.page %> of <%= pages.total %></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    <% } %>
                 </div>
                 <div id="historyFooter" class="formFooter">
-                    <% if(transactions.length > 5) { %>
+                    <% if(pages.previous) { %>
+                        <input type="button" id="btnHistoryPrev" class="gadgetButton" value="Previous">
+                    <% } %>
+                    <% if(pages.next) { %>
                         <input type="button" id="btnHistoryNext" class="gadgetButton" value="Next">
                     <% } %>
                     <input type="button" id="btnHistoryClose" class="cancelButton" value="Exit">

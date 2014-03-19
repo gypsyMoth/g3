@@ -3,7 +3,7 @@ define(['underscore',
     'src/util/DB',
     'src/util/Geolocation',
     'src/util/Controller',
-    'src/util/Transactions'
+    'src/collections/Transactions'
 ], function(_, Backbone, DB, Geolocation, Controller, Transactions) { 'use strict';
 
     var Extras = Backbone.View.extend({
