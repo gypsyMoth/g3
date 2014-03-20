@@ -20,7 +20,7 @@ define (function () { 'use strict';
 
     my.operation = function(code) {
         var op = "";
-        if (code.length <= 10) {
+        if (code.length === 10) {
             op = "placement";
         } else {
             if (code.substring(9,10) === 'O'){

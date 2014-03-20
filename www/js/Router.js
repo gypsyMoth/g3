@@ -73,7 +73,9 @@ define(['jquery',
         },
 		
 		history: function() {
-            this.loadView(new HistoryView({collection: new Transactions(), template: _.template($('#history-template').html())}));
+            DB.getTransactions().then(_.bind(function(transactions) {
+                this.loadView(new HistoryView({collection: transactions, template: _.template($('#history-template').html())}));
+            }, this));
         },
 
         loadSites: function() {
