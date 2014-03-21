@@ -11,32 +11,33 @@ define (function () { 'use strict';
 
     my.trapType = function(code) {
         if (code.substring(9,10) === 'D'){
-            return "delta trap"
+            return "delta trap";
         }
-        else {
-            return "milk carton trap"
+        else if (code.substring(9,10) === 'M'){
+            return "milk carton trap";
+        } else {
+            return "unknown";
         }
+
     };
 
     my.operation = function(code) {
-        var op = "";
-        if (code.length === 10) {
+        var op = "Invalid Transaction";
+        if (code.length <= 10 && code.substring(9,10).match(/[MD]/)) {
             op = "placement";
-        } else {
+        } else if (code.length <= 14) {
             if (code.substring(9,10) === 'O'){
                 op = "omitted";
             } else if (code.substring(10,11) === 'B') {
                 op = "placement [outside target circle]";
             } else {
                 if (code.substring(9,10) === 'M') {
-                    op = "mid-season ";
-                } else {
-                    op = "final ";
+                    op = "mid-season inspection";
+                } else if (code.substring(9,10) === 'F') {
+                    op = "final inspection";
                 }
-                if ((code.length > 12) && !code.substring(12,13).match(/[0-9]/)) {
-                        op += "QC inspection";
-                } else {
-                        op += "inspection";
+                if (code.length > 12 && code.substring(12,13).match(/[^\d]/)) {
+                    op = op.replace(" "," QC ");
                 }
             }
         }
@@ -156,43 +157,52 @@ define (function () { 'use strict';
     };
 
     my.historyString = function(transaction){
-        var code = transaction.get("codedString");
-        var decoded = transaction.get("date") + " ";
-        decoded += this.quad(code) + " ";
-        decoded += this.site(code) + " ";
-        decoded += transaction.get("easting") + "E, ";
-        decoded += transaction.get("northing") + "N\n";
-        var codeOp = this.operation(code);
-        var t = "Unknown transaction";
-        switch(codeOp){
-            case('placement'):
-            case('placement [outside target circle]'):
-                t = this.trapType(code) + " " + codeOp;
-                break;
-            case('omitted'):
-                t = codeOp + ": " + this.omitReason(code);
-                break;
-            case('mid-season inspection'):
-            case('final inspection'):
-                var cond = this.trapCondition(code);
-                t = codeOp + " of " + cond + " trap ";
-                if ((cond != "missing") && (cond != "inaccessible")) {
-                    t += " with " + this.mothCount(code) + " moths"
-                }
-                break;
-            case('mid-season QC inspection'):
-            case('final QC inspection'):
-                var grade = this.passFail(code);
-                t = grade + " " + codeOp + " of " + this.trapCondition(code) + " trap ";
-                if (grade === 'failed') {
-                    t += ": " + this.failReason(code);
-                }
-                break;
-            default:
-                break;
-        }
-        decoded += t;
 
+        var code = transaction.get("codedString");
+        var e = transaction.get("easting");
+        var n = transaction.get("northing");
+        var codeOp = this.operation(code);
+
+        var decoded = transaction.get("date") + " ";
+
+        if (e.match(/^\d+$/) && n.match(/^\d+$/) && codeOp != 'Invalid Transaction'){
+            decoded += this.quad(code) + " ";
+            decoded += this.site(code) + " ";
+            decoded += transaction.get("easting") + "E, ";
+            decoded += transaction.get("northing") + "N\n";
+            var codeOp = this.operation(code);
+            var t = "";
+            switch(codeOp){
+                case('placement'):
+                case('placement [outside target circle]'):
+                    t = this.trapType(code) + " " + codeOp;
+                    break;
+                case('omitted'):
+                    t = codeOp + ": " + this.omitReason(code);
+                    break;
+                case('mid-season inspection'):
+                case('final inspection'):
+                    var cond = this.trapCondition(code);
+                    t = codeOp + " of " + cond + " trap";
+                    if ((cond != "missing") && (cond != "inaccessible")) {
+                        t += " with " + this.mothCount(code) + " moths"
+                    }
+                    break;
+                case('mid-season QC inspection'):
+                case('final QC inspection'):
+                    var grade = this.passFail(code);
+                    t = grade + " " + codeOp + " of " + this.trapCondition(code) + " trap";
+                    if (grade === 'failed') {
+                        t += ": " + this.failReason(code);
+                    }
+                    break;
+                default:
+                    break;
+            }
+            decoded += t;
+        } else {
+            decoded += "***INVALID DATA*** Check trans_log.txt!"
+        }
         return decoded;
     };
 

@@ -11,5 +11,12 @@ define(["src/models/Transaction"], function(Transaction) {
            expect(trans).toBeDefined();
         });
 
+        it ("Has a date, coordinate, and code properties", function(){
+            expect(trans.get("date")).toBeDefined();
+            expect(trans.get("easting")).toBeDefined();
+            expect(trans.get("northing")).toBeDefined();
+            expect(trans.get("codedString")).toBeDefined();
+
+        });
     });
 });
