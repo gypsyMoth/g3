@@ -29,7 +29,7 @@ define(["jquery",
                 it("Can set the 'nearest' site in the model based on the user's selection", function() {
                     var view = new ManualLockView({model: new CurrentPosition(), template: _.template($('#manualLock-template').html())});
 
-                    var nearestSites = view.model.get('nearestSites');
+                    var nearestSites = view.model.nearestSites;
 
                     nearestSites.add(new NearestSite({site: {
                         "zone":17,

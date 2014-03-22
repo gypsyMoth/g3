@@ -28,16 +28,15 @@ define(['underscore',
                },
                message: '',
                manualLock: false,
-               nearestSites: new NearestSiteCollection()
-               //selectedSite: new NearestSite()
+               //nearestSites: new NearestSiteCollection()
+               selectedSite: new NearestSite()
            };
        },
 
         initialize: function() {
-           this.set('selectedSite', new NearestSite());
-           //this.set('nearestSites', new NearestSiteCollection());
+           //this.set({selectedSite: new NearestSite()});
+           this.nearestSites = new NearestSiteCollection();
            this.listenTo(this.get('selectedSite'), 'change', this.updateMessage);
-           //this.get('selectedSite').get('relativePosition').on('change', this.updateMessage, this);
         },
 
         updateMessage: function() {
@@ -58,7 +57,7 @@ define(['underscore',
         },
 
         saveSites: function() {
-            var site = this.get('nearestSites').first().get('site');
+            var site = this.nearestSites.first().get('site');
             var op = this.get('operation');
             site.zone = op.zone;
             site.xact = op.easting;

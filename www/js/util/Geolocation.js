@@ -47,13 +47,13 @@ define(['jquery',
     };
 
     my.findNearest = function() {
-        this.Here.set('nearestSites', NearestNeighbor.getNearestSites(this.Here.get('currentUtm'), this.SitesList, 5));
+        this.Here.nearestSites = NearestNeighbor.getNearestSites(this.Here.get('currentUtm'), this.SitesList, 5);
         if (this.Here.manualLock) {
-            var selectedSite = this.Here.get('selectedSite');
+            var selectedSite = _.clone(this.Here.get('selectedSite')); //to make eventing work with a nested object
             selectedSite = this.getSelectedSite(selectedSite);
             this.Here.set('selectedSite', selectedSite);
         } else {
-            this.Here.set('selectedSite', this.Here.get('nearestSites').first());
+            this.Here.set('selectedSite', this.Here.nearestSites.first());
         }
     };
 

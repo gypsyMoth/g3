@@ -49,7 +49,7 @@ define(['jquery',
 
         setSelectedSite: function() {
             var siteInfo = this.parseSelect(this.selectedItem);
-            var nearestSites = this.model.get('nearestSites');
+            var nearestSites = this.model.nearestSites;
             var selectedSite = nearestSites.find(function(nearest) {
                 var site = nearest.get('site');
                 return (site.quad === siteInfo.quad && site.site_id === siteInfo.site_id);
@@ -63,7 +63,10 @@ define(['jquery',
         },
 
         render: function() {
-            this.$el.html(this.template({nearestSites: this.model.get('nearestSites')}));
+            this.$el.html(this.template({nearestSites: _.filter(this.model.nearestSites.pluck('site'), function(site) {
+                return (site.quad !== '' && site.site_id !== '');
+            })
+            }));
             return this;
         }
     });
