@@ -1,9 +1,8 @@
 <script type="text/template" id="manualLock-template">
     <div id="manualLockHeader" class="formHeader">
-        <select id="selectNearestSite">
-
+        <select id="selectSite">
             <% _.each(nearestSites, function(nearest) { %>
-            <option><%= nearest.get('site').quad + ':' + nearest.get('site').site_id %></option>
+            <option><%= nearest.quad + ':' + nearest.site_id %></option>
             <% }); %>
             <option>Disable Manual Lock</option>
         </select>

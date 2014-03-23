@@ -26,10 +26,7 @@ define(["jquery",
 
             describe("Setting the selected site", function() {
 
-                it("Can set the 'nearest' site in the model based on the user's selection", function() {
-                    var view = new ManualLockView({model: new CurrentPosition(), template: _.template($('#manualLock-template').html())});
-
-                    var nearestSites = view.model.nearestSites;
+                var addNearestSites = function(nearestSites) {
 
                     nearestSites.add(new NearestSite({site: {
                         "zone":17,
@@ -52,8 +49,14 @@ define(["jquery",
                         "trap_type":"Milk Carton",
                         "moth_count":0
                     }, relativePosition: new RelativePosition()}));
+                };
 
-                    view.model.set('selectedSite', nearestSites.first());
+                it("Can set the 'nearest' site in the model based on the user's selection", function() {
+                    var view = new ManualLockView({model: new CurrentPosition(), template: _.template($('#manualLock-template').html())});
+
+                    addNearestSites(view.model.nearestSites);
+
+                    view.model.set('selectedSite', view.model.nearestSites.first());
                     view.selectedItem = "FAR:1234";
                     view.setSelectedSite();
                     var selected = view.model.get('selectedSite');
@@ -70,6 +73,7 @@ define(["jquery",
 
                 it("Sets manual lock when the user chooses a site and clicks okay", function() {
                     var view = new ManualLockView({model: new CurrentPosition(), template: _.template($('#manualLock-template').html())});
+                    addNearestSites(view.model.nearestSites);
                     view.selectedItem = "FAR:1234";
                     view.setManualLock();
                     expect(view.model.get('manualLock')).toBeTruthy();

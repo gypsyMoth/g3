@@ -48,13 +48,17 @@ define(['jquery',
         },
 
         setSelectedSite: function() {
-            var siteInfo = this.parseSelect(this.selectedItem);
-            var nearestSites = this.model.nearestSites;
-            var selectedSite = nearestSites.find(function(nearest) {
-                var site = nearest.get('site');
-                return (site.quad === siteInfo.quad && site.site_id === siteInfo.site_id);
-            });
+            var siteInfo = this.parseSelect(this.selectedItem),
+                selectedSite = _.clone(this.model.get('selectedSite')),
+                newSite = this.model.nearestSites.find(function(nearest) {
+                    var site = nearest.get('site');
+                    return (site.quad === siteInfo.quad && site.site_id === siteInfo.site_id);
+                });
+            selectedSite.set({site: newSite.get('site'), relativePosition: newSite.get('relativePosition')});
             this.model.set('selectedSite', selectedSite);
+            console.log("siteInfo: " + JSON.stringify(siteInfo));
+            console.log("newSite: " + JSON.stringify(newSite.toJSON()));
+            console.log("selectedSite: " + JSON.stringify(this.model.get('selectedSite').toJSON()));
         },
 
         parseSelect: function(selectData) {
