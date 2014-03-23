@@ -34,11 +34,10 @@ define(['underscore',
                     distanceOutside: 0
                 });
 
-                spyOn(current, 'updateMessage');
                 var nearest = _.clone(current.get('selectedSite'));
-                nearest = new NearestSite({site: site, relativePosition: relativePosition});
+                nearest.set({site: site, relativePosition: relativePosition});
                 current.set('selectedSite', nearest);
-                expect(current.updateMessage).toHaveBeenCalled();
+                expect(current.get('message')).toEqual(expectedMessage);
             };
 
             it ("Displays unaddressed message", function() {

@@ -15,12 +15,16 @@
             'boot': 'lib/jasmine-2.0.0/boot'
         },
         shim: {
-            underscore: {
+            'underscore': {
                 exports: "_"
             },
-            backbone: {
+            'backbone': {
                 deps: ['underscore', 'jquery'],
                 exports: 'Backbone'
+            },
+            'backbone-nested': {
+                deps: ['backbone'],
+                exports: 'backbone-nested'
             },
             'jasmine': {
                 exports: 'jasmine'

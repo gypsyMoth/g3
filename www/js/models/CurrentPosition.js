@@ -27,19 +27,18 @@ define(['underscore',
                    traptype: ''
                },
                message: '',
-               manualLock: false,
-               //nearestSites: new NearestSiteCollection()
-               selectedSite: new NearestSite()
+               manualLock: false
            };
        },
 
         initialize: function() {
-           //this.set({selectedSite: new NearestSite()});
            this.nearestSites = new NearestSiteCollection();
+           this.set({selectedSite: new NearestSite()});
            this.listenTo(this.get('selectedSite'), 'change', this.updateMessage);
         },
 
         updateMessage: function() {
+            console.log("updateMessage fired!");
             var site = this.get('selectedSite').get('site');
             var message;
             if (typeof site === 'undefined') {

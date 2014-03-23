@@ -50,7 +50,7 @@ define(['jquery',
         this.Here.nearestSites = NearestNeighbor.getNearestSites(this.Here.get('currentUtm'), this.SitesList, 5);
         if (this.Here.manualLock) {
             var selectedSite = _.clone(this.Here.get('selectedSite')); //to make eventing work with a nested object
-            selectedSite = this.getSelectedSite(selectedSite);
+            selectedSite.set(this.getSelectedSite(selectedSite)); // to update the relativePosition
             this.Here.set('selectedSite', selectedSite);
         } else {
             this.Here.set('selectedSite', this.Here.nearestSites.first());

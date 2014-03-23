@@ -9,10 +9,10 @@ define(['underscore', 'backbone', 'src/models/RelativePosition'], function(_, Ba
         },
 
         initialize: function(options) {
-            this.listenTo(this.get('relativePosition'), 'bubble', this.update);
+            this.listenTo(this.get('relativePosition'), 'bubble', _.bind(this.onChange, this));
         },
 
-        update: function() {
+        onChange: function() {
           this.trigger('bubble');
         }
     });
