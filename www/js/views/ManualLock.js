@@ -13,6 +13,8 @@ define(['jquery',
 
         selectedItem: "",
 
+        disableMessage: "Disable Manual Lock",
+
         initialize: function(options) {
             this.template = options.template;
             var site = this.model.get('selectedSite').get('site');
@@ -39,7 +41,7 @@ define(['jquery',
         },
 
         setManualLock: function() {
-            if (this.selectedItem !== 'Disable Manual Lock') {
+            if (this.selectedItem !== this.disableMessage) {
                 this.setSelectedSite();
                 this.model.set('manualLock', true);
             } else {
@@ -67,9 +69,10 @@ define(['jquery',
         },
 
         render: function() {
-            this.$el.html(this.template({nearestSites: _.filter(this.model.nearestSites.pluck('site'), function(site) {
-                return (site.quad !== '' && site.site_id !== '');
-            })
+            this.$el.html(this.template(
+                {disableMessage: this.disableMessage, nearestSites: _.filter(this.model.nearestSites.pluck('site'), function(site) {
+                    return (site.quad !== '' && site.site_id !== '');
+                })
             }));
             return this;
         }
