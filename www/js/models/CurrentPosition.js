@@ -38,7 +38,6 @@ define(['underscore',
         },
 
         updateMessage: function() {
-            console.log("updateMessage fired!");
             var site = this.get('selectedSite').get('site');
             var message;
             if (typeof site === 'undefined') {
