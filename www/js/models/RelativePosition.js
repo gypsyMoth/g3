@@ -6,14 +6,6 @@ define(['underscore', 'backbone'], function(_, Backbone) { 'use strict';
             bearing: null,
             distanceOutside: -1,
             found: false
-        },
-
-        initialize: function() {
-            this.listenTo(this, 'change', this.onChange);
-        },
-
-        onChange: function() {
-          this.trigger('bubble');
         }
     });
 
