@@ -48,13 +48,15 @@ define(['jquery',
 
     my.findNearest = function() {
         this.Here.nearestSites = NearestNeighbor.getNearestSites(this.Here.get('currentUtm'), this.SitesList, 5);
+        var newSite,
+            selectedSite = _.clone(this.Here.get('selectedSite')); //to make eventing work with a nested object
         if (this.Here.manualLock) {
-            var selectedSite = _.clone(this.Here.get('selectedSite')); //to make eventing work with a nested object
-            selectedSite.set(this.getSelectedSite(selectedSite)); // to update the relativePosition
-            this.Here.set('selectedSite', selectedSite);
+            newSite = this.getSelectedSite(selectedSite);
         } else {
-            this.Here.set('selectedSite', this.Here.nearestSites.first());
+            newSite = this.Here.nearestSites.first();
         }
+        selectedSite.set({site: newSite.get('site'), relativePosition: newSite.get('relativePosition')});
+        this.Here.set('selectedSite', selectedSite);
     };
 
     my.getSelectedSite = function(site) {
