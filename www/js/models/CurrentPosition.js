@@ -26,12 +26,13 @@ define(['underscore',
                    date: '',
                    traptype: ''
                },
-               message: '',
-               manualLock: false
+               message: ''
+               //manualLock: false
            };
        },
 
         initialize: function() {
+           this.manualLock = false;
            this.nearestSites = new NearestSiteCollection();
            this.set({selectedSite: new NearestSite()});
            this.listenTo(this.get('selectedSite'), 'change', this.updateMessage);

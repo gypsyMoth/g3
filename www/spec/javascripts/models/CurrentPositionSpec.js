@@ -17,7 +17,7 @@ define(['underscore',
        });
 
         it("Has a manualLock property", function() {
-            expect(current.get('manualLock')).toBeDefined();
+            expect(current.manualLock).toBeDefined();
         });
 
         it("Has a selectedSite property", function() {

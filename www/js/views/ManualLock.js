@@ -43,9 +43,9 @@ define(['jquery',
         setManualLock: function() {
             if (this.selectedItem !== this.disableMessage) {
                 this.setSelectedSite();
-                this.model.set('manualLock', true);
+                this.model.manualLock = true;
             } else {
-                this.model.set('manualLock', false);
+                this.model.manualLock = false;
             }
         },
 
@@ -58,9 +58,6 @@ define(['jquery',
                 });
             selectedSite.set({site: newSite.get('site'), relativePosition: newSite.get('relativePosition')});
             this.model.set('selectedSite', selectedSite);
-            console.log("siteInfo: " + JSON.stringify(siteInfo));
-            console.log("newSite: " + JSON.stringify(newSite.toJSON()));
-            console.log("selectedSite: " + JSON.stringify(this.model.get('selectedSite').toJSON()));
         },
 
         parseSelect: function(selectData) {
