@@ -5,9 +5,9 @@
         <% } else { %>
         <table id="historyTable" class="stripedTable">
             <tbody>
-            <% _.each(transactions, function(trans) { %>
+            <% _.each(messages, function(msg) { %>
             <tr>
-                <td>A <%= trans.get("trap") %> trap was placed here on <%= trans.get("date") %>.</td>
+                <td><%= msg %></td>
             </tr>
             <% }); %>
             </tbody>

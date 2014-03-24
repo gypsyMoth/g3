@@ -1,8 +1,8 @@
 define(['underscore', 
     'backbone',
-    'src/util/DB',
+    'src/util/Decoder',
     'src/util/Controller'
-], function(_, Backbone, DB, Controller) {
+], function(_, Backbone, Decoder, Controller) {
     'use strict';
 
     var History = Backbone.View.extend({
@@ -48,7 +48,11 @@ define(['underscore',
             collection.comparator = "date";
             collection = _(collection.rest(perPage*page));
             collection = _(collection.first(perPage));
-            return collection.map( function(model) { return model } );
+            return collection.map( function(model) {
+                    var message = "";
+                    message = Decoder.historyString(model);
+                    return message
+                });
         },
 
         events: {
@@ -59,7 +63,7 @@ define(['underscore',
 
         render: function() {
             this.setButtons();
-            this.$el.html(this.template({transactions: this.pagination(this.pages.perPage,this.pages.page), pages: this.pages}));
+            this.$el.html(this.template({messages: this.pagination(this.pages.perPage,this.pages.page), pages: this.pages}));
             return this;
         },
 

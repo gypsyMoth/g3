@@ -1,8 +1,10 @@
 define (['jquery',
     'underscore',
     'src/models/SitesFile',
-    'src/collections/SitesFileCollection'],
-    function ($, _, SitesFile, SitesFileCollection) { 'use strict';
+    'src/models/Transaction',
+    'src/collections/SitesFileCollection',
+    'src/collections/Transactions'],
+    function ($, _, SitesFile, Transaction, SitesFileCollection, Transactions) { 'use strict';
         var my = {};
 
         var PERSISTENT;
@@ -78,7 +80,7 @@ define (['jquery',
             var deferred = new $.Deferred();
             getFile(fileEntry).then(loadFile).then(function(data) {
                 my.sitesFile = fileEntry.name;
-                deferred.resolve(data);
+                deferred.resolve(JSON.parse(data));
             });
             return deferred.promise();
         };
@@ -108,7 +110,7 @@ define (['jquery',
             var deferred = new $.Deferred();
             var reader = new FileReader();
             reader.onloadend = function(evt) {
-                deferred.resolve(JSON.parse(evt.target.result));
+                deferred.resolve(evt.target.result);
             };
             reader.readAsText(file);
             return deferred.promise();
@@ -169,6 +171,35 @@ define (['jquery',
                 appendFile(fileEntry, data).then( function() {
                     deferred.resolve();
                 });
+            });
+            return deferred.promise();
+        };
+
+        var readTransLog = function(){
+            var deferred = new $.Deferred();
+            getFileEntry(my.root, my.activityLog).then(getFile).then(loadFile).then(function(data){
+                deferred.resolve(data);
+            });
+            return deferred.promise();
+        };
+
+        my.getTransactions = function(){
+            var deferred = new $.Deferred();
+            readTransLog().then(function(data) {
+                var history = [];
+                var dataLines = data.split("\n");
+                dataLines.pop();
+                _.each(dataLines, function(line){
+                    var properties = line.split(",");
+                    var t = new Transaction({
+                        date: properties[8],
+                        easting: properties[5],
+                        northing: properties[6],
+                        codedString: properties[12]
+                    });
+                    history.push(t);
+                });
+                deferred.resolve(new Transactions(history));
             });
             return deferred.promise();
         };
