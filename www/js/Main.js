@@ -19,5 +19,8 @@ require.config({
 });
 
 require(['src/App'], function (App) { 'use strict';
+    document.ontouchmove = function(e){
+        e.preventDefault();
+    };
     App.initialize();
 });
