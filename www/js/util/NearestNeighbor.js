@@ -13,13 +13,14 @@ define (['underscore',
              distance,
              currentSite,
              i,
-             len,
              siteToReplace,
              nearestSites = new NearestSiteCollection();
 
+        numberToReturn = this.checkNumberOfSites(numberToReturn, sites.length);
+
         nearestSites = this.initializeNearestSites(numberToReturn);
 
-        for (i = 0, len = sites.length; i < len; i++) {
+        for (i = 0; i < sites.length; i++) {
             currentSite = sites[i];
             if (currentSite.zone === currentLocation.Zone) {
                 point = this.getPoint(currentSite);
@@ -47,6 +48,10 @@ define (['underscore',
             nearestPoints.add(new NearestSite({site: {quad: '', site_id: ''}, relativePosition: new RelativePosition()}));
         }
         return nearestPoints;
+    };
+
+    my.checkNumberOfSites = function(numberOfPoints, totalNumberOfSites) {
+        return numberOfPoints > totalNumberOfSites ? totalNumberOfSites : numberOfPoints;
     };
 
     my.getPoint = function(site) {
@@ -81,11 +86,12 @@ define (['underscore',
 
     my.assignSite = function (furthest, distance, site, currentPoint) {
         furthest.set('site', site);
-        var relativePosition = furthest.get('relativePosition');
+        var relativePosition = _.clone(furthest.get('relativePosition'));
         relativePosition.set('distance', Math.round(distance));
         relativePosition.set('distanceOutside', Math.round(distance - (site.grid * 0.3)));
         relativePosition.set('bearing', getBearingString(this.getPoint(site), currentPoint));
         relativePosition.set('found', true);
+        furthest.set({relativePosition: relativePosition});
     };
 
     var getDistance = function(p2, p1) {

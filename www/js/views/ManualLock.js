@@ -13,6 +13,8 @@ define(['jquery',
 
         selectedItem: "",
 
+        disableMessage: "Disable Manual Lock",
+
         initialize: function(options) {
             this.template = options.template;
             var site = this.model.get('selectedSite').get('site');
@@ -39,21 +41,22 @@ define(['jquery',
         },
 
         setManualLock: function() {
-            if (this.selectedItem !== 'Disable Manual Lock') {
+            if (this.selectedItem !== this.disableMessage) {
                 this.setSelectedSite();
-                this.model.set('manualLock', true);
+                this.model.manualLock = true;
             } else {
-                this.model.set('manualLock', false);
+                this.model.manualLock = false;
             }
         },
 
         setSelectedSite: function() {
-            var siteInfo = this.parseSelect(this.selectedItem);
-            var nearestSites = this.model.get('nearestSites');
-            var selectedSite = nearestSites.find(function(nearest) {
-                var site = nearest.get('site');
-                return (site.quad === siteInfo.quad && site.site_id === siteInfo.site_id);
-            });
+            var siteInfo = this.parseSelect(this.selectedItem),
+                selectedSite = _.clone(this.model.get('selectedSite')),
+                newSite = this.model.nearestSites.find(function(nearest) {
+                    var site = nearest.get('site');
+                    return (site.quad === siteInfo.quad && site.site_id === siteInfo.site_id);
+                });
+            selectedSite.set({site: newSite.get('site'), relativePosition: newSite.get('relativePosition')});
             this.model.set('selectedSite', selectedSite);
         },
 
@@ -63,7 +66,11 @@ define(['jquery',
         },
 
         render: function() {
-            this.$el.html(this.template({nearestSites: this.model.get('nearestSites')}));
+            this.$el.html(this.template(
+                {disableMessage: this.disableMessage, nearestSites: _.filter(this.model.nearestSites.pluck('site'), function(site) {
+                    return (site.quad !== '' && site.site_id !== '');
+                })
+            }));
             return this;
         }
     });

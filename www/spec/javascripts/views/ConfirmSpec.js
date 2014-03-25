@@ -16,7 +16,7 @@ define(["jquery",
             loadFixtures('confirm.html');
             $('body').append();
             view = new ConfirmView({model: new CurrentPosition(), template: _.template($('#confirm-template').html())});
-            view.model.get('nearestSites').add(new NearestSite());
+            view.model.nearestSites.add(new NearestSite());
         });
 
         it("Can be instantiated", function() {

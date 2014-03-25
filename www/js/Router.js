@@ -85,7 +85,7 @@ define(['jquery',
         },
 
         manualLock: function() {
-            this.loadView(new ManualLockView({model: Geolocation.Here, /*collection: Geolocation.Here.get('nearestSites'),*/ template: _.template($('#manualLock-template').html())}));
+            this.loadView(new ManualLockView({model: Geolocation.Here, template: _.template($('#manualLock-template').html())}));
         },
 
         loadView : function(view) {

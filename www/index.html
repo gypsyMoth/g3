@@ -138,16 +138,11 @@
             </script>
             <script type="text/template" id="manualLock-template">
                 <div id="manualLockHeader" class="formHeader">
-                    <select id="selectNearestSite">
-
-                        <% _.each(nearestSites, function(nearest) {
-                            if (nearest) /*&& nearest.get('site') !== 'undefined' && nearest.get('site') !== 'undefined')*/ {
-                        %>
-                        <option><%= nearest.get('site').quad + ':' + nearest.get('site').site_id %></option>
-                        <%  }
-                           });
-                        %>
-                        <option>Disable Manual Lock</option>
+                    <select id="selectSite">
+                        <% _.each(nearestSites, function(nearest) { %>
+                        <option><%= nearest.quad + ':' + nearest.site_id %></option>
+                        <% }); %>
+                        <option><%= disableMessage %></option>
                     </select>
                 </div>
 

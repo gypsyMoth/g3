@@ -6,14 +6,6 @@ define(['underscore', 'backbone', 'src/models/RelativePosition'], function(_, Ba
                 site: {quad: '', site_id: ''},
                 relativePosition: new RelativePosition()
             };
-        },
-
-        initialize: function(options) {
-            this.listenTo(this.get('relativePosition'), 'bubble', this.update);
-        },
-
-        update: function() {
-          this.trigger('bubble');
         }
     });
 

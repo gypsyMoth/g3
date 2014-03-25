@@ -1,8 +1,9 @@
-define(['src/util/NearestNeighbor',
+define(['underscore',
+    'src/util/NearestNeighbor',
     'src/models/NearestSite',
     'src/models/RelativePosition',
     'src/collections/NearestSiteCollection'],
-    function(NearestNeighbor, NearestSite, RelativePosition, NearestSiteCollection) { 'use strict';
+    function(_, NearestNeighbor, NearestSite, RelativePosition, NearestSiteCollection) { 'use strict';
     
     describe( "Nearest Neighbor Module", function () {
         it("Exists", function() {
@@ -63,6 +64,16 @@ define(['src/util/NearestNeighbor',
                 var nearest = NearestNeighbor.getNearestSites(currentUtm, list, 2);
                 expect(nearest.first().get('site')).toEqual({quad: 'TEST', site_id: 1, zone: 17, xth: 300, yth: 1000000, grid: 100});
                 expect(nearest.last().get('site')).toEqual({quad: 'TEST', site_id: 2, zone: 17, xth: 400, yth: 1000000, grid: 100});
+            });
+
+            it("Returns the total number of sites when the list is smaller than the number of nearest sites requested", function() {
+                var i,
+                    nearest = NearestNeighbor.getNearestSites(currentUtm, list, 7);
+                expect(nearest.length).toEqual(6);
+
+                for (i = 0; i < nearest.models.length - 1; i++) {
+                    expect(nearest.models[i].get('site').site_id).not.toEqual('');
+                }
             });
         });
 
