@@ -21,8 +21,8 @@ define(['underscore',
 
         initialize: function(options) {
             this.template = options.template;
-            this.sortDate();
             this.pages.total = Math.ceil(this.collection.models.length / this.pages.perPage);
+            this.sortDate();
             this.setButtons();
         },
 

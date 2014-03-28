@@ -94,6 +94,9 @@ define (['jquery',
             dirEntry.getFile(filename, params,
             function gotFileEntry(fileEntry) {
                 deferred.resolve(fileEntry);
+            }, function(){
+                deferred.reject();
+                alert("No " + filename + " Found!");
             });
             return deferred.promise();
         };
@@ -102,7 +105,9 @@ define (['jquery',
             var deferred = new $.Deferred();
             fileEntry.file( function success(file) {
                 deferred.resolve(file);
-            }, my.fail);
+            }, function(){
+                deferred.reject();
+            });
             return deferred.promise();
         };
 
@@ -179,6 +184,8 @@ define (['jquery',
             var deferred = new $.Deferred();
             getFileEntry(my.root, my.activityLog).then(getFile).then(loadFile).then(function(data){
                 deferred.resolve(data);
+            }).fail(function(){
+                deferred.reject();
             });
             return deferred.promise();
         };
@@ -200,6 +207,8 @@ define (['jquery',
                     history.push(t);
                 });
                 deferred.resolve(new Transactions(history));
+            }).fail(function(){
+                deferred.resolve(new Transactions());
             });
             return deferred.promise();
         };
