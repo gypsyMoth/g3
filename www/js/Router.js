@@ -12,6 +12,8 @@ define(['jquery',
     'src/views/Home',
     'src/views/Extras',
     'src/views/Placement',
+    'src/views/Omit',
+    'text!src/templates/omit.html',
     'src/views/Caution',
     'src/views/Confirm',
 	'src/views/History',
@@ -29,6 +31,8 @@ define(['jquery',
             HomeView,
             ExtrasView,
             PlacementView,
+            OmitView,
+            OmitTemplate,
             CautionView,
             ConfirmView,
             HistoryView,
@@ -41,6 +45,7 @@ define(['jquery',
             "home" : "home",
             "extras" : "extras",
             "placement" : "placement",
+            "omit" : "omit",
             "caution" : "caution",
             "confirm" : "confirm",
 			"history" : "history",
@@ -62,6 +67,10 @@ define(['jquery',
 
         placement : function() {
             this.loadView(new PlacementView({model: Geolocation.Here, template: _.template($('#placement-template').html())}));
+        },
+
+        omit: function() {
+            this.loadView(new OmitView({model: Geolocation.Here, template: _.template(OmitTemplate).html()}) );
         },
 
         caution: function() {

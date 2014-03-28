@@ -5,7 +5,8 @@ require.config({
         jquery: 'lib/jquery-2.0.3.min',
         underscore: 'lib/underscore-min',
         backbone: 'lib/backbone-min',
-        moment: 'lib/moment.min'
+        moment: 'lib/moment.min',
+        text: 'lib/text'
     },
     shim: {
         underscore: {

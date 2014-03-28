@@ -1,4 +1,4 @@
-(function() {
+(function() { 'use strict';
 
     require.config({
         //urlArgs: 'cb=' + Math.random(),
@@ -64,6 +64,7 @@
         'views/SplashSpec',
         'views/LoadSitesSpec',
         'views/ManualLockSpec',
+        'views/OmitSpec',
         'views/HistorySpec'
     ];
 
