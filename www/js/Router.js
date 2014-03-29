@@ -87,7 +87,7 @@ define(['jquery',
 
         loadSites: function() {
             DB.getSitesFiles().then(_.bind(function(sitesFiles) {
-                this.loadView(new LoadSitesView({collection: sitesFiles, template: _.template($('#loadSites-template').html())}));
+                this.loadView(new LoadSitesView({collection: sitesFiles}));
             }, this));
         },
 

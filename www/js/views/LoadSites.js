@@ -3,8 +3,9 @@ define(['jquery',
     'backbone',
     'src/util/Controller',
     'src/util/DB',
-    'src/util/Geolocation'
-], function($, _, Backbone, Controller, DB, Geolocation) {
+    'src/util/Geolocation',
+    'text!src/templates/loadSites.html'
+], function($, _, Backbone, Controller, DB, Geolocation, loadSitesTemplate) {
     'use strict';
 
     var LoadSites = Backbone.View.extend({
@@ -16,7 +17,7 @@ define(['jquery',
         selectedItem: null,
 
         initialize: function(options) {
-            this.template = options.template;
+            this.template = _.template(loadSitesTemplate);
             this.selectedItem = this.collection.first();
         },
 

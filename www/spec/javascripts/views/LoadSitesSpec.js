@@ -8,9 +8,7 @@ define(["jquery",
         var view;
 
         beforeEach(function() {
-            loadFixtures('loadSites.html');
-            $('body').append();
-            view = new LoadSitesView({collection: new SitesFileCollection(), template: _.template($('#loadSites-template').html())});
+            view = new LoadSitesView({collection: new SitesFileCollection()});
         });
 
         it("Can be instantiated", function() {
