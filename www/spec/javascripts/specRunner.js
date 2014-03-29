@@ -8,6 +8,7 @@
             'jquery': '../../js/lib/jquery-2.0.3.min',
             'underscore': '../../js/lib/underscore-min',
             'backbone': '../../js/lib/backbone-min',
+            'text': '../../js/lib/text',
             'moment': '../../js/lib/moment.min',
             'jasmine': 'lib/jasmine-2.0.0/jasmine',
             'jasmine-html': 'lib/jasmine-2.0.0/jasmine-html',

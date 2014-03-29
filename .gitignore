@@ -1,5 +1,7 @@
 ## Ignore Phonegap build output
 platforms/android/assets/*
+platforms/android/CordovaLib/gen/R.java.d
+platforms/android/gen/R.java.d
 
 ## Ignore WebStorm project files
 .idea/*

@@ -3,7 +3,7 @@ define(['jquery',
     'backbone',
     'text!templates/omit.html',
     'src/util/Controller'
-], function($, _, Backbone, OmitTemplate, Controller) {
+], function($, _, Backbone, omitTemplate, Controller) {
     'use strict';
 
     var Omit = Backbone.View.extend({
@@ -13,7 +13,7 @@ define(['jquery',
         className: "view",
 
         initialize: function(options) {
-            this.template = OmitTemplate;
+            this.template = _.template(omitTemplate);
         },
 
         events: {
@@ -28,11 +28,12 @@ define(['jquery',
         },
 
         onOmitReasonChanged: function(e) {
-            var selectedFileName = e.target.options[e.target.selectedIndex].text;
-            this.selectedItem = this.collection.find(function(model) {return model.get('fileEntry').name === selectedFileName; });
+            var selectedOmitReason = e.target.options[e.target.selectedIndex].value;
+            this.omitReason = selectedOmitReason;
         },
 
         onOkClicked: function() {
+            this.model.operation.traptype = this.omitReason;
             Controller.router.navigate('home', {trigger: true, replace: true});
         },
 
