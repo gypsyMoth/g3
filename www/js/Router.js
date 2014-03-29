@@ -60,7 +60,7 @@ define(['jquery',
         },
 
         extras: function() {
-            this.loadView(new ExtrasView({model: new Filesystem(), template: _.template($('#extras-template').html())}));
+            this.loadView(new ExtrasView({model: new Filesystem()}));
         },
 
         placement : function() {

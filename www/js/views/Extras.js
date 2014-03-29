@@ -3,8 +3,8 @@ define(['underscore',
     'src/util/DB',
     'src/util/Geolocation',
     'src/util/Controller',
-    'src/collections/Transactions'
-], function(_, Backbone, DB, Geolocation, Controller, Transactions) { 'use strict';
+    'text!src/templates/extras.html'
+], function(_, Backbone, DB, Geolocation, Controller, extrasTemplate) { 'use strict';
 
     var Extras = Backbone.View.extend({
 
@@ -15,7 +15,7 @@ define(['underscore',
         hasFiles: false,
 
         initialize: function(options) {
-            this.template = options.template;
+            this.template = _.template(extrasTemplate);
         },
 
         events: {
