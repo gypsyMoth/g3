@@ -8,9 +8,7 @@ define(["jquery",
         var view;
 
         beforeEach(function() {
-            loadFixtures('caution.html');
-            $('body').append();
-            view = new CautionView({model: new CurrentPosition(), template: _.template($('#caution-template').html())});
+            view = new CautionView({model: new CurrentPosition()});
         });
 
         it("Can be instantiated", function() {

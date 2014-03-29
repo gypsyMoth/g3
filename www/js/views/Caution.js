@@ -1,7 +1,8 @@
 define(['underscore',
     'backbone',
-    'src/util/Controller'
-], function(_, Backbone, Controller) { 'use strict';
+    'src/util/Controller',
+    'text!src/templates/caution.html'
+], function(_, Backbone, Controller, cautionTemplate) { 'use strict';
 
     var Caution = Backbone.View.extend({
 
@@ -10,7 +11,7 @@ define(['underscore',
         className: "view",
 
         initialize: function(options) {
-            this.template = options.template;
+            this.template = _.template(cautionTemplate);
         },
 
         events: {

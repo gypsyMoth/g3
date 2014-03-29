@@ -72,7 +72,7 @@ define(['jquery',
         },
 
         caution: function() {
-            this.loadView(new CautionView({model: Geolocation.Here, template: _.template($('#caution-template').html())}));
+            this.loadView(new CautionView({model: Geolocation.Here}));
         },
 
         confirm: function() {
