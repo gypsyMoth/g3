@@ -74,8 +74,12 @@ define(['underscore',
 
         getOperationImage: function(isOut, site) {
             var imagePath = 'img/';
-            imagePath += isOut ? 'red' : 'green';
-            imagePath += this.getImageType(site);
+            if (site.omit_reason) {
+                imagePath += 'omittedTree';
+            } else {
+                imagePath += isOut ? 'red' : 'green';
+                imagePath += this.getImageType(site);
+            }
             imagePath += '.gif';
             return imagePath;
         },

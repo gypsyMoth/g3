@@ -37,7 +37,7 @@ define(['underscore',
         },
 
         onOmitClicked: function() {
-            alert("Omit is not implemented");
+            Controller.router.navigate('omit', {trigger: true, replace: true});
         },
 
         onCancelClicked: function() {

@@ -61,6 +61,20 @@ define(["jquery",
                 "condition":"GOOD",
                 "moth_count":0,
                 "txn_date":"2013-02-06T00:00:00-00:00"
+            },
+            omit: {
+                "zone":15,
+                "xth":"300000",
+                "yth":"3000000",
+                "xact": 400000,
+                "yact": 4000000,
+                "quad":"TEST",
+                "site_id":1,
+                "grid":"300",
+                "trap_type":"Omit",
+                "omit_reason":"Nothing to hang trap on",
+                "moth_count":0,
+                "txn_date":"2013-02-06T00:00:00-00:00"
             }
         };
 
@@ -82,7 +96,7 @@ define(["jquery",
            view.model.set({operation: {easting: 123456, northing: 1234567, date: '01/01/14', traptype: 'Delta'}});
            view = new HomeView({model: new CurrentPosition(), template: _.template($('#home-template').html())});
            var op = view.model.get('operation');
-           expect(op).toEqual({easting: '', northing: '', zone: '', date: '', traptype: ''});
+           expect(op).toEqual({easting: '', northing: '', zone: '', date: '', traptype: '', omitReason: '', omitCode: ''});
        });
 
        describe("Determine operation based on site", function() {
@@ -102,6 +116,10 @@ define(["jquery",
 
            it("Returns MIDSEASON for a midseason inspected site", function() {
                expect(view.getOperation(testSites.midseasonInspection)).toEqual('MIDSEASON');
+           });
+
+           it("Returns OMIT for an omitted site", function() {
+              expect(view.getOperation(testSites.omit)).toEqual('OMITTED');
            });
        });
 
@@ -191,6 +209,14 @@ define(["jquery",
                    expectColorToMatchDistanceOutside(site, 1, '#FF0000');
                    expectImageToMatchOperation(site, 1, 'img/redMilkCarton.gif');
                });
+           });
+
+           describe("Omit", function() {
+              var site = testSites.omit;
+
+              it("Shows omit when site is omitted", function() {
+                 expectImageToMatchOperation(site, 0, 'img/omittedTree.gif');
+              });
            });
        });
     }));

@@ -1,14 +1,15 @@
 define(["jquery",
     "underscore",
     "src/models/CurrentPosition",
-    "src/views/Omit",
-    "text!src/templates/omit.html"],
-    function($, _, CurrentPosition, OmitView, omitTemplate) { 'use strict';
+    "src/views/Omit"],
+    function($, _, CurrentPosition, OmitView) { 'use strict';
     $(describe("Omit View", function() {
         var view;
 
         beforeEach(function() {
-            view = new OmitView({model: new CurrentPosition(), template: _.template(omitTemplate)});
+            loadFixtures('omit.html');
+            $('body').append();
+            view = new OmitView({model: new CurrentPosition(), template: _.template($('#omit-template').html())});
         });
 
         it("Can be instantiated", function() {
@@ -18,6 +19,12 @@ define(["jquery",
         it("Has a model", function() {
             expect(view.model).toBeDefined();
         });
+
+        it("Defaults with a selected omit reason", function() {
+           var view = new OmitView({model: new CurrentPosition(), template: _.template($('#omit-template').html())});
+           expect(view.model.get('operation').omitReason).toEqual("Nothing to hang trap on");
+        });
+
 
 //        it("Sets the operation traptype when an omit reason is selected", function() {
 //            var model = new CurrentPosition();

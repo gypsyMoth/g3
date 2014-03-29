@@ -13,7 +13,6 @@ define(['jquery',
     'src/views/Extras',
     'src/views/Placement',
     'src/views/Omit',
-    'text!src/templates/omit.html',
     'src/views/Caution',
     'src/views/Confirm',
 	'src/views/History',
@@ -32,7 +31,6 @@ define(['jquery',
             ExtrasView,
             PlacementView,
             OmitView,
-            OmitTemplate,
             CautionView,
             ConfirmView,
             HistoryView,
@@ -70,7 +68,7 @@ define(['jquery',
         },
 
         omit: function() {
-            this.loadView(new OmitView({model: Geolocation.Here, template: _.template(OmitTemplate).html()}) );
+            this.loadView(new OmitView({model: Geolocation.Here, template: _.template($('#omit-template').html())}));
         },
 
         caution: function() {

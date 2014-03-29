@@ -1,7 +1,7 @@
 define(['jquery',
     'underscore',
     'backbone',
-    'text!templates/omit.html',
+    'text!src/templates/omit.html',
     'src/util/Controller'
 ], function($, _, Backbone, omitTemplate, Controller) {
     'use strict';
@@ -13,7 +13,8 @@ define(['jquery',
         className: "view",
 
         initialize: function(options) {
-            this.template = _.template(omitTemplate);
+            this.template = options.template;
+            this.setOperation({text: 'Nothing to hang trap on', value: 'H'});
         },
 
         events: {
@@ -28,17 +29,23 @@ define(['jquery',
         },
 
         onOmitReasonChanged: function(e) {
-            var selectedOmitReason = e.target.options[e.target.selectedIndex].value;
-            this.omitReason = selectedOmitReason;
+            var selectedOption = e.target.options[e.target.selectedIndex];
+            this.setOperation(selectedOption);
         },
 
         onOkClicked: function() {
-            this.model.operation.traptype = this.omitReason;
-            Controller.router.navigate('home', {trigger: true, replace: true});
+            Controller.router.navigate('confirm', {trigger: true, replace: true});
         },
 
         onCancelClicked: function() {
             Controller.router.navigate('home', {trigger: true, replace: true});
+        },
+
+        setOperation: function(option) {
+            var op = this.model.get('operation');
+            op.traptype = "Omit";
+            op.omitReason = option.text;
+            op.omitCode = option.value;
         }
     });
 
