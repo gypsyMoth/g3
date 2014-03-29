@@ -81,7 +81,7 @@ define(['jquery',
 		
 		history: function() {
             DB.getTransactions().then(_.bind(function(transactions) {
-                this.loadView(new HistoryView({collection: transactions, template: _.template($('#history-template').html())}));
+                this.loadView(new HistoryView({collection: transactions}));
             }, this));
         },
 

@@ -1,8 +1,9 @@
 define(['underscore', 
     'backbone',
     'src/util/Decoder',
-    'src/util/Controller'
-], function(_, Backbone, Decoder, Controller) {
+    'src/util/Controller',
+    'text!src/templates/history.html'
+], function(_, Backbone, Decoder, Controller, historyTemplate) {
     'use strict';
 
     var History = Backbone.View.extend({
@@ -20,7 +21,7 @@ define(['underscore',
         },
 
         initialize: function(options) {
-            this.template = options.template;
+            this.template = _.template(historyTemplate);
             this.sortDate();
             this.pages.total = Math.ceil(this.collection.models.length / this.pages.perPage);
             this.setButtons();
@@ -30,8 +31,8 @@ define(['underscore',
             this.collection.comparator = function(t1, t2){
                 var date1 = Date.parse(t1.get("date"));
                 var date2 = Date.parse(t2.get("date"));
-                if (date1 > date2) {return -1};
-                if (date1 < date2) {return 1};
+                if (date1 > date2) {return -1;}
+                if (date1 < date2) {return 1;}
                 return 0;
             }
             this.collection.sort();
