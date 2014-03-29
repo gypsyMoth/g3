@@ -1,6 +1,7 @@
 define(['underscore',
-    'backbone'
-], function(_, Backbone) { 'use strict';
+    'backbone',
+    'text!src/templates/splash.html'
+], function(_, Backbone, splashTemplate) { 'use strict';
 
     var SplashView = Backbone.View.extend({
 
@@ -9,7 +10,7 @@ define(['underscore',
         className: "view",
 
         initialize: function(options) {
-            this.template = options.template;
+            this.template = _.template(splashTemplate);
             this.listenTo(this.model, 'change:message', this.render);
         },
 

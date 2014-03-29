@@ -1,12 +1,13 @@
-define(["jquery", "src/models/Splash", "src/views/Splash"], function($, SplashModel, SplashView) {
+define(["jquery",
+    "src/models/Splash",
+    "src/views/Splash"],
+    function($, SplashModel, SplashView) { 'use strict';
     $(describe("Splash View", function() {
 
         var view;
 
         beforeEach(function() {
-            loadFixtures('splash.html');
-            $('body').append();
-            view = new SplashView({model: new SplashModel(), template: _.template($('#splash-template').html())});
+            view = new SplashView({model: new SplashModel()});
         });
 
         it("Can be instantiated", function() {

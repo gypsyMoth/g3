@@ -52,7 +52,7 @@ define(['jquery',
         },
 
         splash: function() {
-            this.loadView(new SplashView({model: new Splash(), template: _.template($('#splash-template').html())}));
+            this.loadView(new SplashView({model: new Splash()}));
         },
 
         home : function() {
