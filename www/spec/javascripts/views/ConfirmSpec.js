@@ -1,21 +1,18 @@
 define(["jquery",
     'underscore',
-    "src/app",
     "src/models/CurrentPosition",
     'src/util/DB',
     'src/util/Geolocation',
     'src/models/NearestSite',
     "src/views/Confirm"
-], function($, _, app, CurrentPosition, db, Geolocation, NearestSite, ConfirmView) {
+], function($, _, CurrentPosition, db, Geolocation, NearestSite, ConfirmView) { 'use strict';
 
     $(describe("Confirm View", function() {
 
         var view;
 
         beforeEach(function() {
-            loadFixtures('confirm.html');
-            $('body').append();
-            view = new ConfirmView({model: new CurrentPosition(), template: _.template($('#confirm-template').html())});
+            view = new ConfirmView({model: new CurrentPosition()});
             view.model.nearestSites.add(new NearestSite());
         });
 

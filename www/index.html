@@ -83,23 +83,7 @@
                     <input type="button" id="btnPlacementCancel" class="cancelButton" value="Cancel">
                 </div>
             </script>
-            <script type="text/template" id="confirm-template">
-                <div id="confirmHeader" class="formHeader">
-                    <span id="confirmMessage" class="message">
-                        <% if (operation.traptype === 'Omit') { %>
-                        Confirm omit (<%=operation.omitReason%>)
-                        <% } else { %>
-                        Confirm placement of <%=operation.traptype%>
-                        <% } %>
-                        at site <%=selectedSite.get('site').quad%>:<%=selectedSite.get('site').site_id%>,
-                        coordinates <%=currentUtm.Easting%> E, <%=currentUtm.Northing%> N?
-                    </span>
-                </div>
-                <div id="confirmFooter" class="formFooter">
-                    <input type="button" id="btnConfirmOk" class="gadgetButton" value="Ok">
-                    <input type="button" id="btnConfirmCancel" class="cancelButton" value="Cancel">
-                </div>
-            </script>
+
 
 
             <script type="text/template" id="extras-template">

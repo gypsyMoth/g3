@@ -2,8 +2,9 @@ define(['underscore',
     'backbone',
     'src/util/DB',
     'src/util/Geolocation',
-    'src/util/Controller'
-], function(_, Backbone, DB, Geolocation, Controller) {
+    'src/util/Controller',
+    'text!src/templates/confirm.html'
+], function(_, Backbone, DB, Geolocation, Controller, confirmTemplate) {
     'use strict';
 
     var Confirm = Backbone.View.extend({
@@ -13,7 +14,7 @@ define(['underscore',
         className: "view",
 
         initialize: function(options) {
-            this.template = options.template;
+            this.template = _.template(confirmTemplate);
         },
 
         events: {

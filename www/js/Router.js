@@ -76,7 +76,7 @@ define(['jquery',
         },
 
         confirm: function() {
-            this.loadView(new ConfirmView({model: Geolocation.Here, template: _.template($('#confirm-template').html())}));
+            this.loadView(new ConfirmView({model: Geolocation.Here}));
         },
 		
 		history: function() {
