@@ -1,8 +1,9 @@
 define(['underscore',
     'backbone',
     'src/util/Date',
-    'src/util/Controller'
-], function(_, Backbone, DateFormatter, Controller) { 'use strict';
+    'src/util/Controller',
+    'text!src/templates/placement.html'
+], function(_, Backbone, DateFormatter, Controller, placementTemplate) { 'use strict';
 
     var PlacementView = Backbone.View.extend({
 
@@ -11,7 +12,7 @@ define(['underscore',
         className: "view",
 
         initialize: function(options) {
-            this.template = options.template;
+            this.template = _.template(placementTemplate);
             this.setOperationData();
         },
 

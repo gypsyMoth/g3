@@ -1,0 +1,14 @@
+<div id="placementTop" class="formHeader">
+    <span class="message">Confirm placement of</span><br />
+    <select id="selectTraptype">
+        <option val="0" selected="selected"><%= selectedSite.get('site').trap_type%></option>
+        <option val="1"><%= selectedSite.get('site').trap_type === 'Delta' ? 'Milk Carton' : 'Delta'%></option>
+    </select>
+    <span class="message">at site <%=selectedSite.get('site').quad + ':' + selectedSite.get('site').site_id%></span><br />
+    <span class="message"><%= currentUtm.Easting + 'E ' + currentUtm.Northing + 'N' %></span>
+</div>
+<div id="placementBottom" class="formFooter">
+    <input type="button" id="btnPlacementOk" class="gadgetButton" value="Place Trap">
+    <input type="button" id="btnPlacementOmit" class="gadgetButton" value="Omit Site">
+    <input type="button" id="btnPlacementCancel" class="cancelButton" value="Cancel">
+</div>

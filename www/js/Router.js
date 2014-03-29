@@ -64,7 +64,7 @@ define(['jquery',
         },
 
         placement : function() {
-            this.loadView(new PlacementView({model: Geolocation.Here, template: _.template($('#placement-template').html())}));
+            this.loadView(new PlacementView({model: Geolocation.Here}));
         },
 
         omit: function() {

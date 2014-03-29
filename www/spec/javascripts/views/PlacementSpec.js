@@ -8,9 +8,7 @@ define(["jquery",
         var view;
 
         beforeEach(function() {
-            loadFixtures('placement.html');
-            $('body').append();
-            view = new PlacementView({model: new CurrentPosition(), template: _.template($('#placement-template').html())});
+            view = new PlacementView({model: new CurrentPosition()});
         });
 
         it("Can be instantiated", function() {
@@ -27,7 +25,7 @@ define(["jquery",
                 var model = new CurrentPosition();
                 model.set({currentUtm: {Easting: 123456, Northing: 1234567, Zone: 15}});
                 model.get('selectedSite').set({site: {"zone":15,"xth":"329229","yth":"3475979","quad":"FIREP","site_id":1,"grid":"30","trap_type":"Delta","moth_count":0}});
-                view = new PlacementView({model: model, template: _.template($('#placement-template').html())});
+                view = new PlacementView({model: model});
                 var op = view.model.get('operation');
                 expect(op.easting).toEqual(123456);
                 expect(op.northing).toEqual(1234567);
