@@ -92,7 +92,7 @@ define(['jquery',
         },
 
         manualLock: function() {
-            this.loadView(new ManualLockView({model: Geolocation.Here, template: _.template($('#manualLock-template').html())}));
+            this.loadView(new ManualLockView({model: Geolocation.Here}));
         },
 
         loadView : function(view) {

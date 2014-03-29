@@ -88,21 +88,7 @@
 
 
 
-            <script type="text/template" id="manualLock-template">
-                <div id="manualLockHeader" class="formHeader">
-                    <select id="selectSite">
-                        <% _.each(nearestSites, function(nearest) { %>
-                        <option><%= nearest.quad + ':' + nearest.site_id %></option>
-                        <% }); %>
-                        <option><%= disableMessage %></option>
-                    </select>
-                </div>
 
-                <div id="manualLockFooter" class="formFooter">
-                    <input type="button" id="btnManualLockOk" class="gadgetButton" value="Ok">
-                    <input type="button" id="btnManualLockCancel" class="cancelButton" value="Cancel">
-                </div>
-            </script>
 
 			<script type="text/template" id="history-template">
                 <div id="historyDiv" class="historyHeader">
