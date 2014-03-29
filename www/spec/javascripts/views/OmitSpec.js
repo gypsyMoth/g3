@@ -7,9 +7,7 @@ define(["jquery",
         var view;
 
         beforeEach(function() {
-            loadFixtures('omit.html');
-            $('body').append();
-            view = new OmitView({model: new CurrentPosition(), template: _.template($('#omit-template').html())});
+            view = new OmitView({model: new CurrentPosition()});
         });
 
         it("Can be instantiated", function() {
@@ -21,7 +19,7 @@ define(["jquery",
         });
 
         it("Defaults with a selected omit reason", function() {
-           var view = new OmitView({model: new CurrentPosition(), template: _.template($('#omit-template').html())});
+           var view = new OmitView({model: new CurrentPosition()});
            expect(view.model.get('operation').omitReason).toEqual("Nothing to hang trap on");
         });
 

@@ -13,7 +13,7 @@ define(['jquery',
         className: "view",
 
         initialize: function(options) {
-            this.template = options.template;
+            this.template = _.template(omitTemplate);
             this.setOperation({text: 'Nothing to hang trap on', value: 'H'});
         },
 

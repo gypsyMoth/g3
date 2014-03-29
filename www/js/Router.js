@@ -68,7 +68,7 @@ define(['jquery',
         },
 
         omit: function() {
-            this.loadView(new OmitView({model: Geolocation.Here, template: _.template($('#omit-template').html())}));
+            this.loadView(new OmitView({model: Geolocation.Here}));
         },
 
         caution: function() {
