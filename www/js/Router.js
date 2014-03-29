@@ -55,12 +55,12 @@ define(['jquery',
             this.loadView(new SplashView({model: new Splash()}));
         },
 
-        home : function() {
-            this.loadView(new HomeView({model: Geolocation.Here, template: _.template($('#home-template').html())}));
-        },
-
         extras: function() {
             this.loadView(new ExtrasView({model: new Filesystem()}));
+        },
+
+        home : function() {
+            this.loadView(new HomeView({model: Geolocation.Here}));
         },
 
         placement : function() {
@@ -78,6 +78,10 @@ define(['jquery',
         confirm: function() {
             this.loadView(new ConfirmView({model: Geolocation.Here}));
         },
+
+        manualLock: function() {
+            this.loadView(new ManualLockView({model: Geolocation.Here}));
+        },
 		
 		history: function() {
             DB.getTransactions().then(_.bind(function(transactions) {
@@ -89,10 +93,6 @@ define(['jquery',
             DB.getSitesFiles().then(_.bind(function(sitesFiles) {
                 this.loadView(new LoadSitesView({collection: sitesFiles}));
             }, this));
-        },
-
-        manualLock: function() {
-            this.loadView(new ManualLockView({model: Geolocation.Here}));
         },
 
         loadView : function(view) {

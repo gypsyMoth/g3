@@ -79,9 +79,7 @@ define(["jquery",
         };
 
        beforeEach(function() {
-          loadFixtures('home.html');
-          $('body').append();
-          view = new HomeView({model: new CurrentPosition(), template: _.template($('#home-template').html())});
+          view = new HomeView({model: new CurrentPosition()});
        });
 
        it("Can be instantiated", function() {
@@ -94,7 +92,7 @@ define(["jquery",
 
        it("Clears the operation on initial load", function() {
            view.model.set({operation: {easting: 123456, northing: 1234567, date: '01/01/14', traptype: 'Delta'}});
-           view = new HomeView({model: new CurrentPosition(), template: _.template($('#home-template').html())});
+           view = new HomeView({model: new CurrentPosition()});
            var op = view.model.get('operation');
            expect(op).toEqual({easting: '', northing: '', zone: '', date: '', traptype: '', omitReason: '', omitCode: ''});
        });
