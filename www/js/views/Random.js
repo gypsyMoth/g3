@@ -1,9 +1,12 @@
-define(['underscore',
+define(['jquery',
+    'underscore',
     'backbone',
     'src/models/NearestSite',
+    'src/models/RelativePosition',
+    'src/util/Geolocation',
     'src/util/Controller',
     'text!src/templates/random.html'
-], function(_, Backbone, NearestSite, Controller, randomTemplate) { 'use strict';
+], function($, _, Backbone, NearestSite, RelativePosition, Geolocation, Controller, randomTemplate) { 'use strict';
 
     var Random = Backbone.View.extend({
 
@@ -35,8 +38,15 @@ define(['underscore',
         },
 
         initRandomSite: function() {
-            var randomSite = this.model.get('selectedSite');
-            randomSite.set('site', {quad: 'RANDM', site_id: 9001, trap_type: 'Milk Carton' });
+            var utm = this.model.get('currentUtm'),
+                nextId = Geolocation.getNextRandomSiteId(),
+                randomSite = new NearestSite({
+                    site: {
+                    quad: 'RANDM', site_id: nextId, trap_type: 'Milk Carton', zone: utm.Zone, xth: utm.Easting, yth: utm.Northing, grid: 100
+                },
+                    relativePosition: new RelativePosition({distance: 0, bearing: null, distanceOutside: -1, found: true})
+                });
+            this.model.set('selectedSite', randomSite);
         }
     });
 

@@ -39,21 +39,21 @@ define(['src/util/Geolocation'], function(Geolocation) { 'use strict';
             expect(site).toEqual(list[1]);
         });
 
-//        it("Doesn't update the nearest site when manualLock is set", function() {
-//           Geolocation.Here.set('manualLock', true);
-//
-//            var position = {
-//                coords: {
-//                    latitude: 37,
-//                    longitude: -81,
-//                    accuracy: 10
-//                }
-//            };
-//
-//           spyOn(Geolocation, "findNearest");
-//           Geolocation.onPositionUpdate(position);
-//
-//           expect(Geolocation.findNearest).not.toHaveBeenCalled();
-//        });
+        describe("Generating site ids for random placements", function() {
+
+            it("Has a function to return the lowest available site id for a random site", function() {
+                expect(Geolocation.getNextRandomSiteId()).toBeDefined();
+            });
+
+            it("Returns site id of 9000 when there are no other randoms", function() {
+                Geolocation.SitesList = [{site_id: 8999}];
+                expect(Geolocation.getNextRandomSiteId()).toEqual(9000);
+            });
+
+            it("Raises an exception when a random with site id 9999 exists", function() {
+                Geolocation.SitesList = [{site_id: 9999}];
+                expect(function() { Geolocation.getNextRandomSiteId(); }).toThrow(new RangeError("Too many randoms--random ids must be between 9000 and 9999"));
+            });
+        });
     });
 });

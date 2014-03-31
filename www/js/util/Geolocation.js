@@ -10,7 +10,6 @@ define(['jquery',
 
     my.watchId = null;
     my.gotSignal = false;
-    //my.manualLock = false;
     my.Here = new CurrentPosition();
     my.SitesList = [];
 
@@ -67,6 +66,18 @@ define(['jquery',
         return _.find(this.SitesList, function(site) {
             return (site.quad === quad && site.site_id === site_id);
         });
+    };
+
+    my.getNextRandomSiteId = function() {
+        var maxId = _.reduce(_.pluck(this.SitesList, 'site_id'), function(currentId, nextId) {
+            return currentId > nextId ? currentId : nextId;
+        }, 8999);
+
+        if (maxId >= 9999) {
+            throw new RangeError("Too many randoms--random ids must be between 9000 and 9999");
+        }
+
+        return maxId + 1;
     };
 
     return my;

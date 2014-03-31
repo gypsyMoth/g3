@@ -103,7 +103,7 @@ define(['jquery',
         },
 
         loadView : function(view) {
-            this.view && this.view.remove();
+            this.view && this.view.unbind() && this.view.remove(); // guard against this.view being null
             this.view = view;
             $("#content").append(this.view.render().el);
         }
