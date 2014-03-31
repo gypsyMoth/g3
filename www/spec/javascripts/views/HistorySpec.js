@@ -8,9 +8,7 @@ define(["jquery",
         var view;
 
         beforeEach(function() {
-            loadFixtures('history.html');
-            $('body').append();
-            view = new HistoryView({collection: new Transactions(), template: _.template($('#history-template').html())});
+            view = new HistoryView({collection: new Transactions()});
         });
 
         it("Can be instantiated", function() {

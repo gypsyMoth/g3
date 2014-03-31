@@ -2,8 +2,9 @@ define(['underscore',
     'backbone',
     'src/util/Geolocation',
     'src/util/Encoder',
-    'src/util/Controller'
-], function(_, Backbone, Geolocation, Encoder, Controller) { 'use strict';
+    'src/util/Controller',
+    'text!src/templates/home.html'
+], function(_, Backbone, Geolocation, Encoder, Controller, homeTemplate) { 'use strict';
 
     var Home = Backbone.View.extend({
 
@@ -12,7 +13,7 @@ define(['underscore',
         className: "view",
 
         initialize: function(options) {
-            this.template = options.template;
+            this.template = _.template(homeTemplate);
             this.listenTo(this.model, 'change:selectedSite', this.render);
             Geolocation.start();
         },
@@ -74,8 +75,12 @@ define(['underscore',
 
         getOperationImage: function(isOut, site) {
             var imagePath = 'img/';
-            imagePath += isOut ? 'red' : 'green';
-            imagePath += this.getImageType(site);
+            if (site.omit_reason) {
+                imagePath += 'omittedTree';
+            } else {
+                imagePath += isOut ? 'red' : 'green';
+                imagePath += this.getImageType(site);
+            }
             imagePath += '.gif';
             return imagePath;
         },

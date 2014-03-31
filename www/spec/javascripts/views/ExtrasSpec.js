@@ -1,11 +1,12 @@
-define(["jquery", "src/app", "src/models/CurrentPosition", "src/views/Extras"], function($, app, CurrentPosition, ExtrasView) {
+define(["jquery",
+    "src/models/CurrentPosition",
+    "src/views/Extras"],
+    function($, CurrentPosition, ExtrasView) { 'use strict';
     $(describe("Extras View", function() {
         var view;
 
         beforeEach(function() {
-            loadFixtures('extras.html');
-            $('body').append();
-            view = new ExtrasView({model: new CurrentPosition(), template: _.template($('#extras-template').html())});
+            view = new ExtrasView({model: new CurrentPosition()});
         });
 
         it("Can be instantiated", function() {

@@ -1,8 +1,9 @@
 define(['jquery',
     'underscore',
     'backbone',
-    'src/util/Controller'
-], function($, _, Backbone, Controller) {
+    'src/util/Controller',
+    'text!src/templates/manualLock.html'
+], function($, _, Backbone, Controller, manualLockTemplate) {
     'use strict';
 
     var ManualLock = Backbone.View.extend({
@@ -16,7 +17,7 @@ define(['jquery',
         disableMessage: "Disable Manual Lock",
 
         initialize: function(options) {
-            this.template = options.template;
+            this.template = _.template(manualLockTemplate);
             var site = this.model.get('selectedSite').get('site');
             this.selectedItem = site.quad + ":" + site.site_id;
         },

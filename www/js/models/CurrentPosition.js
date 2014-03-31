@@ -24,10 +24,11 @@ define(['underscore',
                    northing: '',
                    zone: '',
                    date: '',
-                   traptype: ''
+                   traptype: '',
+                   omitReason: '',
+                   omitCode: ''
                },
                message: ''
-               //manualLock: false
            };
        },
 
@@ -62,7 +63,13 @@ define(['underscore',
             site.xact = op.easting;
             site.yact = op.northing;
             site.txn_date = op.date;
-            site.trap_type = op.traptype;
+            if (op.omitReason) {
+                site.trap_type = "Omit";
+                site.omit_reason = op.omitReason;
+            } else {
+                site.trap_type = op.traptype;
+            }
+
         },
 
         codedString: function() {
@@ -83,8 +90,14 @@ define(['underscore',
             ret += Encoder.transactionLog.PLACEHOLDER + ',';
             ret += Encoder.transactionLog.ZERO + ',';
             ret += Encoder.rpad(site.quad, 5, ' ') + Encoder.lpad(site.site_id, 4, '0');
-            ret += op.traptype === 'Delta' ? 'D' : 'M';
-            ret += rel.get('distanceOutside') > 0 ? 'B' : '';
+
+            if (op.omitReason) {
+                ret += 'O' + op.omitCode;
+            } else {
+                ret += op.traptype === 'Delta' ? 'D' : 'M';
+                ret += rel.get('distanceOutside') > 0 ? 'B' : '';
+            }
+
             ret += ',' + Encoder.transactionLog.DOLLAR;
             ret += '\r\n';
             return ret;

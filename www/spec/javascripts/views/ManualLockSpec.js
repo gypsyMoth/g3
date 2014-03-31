@@ -9,18 +9,13 @@ define(["jquery",
     function($, _, Geolocation, NearestSiteCollection, NearestSite, CurrentPosition, RelativePosition, ManualLockView) { 'use strict';
         $(describe("Manual Lock View", function() {
 
-            beforeEach(function() {
-                loadFixtures('manualLock.html');
-                $('body').append();
-            });
-
             it("Can be instantiated", function() {
-                var view = new ManualLockView({model: new CurrentPosition(), template: _.template($('#manualLock-template').html())});
+                var view = new ManualLockView({model: new CurrentPosition()});
                 expect(view).toBeDefined();
             });
 
             it("Has a setSelectedSite method", function() {
-                var view = new ManualLockView({model: new CurrentPosition(), template: _.template($('#manualLock-template').html())});
+                var view = new ManualLockView({model: new CurrentPosition()});
                 expect(view.setSelectedSite).toBeDefined();
             });
 
@@ -52,7 +47,7 @@ define(["jquery",
                 };
 
                 it("Can set the 'nearest' site in the model based on the user's selection", function() {
-                    var view = new ManualLockView({model: new CurrentPosition(), template: _.template($('#manualLock-template').html())});
+                    var view = new ManualLockView({model: new CurrentPosition()});
 
                     addNearestSites(view.model.nearestSites);
 
@@ -65,14 +60,14 @@ define(["jquery",
                 });
 
                 it("Can parse the selected option to a quad and site", function() {
-                    var view = new ManualLockView({model: new CurrentPosition(), template: _.template($('#manualLock-template').html())});
+                    var view = new ManualLockView({model: new CurrentPosition()});
                     var selectData = "ABCDE:1234";
                     var parsed = view.parseSelect(selectData);
                     expect(parsed).toEqual({quad: 'ABCDE', site_id: 1234});
                 });
 
                 it("Sets manual lock when the user chooses a site and clicks okay", function() {
-                    var view = new ManualLockView({model: new CurrentPosition(), template: _.template($('#manualLock-template').html())});
+                    var view = new ManualLockView({model: new CurrentPosition()});
                     addNearestSites(view.model.nearestSites);
                     view.selectedItem = "FAR:1234";
                     view.setManualLock();
@@ -80,7 +75,7 @@ define(["jquery",
                 });
 
                 it("Does not set manual lock when the user chooses disable and clicks okay", function() {
-                    var view = new ManualLockView({model: new CurrentPosition(), template: _.template($('#manualLock-template').html())});
+                    var view = new ManualLockView({model: new CurrentPosition()});
                     view.selectedItem = "Disable Manual Lock";
                     view.model.set('manualLock', true);
                     view.setManualLock();

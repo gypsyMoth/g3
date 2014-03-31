@@ -12,6 +12,7 @@ define(['jquery',
     'src/views/Home',
     'src/views/Extras',
     'src/views/Placement',
+    'src/views/Omit',
     'src/views/Caution',
     'src/views/Confirm',
 	'src/views/History',
@@ -29,6 +30,7 @@ define(['jquery',
             HomeView,
             ExtrasView,
             PlacementView,
+            OmitView,
             CautionView,
             ConfirmView,
             HistoryView,
@@ -41,6 +43,7 @@ define(['jquery',
             "home" : "home",
             "extras" : "extras",
             "placement" : "placement",
+            "omit" : "omit",
             "caution" : "caution",
             "confirm" : "confirm",
 			"history" : "history",
@@ -49,43 +52,47 @@ define(['jquery',
         },
 
         splash: function() {
-            this.loadView(new SplashView({model: new Splash(), template: _.template($('#splash-template').html())}));
-        },
-
-        home : function() {
-            this.loadView(new HomeView({model: Geolocation.Here, template: _.template($('#home-template').html())}));
+            this.loadView(new SplashView({model: new Splash()}));
         },
 
         extras: function() {
-            this.loadView(new ExtrasView({model: new Filesystem(), template: _.template($('#extras-template').html())}));
+            this.loadView(new ExtrasView({model: new Filesystem()}));
+        },
+
+        home : function() {
+            this.loadView(new HomeView({model: Geolocation.Here}));
         },
 
         placement : function() {
-            this.loadView(new PlacementView({model: Geolocation.Here, template: _.template($('#placement-template').html())}));
+            this.loadView(new PlacementView({model: Geolocation.Here}));
+        },
+
+        omit: function() {
+            this.loadView(new OmitView({model: Geolocation.Here}));
         },
 
         caution: function() {
-            this.loadView(new CautionView({model: Geolocation.Here, template: _.template($('#caution-template').html())}));
+            this.loadView(new CautionView({model: Geolocation.Here}));
         },
 
         confirm: function() {
-            this.loadView(new ConfirmView({model: Geolocation.Here, template: _.template($('#confirm-template').html())}));
+            this.loadView(new ConfirmView({model: Geolocation.Here}));
+        },
+
+        manualLock: function() {
+            this.loadView(new ManualLockView({model: Geolocation.Here}));
         },
 		
 		history: function() {
             DB.getTransactions().then(_.bind(function(transactions) {
-                this.loadView(new HistoryView({collection: transactions, template: _.template($('#history-template').html())}));
+                this.loadView(new HistoryView({collection: transactions}));
             }, this));
         },
 
         loadSites: function() {
             DB.getSitesFiles().then(_.bind(function(sitesFiles) {
-                this.loadView(new LoadSitesView({collection: sitesFiles, template: _.template($('#loadSites-template').html())}));
+                this.loadView(new LoadSitesView({collection: sitesFiles}));
             }, this));
-        },
-
-        manualLock: function() {
-            this.loadView(new ManualLockView({model: Geolocation.Here, template: _.template($('#manualLock-template').html())}));
         },
 
         loadView : function(view) {

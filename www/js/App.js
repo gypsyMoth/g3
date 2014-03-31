@@ -31,7 +31,7 @@ define(['jquery',
 
     my.showSplash = function () {
         this.Startup = new Splash();
-        Controller.router.loadView(new SplashView({model: this.Startup, template: _.template($('#splash-template').html())}));
+        Controller.router.loadView(new SplashView({model: this.Startup}));
         this.Startup.set('message', 'Initializing filesystem...');
         DB.initialize().then(_.bind(this.initSites, this));
     };
