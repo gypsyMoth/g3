@@ -15,12 +15,18 @@ define(['underscore',
         initialize: function(options) {
             this.template = _.template(homeTemplate);
             this.listenTo(this.model, 'change:selectedSite', this.render);
+            Geolocation.updateModel(this.model.get('currentLatLon'));
             Geolocation.start();
         },
 
         events: {
             "click #homeImage": "onImageClicked",
             "click #btnHomeExtras": "onExtrasClicked"
+        },
+
+        onClose: function(){
+            Geolocation.stop();
+            this.model.unbind("change:selectedSite", this.render);
         },
 
         onImageClicked: function() {

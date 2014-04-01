@@ -52,7 +52,7 @@ define(['jquery',
 
         setSelectedSite: function() {
             var siteInfo = this.parseSelect(this.selectedItem),
-                selectedSite = _.clone(this.model.get('selectedSite')),
+                selectedSite = $.extend(true, {}, this.model.get('selectedSite')),
                 newSite = this.model.nearestSites.find(function(nearest) {
                     var site = nearest.get('site');
                     return (site.quad === siteInfo.quad && site.site_id === siteInfo.site_id);

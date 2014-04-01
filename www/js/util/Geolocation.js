@@ -32,13 +32,15 @@ define(['jquery',
 
     my.onPositionUpdate = function (position) {
         this.gotSignal = true;
-
          var latLon = {
             Latitude: position.coords.latitude,
             Longitude: position.coords.longitude,
             Accuracy: Math.round(position.coords.accuracy)
         };
+        this.updateModel(latLon);
+    };
 
+    my.updateModel = function (latLon) {
         var p = CoordinateConverter.datumShift({ Lon: latLon.Longitude, Lat: latLon.Latitude});
         this.Here.set('currentLatLon', latLon);
         this.Here.set('currentUtm', CoordinateConverter.project(p));
