@@ -28,10 +28,18 @@ define(['underscore',
         },
 
         onOkClicked: function() {
-            var that = this;
-            that.model.saveSites();
+            var self, site;
+            self = this;
+
+            // Fix this for inspections...
+            site = this.model.get('selectedSite').get('site');
+            if (site.site_id > 8999) {
+                Geolocation.addRandomSite(site);
+            }
+
+            self.model.saveSites();
             DB.initialize().then(function() {
-                DB.logOperation(that.model.codedString()).then( function() {
+                DB.logOperation(self.model.codedString()).then( function() {
                     DB.saveSites(Geolocation.SitesList).then( function() {
                         Controller.router.navigate('home', {trigger: true, replace: true});
                     });

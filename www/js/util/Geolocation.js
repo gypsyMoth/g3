@@ -84,5 +84,9 @@ define(['jquery',
         return maxId + 1;
     };
 
+    my.addRandomSite = function(randomSite) {
+        this.SitesList.push(randomSite);
+    };
+
     return my;
 });
