@@ -58,7 +58,7 @@ define(['underscore',
 
         saveSites: function() {
             var site, op;
-            site = this.selectedSite.get('site');
+            site = this.get('selectedSite').get('site');
             op = this.get('operation');
             site.zone = op.zone;
             site.xact = op.easting;
