@@ -14,8 +14,8 @@ define(['underscore',
 
         initialize: function(options) {
             this.template = _.template(homeTemplate);
+            this.render();
             this.listenTo(this.model, 'change:selectedSite', this.render);
-            Geolocation.updateModel(this.model.get('currentLatLon'));
             Geolocation.start();
         },
 
