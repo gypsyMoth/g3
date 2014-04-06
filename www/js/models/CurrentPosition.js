@@ -57,8 +57,9 @@ define(['underscore',
         },
 
         saveSites: function() {
-            var site = this.nearestSites.first().get('site');
-            var op = this.get('operation');
+            var site, op;
+            site = this.selectedSite.get('site');
+            op = this.get('operation');
             site.zone = op.zone;
             site.xact = op.easting;
             site.yact = op.northing;
@@ -69,7 +70,6 @@ define(['underscore',
             } else {
                 site.trap_type = op.traptype;
             }
-
         },
 
         codedString: function() {
