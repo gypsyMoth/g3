@@ -2,8 +2,9 @@ define(['jquery',
     'underscore',
     'backbone',
     'src/util/Controller',
+    'src/models/NearestSite',
     'text!src/templates/manualLock.html'
-], function($, _, Backbone, Controller, manualLockTemplate) {
+], function($, _, Backbone, Controller, NearestSite, manualLockTemplate) {
     'use strict';
 
     var ManualLock = Backbone.View.extend({
@@ -51,14 +52,19 @@ define(['jquery',
         },
 
         setSelectedSite: function() {
-            var siteInfo = this.parseSelect(this.selectedItem),
-                selectedSite = $.extend(true, {}, this.model.get('selectedSite')),
-                newSite = this.model.nearestSites.find(function(nearest) {
-                    var site = nearest.get('site');
-                    return (site.quad === siteInfo.quad && site.site_id === siteInfo.site_id);
-                });
-            selectedSite.set({site: newSite.get('site'), relativePosition: newSite.get('relativePosition')});
-            this.model.set('selectedSite', selectedSite);
+            var siteInfo, selectedSite, newSite;
+            siteInfo = this.parseSelect(this.selectedItem);
+
+            newSite = this.model.nearestSites.find(function(nearest) {
+                var site = nearest.get('site');
+                return (site.quad === siteInfo.quad && site.site_id === siteInfo.site_id);
+            });
+
+            this.model.set('selectedSite', new NearestSite({
+                site: $.extend(true, {}, newSite.get('site')),
+                relativePosition: $.extend(true, {}, newSite.get('relativePosition'))
+            }));
+            console.log(JSON.stringify(siteInfo) + "/" + newSite.get('site').quad + "/" + this.model.get('selectedSite').get('site').quad);
         },
 
         parseSelect: function(selectData) {
@@ -72,6 +78,7 @@ define(['jquery',
                     return (site.quad !== '' && site.site_id !== '');
                 })
             }));
+            this.$el.find('#selectSite').val(this.selectedItem);
             return this;
         }
     });

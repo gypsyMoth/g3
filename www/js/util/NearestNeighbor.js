@@ -1,8 +1,9 @@
-define (['underscore',
+define (['jquery',
+    'underscore',
     'src/models/RelativePosition',
     'src/models/NearestSite',
     'src/collections/NearestSiteCollection'],
-    function (_, RelativePosition, NearestSite, NearestSiteCollection) { 'use strict';
+    function ($, _, RelativePosition, NearestSite, NearestSiteCollection) { 'use strict';
 
     var my = {};
 
@@ -86,7 +87,7 @@ define (['underscore',
 
     my.assignSite = function (furthest, distance, site, currentPoint) {
         furthest.set('site', site);
-        var relativePosition = _.clone(furthest.get('relativePosition'));
+        var relativePosition = $.extend(true, {}, furthest.get('relativePosition'));
         relativePosition.set('distance', Math.round(distance));
         relativePosition.set('distanceOutside', Math.round(distance - (site.grid * 0.3)));
         relativePosition.set('bearing', getBearingString(this.getPoint(site), currentPoint));

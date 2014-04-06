@@ -53,8 +53,10 @@ define(['jquery',
         var selectedSite = $.extend(true, {}, this.Here.get('selectedSite')); //to make eventing work with a nested object
         if (this.Here.manualLock) {
             newSite = $.extend(true, {}, this.updateSelectedSite(selectedSite.get('site')));
+            console.log('manual lock ' + newSite.get('site').quad + newSite.get('site').site_id);
         } else {
             newSite = $.extend(true, {}, this.Here.nearestSites.first());
+            console.log('auto lock' + newSite.get('site').quad + newSite.get('site').site_id);
         }
         selectedSite.set({site: newSite.get('site'), relativePosition: newSite.get('relativePosition')});
         this.Here.set('selectedSite', selectedSite);
