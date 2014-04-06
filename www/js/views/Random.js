@@ -38,18 +38,23 @@ define(['jquery',
         },
 
         initRandomSite: function() {
-            var utm = this.model.get('currentUtm'),
-                nextId = Geolocation.getNextRandomSiteId(),
-                randomSite = $.extend(true, {}, this.model.get('selectedSite'));
+            var utm, nextId, randomSite;
+            utm = this.model.get('currentUtm');
+            nextId = Geolocation.getNextRandomSiteId();
 
-                randomSite = new NearestSite({
-                    site: {
-                    quad: 'RANDM', site_id: nextId, trap_type: 'Milk Carton', zone: utm.Zone, xth: utm.Easting, yth: utm.Northing, grid: 100
-                },
-                    relativePosition: new RelativePosition({distance: 0, bearing: null, distanceOutside: -1, found: true})
-                });
-                this.model.set('selectedSite', randomSite);
+            randomSite = new NearestSite({
+                site: {
+                quad: 'RANDM', site_id: nextId, trap_type: 'Milk Carton', zone: utm.Zone, xth: utm.Easting, yth: utm.Northing, grid: 100
+            },
+                relativePosition: new RelativePosition({distance: 0, bearing: null, distanceOutside: -1, found: true})
+            });
+
+            // To get eventing to work...
+            this.model.set('selectedSite', randomSite);
+            this.model.get('selectedSite').set('relativePosition', randomSite.get('relativePosition'));
+            this.model.get('selectedSite').set('site', randomSite.get('site'));
         }
+
     });
 
     return Random;
