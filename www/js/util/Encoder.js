@@ -27,6 +27,14 @@ define (function () { 'use strict';
         ret += my.constants.HEMISPHERE;
     };
 
+    my.padSite = function(site) {
+        return this.lpad(site.toString(), 4, '0');
+    };
+
+    my.padQuad = function(quad) {
+        return this.rpad(quad, 5, ' ');
+    };
+
     my.rpad = function (string, width, padding) {
         return (width <= string.length) ? string : this.rpad(string + padding, width, padding);
     };
