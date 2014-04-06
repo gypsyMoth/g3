@@ -74,10 +74,12 @@ define(['jquery',
 
         render: function() {
             this.$el.html(this.template(
-                {disableMessage: this.disableMessage, nearestSites: _.filter(this.model.nearestSites.pluck('site'), function(site) {
-                    return (site.quad !== '' && site.site_id !== '');
-                })
-            }));
+                {disableMessage: this.disableMessage, nearestSites: this.model.nearestSites.pluck('site')
+                }));
+//                {disableMessage: this.disableMessage, nearestSites: _.filter(this.model.nearestSites.pluck('site'), function(site) {
+//                    return (site.quad !== '' && site.site_id !== '');
+//                })
+//            }));
             this.$el.find('#selectSite').val(this.selectedItem);
             return this;
         }

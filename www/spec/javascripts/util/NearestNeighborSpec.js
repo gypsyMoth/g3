@@ -77,21 +77,40 @@ define(['underscore',
             });
         });
 
-        it("Has a method to return the most distant of the closest sites", function() {
-            var sites = new NearestSiteCollection([
-                //new NearestSite({site: {xth: 200, yth: 1000000}, relativePosition: new RelativePosition({distance: 100})}),
-                new NearestSite({site: {xth: 300, yth: 1000000}, relativePosition: new RelativePosition({distance: 200})}),
-                new NearestSite({site: {xth: 400, yth: 1000000}, relativePosition: new RelativePosition({distance: 300})}),
-                new NearestSite({site: {xth: 500, yth: 1000000}, relativePosition: new RelativePosition({distance: 400})}),
-                new NearestSite({site: {xth: 600, yth: 1000000}, relativePosition: new RelativePosition({distance: 500})}),
-                new NearestSite()
-            ]);
+        describe("Sorting sites", function() {
 
-            var distance = 400;
-            var expectedSite = new NearestSite({site: {xth: 600, yth: 1000000}, relativePosition: new RelativePosition({distance: 500})});
-            var siteToReplace = NearestNeighbor.getSiteToReplace(distance, sites);
+            var sites;
 
-            expect(siteToReplace.get('site')).toEqual(expectedSite.get('site'));
+            beforeEach(function() {
+                sites = new NearestSiteCollection([
+                    //new NearestSite({site: {xth: 200, yth: 1000000}, relativePosition: new RelativePosition({distance: 100})}),
+                    new NearestSite({site: {site_id: 2, xth: 300, yth: 1000000}, relativePosition: new RelativePosition({distance: 200})}),
+                    new NearestSite({site: {site_id: 3, xth: 400, yth: 1000000}, relativePosition: new RelativePosition({distance: 300})}),
+                    new NearestSite({site: {site_id: 4, xth: 500, yth: 1000000}, relativePosition: new RelativePosition({distance: 400})}),
+                    new NearestSite({site: {site_id: 5, xth: 600, yth: 1000000}, relativePosition: new RelativePosition({distance: 500})}),
+                    new NearestSite({site: {site_id: 0}}) // default distance is max value
+                ]);
+            });
+
+            it("Can sort ascending", function() {
+               NearestNeighbor.sortByDistanceAscending(sites); // 2,3,4,5,0
+               expect(sites.at(0).get('site').site_id).toEqual(2);
+               expect(sites.at(4).get('site').site_id).toEqual(0);
+            });
+
+            it("Can sort descending", function() { // 0,5,4,3,2
+                NearestNeighbor.sortByDistanceDescending(sites);
+                expect(sites.at(0).get('site').site_id).toEqual(0);
+                expect(sites.at(4).get('site').site_id).toEqual(2);
+            });
+
+            it("Has a method to return the most distant of the closest sites", function() {
+                var distance = 400;
+                var expectedSite = new NearestSite({site: {site_id: 5, xth: 600, yth: 1000000}, relativePosition: new RelativePosition({distance: 500})});
+                var siteToReplace = NearestNeighbor.getSiteToReplace(distance, sites);
+                expect(siteToReplace.get('site')).toEqual(expectedSite.get('site'));
+            });
+
         });
 
         it("Has a method to find the relative position of a single site", function() {
