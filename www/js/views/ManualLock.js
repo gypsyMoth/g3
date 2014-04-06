@@ -55,16 +55,15 @@ define(['jquery',
             var siteInfo, selectedSite, newSite;
             siteInfo = this.parseSelect(this.selectedItem);
 
-            newSite = this.model.nearestSites.find(function(nearest) {
+            newSite = $.extend(true, {}, this.model.nearestSites.find(function(nearest) {
                 var site = nearest.get('site');
                 return (site.quad === siteInfo.quad && site.site_id === siteInfo.site_id);
-            });
-
-            this.model.set('selectedSite', new NearestSite({
-                site: $.extend(true, {}, newSite.get('site')),
-                relativePosition: $.extend(true, {}, newSite.get('relativePosition'))
             }));
-            console.log(JSON.stringify(siteInfo) + "/" + newSite.get('site').quad + "/" + this.model.get('selectedSite').get('site').quad);
+
+            // To get eventing to work...
+            this.model.set('selectedSite', newSite);
+            this.model.get('selectedSite').set('relativePosition', newSite.get('relativePosition'));
+            this.model.get('selectedSite').set('site', newSite.get('site'));
         },
 
         parseSelect: function(selectData) {
@@ -74,12 +73,10 @@ define(['jquery',
 
         render: function() {
             this.$el.html(this.template(
-                {disableMessage: this.disableMessage, nearestSites: this.model.nearestSites.pluck('site')
-                }));
-//                {disableMessage: this.disableMessage, nearestSites: _.filter(this.model.nearestSites.pluck('site'), function(site) {
-//                    return (site.quad !== '' && site.site_id !== '');
-//                })
-//            }));
+                {disableMessage: this.disableMessage, nearestSites: _.filter(this.model.nearestSites.pluck('site'), function(site) {
+                    return (site.quad !== '' && site.site_id !== '');
+                })
+            }));
             this.$el.find('#selectSite').val(this.selectedItem);
             return this;
         }
