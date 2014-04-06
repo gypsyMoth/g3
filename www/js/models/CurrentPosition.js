@@ -89,7 +89,7 @@ define(['underscore',
             ret += '00:00:00' + ',';
             ret += Encoder.transactionLog.PLACEHOLDER + ',';
             ret += Encoder.transactionLog.ZERO + ',';
-            ret += Encoder.rpad(site.quad, 5, ' ') + Encoder.lpad(site.site_id, 4, '0');
+            ret += Encoder.padQuad(site.quad) + Encoder.padSite(site.site_id);
 
             if (op.omitReason) {
                 ret += 'O' + op.omitCode;
