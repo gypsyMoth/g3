@@ -37,7 +37,7 @@ define(['underscore',
                     });
                 });
             });
-            Geolocation.manualLock = false;
+            this.model.manualLock = false;
         },
 
         onCancelClicked: function() {
