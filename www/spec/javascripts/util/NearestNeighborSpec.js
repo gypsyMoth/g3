@@ -44,9 +44,8 @@ define(['underscore',
                 {quad: 'TEST', site_id: 1, zone: 17, xth: 300, yth: 1000000, grid: 100},
                 {quad: 'TEST', site_id: 2, zone: 17, xth: 400, yth: 1000000, grid: 100},
                 {quad: 'TEST', site_id: 3, zone: 17, xth: 500, yth: 1000000, grid: 100},
-                {quad: 'TEST', site_id: 4, zone: 17, xth: 900, yth: 1000000, grid: 100},
-                {quad: 'TEST', site_id: 5, zone: 17, xth: 700, yth: 1000000, grid: 100},
-                {quad: 'TEST', site_id: 6, zone: 17, xth: 800, yth: 1000000, grid: 100}
+                {quad: 'TEST', site_id: 4, zone: 17, xth: 600, yth: 1000000, grid: 100},
+                {quad: 'TEST', site_id: 5, zone: 17, xth: 700, yth: 1000000, grid: 100}
             ];
 
             var currentUtm = {
@@ -66,14 +65,25 @@ define(['underscore',
                 expect(nearest.last().get('site')).toEqual({quad: 'TEST', site_id: 2, zone: 17, xth: 400, yth: 1000000, grid: 100});
             });
 
-            it("Returns the total number of sites when the list is smaller than the number of nearest sites requested", function() {
-                var i,
-                    nearest = NearestNeighbor.getNearestSites(currentUtm, list, 7);
-                expect(nearest.length).toEqual(6);
+            it("Returns the five nearest sites", function() {
+                var nearest = NearestNeighbor.getNearestSites(currentUtm, list, 5);
+                expect(nearest.length).toEqual(5);
+                expect(nearest.models[0].get('site').site_id).toEqual(1);
+                expect(nearest.models[1].get('site').site_id).toEqual(2);
+                expect(nearest.models[2].get('site').site_id).toEqual(3);
+                expect(nearest.models[3].get('site').site_id).toEqual(4); // 5?
+                expect(nearest.models[4].get('site').site_id).toEqual(5); // ''?
+            });
 
-                for (i = 0; i < nearest.models.length - 1; i++) {
-                    expect(nearest.models[i].get('site').site_id).not.toEqual('');
-                }
+            it("Returns the total number of sites when the list is smaller than the number of nearest sites requested", function() {
+                var nearest = NearestNeighbor.getNearestSites(currentUtm, list, 6);
+                expect(nearest.length).toEqual(5);
+                expect(nearest.models[0].get('site').site_id).toEqual(1);
+                expect(nearest.models[1].get('site').site_id).toEqual(2);
+                expect(nearest.models[2].get('site').site_id).toEqual(3);
+                expect(nearest.models[3].get('site').site_id).toEqual(4); // 5?
+                expect(nearest.models[4].get('site').site_id).toEqual(5); // ''?
+                expect(nearest.models[6]).not.toBeDefined();
             });
         });
 
@@ -95,18 +105,27 @@ define(['underscore',
             it("Can sort ascending", function() {
                NearestNeighbor.sortByDistanceAscending(sites); // 2,3,4,5,0
                expect(sites.at(0).get('site').site_id).toEqual(2);
+               expect(sites.at(1).get('site').site_id).toEqual(3);
+               expect(sites.at(2).get('site').site_id).toEqual(4);
+               expect(sites.at(3).get('site').site_id).toEqual(5);
                expect(sites.at(4).get('site').site_id).toEqual(0);
             });
 
             it("Can sort descending", function() { // 0,5,4,3,2
                 NearestNeighbor.sortByDistanceDescending(sites);
                 expect(sites.at(0).get('site').site_id).toEqual(0);
+                expect(sites.at(1).get('site').site_id).toEqual(5);
+                expect(sites.at(2).get('site').site_id).toEqual(4);
+                expect(sites.at(3).get('site').site_id).toEqual(3);
                 expect(sites.at(4).get('site').site_id).toEqual(2);
             });
 
-            it("Has a method to return the most distant of the closest sites", function() {
+            it("Has a method to return the most distant of the nearest sites", function() {
                 var distance = 400;
-                var expectedSite = new NearestSite({site: {site_id: 5, xth: 600, yth: 1000000}, relativePosition: new RelativePosition({distance: 500})});
+                var expectedSite = new NearestSite({
+                    site: {site_id: 0},
+                    relativePosition: new RelativePosition({distance: 500})
+                });
                 var siteToReplace = NearestNeighbor.getSiteToReplace(distance, sites);
                 expect(siteToReplace.get('site')).toEqual(expectedSite.get('site'));
             });
