@@ -15,14 +15,27 @@ define(['underscore',
         initialize: function(options) {
             this.template = _.template(homeTemplate);
             this.render();
+            //this.listenTo(this.model, 'change:manualLock', this.updateLockIcon);
             this.listenTo(this.model, 'change', this.render);
             Geolocation.updateModel();
             Geolocation.start();
+
         },
 
         events: {
             "click #homeImage": "onImageClicked",
             "click #btnHomeExtras": "onExtrasClicked"
+        },
+
+        updateLockIcon: function() {
+            var lock, isLocked;
+            lock = this.$el.find('#lockDiv');
+            isLocked = this.model.get('manualLock');
+            if(isLocked) {
+                lock.css('visibility', 'visible');
+            } else {
+                lock.css('visibility', 'hidden');
+            }
         },
 
         onClose: function(){
@@ -58,6 +71,7 @@ define(['underscore',
 
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
+            this.updateLockIcon();
             this.checkTargetCircle();
             return this;
         },

@@ -97,6 +97,20 @@ define(["jquery",
            expect(op).toEqual({easting: '', northing: '', zone: '', date: '', traptype: '', omitReason: '', omitCode: ''});
        });
 
+       describe("Manual lock display", function() {
+          it("Shows the lock icon when manual lock is enabled", function() {
+             view.model.set('manualLock', false);
+             view.model.set('manualLock', true);
+              expect(view.$el.find('#lockDiv').css('visibility')).toEqual('visible');
+          });
+
+           it("Hides the lock icon when manual lock is disabled", function() {
+               view.model.set('manualLock', true);
+               view.model.set('manualLock', false);
+               expect(view.$el.find('#lockDiv').css('visibility')).toEqual('hidden');
+           });
+       });
+
        describe("Determine operation based on site", function() {
 
             it("Returns ERROR when the quad value is equal to an empty string", function() {

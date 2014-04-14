@@ -40,7 +40,7 @@ define(['jquery',
         initRandomSite: function() {
             var utm, nextId, randomSite;
 
-            this.model.manualLock = false;
+            this.model.set('manualLock', false);
             
             utm = this.model.get('currentUtm');
             nextId = Geolocation.getNextRandomSiteId();

@@ -31,10 +31,10 @@ define(["jquery",
         });
 
         it("Sets manual lock to false on confirm", function() {
-            view.model.manualLock = true;
+            view.model.set('manualLock', true);
             view.render();
             view.onOkClicked();
-            expect(view.model.manualLock).toBeFalsy();
+            expect(view.model.get('manualLock')).toBeFalsy();
         });
     }));
 });

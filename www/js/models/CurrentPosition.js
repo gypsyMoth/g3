@@ -24,12 +24,12 @@ define(['underscore',
                    omitCode: ''
                },
                accuracy: '',
+               manualLock: false,
                message: ''
            };
        },
 
         initialize: function() {
-           this.manualLock = false;
            this.nearestSites = new NearestSiteCollection();
            this.set({selectedSite: new NearestSite()});
            this.listenTo(this.get('selectedSite'), 'change', this.updateMessage);

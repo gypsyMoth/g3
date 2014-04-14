@@ -45,9 +45,9 @@ define(['jquery',
         setManualLock: function() {
             if (this.selectedItem !== this.disableMessage) {
                 this.setSelectedSite();
-                this.model.manualLock = true;
+                this.model.set('manualLock', true);
             } else {
-                this.model.manualLock = false;
+                this.model.set('manualLock', false);
             }
         },
 

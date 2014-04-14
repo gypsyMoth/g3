@@ -45,7 +45,7 @@ define(['underscore',
                     });
                 });
             });
-            self.model.manualLock = false;
+            self.model.set('manualLock', false);
         },
 
         onCancelClicked: function() {
