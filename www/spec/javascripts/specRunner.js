@@ -65,6 +65,7 @@
         'views/SplashSpec',
         'views/LoadSitesSpec',
         'views/ManualLockSpec',
+        'views/RandomSpec',
         'views/OmitSpec',
         'views/HistorySpec'
     ];

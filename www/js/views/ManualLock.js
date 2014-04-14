@@ -2,8 +2,9 @@ define(['jquery',
     'underscore',
     'backbone',
     'src/util/Controller',
+    'src/models/NearestSite',
     'text!src/templates/manualLock.html'
-], function($, _, Backbone, Controller, manualLockTemplate) {
+], function($, _, Backbone, Controller, NearestSite, manualLockTemplate) {
     'use strict';
 
     var ManualLock = Backbone.View.extend({
@@ -44,21 +45,25 @@ define(['jquery',
         setManualLock: function() {
             if (this.selectedItem !== this.disableMessage) {
                 this.setSelectedSite();
-                this.model.manualLock = true;
+                this.model.set('manualLock', true);
             } else {
-                this.model.manualLock = false;
+                this.model.set('manualLock', false);
             }
         },
 
         setSelectedSite: function() {
-            var siteInfo = this.parseSelect(this.selectedItem),
-                selectedSite = _.clone(this.model.get('selectedSite')),
-                newSite = this.model.nearestSites.find(function(nearest) {
-                    var site = nearest.get('site');
-                    return (site.quad === siteInfo.quad && site.site_id === siteInfo.site_id);
-                });
-            selectedSite.set({site: newSite.get('site'), relativePosition: newSite.get('relativePosition')});
-            this.model.set('selectedSite', selectedSite);
+            var siteInfo, selectedSite, newSite;
+            siteInfo = this.parseSelect(this.selectedItem);
+
+            newSite = $.extend(true, {}, this.model.nearestSites.find(function(nearest) {
+                var site = nearest.get('site');
+                return (site.quad === siteInfo.quad && site.site_id === siteInfo.site_id);
+            }));
+
+            // To get eventing to work...
+            this.model.set('selectedSite', newSite);
+            this.model.get('selectedSite').set('relativePosition', newSite.get('relativePosition'));
+            this.model.get('selectedSite').set('site', newSite.get('site'));
         },
 
         parseSelect: function(selectData) {
@@ -72,6 +77,7 @@ define(['jquery',
                     return (site.quad !== '' && site.site_id !== '');
                 })
             }));
+            this.$el.find('#selectSite').val(this.selectedItem);
             return this;
         }
     });

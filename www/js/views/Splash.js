@@ -14,6 +14,10 @@ define(['underscore',
             this.listenTo(this.model, 'change:message', this.render);
         },
 
+        onClose: function(){
+            this.model.unbind("change:message", this.render);
+        },
+
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
             return this;

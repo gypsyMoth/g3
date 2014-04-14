@@ -3,15 +3,17 @@ define(['jquery',
     'backbone',
     'src/util/CoordinateConverter',
     'src/util/NearestNeighbor',
+    'src/models/NearestSite',
+    'src/models/LatLon',
     'src/models/CurrentPosition'
-], function($, _, Backbone, CoordinateConverter, NearestNeighbor, CurrentPosition) { 'use strict';
+], function($, _, Backbone, CoordinateConverter, NearestNeighbor, NearestSite, LatLon, CurrentPosition) { 'use strict';
 
     var my = {};
 
     my.watchId = null;
     my.gotSignal = false;
-    //my.manualLock = false;
     my.Here = new CurrentPosition();
+    my.currentLatLon = new LatLon();
     my.SitesList = [];
 
     my.start = function () {
@@ -33,16 +35,19 @@ define(['jquery',
 
     my.onPositionUpdate = function (position) {
         this.gotSignal = true;
-
-         var latLon = {
+        this.currentLatLon.set({
             Latitude: position.coords.latitude,
             Longitude: position.coords.longitude,
             Accuracy: Math.round(position.coords.accuracy)
-        };
+        });
+        this.updateModel();
+        console.log(JSON.stringify(this.Here.toJSON()));
+    };
 
-        var p = CoordinateConverter.datumShift({ Lon: latLon.Longitude, Lat: latLon.Latitude});
-        this.Here.set('currentLatLon', latLon);
+    my.updateModel = function () {
+        var p = CoordinateConverter.datumShift({ Lon: this.currentLatLon.get('Longitude'), Lat: this.currentLatLon.get('Latitude')});
         this.Here.set('currentUtm', CoordinateConverter.project(p));
+        this.Here.set('accuracy', this.currentLatLon.get('Accuracy'));
         this.findNearest();
     };
 
@@ -50,13 +55,12 @@ define(['jquery',
         this.Here.nearestSites = NearestNeighbor.getNearestSites(this.Here.get('currentUtm'), this.SitesList, 5);
         var newSite;
         var selectedSite = $.extend(true, {}, this.Here.get('selectedSite')); //to make eventing work with a nested object
-        if (this.Here.manualLock) {
-            newSite = $.extend(true, {}, this.updateSelectedSite(selectedSite.get('site')));
+        if (this.Here.get('manualLock')) {
+            newSite = this.updateSelectedSite(selectedSite.get('site'));
         } else {
-            newSite = $.extend(true, {}, this.Here.nearestSites.first());
+            newSite = this.Here.nearestSites.first();
         }
-        selectedSite.set({site: newSite.get('site'), relativePosition: newSite.get('relativePosition')});
-        this.Here.set('selectedSite', selectedSite);
+        this.Here.set('selectedSite', newSite);
     };
 
     my.updateSelectedSite = function(site) {
@@ -67,6 +71,22 @@ define(['jquery',
         return _.find(this.SitesList, function(site) {
             return (site.quad === quad && site.site_id === site_id);
         });
+    };
+
+    my.getNextRandomSiteId = function() {
+        var maxId = _.reduce(_.pluck(this.SitesList, 'site_id'), function(currentId, nextId) {
+            return currentId > nextId ? currentId : nextId;
+        }, 8999);
+
+        if (maxId >= 9999) {
+            throw new RangeError("Too many randoms--random ids must be between 9000 and 9999");
+        }
+
+        return maxId + 1;
+    };
+
+    my.addRandomSite = function(randomSite) {
+        this.SitesList.push(randomSite);
     };
 
     return my;

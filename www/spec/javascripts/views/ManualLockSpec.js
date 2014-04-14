@@ -71,7 +71,7 @@ define(["jquery",
                     addNearestSites(view.model.nearestSites);
                     view.selectedItem = "FAR:1234";
                     view.setManualLock();
-                    expect(view.model.manualLock).toEqual(true);
+                    expect(view.model.get('manualLock')).toEqual(true);
                 });
 
                 it("Does not set manual lock when the user chooses disable and clicks okay", function() {
@@ -79,7 +79,7 @@ define(["jquery",
                     view.selectedItem = "Disable Manual Lock";
                     view.model.set('manualLock', true);
                     view.setManualLock();
-                    expect(view.model.manualLock).toEqual(false);
+                    expect(view.model.get('manualLock')).toEqual(false);
                 });
             });
         }));

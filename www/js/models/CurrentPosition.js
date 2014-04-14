@@ -9,11 +9,6 @@ define(['underscore',
     var CurrentPosition = Backbone.Model.extend({
        defaults: function() {
            return {
-               currentLatLon: {
-                 Latitude: '',
-                 Longitude: '',
-                 Accuracy: ''
-               },
                currentUtm: {
                    Easting: '',
                    Northing: '',
@@ -28,12 +23,13 @@ define(['underscore',
                    omitReason: '',
                    omitCode: ''
                },
+               accuracy: '',
+               manualLock: false,
                message: ''
            };
        },
 
         initialize: function() {
-           this.manualLock = false;
            this.nearestSites = new NearestSiteCollection();
            this.set({selectedSite: new NearestSite()});
            this.listenTo(this.get('selectedSite'), 'change', this.updateMessage);
@@ -57,8 +53,10 @@ define(['underscore',
         },
 
         saveSites: function() {
-            var site = this.nearestSites.first().get('site');
-            var op = this.get('operation');
+            var site, op;
+            site = this.get('selectedSite').get('site');
+            //console.log('SaveSites Before: ' + JSON.stringify(site));
+            op = this.get('operation');
             site.zone = op.zone;
             site.xact = op.easting;
             site.yact = op.northing;
@@ -69,7 +67,8 @@ define(['underscore',
             } else {
                 site.trap_type = op.traptype;
             }
-
+            //console.log('SaveSites After: ' + JSON.stringify(site));
+            //this.get('selectedSite')
         },
 
         codedString: function() {
@@ -89,7 +88,7 @@ define(['underscore',
             ret += '00:00:00' + ',';
             ret += Encoder.transactionLog.PLACEHOLDER + ',';
             ret += Encoder.transactionLog.ZERO + ',';
-            ret += Encoder.rpad(site.quad, 5, ' ') + Encoder.lpad(site.site_id, 4, '0');
+            ret += Encoder.padQuad(site.quad) + Encoder.padSite(site.site_id);
 
             if (op.omitReason) {
                 ret += 'O' + op.omitCode;

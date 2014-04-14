@@ -2,10 +2,9 @@ define(["jquery",
     'underscore',
     "src/models/CurrentPosition",
     'src/util/DB',
-    'src/util/Geolocation',
     'src/models/NearestSite',
     "src/views/Confirm"
-], function($, _, CurrentPosition, db, Geolocation, NearestSite, ConfirmView) { 'use strict';
+], function($, _, CurrentPosition, db, NearestSite, ConfirmView) { 'use strict';
 
     $(describe("Confirm View", function() {
 
@@ -32,10 +31,10 @@ define(["jquery",
         });
 
         it("Sets manual lock to false on confirm", function() {
-            Geolocation.manualLock = true;
+            view.model.set('manualLock', true);
             view.render();
             view.onOkClicked();
-            expect(Geolocation.manualLock).toBeFalsy();
+            expect(view.model.get('manualLock')).toBeFalsy();
         });
     }));
 });

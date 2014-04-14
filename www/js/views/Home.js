@@ -14,8 +14,12 @@ define(['underscore',
 
         initialize: function(options) {
             this.template = _.template(homeTemplate);
-            this.listenTo(this.model, 'change:selectedSite', this.render);
+            this.render();
+            //this.listenTo(this.model, 'change:manualLock', this.updateLockIcon);
+            this.listenTo(this.model, 'change', this.render);
+            Geolocation.updateModel();
             Geolocation.start();
+
         },
 
         events: {
@@ -23,8 +27,25 @@ define(['underscore',
             "click #btnHomeExtras": "onExtrasClicked"
         },
 
+        updateLockIcon: function() {
+            var lock, isLocked;
+            lock = this.$el.find('#lockDiv');
+            isLocked = this.model.get('manualLock');
+            if(isLocked) {
+                lock.css('visibility', 'visible');
+            } else {
+                lock.css('visibility', 'hidden');
+            }
+        },
+
+        onClose: function(){
+            Geolocation.stop();
+            this.model.unbind("change:selectedSite", this.render);
+        },
+
         onImageClicked: function() {
             var site = this.model.get('selectedSite').get('site');
+            console.log(JSON.stringify(site));
             var operation = this.getOperation(site);
             switch (operation) {
                 case Encoder.operationTypes.ERROR:
@@ -50,6 +71,7 @@ define(['underscore',
 
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
+            this.updateLockIcon();
             this.checkTargetCircle();
             return this;
         },

@@ -65,11 +65,16 @@ define(['jquery',
 
     my.initializeGps = function() {
         this.Startup.set('message', 'Acquiring Satellites');
-        this.listenTo(Geolocation.Here, 'change', this.gotGpsSignal);
         Geolocation.start();
+        this.listenTo(Geolocation.currentLatLon, 'change', this.gotGpsSignal);
+        if (Geolocation.gotSignal) {
+            this.gotGpsSignal();
+        }
     };
 
      my.gotGpsSignal = function() {
+         console.log("Got GPS!");
+         this.stopListening(Geolocation.currentLatLon);
          Controller.router.navigate('home', {trigger: true, replace: true});
      };
 

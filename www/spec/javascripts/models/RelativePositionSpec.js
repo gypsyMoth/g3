@@ -13,13 +13,5 @@ define(["src/models/RelativePosition"], function(RelativePosition) { 'use strict
             expect(model.get('distanceOutside')).toBeDefined();
             expect(model.get('found')).toBeDefined();
         });
-
-        xit("Raises the bubble event when it's properties change", function() {
-            //spyOn doesn't seem to work with Backbone events...
-            var model = new RelativePosition();
-            spyOn(model, 'onChange');
-            model.set('distance', 9000);
-            expect(model.onChange).toHaveBeenCalled();
-        });
     });
 });

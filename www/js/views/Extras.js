@@ -22,6 +22,7 @@ define(['underscore',
             "click #btnExtrasHistory": "onHistoryClicked",
             "click #btnExtrasManualLock": "onManualLockClicked",
 			"click #btnExtrasLoadSites": "onLoadSitesClicked",
+            "click #btnExtrasRandom" : "onRandomClicked",
             "click #btnExtrasCancel": "onCancelClicked"
         },
 
@@ -40,6 +41,10 @@ define(['underscore',
 
         onLoadSitesClicked: function() {
             Controller.router.navigate('loadSites', {trigger: true, replace: true});
+        },
+
+        onRandomClicked: function() {
+            Controller.router.navigate('random', {trigger: true, replace: true});
         },
 
         onCancelClicked: function() {
