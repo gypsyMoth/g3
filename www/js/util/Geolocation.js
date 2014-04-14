@@ -60,14 +60,7 @@ define(['jquery',
         } else {
             newSite = this.Here.nearestSites.first();
         }
-
         this.Here.set('selectedSite', newSite);
-
-//        selectedSite.set({
-//            site: newSite.get('site'),
-//            relativePosition: newSite.get('relativePosition')
-//        });
-        //this.Here.set({selectedSite: new NearestSite({site: newSite.get('site'), relativePosition: newSite.get('relativePosition')})});
     };
 
     my.updateSelectedSite = function(site) {
