@@ -15,7 +15,7 @@
                     <span id="distanceSpan" class="message">
                         <% if(selectedSite.get('relativePosition').get('found')) { %>
                         <%= selectedSite.get('relativePosition').get('distance')
-                         + " (&plusmn" + currentLatLon.Accuracy + ") meters "
+                         + " (&plusmn" + accuracy + ") meters "
                          + selectedSite.get('relativePosition').get('bearing')
                         %>
                         <% } else { %>

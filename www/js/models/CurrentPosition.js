@@ -9,11 +9,6 @@ define(['underscore',
     var CurrentPosition = Backbone.Model.extend({
        defaults: function() {
            return {
-               currentLatLon: {
-                 Latitude: '',
-                 Longitude: '',
-                 Accuracy: ''
-               },
                currentUtm: {
                    Easting: '',
                    Northing: '',
@@ -28,6 +23,7 @@ define(['underscore',
                    omitReason: '',
                    omitCode: ''
                },
+               accuracy: '',
                message: ''
            };
        },
@@ -59,6 +55,7 @@ define(['underscore',
         saveSites: function() {
             var site, op;
             site = this.get('selectedSite').get('site');
+            //console.log('SaveSites Before: ' + JSON.stringify(site));
             op = this.get('operation');
             site.zone = op.zone;
             site.xact = op.easting;
@@ -70,6 +67,8 @@ define(['underscore',
             } else {
                 site.trap_type = op.traptype;
             }
+            //console.log('SaveSites After: ' + JSON.stringify(site));
+            //this.get('selectedSite')
         },
 
         codedString: function() {

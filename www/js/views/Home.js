@@ -15,8 +15,8 @@ define(['underscore',
         initialize: function(options) {
             this.template = _.template(homeTemplate);
             this.render();
-            this.listenTo(this.model, 'change:selectedSite', this.render);
-            Geolocation.updateModel(this.model.get('currentLatLon'));
+            this.listenTo(this.model, 'change', this.render);
+            Geolocation.updateModel();
             Geolocation.start();
         },
 
@@ -32,6 +32,7 @@ define(['underscore',
 
         onImageClicked: function() {
             var site = this.model.get('selectedSite').get('site');
+            console.log(JSON.stringify(site));
             var operation = this.getOperation(site);
             switch (operation) {
                 case Encoder.operationTypes.ERROR:

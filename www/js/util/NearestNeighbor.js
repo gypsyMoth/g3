@@ -91,7 +91,7 @@ define (['jquery',
         var siteToReplace = null;
         this.sortByDistanceDescending(nearestSites); // undef, undef, 4, 3, 2
 
-        // Grab the first undefined site ACH use findWhere
+        // Grab the first undefined site
         siteToReplace = nearestSites.find(function(site) {
             var currentDistance = site.get('relativePosition').get('distance');
             return distance < currentDistance;
@@ -101,17 +101,23 @@ define (['jquery',
     };
 
     my.assignSite = function (siteToReplace, distance, site, currentPoint) {
-        var relativePosition = new RelativePosition({
+        var relativePosition, newSite, newNearestSite;
+
+        relativePosition = new RelativePosition({
             distance: Math.round(distance),
             distanceOutside: Math.round(distance - (site.grid * 0.3)),
             bearing: getBearingString(this.getPoint(site), currentPoint),
             found: true
         });
 
+        //newNearestSite = $.extend(true, {}, siteToReplace);
+
         siteToReplace.set({
             site: site,
             relativePosition: relativePosition
         });
+
+        //siteToReplace = newNearestSite;
     };
 
     my.currentLocationToPoint = function(currentLocation) {

@@ -32,7 +32,7 @@ define(['underscore',
             self = this;
 
             // Fix this for inspections...
-            site = this.model.get('selectedSite').get('site');
+            site = self.model.get('selectedSite').get('site');
             if (site.site_id > 8999) {
                 Geolocation.addRandomSite(site);
             }
@@ -45,7 +45,7 @@ define(['underscore',
                     });
                 });
             });
-            this.model.manualLock = false;
+            self.model.manualLock = false;
         },
 
         onCancelClicked: function() {

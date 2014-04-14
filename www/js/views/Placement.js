@@ -55,11 +55,11 @@ define(['underscore',
             var op = this.model.get('operation');
             var utm = this.model.get('currentUtm');
             var site = this.model.get('selectedSite').get('site');
-            var latlon = this.model.get('currentLatLon');
+            var accuracy = this.model.get('accuracy');
             op.zone = utm.Zone;
             op.easting = utm.Easting;
             op.northing = utm.Northing;
-            op.accuracy = latlon.Accuracy;
+            op.accuracy = accuracy;
             op.traptype = site.trap_type;
             op.date = DateFormatter.getSitesFormatDate(Date.now());
         }

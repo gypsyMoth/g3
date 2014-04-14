@@ -3,14 +3,17 @@ define(['jquery',
     'backbone',
     'src/util/CoordinateConverter',
     'src/util/NearestNeighbor',
+    'src/models/NearestSite',
+    'src/models/LatLon',
     'src/models/CurrentPosition'
-], function($, _, Backbone, CoordinateConverter, NearestNeighbor, CurrentPosition) { 'use strict';
+], function($, _, Backbone, CoordinateConverter, NearestNeighbor, NearestSite, LatLon, CurrentPosition) { 'use strict';
 
     var my = {};
 
     my.watchId = null;
     my.gotSignal = false;
     my.Here = new CurrentPosition();
+    my.currentLatLon = new LatLon();
     my.SitesList = [];
 
     my.start = function () {
@@ -32,18 +35,19 @@ define(['jquery',
 
     my.onPositionUpdate = function (position) {
         this.gotSignal = true;
-         var latLon = {
+        this.currentLatLon.set({
             Latitude: position.coords.latitude,
             Longitude: position.coords.longitude,
             Accuracy: Math.round(position.coords.accuracy)
-        };
-        this.updateModel(latLon);
+        });
+        this.updateModel();
+        console.log(JSON.stringify(this.Here.toJSON()));
     };
 
-    my.updateModel = function (latLon) {
-        var p = CoordinateConverter.datumShift({ Lon: latLon.Longitude, Lat: latLon.Latitude});
-        this.Here.set('currentLatLon', latLon);
+    my.updateModel = function () {
+        var p = CoordinateConverter.datumShift({ Lon: this.currentLatLon.get('Longitude'), Lat: this.currentLatLon.get('Latitude')});
         this.Here.set('currentUtm', CoordinateConverter.project(p));
+        this.Here.set('accuracy', this.currentLatLon.get('Accuracy'));
         this.findNearest();
     };
 
@@ -53,13 +57,17 @@ define(['jquery',
         var selectedSite = $.extend(true, {}, this.Here.get('selectedSite')); //to make eventing work with a nested object
         if (this.Here.manualLock) {
             newSite = $.extend(true, {}, this.updateSelectedSite(selectedSite.get('site')));
-            console.log('manual lock ' + newSite.get('site').quad + newSite.get('site').site_id);
         } else {
             newSite = $.extend(true, {}, this.Here.nearestSites.first());
-            console.log('auto lock' + newSite.get('site').quad + newSite.get('site').site_id);
         }
-        selectedSite.set({site: newSite.get('site'), relativePosition: newSite.get('relativePosition')});
-        this.Here.set('selectedSite', selectedSite);
+
+        this.Here.set('selectedSite', newSite);
+
+//        selectedSite.set({
+//            site: newSite.get('site'),
+//            relativePosition: newSite.get('relativePosition')
+//        });
+        //this.Here.set({selectedSite: new NearestSite({site: newSite.get('site'), relativePosition: newSite.get('relativePosition')})});
     };
 
     my.updateSelectedSite = function(site) {
