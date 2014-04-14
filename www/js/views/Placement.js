@@ -25,6 +25,9 @@ define(['underscore',
 
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
+            if (this.model.get('selectedSite').get('site').site_id > 8999) {
+                this.$el.find('#btnPlacementOmit').prop('disabled', true);
+            }
             return this;
         },
 

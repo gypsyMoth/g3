@@ -24,8 +24,8 @@ define(["jquery",
             model.set({currentUtm: {Easting: 123456, Northing: 1234567, Zone: 15}});
             model.get('selectedSite').set({site: {"zone":15,"xth":"329229","yth":"3475979","quad":"RANDM","site_id":9000,"grid":"30","trap_type":"Delta","moth_count":0}});
             view = new PlacementView({model: model});
-            $('#btnPlacementOmit').enabled
-
+            view.render();
+            expect(view.$el.find('#btnPlacementOmit').is(':disabled')).toEqual(true);
         });
 
         describe("Updates the current operation", function() {
