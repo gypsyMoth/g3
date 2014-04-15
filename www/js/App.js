@@ -73,7 +73,6 @@ define(['jquery',
     };
 
      my.gotGpsSignal = function() {
-         console.log("Got GPS!");
          this.stopListening(Geolocation.currentLatLon);
          Controller.router.navigate('home', {trigger: true, replace: true});
      };

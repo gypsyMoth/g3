@@ -12,10 +12,13 @@ define(['underscore',
 
         className: "view",
 
+        previousCircleStatus: false,
+
         initialize: function(options) {
             this.template = _.template(homeTemplate);
             this.render();
             //this.listenTo(this.model, 'change:manualLock', this.updateLockIcon);
+            //this.listenTo(this.model.get('selectedSite').get('relativePosition')., 'change:selected')
             this.listenTo(this.model, 'change', this.render);
             Geolocation.updateModel();
             Geolocation.start();
@@ -45,7 +48,6 @@ define(['underscore',
 
         onImageClicked: function() {
             var site = this.model.get('selectedSite').get('site');
-            console.log(JSON.stringify(site));
             var operation = this.getOperation(site);
             switch (operation) {
                 case Encoder.operationTypes.ERROR:
@@ -76,6 +78,13 @@ define(['underscore',
             return this;
         },
 
+        tryBeep: function(isOut) {
+            if (this.previousCircleStatus !== isOut) {
+                navigator.notification.beep(1);
+                this.previousCircleStatus = isOut;
+            }
+        },
+
         checkTargetCircle: function () {
             var nearest = this.model.get('selectedSite'),
                 relativePosition, isOut, site, color, imageSource;
@@ -88,6 +97,8 @@ define(['underscore',
 
                 this.$el.find('#siteDiv').css('background-color', color);
                 this.$el.find('#homeImage').attr('src', imageSource);
+
+                this.tryBeep(isOut);
             }
         },
 

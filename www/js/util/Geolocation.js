@@ -41,7 +41,6 @@ define(['jquery',
             Accuracy: Math.round(position.coords.accuracy)
         });
         this.updateModel();
-        console.log(JSON.stringify(this.Here.toJSON()));
     };
 
     my.updateModel = function () {
