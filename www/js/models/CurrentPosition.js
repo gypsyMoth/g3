@@ -35,6 +35,18 @@ define(['underscore',
            this.listenTo(this.get('selectedSite'), 'change', this.updateMessage);
         },
 
+        clearOperation: function(){
+            this.set('operation', {
+                   easting: '',
+                   northing: '',
+                   zone: '',
+                   date: '',
+                   traptype: '',
+                   omitReason: '',
+                   omitCode: ''
+               });
+        },
+
         updateMessage: function() {
             var site = this.get('selectedSite').get('site');
             var message;
