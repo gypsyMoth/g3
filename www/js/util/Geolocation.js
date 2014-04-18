@@ -53,7 +53,8 @@ define(['jquery',
     my.findNearest = function() {
         this.Here.nearestSites = NearestNeighbor.getNearestSites(this.Here.get('currentUtm'), this.SitesList, 5);
         var newSite;
-        var selectedSite = $.extend(true, {}, this.Here.get('selectedSite')); //to make eventing work with a nested object
+        //var selectedSite = $.extend(true, {}, this.Here.get('selectedSite')); //to make eventing work with a nested object
+        var selectedSite = this.Here.get('selectedSite');
         if (this.Here.get('manualLock')) {
             newSite = this.updateSelectedSite(selectedSite.get('site'));
         } else {

@@ -36,11 +36,11 @@ define(['underscore',
             if (site.site_id > 8999) {
                 Geolocation.addRandomSite(site);
             }
-
             self.model.saveSites();
             DB.initialize().then(function() {
                 DB.logOperation(self.model.codedString()).then( function() {
                     DB.saveSites(Geolocation.SitesList).then( function() {
+                        self.model.clearOperation();
                         Controller.router.navigate('home', {trigger: true, replace: true});
                     });
                 });

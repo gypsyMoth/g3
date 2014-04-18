@@ -3,8 +3,9 @@ define(['jquery',
     'backbone',
     'src/util/Controller',
     'src/models/NearestSite',
+    'src/util/Geolocation',
     'text!src/templates/manualLock.html'
-], function($, _, Backbone, Controller, NearestSite, manualLockTemplate) {
+], function($, _, Backbone, Controller, NearestSite, Geolocation, manualLockTemplate) {
     'use strict';
 
     var ManualLock = Backbone.View.extend({
@@ -53,13 +54,16 @@ define(['jquery',
 
         setSelectedSite: function() {
             var siteInfo, selectedSite, newSite;
+            
             siteInfo = this.parseSelect(this.selectedItem);
-
-            newSite = $.extend(true, {}, this.model.nearestSites.find(function(nearest) {
+            //newSite = $.extend(true, {}, this.model.nearestSites.find(function(nearest) {
+            //    var site = nearest.get('site');
+            //    return (site.quad === siteInfo.quad && site.site_id === siteInfo.site_id);
+            //}));
+            newSite = this.model.nearestSites.find(function(nearest) {
                 var site = nearest.get('site');
                 return (site.quad === siteInfo.quad && site.site_id === siteInfo.site_id);
-            }));
-
+            });
             // To get eventing to work...
             this.model.set('selectedSite', newSite);
             this.model.get('selectedSite').set('relativePosition', newSite.get('relativePosition'));
