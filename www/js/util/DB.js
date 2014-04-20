@@ -96,7 +96,6 @@ define (['jquery',
                 deferred.resolve(fileEntry);
             }, function(){
                 deferred.reject();
-                alert("No " + filename + " Found!");
             });
             return deferred.promise();
         };
