@@ -13,6 +13,7 @@ define(['jquery',
     'src/views/Extras',
     'src/views/Placement',
     'src/views/Omit',
+    'src/views/Inspection',
     'src/views/Caution',
     'src/views/Confirm',
 	'src/views/History',
@@ -32,6 +33,7 @@ define(['jquery',
             ExtrasView,
             PlacementView,
             OmitView,
+            InspectionView,
             CautionView,
             ConfirmView,
             HistoryView,
@@ -46,6 +48,7 @@ define(['jquery',
             "extras" : "extras",
             "placement" : "placement",
             "omit" : "omit",
+            "inspection" : "inspection",
             "caution" : "caution",
             "confirm" : "confirm",
 			"history" : "history",
@@ -76,6 +79,10 @@ define(['jquery',
 
         omit: function() {
             this.loadView(new OmitView({model: Geolocation.Here}));
+        },
+
+        inspection: function() {
+            this.loadView(new InspectionView({model: Geolocation.Here}));
         },
 
         caution: function() {

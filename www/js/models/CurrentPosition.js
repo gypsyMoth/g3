@@ -22,6 +22,9 @@ define(['underscore',
                    traptype: '',
                    omitReason: '',
                    omitCode: ''
+                   //mothCount: '',
+                   //condition: '',
+                   //visit: ''
                },
                accuracy: '',
                manualLock: false,
@@ -44,6 +47,9 @@ define(['underscore',
                    traptype: '',
                    omitReason: '',
                    omitCode: ''
+                   //mothCount: '',
+                   //condition: '',
+                   //visit: ''
                });
         },
 

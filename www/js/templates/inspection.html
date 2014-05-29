@@ -1,0 +1,23 @@
+<div id="omitHeader" class="formHeader">
+    <span class="message">Select Inspection Type</span><br>
+    <select id="selectInspectionType">
+        <option value="M">Midseason</option>
+        <option value="F">Final</option>
+    </select><br>
+    <span class="message">Trap Condition</span><br>
+    <select id="selectCondition">
+        <option value="G">Good</option>
+        <option value="D">Damaged</option>
+        <option value="M">Missing</option>
+        <option value="I">Inaccessible</option>
+    </select><br>
+    <div id="enterCount">
+        <span class="message">Enter Moth Count:</span><br>
+        <input id="mothCount" value=null type="number" max=999 height=20% width="50%">
+    </div>
+</div>
+
+<div id="omitFooter" class="formFooter">
+    <input type="button" id="btnInspectionOk" class="gadgetButton fastButton" value="Ok">
+    <input type="button" id="btnInspectionCancel" class="cancelButton fastButton" value="Cancel">
+</div>

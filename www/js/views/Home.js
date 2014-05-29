@@ -57,7 +57,8 @@ define(['underscore',
                     Controller.router.navigate('placement', {trigger: true, replace: true});
                     break;
                 case Encoder.operationTypes.PLACED || Encoder.operationTypes.MIDSEASON:
-                    alert("Inspections are not implemented");
+                    Geolocation.stop();
+                    Controller.router.navigate('inspection', {trigger: true, replace: true});
                     break;
                 case Encoder.operationTypes.FINAL:
                     break;
