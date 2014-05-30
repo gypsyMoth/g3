@@ -46,10 +46,10 @@ define(['underscore',
                    date: '',
                    traptype: '',
                    omitReason: '',
-                   omitCode: ''
-                   //mothCount: '',
-                   //condition: '',
-                   //visit: ''
+                   omitCode: '',
+                   catch: null,
+                   condition: '',
+                   visit: ''
                });
         },
 
@@ -74,10 +74,13 @@ define(['underscore',
             var site, op;
             site = this.get('selectedSite').get('site');
             op = this.get('operation');
-            site.zone = op.zone;
-            site.xact = op.easting;
-            site.yact = op.northing;
+            site.zone = site.zone === '' ? op.zone : site.zone;
+            site.xact = site.xact ? site.xact : op.easting;
+            site.yact = site.yact ? site.yact : op.northing;
             site.txn_date = op.date;
+            site.visit = op.visit;
+            site.condition = op.condition;
+            site.moth_count = op.catch;
             if (op.omitReason) {
                 site.trap_type = "Omit";
                 site.omit_reason = op.omitReason;
@@ -105,8 +108,14 @@ define(['underscore',
             ret += Encoder.transactionLog.ZERO + ',';
             ret += Encoder.padQuad(site.quad) + Encoder.padSite(site.site_id);
 
-            if (op.omitReason) {
-                ret += 'O' + op.omitCode;
+            if (op.visit) {
+                ret += op.visit;
+                ret += op.condition;
+                if (op.condition === 'G' || op.condition === 'D') {
+                    ret += Encoder.padCatch(op.catch);
+                }
+            } else if (op.omitReason) {
+                    ret += 'O' + op.omitCode;
             } else {
                 ret += op.traptype === 'Delta' ? 'D' : 'M';
                 ret += rel.get('distanceOutside') > 0 ? 'B' : '';

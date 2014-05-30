@@ -123,7 +123,7 @@ define(['underscore',
             var imagePath = '';
             if (typeof site.xact === 'undefined') {
                 imagePath = 'Tree';
-            } else if (typeof site.visit === 'undefined') {
+            } else {
                 imagePath = site.trap_type === 'Delta' ? 'Delta' : 'MilkCarton';
             }
             return imagePath;
@@ -146,6 +146,7 @@ define(['underscore',
             } else {
                 operationType = Encoder.operationTypes.FINAL;
             }
+            alert(operationType);
             return operationType;
         }
     });

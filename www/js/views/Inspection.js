@@ -2,8 +2,9 @@ define(['jquery',
     'underscore',
     'backbone',
     'text!src/templates/inspection.html',
-    'src/util/Controller'
-], function($, _, Backbone, inspectionTemplate, Controller) {
+    'src/util/Controller',
+    'src/util/Date'
+], function($, _, Backbone, inspectionTemplate, Controller, DateFormatter) {
     'use strict';
 
     var Inspection = Backbone.View.extend({
@@ -69,7 +70,7 @@ define(['jquery',
         onOkClicked: function() {
             var op = this.model.get('operation');
             alert(op.visit + " inspection of " + op.condition + " trap with " + op.catch + " moths.");
-            Controller.router.navigate('home', {trigger: true, replace: true});
+            Controller.router.navigate('confirm', {trigger: true, replace: true});
         },
 
         onCancelClicked: function() {
@@ -79,6 +80,15 @@ define(['jquery',
         setDefaultOperation: function(options) {
             //alert(option.value);
             var op = this.model.get('operation');
+            var utm = this.model.get('currentUtm');
+            var site = this.model.get('selectedSite').get('site');
+            var accuracy = this.model.get('accuracy');
+            op.zone = utm.Zone;
+            op.easting = utm.Easting;
+            op.northing = utm.Northing;
+            op.accuracy = accuracy;
+            op.traptype = site.trap_type;
+            op.date = DateFormatter.getSitesFormatDate(Date.now());
             op.catch = options.mothCount;
             op.condition = options.condition;
             op.visit = options.visit;

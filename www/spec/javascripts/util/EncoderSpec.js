@@ -12,6 +12,12 @@ define(['src/util/Encoder'],
            expect(encoder.padSite(9000)).toEqual('9000');
        });
 
+        it("Pads catch correctly", function() {
+            expect(encoder.padCatch(9)).toEqual('009');
+            expect(encoder.padCatch(90)).toEqual('090');
+            expect(encoder.padCatch(900)).toEqual('900');
+        });
+
        it("Pads quad abbreviations correctly", function() {
            expect(encoder.padQuad('R')).toEqual('R    ');
            expect(encoder.padQuad('RA')).toEqual('RA   ');

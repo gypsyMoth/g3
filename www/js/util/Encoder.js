@@ -31,6 +31,10 @@ define (function () { 'use strict';
         return this.lpad(site.toString(), 4, '0');
     };
 
+    my.padCatch = function(moths) {
+        return this.lpad(moths.toString(), 3, '0');
+    };
+
     my.padQuad = function(quad) {
         return this.rpad(quad, 5, ' ');
     };

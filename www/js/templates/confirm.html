@@ -1,6 +1,8 @@
 <div id="confirmHeader" class="formHeader">
     <span id="confirmMessage" class="message">
-        <% if (operation.traptype === 'Omit') { %>
+        <% if (operation.condition != '') { %>
+        Confirm <%=operation.visit%> of <%=operation.condition%> trap
+        <% } else if (operation.traptype === 'Omit') { %>
         Confirm omit (<%=operation.omitReason%>)
         <% } else { %>
         Confirm placement of <%=operation.traptype%>
