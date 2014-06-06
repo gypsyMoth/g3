@@ -15,7 +15,7 @@ define(['jquery',
 
         initialize: function(options) {
             this.template = _.template(inspectionTemplate);
-            this.setDefaultOperation({condition: 'G', visit: 'M', mothCount: 0});
+            this.setDefaultOperation({condition: 'GOOD', visit: 'MIDSEASON', mothCount: 0});
         },
 
         events: {
@@ -26,19 +26,20 @@ define(['jquery',
             "change #mothCount": "onMothCountChanged"
         },
 
-        allowMothCount: function(insType) {
-            if (insType === 'G' || insType === 'D'){
-                $("#enterCount").show();
-            } else {
-                $("#enterCount").hide();
-                resetCatch();
-            }
-        },
-
         resetCatch: function() {
             var op = this.model.get("operation");
             op.catch = 0;
-            $("#mothCount").val(op.catch);
+            $("#mothCount").val(null);
+        },
+
+        allowMothCount: function(insType) {
+            var countDiv = this.$el.find('#enterCount');
+            if (insType === 'GOOD' || insType === 'DAMAGED'){
+                countDiv.css('visibility', 'visible');
+            } else {
+                countDiv.css('visibility', 'hidden');
+                this.resetCatch();
+            }
         },
 
         render: function() {
@@ -58,19 +59,17 @@ define(['jquery',
         },
 
         onMothCountChanged: function(e) {
-            var newVal = e.target.value;
-            if (0 < newVal < 999) {
-                this.model.get('operation').catch = e.target.value;
-            } else {
-                alert("Invalid moth count! Maximum value 999! Please enter a new value.)");
-                resetCatch();
-            }
+            this.model.get('operation').catch = parseInt(e.target.value, 10);
         },
 
         onOkClicked: function() {
             var op = this.model.get('operation');
-            alert(op.visit + " inspection of " + op.condition + " trap with " + op.catch + " moths.");
-            Controller.router.navigate('confirm', {trigger: true, replace: true});
+            if (op.catch >= 0 && op.catch <=999) {
+                Controller.router.navigate('confirm', {trigger: true, replace: true});
+            } else {
+                alert("Invalid moth count! Maximum value 999! Please enter a new value.)");
+                this.resetCatch();
+            }
         },
 
         onCancelClicked: function() {
@@ -78,7 +77,6 @@ define(['jquery',
         },
 
         setDefaultOperation: function(options) {
-            //alert(option.value);
             var op = this.model.get('operation');
             var utm = this.model.get('currentUtm');
             var site = this.model.get('selectedSite').get('site');

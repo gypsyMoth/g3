@@ -23,12 +23,17 @@ define(['underscore',
             "click #btnExtrasManualLock": "onManualLockClicked",
 			"click #btnExtrasLoadSites": "onLoadSitesClicked",
             "click #btnExtrasRandom" : "onRandomClicked",
-            "click #btnExtrasCancel": "onCancelClicked"
+            "click #btnExtrasCancel": "onCancelClicked",
+            "click #btnExtrasQC": "onQCInspectionClicked"
         },
 
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
             return this;
+        },
+
+        onQCInspectionClicked: function() {
+            Controller.router.navigate('qcInspection', {trigger: true, replace: true});
         },
 
 		onHistoryClicked: function() {

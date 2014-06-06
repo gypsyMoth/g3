@@ -2,9 +2,10 @@ define(['underscore',
     'backbone',
     'src/util/Geolocation',
     'src/util/Encoder',
+    'src/util/Date',
     'src/util/Controller',
     'text!src/templates/home.html'
-], function(_, Backbone, Geolocation, Encoder, Controller, homeTemplate) { 'use strict';
+], function(_, Backbone, Geolocation, Encoder, DateFormatter, Controller, homeTemplate) { 'use strict';
 
     var Home = Backbone.View.extend({
 
@@ -41,6 +42,17 @@ define(['underscore',
             }
         },
 
+        updateInspectIcon: function() {
+            var ins, inspected;
+            ins = this.$el.find('#inspectDiv');
+            inspected = this.model.get('selectedSite').get('site').visit;
+            if(inspected) {
+                ins.css('visibility', 'visible');
+            } else {
+                ins.css('visibility', 'hidden');
+            }
+        },
+
         onClose: function(){
             Geolocation.stop();
             this.model.unbind("change:selectedSite", this.render);
@@ -56,15 +68,43 @@ define(['underscore',
                     Geolocation.stop();
                     Controller.router.navigate('placement', {trigger: true, replace: true});
                     break;
-                case Encoder.operationTypes.PLACED || Encoder.operationTypes.MIDSEASON:
+                case Encoder.operationTypes.PLACED:
+                case Encoder.operationTypes.MIDSEASON:
                     Geolocation.stop();
-                    Controller.router.navigate('inspection', {trigger: true, replace: true});
+                    var txn_date = this.model.get('selectedSite').get('site').txn_date;
+                    if (txn_date === DateFormatter.getSitesFormatDate(Date.now())) {
+                        alert("Site cannot be placed and inspected or inspected twice on the same day!");
+                        Geolocation.start();
+                    } else {
+                        Controller.router.navigate('inspection', {trigger: true, replace: true});
+                    }
                     break;
                 case Encoder.operationTypes.FINAL:
+                    alert("Final Inspection has been completed!")
                     break;
                 case Encoder.operationTypes.OMITTED:
                     break;
             }
+        },
+
+        getOperation: function(site) {
+            var operationType = '';
+            if (site.quad === '') {
+                operationType = Encoder.operationTypes.ERROR;
+            } else if (typeof site.xact === 'undefined') {
+                operationType = Encoder.operationTypes.UNADDRESSED;
+            } else if (typeof site.visit === 'undefined') {
+                if (typeof site.omit_reason === 'undefined') {
+                    operationType = Encoder.operationTypes.PLACED;
+                } else {
+                    operationType = Encoder.operationTypes.OMITTED;
+                }
+            } else if (site.visit === 'MIDSEASON') {
+                operationType = Encoder.operationTypes.MIDSEASON;
+            } else {
+                operationType = Encoder.operationTypes.FINAL;
+            }
+            return operationType;
         },
 
         onExtrasClicked: function() {
@@ -75,6 +115,7 @@ define(['underscore',
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
             this.updateLockIcon();
+            this.updateInspectIcon();
             this.checkTargetCircle();
             return this;
         },
@@ -127,28 +168,8 @@ define(['underscore',
                 imagePath = site.trap_type === 'Delta' ? 'Delta' : 'MilkCarton';
             }
             return imagePath;
-        },
-
-        getOperation: function(site) {
-            var operationType = '';
-            if (site.quad === '') {
-                operationType = Encoder.operationTypes.ERROR;
-            } else if (typeof site.xact === 'undefined') {
-                operationType = Encoder.operationTypes.UNADDRESSED;
-            } else if (typeof site.visit === 'undefined') {
-                if (typeof site.omit_reason === 'undefined') {
-                    operationType = Encoder.operationTypes.PLACED;
-                } else {
-                    operationType = Encoder.operationTypes.OMITTED;
-                }
-            } else if (site.visit === 'MIDSEASON') {
-                operationType = Encoder.operationTypes.MIDSEASON;
-            } else {
-                operationType = Encoder.operationTypes.FINAL;
-            }
-            alert(operationType);
-            return operationType;
         }
+
     });
 
     return Home;

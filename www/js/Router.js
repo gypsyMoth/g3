@@ -19,7 +19,8 @@ define(['jquery',
 	'src/views/History',
     'src/views/LoadSites',
     'src/views/ManualLock',
-    'src/views/Random'
+    'src/views/Random',
+    'src/views/QC'
 ], function($, _, Backbone,
             Geolocation,
             NearestNeighbor,
@@ -39,7 +40,8 @@ define(['jquery',
             HistoryView,
             LoadSitesView,
             ManualLockView,
-            RandomView) { 'use strict';
+            RandomView,
+            QCInspectionView) { 'use strict';
 
     var Router = Backbone.Router.extend({
         routes : {
@@ -54,7 +56,8 @@ define(['jquery',
 			"history" : "history",
             "loadSites" : "loadSites",
             "manualLock" : "manualLock",
-            "random" : "random"
+            "random" : "random",
+            "qcInspection": "qcInspection"
         },
 
         splash: function() {
@@ -83,6 +86,10 @@ define(['jquery',
 
         inspection: function() {
             this.loadView(new InspectionView({model: Geolocation.Here}));
+        },
+
+        qcInspection: function() {
+            this.loadView(new QCInspectionView({model: Geolocation.Here}));
         },
 
         caution: function() {

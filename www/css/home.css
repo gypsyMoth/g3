@@ -91,3 +91,7 @@ div.homeDiv {
     left: 0;
     bottom: 0;
 }
+
+#infoDiv {
+    height: 62px;
+}

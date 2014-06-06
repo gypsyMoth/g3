@@ -47,9 +47,9 @@ define(['underscore',
                    traptype: '',
                    omitReason: '',
                    omitCode: '',
-                   catch: null,
-                   condition: '',
-                   visit: ''
+                   catch: undefined,
+                   condition: undefined,
+                   visit: undefined
                });
         },
 
@@ -109,10 +109,17 @@ define(['underscore',
             ret += Encoder.padQuad(site.quad) + Encoder.padSite(site.site_id);
 
             if (op.visit) {
-                ret += op.visit;
-                ret += op.condition;
-                if (op.condition === 'G' || op.condition === 'D') {
+                ret += Encoder.visitCode(op.visit);
+                ret += Encoder.conditionCode(op.condition);
+                if ((op.condition === 'GOOD' || op.condition === 'DAMAGED') && !(op.passFail)) {
                     ret += Encoder.padCatch(op.catch);
+                }
+                if (op.passFail) {
+                    ret += Encoder.transactionLog.ZERO;
+                    ret += Encoder.passCode(op.passFail);
+                    if (op.failReason) {
+                        ret += Encoder.failReasonCode(op.failReason);
+                    }
                 }
             } else if (op.omitReason) {
                     ret += 'O' + op.omitCode;

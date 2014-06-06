@@ -1,11 +1,18 @@
 <div id="confirmHeader" class="formHeader">
     <span id="confirmMessage" class="message">
-        <% if (operation.condition != '') { %>
-        Confirm <%=operation.visit%> of <%=operation.condition%> trap
+        <% if (operation.visit != undefined) { %>
+            <% if (operation.passFail != undefined) { %>
+                Confirm <%=operation.passFail%> <%=operation.visit%> QC inspection of <%=operation.condition%> trap
+                <%if (operation.failReason != undefined) { %>
+                    (<%=operation.failReason%>)
+                <% } %>
+            <% } else { %>
+                Confirm <%=operation.visit%> inspection of <%=operation.condition%> trap with <%=operation.catch%> moths
+            <% } %>
         <% } else if (operation.traptype === 'Omit') { %>
-        Confirm omit (<%=operation.omitReason%>)
+            Confirm omit (<%=operation.omitReason%>)
         <% } else { %>
-        Confirm placement of <%=operation.traptype%>
+            Confirm placement of <%=operation.traptype%>
         <% } %>
         at site <%=selectedSite.get('site').quad%>:<%=selectedSite.get('site').site_id%>,
         coordinates <%=currentUtm.Easting%> E, <%=currentUtm.Northing%> N?
