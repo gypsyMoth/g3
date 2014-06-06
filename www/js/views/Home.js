@@ -16,6 +16,7 @@ define(['underscore',
         previousCircleStatus: false,
 
         initialize: function(options) {
+            this.model.clearOperation();
             this.template = _.template(homeTemplate);
             this.render();
             //this.listenTo(this.model, 'change:manualLock', this.updateLockIcon);

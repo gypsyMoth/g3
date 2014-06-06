@@ -40,17 +40,19 @@ define(['underscore',
 
         clearOperation: function(){
             this.set('operation', {
-                   easting: '',
-                   northing: '',
-                   zone: '',
-                   date: '',
-                   traptype: '',
-                   omitReason: '',
-                   omitCode: '',
-                   catch: undefined,
-                   condition: undefined,
-                   visit: undefined
-               });
+                easting: '',
+                northing: '',
+                zone: '',
+                date: '',
+                traptype: '',
+                omitReason: '',
+                omitCode: '',
+                catch: undefined,
+                condition: undefined,
+                visit: undefined,
+                passFail: undefined,
+                failReason: undefined
+            });
         },
 
         updateMessage: function() {
