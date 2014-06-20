@@ -73,7 +73,7 @@ define(['underscore',
                 case Encoder.operationTypes.MIDSEASON:
                     Geolocation.stop();
                     var txn_date = this.model.get('selectedSite').get('site').txn_date;
-                    if (txn_date === DateFormatter.getSitesFormatDate(Date.now())) {
+                    if (txn_date === DateFormatter.getSitesFormatDate(Date.now()) && (site.passFail === 'undefined')) {
                         alert("Site cannot be placed and inspected or inspected twice on the same day!");
                         Geolocation.start();
                     } else {

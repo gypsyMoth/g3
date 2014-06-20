@@ -50,7 +50,7 @@ define (function () { 'use strict';
                 code = "D";
                 break;
             case "MISSING":
-                code = "D";
+                code = "M";
                 break;
             case "INACCESSIBLE":
                 code ="I";

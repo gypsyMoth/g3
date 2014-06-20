@@ -1,9 +1,4 @@
 <div id="qcHeader" class="formHeader">
-    <span class="message">Select Inspection Type</span><br>
-    <select id="selectQCInspectionType">
-        <option value="MIDSEASON">Midseason</option>
-        <option value="FINAL">Final</option>
-    </select><br>
     <span class="message">Trap Condition</span><br>
     <select id="selectQCCondition">
         <option value="GOOD">Good</option>
@@ -11,28 +6,22 @@
         <option value="MISSING">Missing</option>
         <option value="INACCESSIBLE">Inaccessible</option>
     </select><br>
-    <span class="message">Select Pass/Fail</span><br>
-    <select id="selectQCPassFail">
+    <span class="message">Select Failure Reason</span><br>
+    <select id="selectQCFailReason">
         <option value="Passed">Passed</option>
-        <option value="Failed">Failed</option>
-    </select><br>
-    <div id="failReason" style="visibility:hidden;">
-        <span class="message">Select Failure Reason</span><br>
-        <select id="selectQCFailReason">
-            <option value="The trap is not assembled correctly">The trap is not assembled correctly</option>
-            <option value="Trap placed outside target circle">Trap placed outside target circle</option>
-            <option value="Directions to the site are incorrect or incomplete">Directions to the site are incorrect or incomplete</option>
-            <option value="Grid set at wrong spacing">Grid set at wrong spacing</option>
-            <option value="Trap info not recorded correctly on trap">Trap info not recorded correctly on trap</option>
-            <option value="Record filled out, no trap set (bogus data)">Record filled out, no trap set (bogus data)</option>
-            <option value="Delta trap set where milk carton indicated">Delta trap set where milk carton indicated</option>
-            <option value="UTMs recorded incorrectly on data sheet">UTMs recorded incorrectly on data sheet</option>
-            <option value="Trapper did not remove trap from field">Trapper did not remove trap from field</option>
-            <option value="Multiple traps set at one site">Multiple traps set at one site</option>
-            <option value="Trap set too low to ground">Trap set too low to ground</option>
-            <option value="Inspection incorrectly done">Inspection incorrectly done</option>
-        </select>
-    </div>
+        <option value="The trap is not assembled correctly">The trap is not assembled correctly</option>
+        <option value="Trap placed outside target circle">Trap placed outside target circle</option>
+        <option value="Directions to the site are incorrect or incomplete">Directions to the site are incorrect or incomplete</option>
+        <option value="Grid set at wrong spacing">Grid set at wrong spacing</option>
+        <option value="Trap info not recorded correctly on trap">Trap info not recorded correctly on trap</option>
+        <option value="Record filled out, no trap set (bogus data)">Record filled out, no trap set (bogus data)</option>
+        <option value="Delta trap set where milk carton indicated">Delta trap set where milk carton indicated</option>
+        <option value="UTMs recorded incorrectly on data sheet">UTMs recorded incorrectly on data sheet</option>
+        <option value="Trapper did not remove trap from field">Trapper did not remove trap from field</option>
+        <option value="Multiple traps set at one site">Multiple traps set at one site</option>
+        <option value="Trap set too low to ground">Trap set too low to ground</option>
+        <option value="Inspection incorrectly done">Inspection incorrectly done</option>
+    </select>
 </div>
 
 <div id="qcFooter" class="formFooter">

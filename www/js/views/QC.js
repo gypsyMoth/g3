@@ -15,28 +15,14 @@ define(['jquery',
 
         initialize: function(options) {
             this.template = _.template(qcInspectionTemplate);
-            this.setDefaultOperation({condition: 'GOOD', visit: 'MIDSEASON', passFail:'Passed', failReason:undefined});
+            this.setDefaultOperation({condition: 'GOOD', failReason:'Passed'});
         },
 
         events: {
             "click #btnQCOk": "onOkClicked",
             "click #btnQCCancel": "onCancelClicked",
-            "change #selectQCInspectionType": "onTypeChanged",
-            "change #selectQCCondition": "onConditionChanged",
-            "change #selectQCPassFail": "onQCPassFailChanged",
+            "change #selectQCCondition": "onQCConditionChanged",
             "change #selectQCFailReason": "onQCFailReasonChanged"
-        },
-
-        allowFailReason: function(grade) {
-            var reason = this.$el.find('#failReason');
-            var op = this.model.get('operation');
-            if (grade === "Failed"){
-                reason.css('visibility', 'visible');
-                op.failReason = $("#selectQCFailReason").val();
-            } else {
-                reason.css('visibility', 'hidden');
-                op.failReason = undefined;
-            }
         },
 
         render: function() {
@@ -44,20 +30,9 @@ define(['jquery',
             return this;
         },
 
-        onQCTypeChanged: function(e) {
-            var selectedOption = e.target.options[e.target.selectedIndex];
-            this.model.get('operation').visit = selectedOption.value;
-        },
-
         onQCConditionChanged: function(e) {
             var selectedOption = e.target.options[e.target.selectedIndex];
             this.model.get('operation').condition = selectedOption.value;
-        },
-
-        onQCPassFailChanged: function(e) {
-            var selectedOption = e.target.options[e.target.selectedIndex];
-            this.model.get('operation').passFail = selectedOption.value;
-            this.allowFailReason(selectedOption.value);
         },
 
         onQCFailReasonChanged: function(e) {
@@ -67,6 +42,12 @@ define(['jquery',
 
         onOkClicked: function() {
             var op = this.model.get('operation');
+            op.visit = 'MIDSEASON';
+            if (op.failReason === 'Passed') {
+                op.passFail = 'Passed';
+            } else {
+                op.passFail = 'Failed';
+            }
             //alert(op.passFail + " " + op.visit + " QC  inspection of " + op.condition + " trap. If it failed, it was because " + op.failReason + ".");
             Controller.router.navigate('confirm', {trigger: true, replace: true});
         },
@@ -86,9 +67,7 @@ define(['jquery',
             op.accuracy = accuracy;
             op.traptype = site.trap_type;
             op.date = DateFormatter.getSitesFormatDate(Date.now());
-            op.passFail = options.passFail;
             op.condition = options.condition;
-            op.visit = options.visit;
             op.failReason = options.failReason;
         }
     });

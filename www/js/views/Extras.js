@@ -36,8 +36,8 @@ define(['underscore',
         onQCInspectionClicked: function() {
             var site = this.model.get('selectedSite').get('site');
             var txn_date = site.txn_date;
-            var qcField = site.passFail;
-            if (txn_date === DateFormatter.getSitesFormatDate(Date.now()) && qcField != undefined) {
+            var qcStatus = site.passFail;
+            if (txn_date === DateFormatter.getSitesFormatDate(Date.now()) && qcStatus != undefined) {
                 alert("Site cannot be QC inspected twice on the same day!");
                 Geolocation.start();
             } else {

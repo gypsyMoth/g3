@@ -92,7 +92,7 @@ define(['underscore',
             if (op.passFail) {
                 site.passFail = op.passFail;
                 if (op.passFail === 'Failed') {
-                    site.passFail = op.failReason;
+                    site.failReason = op.failReason;
                 }
             }
         },
@@ -123,9 +123,13 @@ define(['underscore',
                     ret += Encoder.padCatch(op.catch);
                 }
                 if (op.passFail) {
-                    ret += Encoder.transactionLog.ZERO;
+                    if ((op.condition === 'MISSING') || (op.condition === 'INACCESSIBLE')) {
+                        ret += ' ';
+                    } else {
+                        ret += Encoder.transactionLog.ZERO;
+                    }
                     ret += Encoder.passCode(op.passFail);
-                    if (op.failReason) {
+                    if (op.failReason != 'Passed') {
                         ret += Encoder.failReasonCode(op.failReason);
                     }
                 }
