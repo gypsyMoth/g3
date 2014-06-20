@@ -1,10 +1,11 @@
 define(['underscore', 
-    'backbone', 
+    'backbone',
+    'src/util/Date',
     'src/util/DB',
     'src/util/Geolocation',
     'src/util/Controller',
     'text!src/templates/extras.html'
-], function(_, Backbone, DB, Geolocation, Controller, extrasTemplate) { 'use strict';
+], function(_, Backbone, DateFormatter, DB, Geolocation, Controller, extrasTemplate) { 'use strict';
 
     var Extras = Backbone.View.extend({
 
@@ -33,7 +34,15 @@ define(['underscore',
         },
 
         onQCInspectionClicked: function() {
-            Controller.router.navigate('qcInspection', {trigger: true, replace: true});
+            var site = this.model.get('selectedSite').get('site');
+            var txn_date = site.txn_date;
+            var qcField = site.passFail;
+            if (txn_date === DateFormatter.getSitesFormatDate(Date.now()) && qcField != undefined) {
+                alert("Site cannot be QC inspected twice on the same day!");
+                Geolocation.start();
+            } else {
+                Controller.router.navigate('qcInspection', {trigger: true, replace: true});
+            }
         },
 
 		onHistoryClicked: function() {

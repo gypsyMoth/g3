@@ -65,7 +65,7 @@ define(['jquery',
         },
 
         extras: function() {
-            this.loadView(new ExtrasView({model: new Filesystem()}));
+            this.loadView(new ExtrasView({model: Geolocation.Here}));
         },
 
         random: function() {

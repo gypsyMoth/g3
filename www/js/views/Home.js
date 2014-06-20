@@ -81,9 +81,10 @@ define(['underscore',
                     }
                     break;
                 case Encoder.operationTypes.FINAL:
-                    alert("Final Inspection has been completed!")
+                    alert("Final Inspection has been completed!");
                     break;
                 case Encoder.operationTypes.OMITTED:
+                    alert("Site omitted!");
                     break;
             }
         },

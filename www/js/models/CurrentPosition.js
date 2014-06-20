@@ -89,6 +89,12 @@ define(['underscore',
             } else {
                 site.trap_type = op.traptype;
             }
+            if (op.passFail) {
+                site.passFail = op.passFail;
+                if (op.passFail === 'Failed') {
+                    site.passFail = op.failReason;
+                }
+            }
         },
 
         codedString: function() {
