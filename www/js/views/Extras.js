@@ -37,11 +37,21 @@ define(['underscore',
             var site = this.model.get('selectedSite').get('site');
             var txn_date = site.txn_date;
             var qcStatus = site.passFail;
-            if (txn_date === DateFormatter.getSitesFormatDate(Date.now()) && qcStatus != undefined) {
-                alert("Site cannot be QC inspected twice on the same day!");
-                Geolocation.start();
+            var dist = this.model.get('selectedSite').get('relativePosition').get('distance');
+            if (site.xact === undefined || site.trap_type === 'Omit'){
+                alert("Cannot QC inspect trap that is not yet placed or previously omitted!");
             } else {
-                Controller.router.navigate('qcInspection', {trigger: true, replace: true});
+                if (txn_date === DateFormatter.getSitesFormatDate(Date.now()) && qcStatus != undefined) {
+                    alert("Trap cannot be QC inspected twice on the same day!");
+                    Geolocation.start();
+                } else {
+                    if (dist > 100) {
+                        alert("Inspections cannot be completed from more than 100 meters away. This may be due to GPS error now or during placement.");
+                        Geolocation.start();
+                    } else {
+                        Controller.router.navigate('qcInspection', {trigger: true, replace: true});
+                    }
+                }
             }
         },
 

@@ -33,7 +33,7 @@ define(['underscore',
 
             // Fix this for inspections...
             site = self.model.get('selectedSite').get('site');
-            if (site.site_id > 8999) {
+            if (site.site_id > 8999 && !Geolocation.getSiteById(site.quad, site.site_id)){
                 Geolocation.addRandomSite(site);
             }
             self.model.saveSites();

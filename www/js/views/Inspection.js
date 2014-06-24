@@ -87,9 +87,9 @@ define(['jquery',
             op.accuracy = accuracy;
             op.traptype = site.trap_type;
             op.date = DateFormatter.getSitesFormatDate(Date.now());
-            op.catch = options.mothCount;
-            op.condition = options.condition;
             op.visit = options.visit;
+            op.condition = options.condition;
+            op.catch = options.mothCount;
         }
     });
 

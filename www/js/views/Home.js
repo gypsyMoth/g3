@@ -73,15 +73,21 @@ define(['underscore',
                 case Encoder.operationTypes.MIDSEASON:
                     Geolocation.stop();
                     var txn_date = this.model.get('selectedSite').get('site').txn_date;
-                    if (txn_date === DateFormatter.getSitesFormatDate(Date.now()) && (site.passFail === 'undefined')) {
-                        alert("Site cannot be placed and inspected or inspected twice on the same day!");
+                    var dist = this.model.get('selectedSite').get('relativePosition').get('distance');
+                    if (txn_date === DateFormatter.getSitesFormatDate(Date.now()) && (site.passFail === undefined)) {
+                        alert("Site cannot be placed and inspected or inspected multiple times on the same day!");
                         Geolocation.start();
                     } else {
-                        Controller.router.navigate('inspection', {trigger: true, replace: true});
+                        if (dist > 100) {
+                            alert("Inspections cannot be completed from more than 100 meters away. This may be due to GPS error now or during placement.");
+                            Geolocation.start();
+                        } else {
+                            Controller.router.navigate('inspection', {trigger: true, replace: true});
+                        }
                     }
                     break;
                 case Encoder.operationTypes.FINAL:
-                    alert("Final Inspection has been completed!");
+                    alert("Final inspection has been completed!");
                     break;
                 case Encoder.operationTypes.OMITTED:
                     alert("Site omitted!");

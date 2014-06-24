@@ -95,7 +95,7 @@ define(["jquery",
            view.model.set({operation: {easting: 123456, northing: 1234567, date: '01/01/14', traptype: 'Delta'}});
            view = new HomeView({model: new CurrentPosition()});
            var op = view.model.get('operation');
-           expect(op).toEqual({easting: '', northing: '', zone: '', date: '', traptype: '', omitReason: '', omitCode: ''});
+           expect(op).toEqual({easting: '', northing: '', zone: '', date: '', traptype: '', omitReason: '', omitCode: '', catch : undefined, condition : undefined, visit : undefined, passFail : undefined, failReason : undefined });
        });
 
        describe("Manual lock display", function() {
@@ -186,6 +186,10 @@ define(["jquery",
                var nearestSites =  new NearestSiteCollection([nearestSite]);
                view.model = new CurrentPosition({currentUtm: utm, nearestSites: nearestSites});
                view.model.set('selectedSite', nearestSite);
+               // To keep jasmine tests from failing on navigator.beep() call...
+               if (distanceOutside > 0){
+                   view.previousCircleStatus = true;
+               }
                view.render();
            };
 
