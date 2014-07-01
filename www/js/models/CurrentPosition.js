@@ -79,7 +79,7 @@ define(['underscore',
             site.zone = site.zone === '' ? op.zone : site.zone;
             site.xact = site.xact ? site.xact : op.easting;
             site.yact = site.yact ? site.yact : op.northing;
-            site.txn_date = op.date;
+            site.txn_date = DateFormatter.getSitesFormatDate(op.date);
             site.visit = op.visit;
             site.condition = op.condition;
             site.moth_count = op.catch;
@@ -110,8 +110,8 @@ define(['underscore',
             ret += op.easting + ',';
             ret += op.northing + ',';
             ret += Encoder.rpad((op.accuracy + '.'), 5, '0') + ',';
-            ret += DateFormatter.getOperationFormatDate(Date.now()) + ',';
-            ret += '00:00:00' + ',';
+            ret += DateFormatter.getOperationFormatDate(op.date) + ',';
+            ret += DateFormatter.getOperationFormatTime(op.date) + ',';
             ret += Encoder.transactionLog.PLACEHOLDER + ',';
             ret += Encoder.transactionLog.ZERO + ',';
             ret += Encoder.padQuad(site.quad) + Encoder.padSite(site.site_id);
@@ -129,7 +129,7 @@ define(['underscore',
                         ret += Encoder.transactionLog.ZERO;
                     }
                     ret += Encoder.passCode(op.passFail);
-                    if (op.failReason != 'Passed') {
+                    if (op.failReason !== 'Passed') {
                         ret += Encoder.failReasonCode(op.failReason);
                     }
                 }

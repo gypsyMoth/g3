@@ -64,7 +64,7 @@ define(['underscore',
             op.northing = utm.Northing;
             op.accuracy = accuracy;
             op.traptype = site.trap_type;
-            op.date = DateFormatter.getSitesFormatDate(Date.now());
+            op.date = Date.now();
         }
     });
 

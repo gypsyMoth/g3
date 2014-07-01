@@ -173,58 +173,64 @@ define(["jquery",
                 op.traptype = site.trap_type;
                 op.omitReason = site.omit_reason;
                 op.omitCode = site.omit_code;
-
+                op.date = Date.now();
             };
 
-            var initString = "#,000,01234567890123,17,North,400000,4000000,10.00," + DateFormatter.getOperationFormatDate(Date.now()) + ",00:00:00,,0,";
-            var endString = ",$\r\n";
+            function setCompString(date, code){
+                var ret = "#,000,01234567890123,17,North,400000,4000000,10.00,";
+                ret += DateFormatter.getOperationFormatDate(date) + ",";
+                ret += DateFormatter.getOperationFormatTime(date);
+                ret += ",,0,";
+                ret += code + ",$\r\n";
+                return ret;
+            };
 
             it("Codes delta placement in target circle", function(){
                 initModel(testSites.placedDelta, 0);
                 var codeString = view.model.codedString();
-                var compString = initString + "TEST 0001D" + endString;
+                var compString = setCompString(view.model.get('operation').date, "TEST 0001D");
                 expect(codeString).toEqual(compString);
             });
 
             it("Codes milk carton placement outside target circle", function(){
                 initModel(testSites.placedMilkCarton, 1);
                 var codeString = view.model.codedString();
-                var compString = initString + "TEST 0001MB" + endString;
+                var compString = setCompString(view.model.get('operation').date, "TEST 0001MB");
                 expect(codeString).toEqual(compString);
             });
 
             it("Codes omit", function(){
                 initModel(testSites.omit, -1);
                 var codeString = view.model.codedString();
-                var compString = initString + "TEST 0001OH" + endString;
+                var compString = setCompString(view.model.get('operation').date, "TEST 0001OH");
                 expect(codeString).toEqual(compString);
             });
 
             it("Codes midseason good inspection with 0 moths", function(){
                 initModel(testSites.midseasonInspection, 0);
                 var codeString = view.model.codedString();
-                var compString = initString + "HOLID9009MG000" + endString;
+                var compString = setCompString(view.model.get('operation').date, "HOLID9009MG000");
                 expect(codeString).toEqual(compString);
             });
 
             it("Codes final damaged inspection with 25 moths", function(){
                 initModel(testSites.finalInspection, 0);
                 var codeString = view.model.codedString();
-                var compString = initString + "HOLID0010FD025" + endString;
+                var compString = setCompString(view.model.get('operation').date, "HOLID0010FD025");
                 expect(codeString).toEqual(compString);
             });
 
             it("Codes failed missing qc inspection", function(){
                 initModel(testSites.qcMissingInspection, 0);
                 var codeString = view.model.codedString();
-                var compString = initString + "HOLID9009MM FR" + endString;
+                var compString = setCompString(view.model.get('operation').date, "HOLID9009MM FR");
                 expect(codeString).toEqual(compString);
             });
 
             it("Codes passed good qc inspection", function(){
                 initModel(testSites.qcPassInspection, 0);
                 var codeString = view.model.codedString();
-                var compString = initString + "HOLID0123MG0P" + endString;
+                var compString = setCompString(view.model.get('operation').date, "HOLID0123MG0P");
                 expect(codeString).toEqual(compString);
             });
 

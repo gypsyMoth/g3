@@ -97,7 +97,7 @@ define(['underscore',
             it("Writes the operation values to site on commit", function() {
                 var model = new CurrentPosition();
                 model.set({currentUtm: {Easting: 123456, Northing: 1234567, Zone: 15}});
-                model.set({operation: {easting: 123456, northing: 1234567, traptype: 'Milk Carton', date: '2014-01-24T00:00:00-00:00'}});
+                model.set({operation: {easting: 123456, northing: 1234567, traptype: 'Milk Carton', date: new Date(2014,0,24,13,0,0)}});
                 model.set('selectedSite', new NearestSite({
                     site: {
                         "zone":15,"xth":"329229","yth":"3475979","quad":"FIREP","site_id":1,"grid":"30","trap_type":"Delta","moth_count":0

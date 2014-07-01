@@ -2,8 +2,9 @@ define(['jquery',
     'underscore',
     'backbone',
     'text!src/templates/omit.html',
-    'src/util/Controller'
-], function($, _, Backbone, omitTemplate, Controller) {
+    'src/util/Controller',
+    'src/util/Date'
+], function($, _, Backbone, omitTemplate, Controller, DateFormatter) {
     'use strict';
 
     var Omit = Backbone.View.extend({
@@ -46,6 +47,7 @@ define(['jquery',
             op.traptype = "Omit";
             op.omitReason = option.text;
             op.omitCode = option.value;
+            op.date = Date.now();
         }
     });
 

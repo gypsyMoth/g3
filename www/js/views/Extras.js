@@ -41,7 +41,7 @@ define(['underscore',
             if (site.xact === undefined || site.trap_type === 'Omit'){
                 alert("Cannot QC inspect trap that is not yet placed or previously omitted!");
             } else {
-                if (txn_date === DateFormatter.getSitesFormatDate(Date.now()) && qcStatus != undefined) {
+                if (txn_date === DateFormatter.getSitesFormatDate(Date.now()) && qcStatus !== undefined) {
                     alert("Trap cannot be QC inspected twice on the same day!");
                     Geolocation.start();
                 } else {

@@ -86,7 +86,7 @@ define(['jquery',
             op.northing = utm.Northing;
             op.accuracy = accuracy;
             op.traptype = site.trap_type;
-            op.date = DateFormatter.getSitesFormatDate(Date.now());
+            op.date = Date.now();
             op.visit = options.visit;
             op.condition = options.condition;
             op.catch = options.mothCount;
