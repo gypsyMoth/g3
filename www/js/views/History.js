@@ -22,20 +22,20 @@ define(['underscore',
 
         initialize: function(options) {
             this.template = _.template(historyTemplate);
-            this.sortDate();
+            this.sortDate(this.collection);
             this.pages.total = Math.ceil(this.collection.models.length / this.pages.perPage);
             this.setButtons();
         },
 
-        sortDate: function() {
-            this.collection.comparator = function(t1, t2){
-                var date1 = Date.parse(t1.get("date"));
-                var date2 = Date.parse(t2.get("date"));
+        sortDate: function(coll) {
+            coll.comparator = function(t1, t2){
+                var date1 = Date.parse(t1.get("date") + " " + t1.get("time"));
+                var date2 = Date.parse(t2.get("date") + " " + t2.get("time"));
                 if (date1 > date2) {return -1;}
                 if (date1 < date2) {return 1;}
                 return 0;
             }
-            this.collection.sort();
+            coll.sort();
         },
 
         setButtons: function(){
@@ -46,7 +46,6 @@ define(['underscore',
         pagination : function(perPage, page) {
             page = page-1;
             var collection = this.collection;
-            collection.comparator = "date";
             collection = _(collection.rest(perPage*page));
             collection = _(collection.first(perPage));
             return collection.map( function(model) {

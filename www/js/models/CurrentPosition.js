@@ -22,6 +22,9 @@ define(['underscore',
                    traptype: '',
                    omitReason: '',
                    omitCode: ''
+                   //mothCount: '',
+                   //condition: '',
+                   //visit: ''
                },
                accuracy: '',
                manualLock: false,
@@ -37,14 +40,19 @@ define(['underscore',
 
         clearOperation: function(){
             this.set('operation', {
-                   easting: '',
-                   northing: '',
-                   zone: '',
-                   date: '',
-                   traptype: '',
-                   omitReason: '',
-                   omitCode: ''
-               });
+                easting: '',
+                northing: '',
+                zone: '',
+                date: '',
+                traptype: '',
+                omitReason: '',
+                omitCode: '',
+                catch: undefined,
+                condition: undefined,
+                visit: undefined,
+                passFail: undefined,
+                failReason: undefined
+            });
         },
 
         updateMessage: function() {
@@ -68,15 +76,24 @@ define(['underscore',
             var site, op;
             site = this.get('selectedSite').get('site');
             op = this.get('operation');
-            site.zone = op.zone;
-            site.xact = op.easting;
-            site.yact = op.northing;
-            site.txn_date = op.date;
+            site.zone = site.zone === '' ? op.zone : site.zone;
+            site.xact = site.xact ? site.xact : op.easting;
+            site.yact = site.yact ? site.yact : op.northing;
+            site.txn_date = DateFormatter.getSitesFormatDate(op.date);
+            site.visit = op.visit;
+            site.condition = op.condition;
+            site.moth_count = op.catch;
             if (op.omitReason) {
                 site.trap_type = "Omit";
                 site.omit_reason = op.omitReason;
             } else {
                 site.trap_type = op.traptype;
+            }
+            if (op.passFail) {
+                site.passFail = op.passFail;
+                if (op.passFail === 'Failed') {
+                    site.failReason = op.failReason;
+                }
             }
         },
 
@@ -93,14 +110,31 @@ define(['underscore',
             ret += op.easting + ',';
             ret += op.northing + ',';
             ret += Encoder.rpad((op.accuracy + '.'), 5, '0') + ',';
-            ret += DateFormatter.getOperationFormatDate(Date.now()) + ',';
-            ret += '00:00:00' + ',';
+            ret += DateFormatter.getOperationFormatDate(op.date) + ',';
+            ret += DateFormatter.getOperationFormatTime(op.date) + ',';
             ret += Encoder.transactionLog.PLACEHOLDER + ',';
             ret += Encoder.transactionLog.ZERO + ',';
             ret += Encoder.padQuad(site.quad) + Encoder.padSite(site.site_id);
 
-            if (op.omitReason) {
-                ret += 'O' + op.omitCode;
+            if (op.visit) {
+                ret += Encoder.visitCode(op.visit);
+                ret += Encoder.conditionCode(op.condition);
+                if ((op.condition === 'GOOD' || op.condition === 'DAMAGED') && !(op.passFail)) {
+                    ret += Encoder.padCatch(op.catch);
+                }
+                if (op.passFail) {
+                    if ((op.condition === 'MISSING') || (op.condition === 'INACCESSIBLE')) {
+                        ret += ' ';
+                    } else {
+                        ret += Encoder.transactionLog.ZERO;
+                    }
+                    ret += Encoder.passCode(op.passFail);
+                    if (op.failReason !== 'Passed') {
+                        ret += Encoder.failReasonCode(op.failReason);
+                    }
+                }
+            } else if (op.omitReason) {
+                    ret += 'O' + op.omitCode;
             } else {
                 ret += op.traptype === 'Delta' ? 'D' : 'M';
                 ret += rel.get('distanceOutside') > 0 ? 'B' : '';

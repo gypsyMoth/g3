@@ -2,9 +2,10 @@ define(['underscore',
     'backbone',
     'src/util/Geolocation',
     'src/util/Encoder',
+    'src/util/Date',
     'src/util/Controller',
     'text!src/templates/home.html'
-], function(_, Backbone, Geolocation, Encoder, Controller, homeTemplate) { 'use strict';
+], function(_, Backbone, Geolocation, Encoder, DateFormatter, Controller, homeTemplate) { 'use strict';
 
     var Home = Backbone.View.extend({
 
@@ -15,6 +16,7 @@ define(['underscore',
         previousCircleStatus: false,
 
         initialize: function(options) {
+            this.model.clearOperation();
             this.template = _.template(homeTemplate);
             this.render();
             //this.listenTo(this.model, 'change:manualLock', this.updateLockIcon);
@@ -41,6 +43,17 @@ define(['underscore',
             }
         },
 
+        updateInspectIcon: function() {
+            var ins, inspected;
+            ins = this.$el.find('#inspectDiv');
+            inspected = this.model.get('selectedSite').get('site').visit;
+            if(inspected) {
+                ins.css('visibility', 'visible');
+            } else {
+                ins.css('visibility', 'hidden');
+            }
+        },
+
         onClose: function(){
             Geolocation.stop();
             this.model.unbind("change:selectedSite", this.render);
@@ -56,14 +69,50 @@ define(['underscore',
                     Geolocation.stop();
                     Controller.router.navigate('placement', {trigger: true, replace: true});
                     break;
-                case Encoder.operationTypes.PLACED || Encoder.operationTypes.MIDSEASON:
-                    alert("Inspections are not implemented");
+                case Encoder.operationTypes.PLACED:
+                case Encoder.operationTypes.MIDSEASON:
+                    Geolocation.stop();
+                    var txn_date = this.model.get('selectedSite').get('site').txn_date;
+                    var dist = this.model.get('selectedSite').get('relativePosition').get('distance');
+                    if (txn_date === DateFormatter.getSitesFormatDate(Date.now()) && (site.passFail === undefined)) {
+                        alert("Site cannot be placed and inspected or inspected multiple times on the same day!");
+                        Geolocation.start();
+                    } else {
+                        if (dist > 100) {
+                            alert("Inspections cannot be completed from more than 100 meters away. This may be due to GPS error now or during placement.");
+                            Geolocation.start();
+                        } else {
+                            Controller.router.navigate('inspection', {trigger: true, replace: true});
+                        }
+                    }
                     break;
                 case Encoder.operationTypes.FINAL:
+                    alert("Final inspection has been completed!");
                     break;
                 case Encoder.operationTypes.OMITTED:
+                    alert("Site omitted!");
                     break;
             }
+        },
+
+        getOperation: function(site) {
+            var operationType = '';
+            if (site.quad === '') {
+                operationType = Encoder.operationTypes.ERROR;
+            } else if (typeof site.xact === 'undefined') {
+                operationType = Encoder.operationTypes.UNADDRESSED;
+            } else if (typeof site.visit === 'undefined') {
+                if (typeof site.omit_reason === 'undefined') {
+                    operationType = Encoder.operationTypes.PLACED;
+                } else {
+                    operationType = Encoder.operationTypes.OMITTED;
+                }
+            } else if (site.visit === 'MIDSEASON') {
+                operationType = Encoder.operationTypes.MIDSEASON;
+            } else {
+                operationType = Encoder.operationTypes.FINAL;
+            }
+            return operationType;
         },
 
         onExtrasClicked: function() {
@@ -74,6 +123,7 @@ define(['underscore',
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
             this.updateLockIcon();
+            this.updateInspectIcon();
             this.checkTargetCircle();
             return this;
         },
@@ -122,31 +172,12 @@ define(['underscore',
             var imagePath = '';
             if (typeof site.xact === 'undefined') {
                 imagePath = 'Tree';
-            } else if (typeof site.visit === 'undefined') {
+            } else {
                 imagePath = site.trap_type === 'Delta' ? 'Delta' : 'MilkCarton';
             }
             return imagePath;
-        },
-
-        getOperation: function(site) {
-            var operationType = '';
-            if (site.quad === '') {
-                operationType = Encoder.operationTypes.ERROR;
-            } else if (typeof site.xact === 'undefined') {
-                operationType = Encoder.operationTypes.UNADDRESSED;
-            } else if (typeof site.visit === 'undefined') {
-                if (typeof site.omit_reason === 'undefined') {
-                    operationType = Encoder.operationTypes.PLACED;
-                } else {
-                    operationType = Encoder.operationTypes.OMITTED;
-                }
-            } else if (site.visit === 'MIDSEASON') {
-                operationType = Encoder.operationTypes.MIDSEASON;
-            } else {
-                operationType = Encoder.operationTypes.FINAL;
-            }
-            return operationType;
         }
+
     });
 
     return Home;

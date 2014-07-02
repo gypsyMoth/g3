@@ -67,7 +67,8 @@
         'views/ManualLockSpec',
         'views/RandomSpec',
         'views/OmitSpec',
-        'views/HistorySpec'
+        'views/HistorySpec',
+        'views/InspectionSpec'
     ];
 
     require(['src/app', 'boot', 'jasmine-jquery'], function (App) {

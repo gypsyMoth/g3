@@ -3,9 +3,10 @@ define(["jquery",
     "src/models/CurrentPosition",
     "src/models/RelativePosition",
     "src/models/NearestSite",
+    "src/util/Date",
     "src/collections/NearestSiteCollection",
     "src/views/Home"
-], function($, _, CurrentPosition, RelativePosition, NearestSite, NearestSiteCollection, HomeView) { 'use strict';
+], function($, _, CurrentPosition, RelativePosition, NearestSite, DateFormatter, NearestSiteCollection, HomeView) { 'use strict';
 
     $(describe("Home View", function() {
        var view;
@@ -94,7 +95,7 @@ define(["jquery",
            view.model.set({operation: {easting: 123456, northing: 1234567, date: '01/01/14', traptype: 'Delta'}});
            view = new HomeView({model: new CurrentPosition()});
            var op = view.model.get('operation');
-           expect(op).toEqual({easting: '', northing: '', zone: '', date: '', traptype: '', omitReason: '', omitCode: ''});
+           expect(op).toEqual({easting: '', northing: '', zone: '', date: '', traptype: '', omitReason: '', omitCode: '', catch : undefined, condition : undefined, visit : undefined, passFail : undefined, failReason : undefined });
        });
 
        describe("Manual lock display", function() {
@@ -111,6 +112,28 @@ define(["jquery",
            });
        });
 
+        describe("Inspection icon display and same day rule", function() {
+
+            var initModel = function(site, distanceOutside) {
+                var relativePosition = new RelativePosition({distanceOutside: distanceOutside});
+                var nearestSite = new NearestSite({site: site, relativePosition: relativePosition});
+                var nearestSites =  new NearestSiteCollection([nearestSite]);
+                view.model = new CurrentPosition({currentUtm: {Easting: 300000, Northing: 3000000, Zone: 15}, nearestSites: nearestSites});
+                view.model.set('selectedSite', nearestSite);
+                view.render();
+            };
+
+            it("Shows the inspection icon when site has been inspected", function() {
+                initModel(testSites.midseasonInspection, -1);
+                expect(view.$el.find('#inspectDiv').css('visibility')).toEqual('visible');
+            });
+
+            it("Hides the inspection icon when site has not been inspected", function() {
+                initModel(testSites.placedDelta, -1);
+                expect(view.$el.find('#inspectDiv').css('visibility')).toEqual('hidden');
+            });
+        });
+
        describe("Determine operation based on site", function() {
 
             it("Returns ERROR when the quad value is equal to an empty string", function() {
@@ -123,7 +146,7 @@ define(["jquery",
 
            it("Returns PLACED for a placed site", function() {
                expect(view.getOperation(testSites.placedDelta)).toEqual('PLACED');
-               expect(view.getOperation(testSites.placedDelta)).toEqual('PLACED');
+               expect(view.getOperation(testSites.placedMilkCarton)).toEqual('PLACED');
            });
 
            it("Returns MIDSEASON for a midseason inspected site", function() {
@@ -163,6 +186,10 @@ define(["jquery",
                var nearestSites =  new NearestSiteCollection([nearestSite]);
                view.model = new CurrentPosition({currentUtm: utm, nearestSites: nearestSites});
                view.model.set('selectedSite', nearestSite);
+               // To keep jasmine tests from failing on navigator.beep() call...
+               if (distanceOutside > 0){
+                   view.previousCircleStatus = true;
+               }
                view.render();
            };
 
