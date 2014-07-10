@@ -1,49 +1,51 @@
-<div id="homeHeader" class="homeHeader">
-    <div id="locationDiv" class="homeDiv">
-                <span id="locationSpan" class="locationSpan">
-                    <%= currentUtm.Zone + ", " + currentUtm.Easting + "E, " + currentUtm.Northing + "N" %>
-                </span>
-    </div>
-</div>
-
-<div id="ActionDiv" class="actionDiv">
-    <img id="homeImage" src="img/greenTree.gif"/>
-</div>
-
-<div id="homeFooter" class="homeFooter">
-    <div id="infoDiv">
-        <div id="lockDiv" style="visibility: hidden; float: left;">
-            <img id="lockImage" src="img/locked.gif"/>
-        </div>
-        <div id="inspectDiv" style="visibility: hidden; float: right;">
-            <img id="inspectImage" src="img/magGlassSmall.gif"/>
+<div id="home" data-bind="with: home">
+    <div id="homeHeader" class="homeHeader">
+        <div id="locationDiv" class="homeDiv">
+                    <span id="locationSpan" class="locationSpan">
+                        <!--<%= currentUtm.Zone + ", " + currentUtm.Easting + "E, " + currentUtm.Northing + "N" %>-->
+                    </span>
         </div>
     </div>
-    <div id="distanceDiv" class="homeDiv">
-                    <span id="distanceSpan" class="message">
-                        <% if(selectedSite.get('relativePosition').get('found')) { %>
-                        <%= selectedSite.get('relativePosition').get('distance')
-                         + " (&plusmn" + accuracy + ") meters "
-                         + selectedSite.get('relativePosition').get('bearing')
-                        %>
-                        <% } else { %>
-                        <%="No sites found in zone " + currentUtm.Zone %>
-                        <% } %>
-                    </span>
+
+    <div id="ActionDiv" class="actionDiv">
+        <img id="homeImage" src="img/greenTree.gif"/>
     </div>
 
-    <div id="siteDiv" class="homeDiv siteDiv">
-                    <span id="siteSpan" class="siteSpan">
-                        <% if(selectedSite.get('site').quad  !== '') { %>
-                        <%= selectedSite.get('site').quad + ':' + selectedSite.get('site').site_id%>
-                        <% } else { %>
-                        <%= "No Site" %>
-                        <% } %>
-                    </span>
-    </div>
+    <div id="homeFooter" class="homeFooter">
+        <div id="infoDiv">
+            <div id="lockDiv" style="visibility: hidden; float: left;">
+                <img id="lockImage" src="img/locked.gif"/>
+            </div>
+            <div id="inspectDiv" style="visibility: hidden; float: right;">
+                <img id="inspectImage" src="img/magGlassSmall.gif"/>
+            </div>
+        </div>
+        <div id="distanceDiv" class="homeDiv">
+                        <span id="distanceSpan" class="message">
+                            <!--<% if(selectedSite.get('relativePosition').get('found')) { %>
+                            <%= selectedSite.get('relativePosition').get('distance')
+                             + " (&plusmn" + accuracy + ") meters "
+                             + selectedSite.get('relativePosition').get('bearing')
+                            %>
+                            <% } else { %>
+                            <%="No sites found in zone " + currentUtm.Zone %>
+                            <% } %>-->
+                        </span>
+        </div>
 
-    <div id="messageDiv" class="homeDiv">
-        <input type="button" id="btnHomeExtras">
-        <span id="messageSpan"><%= message %></span>
+        <div id="siteDiv" class="homeDiv siteDiv">
+                        <span id="siteSpan" class="siteSpan">
+                            <!--<% if(selectedSite.get('site').quad  !== '') { %>
+                            <%= selectedSite.get('site').quad + ':' + selectedSite.get('site').site_id%>
+                            <% } else { %>
+                            <%= "No Site" %>
+                            <% } %>-->
+                        </span>
+        </div>
+
+        <div id="messageDiv" class="homeDiv">
+            <input type="button" id="btnHomeExtras">
+            <span id="messageSpan" data-bind="text: message()"><!--<%= message %>--></span>
+        </div>
     </div>
 </div>

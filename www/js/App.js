@@ -1,13 +1,15 @@
 define(['jquery',
     'underscore',
     'backbone',
+    'knockout',
     'src/Router',
+    'src/viewmodels/Gadget',
     'src/util/Geolocation',
     'src/util/DB',
     'src/util/Controller',
     'src/models/Splash',
     'src/views/Splash'
-    ], function($, _, Backbone, Router, Geolocation, DB, Controller, Splash, SplashView) { 'use strict';
+    ], function($, _, Backbone, ko, Router, GadgetView, Geolocation, DB, Controller, Splash, SplashView) { 'use strict';
 
      var my = {};
     _.extend(my, Backbone.Events);
@@ -15,18 +17,24 @@ define(['jquery',
     my.isInitialized = false;
 
     my.initialize = function () {
+        //var gadget = new GadgetView();
+        //ko.applyBindings(gadget);
+        //gadget.initialize();
         document.addEventListener('deviceready', _.bind(this.onDeviceReady, this), false);
+
     };
 
     my.onDeviceReady = function () {
-        Controller.router = new Router();
-        Backbone.history.start();
-
-        if (this.isInitialized) {
-            Controller.router.navigate('home', {trigger: true, replace: true});
-        } else {
-            this.showSplash();
-        }
+        //Controller.router = new Router();
+        //Backbone.history.start();
+        var gadget = new GadgetView();
+        ko.applyBindings(gadget);
+        gadget.initialize();
+        //if (this.isInitialized) {
+        //    Controller.router.navigate('home', {trigger: true, replace: true});
+        //} else {
+        //    this.showSplash();
+        //}
     };
 
     my.showSplash = function () {
