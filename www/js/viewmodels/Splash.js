@@ -3,13 +3,13 @@ define(['jquery',
     'knockout',
     'src/util/DB',
     'src/util/Geolocation',
-    'src/viewmodels/Gadget'
+    'src/util/Controller'
 ], function($,
             _,
             ko,
             DB,
             Geolocation,
-            Gadget
+            Controller
     ) {
 
     'use strict';
@@ -50,19 +50,18 @@ define(['jquery',
         };
 
         this.initializeGps = function() {
-            alert("Initializing!");
             this.message('Acquiring Satellites...');
-            Gadget.changeView('home');
-            /*Geolocation.start();
-            this.listenTo(Geolocation.currentLatLon, 'change', this.gotGpsSignal);
-            if (Geolocation.gotSignal) {
+            Geolocation.start();
+            //this.listenTo(Geolocation.currentLatLon, 'change', this.gotGpsSignal);
+            if (Controller.viewModel.signal() === true) {
                 this.gotGpsSignal();
-            }*/
+            }
         };
 
         this.gotGpsSignal = function() {
-            this.stopListening(Geolocation.currentLatLon);
-            Gadget.changeView('home');
+            alert("GOING HOME!");
+            //this.stopListening(Geolocation.currentLatLon);
+            Controller.viewModel.changeView('home');
             //Controller.router.navigate('home', {trigger: true, replace: true});
         };
 

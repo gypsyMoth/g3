@@ -1,4 +1,4 @@
-<div id="home" data-bind="with: home">
+<div id="home" class="view" data-bind="with: home">
     <div id="homeHeader" class="homeHeader">
         <div id="locationDiv" class="homeDiv">
                     <span id="locationSpan" class="locationSpan">
@@ -44,7 +44,7 @@
         </div>
 
         <div id="messageDiv" class="homeDiv">
-            <input type="button" id="btnHomeExtras">
+            <input type="button" id="btnHomeExtras" data-bind="click: $root.changeView('extras')">
             <span id="messageSpan" data-bind="text: message()"><!--<%= message %>--></span>
         </div>
     </div>

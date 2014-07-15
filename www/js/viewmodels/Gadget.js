@@ -15,22 +15,17 @@ define(['jquery',
 
         this.currentView = ko.observable('splash');
 
-        this.splash = new SplashView();
-
-        this.home = new HomeView();
-
         this.initialize = function(){
+            this.splash = new SplashView();
+            this.home = new HomeView();
             this.splash.initializeGadget();
         };
 
         this.changeView = function(name){
-            alert('GOING HOME!');
             this.currentView(name);
         };
 
-
-
-
+        this.signal = ko.observable(false);
 
     };
 

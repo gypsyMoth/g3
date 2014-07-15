@@ -5,8 +5,9 @@ define(['jquery',
     'src/util/NearestNeighbor',
     'src/models/NearestSite',
     'src/models/LatLon',
-    'src/models/CurrentPosition'
-], function($, _, Backbone, CoordinateConverter, NearestNeighbor, NearestSite, LatLon, CurrentPosition) { 'use strict';
+    'src/models/CurrentPosition',
+    'src/util/Controller'
+], function($, _, Backbone, CoordinateConverter, NearestNeighbor, NearestSite, LatLon, CurrentPosition, Controller) { 'use strict';
 
     var my = {};
 
@@ -35,12 +36,14 @@ define(['jquery',
 
     my.onPositionUpdate = function (position) {
         this.gotSignal = true;
+        Controller.viewModel.signal(true);
+        //alert(Controller.viewModel.signal())
         this.currentLatLon.set({
             Latitude: position.coords.latitude,
             Longitude: position.coords.longitude,
             Accuracy: Math.round(position.coords.accuracy)
         });
-        this.updateModel();
+        //this.updateModel();
     };
 
     my.updateModel = function () {
