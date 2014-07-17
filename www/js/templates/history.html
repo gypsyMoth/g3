@@ -25,5 +25,5 @@
     <% if(pages.next) { %>
     <input type="button" id="btnHistoryNext" class="gadgetButton fastButton" value="Next">
     <% } %>
-    <input type="button" id="btnHistoryClose" class="cancelButton fastButton" value="Exit">
+    <input type="button" id="btnHistoryClose" class="cancelButton fastButton" value="Exit" data-bind="click: function(){$root.changeView('home');}">
 </div>

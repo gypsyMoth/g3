@@ -34,6 +34,14 @@ define(['jquery',
         };
 
         this.changeView = function(name){
+            switch(name){
+                case('home'):
+                    Geolocation.start();
+                    break;
+                case('extras'):
+                    Geolocation.stop();
+                    break;
+            }
             this.currentView(name);
         };
     };
