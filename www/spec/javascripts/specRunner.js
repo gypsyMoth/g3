@@ -13,7 +13,9 @@
             'jasmine': 'lib/jasmine-2.0.0/jasmine',
             'jasmine-html': 'lib/jasmine-2.0.0/jasmine-html',
             'jasmine-jquery': 'lib/jasmine-jquery/jasmine-jquery',
-            'boot': 'lib/jasmine-2.0.0/boot'
+            'boot': 'lib/jasmine-2.0.0/boot',
+            'knockout': '../../js/lib/knockout-3.1.0',
+            'knockout-amd-helpers': '../../js/lib/knockout-amd-helpers.min'
         },
         shim: {
             'underscore': {
@@ -68,7 +70,8 @@
         'views/RandomSpec',
         'views/OmitSpec',
         'views/HistorySpec',
-        'views/InspectionSpec'
+        'views/InspectionSpec',
+        'viewmodels/HomeSpec'
     ];
 
     require(['src/app', 'boot', 'jasmine-jquery'], function (App) {

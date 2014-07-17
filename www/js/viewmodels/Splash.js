@@ -53,9 +53,9 @@ define(['jquery',
             this.message('Acquiring Satellites...');
             Geolocation.start();
             //this.listenTo(Geolocation.currentLatLon, 'change', this.gotGpsSignal);
-            if (Controller.viewModel.signal() === true) {
-                this.gotGpsSignal();
-            }
+            //if (Controller.viewModel.signal() === true) {
+            //    this.gotGpsSignal();
+            //}
         };
 
         this.gotGpsSignal = function() {

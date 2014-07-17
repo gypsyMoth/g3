@@ -6,8 +6,10 @@ define(['jquery',
     'src/models/NearestSite',
     'src/models/LatLon',
     'src/models/CurrentPosition',
+    'src/viewmodels/Position',
+    'src/viewmodels/Site',
     'src/util/Controller'
-], function($, _, Backbone, CoordinateConverter, NearestNeighbor, NearestSite, LatLon, CurrentPosition, Controller) { 'use strict';
+], function($, _, Backbone, CoordinateConverter, NearestNeighbor, NearestSite, LatLon, CurrentPosition, Position, Site, Controller) { 'use strict';
 
     var my = {};
 
@@ -36,14 +38,19 @@ define(['jquery',
 
     my.onPositionUpdate = function (position) {
         this.gotSignal = true;
-        Controller.viewModel.signal(true);
-        //alert(Controller.viewModel.signal())
+        if (Controller.viewModel.currentView() === 'splash'){
+            Controller.viewModel.changeView('home');
+        }
+        //var positionModel = Controller.viewModel.position();
+        Controller.viewModel.position().latitude(position.coords.latitude);
+        Controller.viewModel.position().longitude(position.coords.longitude);
+        Controller.viewModel.position().accuracy(Math.round(position.coords.accuracy));
         this.currentLatLon.set({
             Latitude: position.coords.latitude,
             Longitude: position.coords.longitude,
             Accuracy: Math.round(position.coords.accuracy)
         });
-        //this.updateModel();
+        this.updateModel();
     };
 
     my.updateModel = function () {
@@ -64,6 +71,7 @@ define(['jquery',
             newSite = this.Here.nearestSites.first();
         }
         this.Here.set('selectedSite', newSite);
+        Controller.viewModel.selectedSite(this.Here.get('selectedSite').get('site'));
     };
 
     my.updateSelectedSite = function(site) {

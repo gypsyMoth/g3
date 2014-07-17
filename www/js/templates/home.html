@@ -1,14 +1,14 @@
 <div id="home" class="view" data-bind="with: home">
     <div id="homeHeader" class="homeHeader">
         <div id="locationDiv" class="homeDiv">
-                    <span id="locationSpan" class="locationSpan">
+                    <span id="locationSpan" class="locationSpan" data-bind="text: location()">
                         <!--<%= currentUtm.Zone + ", " + currentUtm.Easting + "E, " + currentUtm.Northing + "N" %>-->
                     </span>
         </div>
     </div>
 
     <div id="ActionDiv" class="actionDiv">
-        <img id="homeImage" src="img/greenTree.gif"/>
+        <img id="homeImage" data-bind="attr: {src: image()}"/>
     </div>
 
     <div id="homeFooter" class="homeFooter">
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div id="distanceDiv" class="homeDiv">
-                        <span id="distanceSpan" class="message">
+                        <span id="distanceSpan" class="message" data-bind="text: positionInfo()">
                             <!--<% if(selectedSite.get('relativePosition').get('found')) { %>
                             <%= selectedSite.get('relativePosition').get('distance')
                              + " (&plusmn" + accuracy + ") meters "
@@ -33,8 +33,8 @@
                         </span>
         </div>
 
-        <div id="siteDiv" class="homeDiv siteDiv">
-                        <span id="siteSpan" class="siteSpan">
+        <div id="siteDiv" class="homeDiv siteDiv" data-bind="style: {backgroundColor: relativePosition().distanceOutside > 0 ? 'red' : 'yellowgreen'}">
+                        <span id="siteSpan" class="siteSpan" data-bind="text: siteID()">
                             <!--<% if(selectedSite.get('site').quad  !== '') { %>
                             <%= selectedSite.get('site').quad + ':' + selectedSite.get('site').site_id%>
                             <% } else { %>
@@ -44,7 +44,7 @@
         </div>
 
         <div id="messageDiv" class="homeDiv">
-            <input type="button" id="btnHomeExtras" data-bind="click: $root.changeView('extras')">
+            <input type="button" id="btnHomeExtras" data-bind="click: function(){$root.changeView('extras');}">
             <span id="messageSpan" data-bind="text: message()"><!--<%= message %>--></span>
         </div>
     </div>

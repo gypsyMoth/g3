@@ -1,12 +1,14 @@
 define(["jquery",
     "underscore",
-    "knockout",
-    "src/util/Controller",
+    "src/models/CurrentPosition",
+    "src/models/RelativePosition",
+    "src/models/NearestSite",
     "src/util/Date",
-    "src/viewmodels/Home"
-], function($, _, ko, Controller, DateFormatter, HomeView) { 'use strict';
+    "src/collections/NearestSiteCollection",
+    "src/views/Home"
+], function($, _, CurrentPosition, RelativePosition, NearestSite, DateFormatter, NearestSiteCollection, HomeView) { 'use strict';
 
-    $(describe("Home ViewModel", function() {
+    $(describe("Home View", function() {
        var view;
 
         var testSites = {
@@ -78,41 +80,22 @@ define(["jquery",
         };
 
        beforeEach(function() {
-          Controller.viewModel.position({
-              latitude:-45,
-              longitude:80,
-              accuracy:10,
-              utm:{
-                  Easting:400000,
-                  Northing:4000000,
-                  Zone:17
-              }
-          });
-
-          Controller.viewModel.site({
-              "zone":15,
-              "xth":"300000",
-              "yth":"3000000",
-              "quad":"TEST",
-              "site_id":1,
-              "grid":"300",
-              "trap_type":"Delta",
-              "moth_count":0
-          });
-
-          view = new HomeView();
-
+          view = new HomeView({model: new CurrentPosition()});
        });
 
        it("Can be instantiated", function() {
           expect(view).toBeDefined();
        });
 
-       describe("Displays appropriate messages", function(){
-          it("Shows no trap message", function(){
-              view.site(testSites.unaddressed);
-              expect(view.message().toEqual("No trap at this site!"));
-          });
+       it("Has a model", function() {
+           expect(view.model).toBeDefined();
+       });
+
+       it("Clears the operation on initial load", function() {
+           view.model.set({operation: {easting: 123456, northing: 1234567, date: '01/01/14', traptype: 'Delta'}});
+           view = new HomeView({model: new CurrentPosition()});
+           var op = view.model.get('operation');
+           expect(op).toEqual({easting: '', northing: '', zone: '', date: '', traptype: '', omitReason: '', omitCode: '', catch : undefined, condition : undefined, visit : undefined, passFail : undefined, failReason : undefined });
        });
 
        describe("Manual lock display", function() {

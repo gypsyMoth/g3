@@ -1,11 +1,17 @@
 define(['jquery',
     'underscore',
     'knockout',
+    'src/util/Geolocation',
+    'src/viewmodels/Position',
+    'src/models/Site',
     'src/viewmodels/Splash',
     'src/viewmodels/Home'
 ], function($,
             _,
             ko,
+            Geolocation,
+            Position,
+            Site,
             SplashView,
             HomeView) {
 
@@ -14,6 +20,12 @@ define(['jquery',
     var Gadget = function () {
 
         this.currentView = ko.observable('splash');
+
+        this.selectedSite = ko.observable(new Site());
+
+        this.position = ko.observable(new Position());
+
+        this.nearestSites = ko.observableArray();
 
         this.initialize = function(){
             this.splash = new SplashView();
@@ -24,9 +36,6 @@ define(['jquery',
         this.changeView = function(name){
             this.currentView(name);
         };
-
-        this.signal = ko.observable(false);
-
     };
 
     return Gadget;
