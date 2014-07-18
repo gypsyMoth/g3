@@ -27,9 +27,10 @@ define(['jquery',
     my.onDeviceReady = function () {
         //Controller.router = new Router();
         //Backbone.history.start();
-        Controller.viewModel = new GadgetView();
-        ko.applyBindings(Controller.viewModel);
-        Controller.viewModel.initialize();
+        Controller.gadget = new GadgetView();
+        ko.applyBindings(Controller.gadget);
+        Controller.gadget.initialize();
+
         //if (this.isInitialized) {
         //    Controller.router.navigate('home', {trigger: true, replace: true});
         //} else {

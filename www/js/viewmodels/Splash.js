@@ -61,7 +61,7 @@ define(['jquery',
         this.gotGpsSignal = function() {
             alert("GOING HOME!");
             //this.stopListening(Geolocation.currentLatLon);
-            Controller.viewModel.changeView('home');
+            Controller.gadget.changeView('home');
             //Controller.router.navigate('home', {trigger: true, replace: true});
         };
 

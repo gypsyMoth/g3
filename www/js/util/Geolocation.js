@@ -38,13 +38,13 @@ define(['jquery',
 
     my.onPositionUpdate = function (position) {
         this.gotSignal = true;
-        if (Controller.viewModel.currentView() === 'splash'){
-            Controller.viewModel.changeView('home');
+        if (Controller.gadget.currentView() === 'splash'){
+            Controller.gadget.changeView('home');
         }
-        //var positionModel = Controller.viewModel.position();
-        Controller.viewModel.position().latitude(position.coords.latitude);
-        Controller.viewModel.position().longitude(position.coords.longitude);
-        Controller.viewModel.position().accuracy(Math.round(position.coords.accuracy));
+        //var positionModel = Controller.gadget.position();
+        Controller.gadget.position().latitude(position.coords.latitude);
+        Controller.gadget.position().longitude(position.coords.longitude);
+        Controller.gadget.position().accuracy(Math.round(position.coords.accuracy));
         this.currentLatLon.set({
             Latitude: position.coords.latitude,
             Longitude: position.coords.longitude,
@@ -71,7 +71,7 @@ define(['jquery',
             newSite = this.Here.nearestSites.first();
         }
         this.Here.set('selectedSite', newSite);
-        Controller.viewModel.selectedSite(this.Here.get('selectedSite').get('site'));
+        Controller.gadget.selectedSite(this.Here.get('selectedSite').get('site'));
     };
 
     my.updateSelectedSite = function(site) {

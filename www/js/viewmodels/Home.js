@@ -17,7 +17,7 @@ define(['jquery',
     var HomeView = function() {
 
         this.current = ko.computed(function(){
-            return Controller.viewModel.position();
+            return Controller.gadget.position();
         });
 
         this.site = ko.computed(function(){
@@ -28,7 +28,7 @@ define(['jquery',
             thisSite.quad('FIREH');
             thisSite.site_id(1);
             return thisSite;*/
-            return Controller.viewModel.selectedSite();
+            return Controller.gadget.selectedSite();
         });
 
         this.location = ko.computed(function(){

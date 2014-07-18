@@ -25,11 +25,13 @@ define(['jquery',
 
         this.position = ko.observable(new Position());
 
+        this.operationalSite = ko.observable(new Site());
+
         this.nearestSites = ko.observableArray();
 
         this.initialize = function(){
-            this.splash = new SplashView();
             this.home = new HomeView();
+            this.splash = new SplashView();
             this.splash.initializeGadget();
         };
 
