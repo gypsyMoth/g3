@@ -13,6 +13,8 @@ define(['jquery',
 
     var my = {};
 
+    var Gadget;
+
     my.watchId = null;
     my.gotSignal = false;
     my.Here = new CurrentPosition();
@@ -38,19 +40,21 @@ define(['jquery',
 
     my.onPositionUpdate = function (position) {
         this.gotSignal = true;
-        if (Controller.gadget.currentView() === 'splash'){
-            Controller.gadget.changeView('home');
+        Gadget = Controller.gadget;
+        if (Gadget.currentView() === 'splash'){
+            Gadget.changeView('home');
         }
         //var positionModel = Controller.gadget.position();
-        Controller.gadget.position().latitude(position.coords.latitude);
-        Controller.gadget.position().longitude(position.coords.longitude);
-        Controller.gadget.position().accuracy(Math.round(position.coords.accuracy));
+        Gadget.position().latitude(position.coords.latitude);
+        Gadget.position().longitude(position.coords.longitude);
+        Gadget.position().accuracy(Math.round(position.coords.accuracy));
         this.currentLatLon.set({
             Latitude: position.coords.latitude,
             Longitude: position.coords.longitude,
             Accuracy: Math.round(position.coords.accuracy)
         });
-        this.updateModel();
+        //this.updateModel();
+        this.findNearest(Gadget.position().utm());
     };
 
     my.updateModel = function () {
@@ -60,18 +64,21 @@ define(['jquery',
         this.findNearest();
     };
 
-    my.findNearest = function() {
-        this.Here.nearestSites = NearestNeighbor.getNearestSites(this.Here.get('currentUtm'), this.SitesList, 5);
+    my.findNearest = function(pos) {
+        Gadget = Controller.gadget;
+        Gadget.nearestSites(NearestNeighbor.getNearestSites(pos, Gadget.sitesList(), 5));
+        //this.Here.nearestSites = NearestNeighbor.getNearestSites(pos, Gadget.sitesList(), 5);
         var newSite;
         //var selectedSite = $.extend(true, {}, this.Here.get('selectedSite')); //to make eventing work with a nested object
-        var selectedSite = this.Here.get('selectedSite');
-        if (this.Here.get('manualLock')) {
-            newSite = this.updateSelectedSite(selectedSite.get('site'));
+        //var selectedSite = this.Here.get('selectedSite');
+        if (Gadget.manualLock()) {
+            newSite = Gadget.selectedSite(); //this.updateSelectedSite(selectedSite.get('site'));
         } else {
-            newSite = this.Here.nearestSites.first();
+            newSite = Gadget.nearestSites()[0] //this.Here.nearestSites.first();
         }
-        this.Here.set('selectedSite', newSite);
-        Controller.gadget.selectedSite(this.Here.get('selectedSite').get('site'));
+
+        //this.Here.set('selectedSite', newSite);
+        Controller.gadget.selectedSite(newSite);
     };
 
     my.updateSelectedSite = function(site) {

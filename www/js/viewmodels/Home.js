@@ -76,33 +76,41 @@ define(['jquery',
             return imagePath;
         }, this);
 
-        this.siteID = ko.computed(function(){
-            return this.site().quad + " "  + this.site().site_id;
+        this.siteInfo = ko.computed(function(){
+            if (JSON.stringify(this.site()) === '{}') {
+                return "NO SITE";
+            } else {
+                return this.site().quad + " "  + this.site().site_id;
+            }
         }, this);
 
         this.positionInfo = ko.computed(function(){
-            if (this.relativePosition().found) {
+            if (this.relativePosition().distance) {
                 return this.relativePosition().distance + " (\xB1" + this.current().accuracy() + ") meters " + this.relativePosition().bearing;
             } else {
-                return "No site found in Zone " + this.current().utm().Zone + "!";
+                return "No sites found in Zone " + this.current().utm().Zone + "!";
             }
         }, this);
 
         this.message = ko.computed(function(){
             var msg;
-            if (this.site().xact === undefined){
-                msg = "No trap at this site!"
-            } else {
-                var date = DateFormatter.getScreenFormatDate(this.site().txn_date);
-                if (this.site().trap_type === 'Omit'){
-                    msg = "This trap was omitted on " + date;
+            if (JSON.stringify(this.site()) === '{}'){
+                msg = '';
+            } else  {
+                if (this.site().xact === undefined){
+                    msg = "No trap at this site!"
                 } else {
-                    if (this.site().visit === undefined){
-                        msg = "This trap was placed on " + date;
-                    } else if (this.site().passFail === undefined){
-                        msg = "This trap was " + this.site().visit + " inspected on " + date;
+                    var date = DateFormatter.getScreenFormatDate(this.site().txn_date);
+                    if (this.site().trap_type === 'Omit'){
+                        msg = "This trap was omitted on " + date;
                     } else {
-                        msg = "This trap was QC inspected on " + date;
+                        if (this.site().visit === undefined){
+                            msg = "This trap was placed on " + date;
+                        } else if (this.site().passFail === undefined){
+                            msg = "This trap was " + this.site().visit + " inspected on " + date;
+                        } else {
+                            msg = "This trap was QC inspected on " + date;
+                        }
                     }
                 }
             }

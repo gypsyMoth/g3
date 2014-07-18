@@ -19,6 +19,8 @@ define(['jquery',
 
     var Gadget = function () {
 
+        this.manualLock = ko.observable(false);
+
         this.currentView = ko.observable('splash');
 
         this.selectedSite = ko.observable(new Site());
@@ -26,6 +28,8 @@ define(['jquery',
         this.position = ko.observable(new Position());
 
         this.operationalSite = ko.observable(new Site());
+
+        this.sitesList = ko.observableArray();
 
         this.nearestSites = ko.observableArray();
 
@@ -42,6 +46,9 @@ define(['jquery',
                     break;
                 case('extras'):
                     Geolocation.stop();
+                    //alert(JSON.stringify(this.position().utm()));
+                    //alert(JSON.stringify(this.selectedSite()));
+                    //alert(JSON.stringify(this.nearestSites()));
                     break;
             }
             this.currentView(name);

@@ -36,6 +36,7 @@ define(['jquery',
         var loadSites = function(sitesFile) {
             DB.loadSites(sitesFile).then(_.bind(function (data) {
                 Geolocation.SitesList = data;
+                Controller.gadget.sitesList(data);
                 _.bind(this.initializeGps, this)();
             }, this));
         };
