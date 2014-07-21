@@ -54,7 +54,9 @@ define(['jquery',
             Accuracy: Math.round(position.coords.accuracy)
         });
         //this.updateModel();
-        this.findNearest(Gadget.position().utm());
+        if (!Gadget.manualLock()){
+            this.findNearest(Gadget.position().utm());
+        }
     };
 
     my.updateModel = function () {
@@ -78,7 +80,7 @@ define(['jquery',
         }
 
         //this.Here.set('selectedSite', newSite);
-        Controller.gadget.selectedSite(newSite);
+        Controller.gadget.selectedSite(Gadget.nearestSites()[0]);
     };
 
     my.updateSelectedSite = function(site) {

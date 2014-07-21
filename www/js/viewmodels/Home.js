@@ -35,6 +35,10 @@ define(['jquery',
             return this.current().utm().Zone + ", " + this.current().utm().Easting + "E, " + this.current().utm().Northing + "N"
         }, this);
 
+        this.inspected = ko.computed(function(){
+            return this.site().visit;
+        }, this);
+
         this.isOut = ko.observable(false);
 
         this.relativePosition = ko.computed(function(){
