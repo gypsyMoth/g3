@@ -3,13 +3,15 @@ define(['jquery',
     'src/util/Controller',
     'src/util/Geolocation',
     'src/util/NearestNeighbor',
-    'src/util/Date'
+    'src/util/Date',
+    'src/util/Encoder'
 ], function($,
             ko,
             Controller,
             Geolocation,
             NearestNeighbor,
-            DateFormatter
+            DateFormatter,
+            Encoder
     ) {
 
     'use strict';
@@ -21,15 +23,57 @@ define(['jquery',
         });
 
         this.site = ko.computed(function(){
-            /*var thisSite = Controller.viewModel.selectedSite();
-            thisSite.xth(551107);
-            thisSite.yth(4119844);
-            thisSite.grid(100);
-            thisSite.quad('FIREH');
-            thisSite.site_id(1);
-            return thisSite;*/
             return Controller.gadget.selectedSite();
         });
+
+        this.operationType = ko.computed(function(){
+            var site = this.site();
+            var operationType = '';
+            if (site.quad === '') {
+                operationType = Encoder.operationTypes.ERROR;
+            } else if (typeof site.xact === 'undefined') {
+                operationType = Encoder.operationTypes.UNADDRESSED;
+            } else if (typeof site.visit === 'undefined') {
+                if (typeof site.omit_reason === 'undefined') {
+                    operationType = Encoder.operationTypes.PLACED;
+                } else {
+                    operationType = Encoder.operationTypes.OMITTED;
+                }
+            } else if (site.visit === 'MIDSEASON') {
+                operationType = Encoder.operationTypes.MIDSEASON;
+            } else {
+                operationType = Encoder.operationTypes.FINAL;
+            }
+            return operationType;
+        }, this);
+
+        this.operation = ko.computed(function(){
+            switch (this.operationType()) {
+                case Encoder.operationTypes.ERROR:
+                    break;
+                case Encoder.operationTypes.UNADDRESSED:
+                    return'placement';
+                    break;
+                case Encoder.operationTypes.PLACED:
+                case Encoder.operationTypes.MIDSEASON:
+                    if (this.site().txn_date === DateFormatter.getSitesFormatDate(Date.now()) && (this.site().passFail === undefined)) {
+                        alert("Site cannot be placed and inspected or inspected multiple times on the same day!");
+                    } else {
+                        if (this.relativePosition().distance > 100) {
+                            alert("Inspections cannot be completed from more than 100 meters away. This may be due to GPS error now or during placement.");
+                        } else {
+                            return 'inspection';
+                        }
+                    }
+                    break;
+                case Encoder.operationTypes.FINAL:
+                    alert("Final inspection has been completed!");
+                    break;
+                case Encoder.operationTypes.OMITTED:
+                    alert("Site omitted!");
+                    break;
+            }
+        }, this);
 
         this.location = ko.computed(function(){
             return this.current().utm().Zone + ", " + this.current().utm().Easting + "E, " + this.current().utm().Northing + "N"

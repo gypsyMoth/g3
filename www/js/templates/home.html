@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <div id="ActionDiv" class="actionDiv">
+    <div id="ActionDiv" class="actionDiv" data-bind="click: function(){$root.changeView(operation());}">
         <img id="homeImage" data-bind="attr: {src: image()}"/>
     </div>
 
