@@ -18,8 +18,11 @@ define(['jquery',
 
         this.startPlacement = function(){
             this.op.trap_type = this.selectedTrap();
-            console.log(JSON.stringify(this.op));
-            Controller.gadget.changeView('confirm');
+            if (Controller.gadget.relativePosition().distanceOutside > 0){
+                Controller.gadget.changeView('caution');
+            } else {
+                Controller.gadget.changeView('confirm');
+            }
         };
 
         this.message = ko.computed(function(){

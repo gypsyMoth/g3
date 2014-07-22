@@ -11,7 +11,8 @@ define(['jquery',
     'src/viewmodels/Home',
     'src/viewmodels/Placement',
     'src/viewmodels/Omit',
-    'src/viewmodels/Confirm'
+    'src/viewmodels/Confirm',
+    'src/viewmodels/Caution'
 ], function($,
             _,
             ko,
@@ -25,7 +26,8 @@ define(['jquery',
             HomeView,
             PlacementView,
             OmitView,
-            ConfirmView) {
+            ConfirmView,
+            CautionView) {
 
     'use strict';
 
@@ -72,6 +74,9 @@ define(['jquery',
                     break;
                 case('omit'):
                     this.omit = new OmitView();
+                    break;
+                case('caution'):
+                    this.caution = new CautionView();
                     break;
                 case('confirm'):
                     this.confirm = new ConfirmView();
@@ -121,22 +126,22 @@ define(['jquery',
             if (op.visit) {
                 ret += Encoder.visitCode(op.visit);
                 ret += Encoder.conditionCode(op.condition);
-                if ((op.condition === 'GOOD' || op.condition === 'DAMAGED') && !(op.passFail)) {
+                if ((op.condition === 'GOOD' || op.condition === 'DAMAGED') && !(op.pass_fail)) {
                     ret += Encoder.padCatch(op.catch);
                 }
-                if (op.passFail) {
+                if (op.pass_fail) {
                     if ((op.condition === 'MISSING') || (op.condition === 'INACCESSIBLE')) {
                         ret += ' ';
                     } else {
                         ret += Encoder.transactionLog.ZERO;
                     }
-                    ret += Encoder.passCode(op.passFail);
-                    if (op.failReason !== 'Passed') {
-                        ret += Encoder.failReasonCode(op.failReason);
+                    ret += Encoder.passCode(op.pass_fail);
+                    if (op.fail_reason !== 'Passed') {
+                        ret += Encoder.failReasonCode(op.fail_reason);
                     }
                 }
-            } else if (op.omitReason) {
-                ret += 'O' + op.omitCode;
+            } else if (op.omit_reason) {
+                ret += 'O' + Encoder.getCode(op.omit_reason, Encoder.omitReasons);
             } else {
                 ret += op.traptype === 'Delta' ? 'D' : 'M';
                 ret += this.relativePosition().distanceOutside > 0 ? 'B' : '';

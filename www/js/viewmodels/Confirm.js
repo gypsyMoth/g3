@@ -2,11 +2,13 @@ define(['jquery',
     'knockout',
     'src/util/DB',
     'src/util/Geolocation',
+    'src/util/Encoder',
     'src/util/Controller'
 ], function($,
             ko,
             DB,
             Geolocation,
+            Encoder,
             Controller
     ) {
 
@@ -37,11 +39,11 @@ define(['jquery',
             var msg;
             msg = "<span>Confirm ";
             if (this.op.visit !== undefined){
-                if (this.op.passFail !== undefined){
-                    msg += this.op.passFail + " ";
+                if (this.op.pass_fail !== undefined){
+                    msg += this.op.pass_fail + " ";
                     msg += this.op.visit + " QC Inspection of ";
                     msg += this.op.condition + " trap ";
-                    if (this.op.failReason !== undefined){
+                    if (this.op.fail_reason !== undefined){
                         msg += "(" + this.op.failReason + ") "
                     }
                 } else {
@@ -50,7 +52,7 @@ define(['jquery',
                     msg += this.op.moth_count + " moths ";
                 }
             } else if (this.op.trap_type === 'Omit'){
-                msg += "omit (" + this.op.omitReason + ") ";
+                msg += "omit (" + this.op.omit_reason + ") ";
             } else {
                 msg += "placement of " + this.op.trap_type + " trap "
             }

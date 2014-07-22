@@ -121,7 +121,7 @@ define(['jquery',
                     break;
                 case Encoder.operationTypes.PLACED:
                 case Encoder.operationTypes.MIDSEASON:
-                    if (this.site().txn_date === DateFormatter.getSitesFormatDate(Date.now()) && (this.site().passFail === undefined)) {
+                    if (this.site().txn_date === DateFormatter.getSitesFormatDate(Date.now()) && (this.site().pass_fail === undefined)) {
                         alert("Site cannot be placed and inspected or inspected multiple times on the same day!");
                     } else {
                         if (this.relPos().distance > 100) {
@@ -154,7 +154,7 @@ define(['jquery',
                     } else {
                         if (this.site().visit === undefined){
                             msg = "This trap was placed on " + date;
-                        } else if (this.site().passFail === undefined){
+                        } else if (this.site().pass_fail === undefined){
                             msg = "A " + this.site().visit + " inspection was done for this trap on " + date;
                         } else {
                             msg = "This trap was QC inspected on " + date;

@@ -27,6 +27,34 @@ define (function () { 'use strict';
         ret += my.constants.HEMISPHERE;
     };
 
+    my.omitReasons = [
+        {value: 'H', label:'Nothing to hang trap on', text:'No structure on which to hang trap'},
+        {value: 'L', label:'Landowner denied access', text:'Landowner denied access'},
+        {value: 'O', label:'Obstacle prohibited access', text:'Obstacle prohibited access'},
+        {value: 'W', label:'Too wet', text:'Inaccessible terrain - too wet'},
+        {value: 'R', label:'Too rough or steep', text:'Inaccessible terrain - too rough or steep'},
+        {value: 'V', label:'Vegetation too thick', text:'Inaccessible terrain - vegetation too thick'},
+        {value: 'S', label:'Safety hazard', text:'Safety hazard'}
+    ];
+
+    my.getText = function(code, array){
+        for (var i = 0; i < array.length; i++){
+            if (array[i].value === code) {
+                return array[i].text;
+            }
+        }
+        return null;
+    };
+
+    my.getCode = function(text, array){
+        for (var i = 0; i < array.length; i++){
+            if (array[i].text === text) {
+                return array[i].value;
+            }
+        }
+        return null;
+    };
+
     my.visitCode = function(fullText) {
       var code = '';
       switch(fullText) {
