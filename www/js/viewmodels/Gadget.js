@@ -2,18 +2,28 @@ define(['jquery',
     'underscore',
     'knockout',
     'src/util/Geolocation',
+    'src/util/Date',
+    'src/util/Encoder',
+    'src/util/NearestNeighbor',
     'src/viewmodels/Position',
-    'src/models/Site',
+    'src/viewmodels/Site',
     'src/viewmodels/Splash',
-    'src/viewmodels/Home'
+    'src/viewmodels/Home',
+    'src/viewmodels/Placement',
+    'src/viewmodels/Confirm'
 ], function($,
             _,
             ko,
             Geolocation,
+            DateFormatter,
+            Encoder,
+            NearestNeighbor,
             Position,
             Site,
             SplashView,
-            HomeView) {
+            HomeView,
+            PlacementView,
+            ConfirmView) {
 
     'use strict';
 
@@ -25,9 +35,9 @@ define(['jquery',
 
         this.selectedSite = ko.observable(new Site());
 
-        this.position = ko.observable(new Position());
-
         this.operationalSite = ko.observable(new Site());
+
+        this.position = ko.observable(new Position());
 
         this.sitesList = ko.observableArray();
 
@@ -39,11 +49,25 @@ define(['jquery',
             this.splash.initializeGadget();
         };
 
+        this.relativePosition = ko.observable();/*computed(function(){
+            return NearestNeighbor.relativePosition(this.selectedSite(), this.position().utm());
+        }, this);*/
+
         this.changeView = function(name){
             switch(name){
                 case('home'):
+                    this.operationalSite(new Site());
+                    //force update;
                     Geolocation.start();
                     break;
+                case('placement'):
+                    Geolocation.stop();
+                    this.initializeOperation();
+                    this.place = new PlacementView();
+                case('omit'):
+                    this.operationalSite().trap_type = 'Omit';
+                case('confirm'):
+                    this.confirm = new ConfirmView();
                 case('extras'):
                     Geolocation.stop();
                     //alert(JSON.stringify(this.position().utm()));
@@ -53,6 +77,66 @@ define(['jquery',
             }
             this.currentView(name);
         };
+
+        this.initializeOperation = function(){
+            var op = this.operationalSite();
+            var site = this.selectedSite();
+            op.zone = site.zone;
+            op.xth = site.xth;
+            op.yth = site.yth;
+            op.xact = this.position().utm().Easting;
+            op.yact = this.position().utm().Northing;
+            op.quad = site.quad;
+            op.site_id = site.site_id;
+            op.grid = site.grid;
+            op.trap_type = site.trap_type;
+            op.txn_date = DateFormatter.getSitesFormatDate(Date.now());
+        };
+
+        this.codedString = function() {
+            var op = this.operationalSite();
+
+            var ret = Encoder.transactionLog.BANG + ',';
+            ret += Encoder.transactionLog.ROW + ',';
+            ret += Encoder.transactionLog.MESSAGE + ',';
+            ret += op.zone + ',';
+            ret += Encoder.transactionLog.HEMISPHERE + ',';
+            ret += op.xact + ',';
+            ret += op.yact + ',';
+            ret += Encoder.rpad((this.position().accuracy() + '.'), 5, '0') + ',';
+            ret += DateFormatter.getOperationFormatDate(op.txn_date) + ',';
+            ret += DateFormatter.getOperationFormatTime(op.txn_date) + ',';
+            ret += Encoder.transactionLog.PLACEHOLDER + ',';
+            ret += Encoder.transactionLog.ZERO + ',';
+            ret += Encoder.padQuad(op.quad) + Encoder.padSite(op.site_id);
+
+            if (op.visit) {
+                ret += Encoder.visitCode(op.visit);
+                ret += Encoder.conditionCode(op.condition);
+                if ((op.condition === 'GOOD' || op.condition === 'DAMAGED') && !(op.passFail)) {
+                    ret += Encoder.padCatch(op.catch);
+                }
+                if (op.passFail) {
+                    if ((op.condition === 'MISSING') || (op.condition === 'INACCESSIBLE')) {
+                        ret += ' ';
+                    } else {
+                        ret += Encoder.transactionLog.ZERO;
+                    }
+                    ret += Encoder.passCode(op.passFail);
+                    if (op.failReason !== 'Passed') {
+                        ret += Encoder.failReasonCode(op.failReason);
+                    }
+                }
+            } else if (op.omitReason) {
+                ret += 'O' + op.omitCode;
+            } else {
+                ret += op.traptype === 'Delta' ? 'D' : 'M';
+                ret += this.relativePosition().distanceOutside > 0 ? 'B' : '';
+            }
+            ret += ',' + Encoder.transactionLog.DOLLAR;
+            ret += '\r\n';
+            return ret;
+        }
     };
 
     return Gadget;

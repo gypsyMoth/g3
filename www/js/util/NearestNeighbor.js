@@ -172,17 +172,17 @@ define (['jquery',
         return nearestSite;
     };*/
 
-    my.relativePosition = function(site, current){
+    my.relative = function(site, current){
         //var point = {x: site.xact() || site.xth(), y: site.yact() || site.yth()};
         var point = this.getPoint(site);
         var currentPnt = this.currentLocationToPoint(current);
         var distance = getDistance(point, currentPnt);
-        var relative =  {
+        var rel =  {
             distance: Math.round(distance),
             distanceOutside: Math.round(distance - (site.grid * 0.3)),
             bearing: getBearingString(point, currentPnt)
         };
-        return relative;
+        return rel;
     };
 
     return my;

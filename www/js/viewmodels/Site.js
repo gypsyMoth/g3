@@ -1,33 +1,23 @@
-define(['jquery',
-    'knockout',
-    'src/util/Controller',
-    'src/viewmodels/Position'
-], function($,
-            ko,
-            Controller,
-            Position
-    ) {
+define(function() { 'use strict';
 
-    'use strict';
-
-    var Site = function() {
-
-        this.zone = ko.observable();
-        this.xth = ko.observable();
-        this.yth = ko.observable();
-        this.xact = ko.observable();
-        this.yact = ko.observable();
-        this.quad = ko.observable();
-        this.site_id = ko.observable();
-        this.grid = ko.observable();
-        this.trap_type = ko.observable();
-        this.moth_count = ko.observable();
-        this.omit_reason = ko.observable();
-        this.visit = ko.observable();
-        this.condition = ko.observable();
-        this.catch = ko.observable();
+    var Site = function(){
+        this.zone = undefined;
+        this.xth = undefined;
+        this.yth = undefined;
+        this.xact = undefined;
+        this.yact = undefined;
+        this.quad = undefined;
+        this.site_id = undefined;
+        this.grid = undefined;
+        this.trap_type = undefined;
+        this.omit_reason = undefined;
+        this.txn_date = undefined;
+        this.moth_count = undefined;
+        this.visit = undefined;
+        this.condition = undefined;
+        this.passFail = undefined;
+        this.failReason = undefined;
     };
 
     return Site;
-
 });

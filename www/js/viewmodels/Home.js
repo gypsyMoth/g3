@@ -26,55 +26,6 @@ define(['jquery',
             return Controller.gadget.selectedSite();
         });
 
-        this.operationType = ko.computed(function(){
-            var site = this.site();
-            var operationType = '';
-            if (site.quad === '') {
-                operationType = Encoder.operationTypes.ERROR;
-            } else if (typeof site.xact === 'undefined') {
-                operationType = Encoder.operationTypes.UNADDRESSED;
-            } else if (typeof site.visit === 'undefined') {
-                if (typeof site.omit_reason === 'undefined') {
-                    operationType = Encoder.operationTypes.PLACED;
-                } else {
-                    operationType = Encoder.operationTypes.OMITTED;
-                }
-            } else if (site.visit === 'MIDSEASON') {
-                operationType = Encoder.operationTypes.MIDSEASON;
-            } else {
-                operationType = Encoder.operationTypes.FINAL;
-            }
-            return operationType;
-        }, this);
-
-        this.operation = ko.computed(function(){
-            switch (this.operationType()) {
-                case Encoder.operationTypes.ERROR:
-                    break;
-                case Encoder.operationTypes.UNADDRESSED:
-                    return'placement';
-                    break;
-                case Encoder.operationTypes.PLACED:
-                case Encoder.operationTypes.MIDSEASON:
-                    if (this.site().txn_date === DateFormatter.getSitesFormatDate(Date.now()) && (this.site().passFail === undefined)) {
-                        alert("Site cannot be placed and inspected or inspected multiple times on the same day!");
-                    } else {
-                        if (this.relativePosition().distance > 100) {
-                            alert("Inspections cannot be completed from more than 100 meters away. This may be due to GPS error now or during placement.");
-                        } else {
-                            return 'inspection';
-                        }
-                    }
-                    break;
-                case Encoder.operationTypes.FINAL:
-                    alert("Final inspection has been completed!");
-                    break;
-                case Encoder.operationTypes.OMITTED:
-                    alert("Site omitted!");
-                    break;
-            }
-        }, this);
-
         this.location = ko.computed(function(){
             return this.current().utm().Zone + ", " + this.current().utm().Easting + "E, " + this.current().utm().Northing + "N"
         }, this);
@@ -85,11 +36,11 @@ define(['jquery',
 
         this.isOut = ko.observable(false);
 
-        this.relativePosition = ko.computed(function(){
-            var rp = NearestNeighbor.relativePosition(this.site(), this.current().utm());
+        this.relPos = ko.computed(function(){
+            var rp = NearestNeighbor.relative(this.site(), this.current().utm());
             rp.distanceOutside > 0 ? this.isOut(true) : this.isOut(false);
+            Controller.gadget.relativePosition(rp);
             return rp;
-            //return NearestNeighbor.relativePosition(this.site(), this.current().utm());
         }, this);
 
         this.isOut.subscribe(function(){
@@ -133,12 +84,61 @@ define(['jquery',
         }, this);
 
         this.positionInfo = ko.computed(function(){
-            if (this.relativePosition().distance) {
-                return this.relativePosition().distance + " (\xB1" + this.current().accuracy() + ") meters " + this.relativePosition().bearing;
+            if (this.relPos().distance) {
+                return this.relPos().distance + " (\xB1" + this.current().accuracy() + ") meters " + this.relPos().bearing;
             } else {
                 return "No sites found in Zone " + this.current().utm().Zone + "!";
             }
         }, this);
+
+        this.operationType = function(){
+            var site = this.site();
+            var operationType = '';
+            if (site.quad === '') {
+                operationType = Encoder.operationTypes.ERROR;
+            } else if (typeof site.xact === 'undefined') {
+                operationType = Encoder.operationTypes.UNADDRESSED;
+            } else if (typeof site.visit === 'undefined') {
+                if (typeof site.omit_reason === 'undefined') {
+                    operationType = Encoder.operationTypes.PLACED;
+                } else {
+                    operationType = Encoder.operationTypes.OMITTED;
+                }
+            } else if (site.visit === 'MIDSEASON') {
+                operationType = Encoder.operationTypes.MIDSEASON;
+            } else {
+                operationType = Encoder.operationTypes.FINAL;
+            }
+            return operationType;
+        };
+
+        this.operation = function(){
+            switch (this.operationType()) {
+                case Encoder.operationTypes.ERROR:
+                    break;
+                case Encoder.operationTypes.UNADDRESSED:
+                    return'placement';
+                    break;
+                case Encoder.operationTypes.PLACED:
+                case Encoder.operationTypes.MIDSEASON:
+                    if (this.site().txn_date === DateFormatter.getSitesFormatDate(Date.now()) && (this.site().passFail === undefined)) {
+                        alert("Site cannot be placed and inspected or inspected multiple times on the same day!");
+                    } else {
+                        if (this.relPos().distance > 100) {
+                            alert("Inspections cannot be completed from more than 100 meters away. This may be due to GPS error now or during placement.");
+                        } else {
+                            return 'inspection';
+                        }
+                    }
+                    break;
+                case Encoder.operationTypes.FINAL:
+                    alert("Final inspection has been completed!");
+                    break;
+                case Encoder.operationTypes.OMITTED:
+                    alert("Site omitted!");
+                    break;
+            }
+        };
 
         this.message = ko.computed(function(){
             var msg;
@@ -155,7 +155,7 @@ define(['jquery',
                         if (this.site().visit === undefined){
                             msg = "This trap was placed on " + date;
                         } else if (this.site().passFail === undefined){
-                            msg = "This trap was " + this.site().visit + " inspected on " + date;
+                            msg = "A " + this.site().visit + " inspection was done for this trap on " + date;
                         } else {
                             msg = "This trap was QC inspected on " + date;
                         }
