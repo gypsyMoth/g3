@@ -84,7 +84,7 @@ define(['jquery',
         }, this);
 
         this.positionInfo = ko.computed(function(){
-            if (this.relPos().distance) {
+            if (this.relPos().distance !== undefined) {
                 return this.relPos().distance + " (\xB1" + this.current().accuracy() + ") meters " + this.relPos().bearing;
             } else {
                 return "No sites found in Zone " + this.current().utm().Zone + "!";

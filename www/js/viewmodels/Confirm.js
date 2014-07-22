@@ -1,10 +1,12 @@
 define(['jquery',
     'knockout',
     'src/util/DB',
+    'src/util/Geolocation',
     'src/util/Controller'
 ], function($,
             ko,
             DB,
+            Geolocation,
             Controller
     ) {
 
@@ -27,6 +29,7 @@ define(['jquery',
                     });
                 });
             });
+            //Geolocation.findNearest(Controller.gadget.position().utm());
             Controller.gadget.manualLock(false);
         };
 
@@ -52,7 +55,7 @@ define(['jquery',
                 msg += "placement of " + this.op.trap_type + " trap "
             }
             msg += "at site "
-            msg += this.op.quad + ":" + this.op.site_id + "<br>Coordinates: ";
+            msg += this.op.quad + ":" + this.op.site_id + ", coordinates ";
             msg += this.op.xact + "E, ";
             msg += this.op.yact + "N?</span>";
             return msg;

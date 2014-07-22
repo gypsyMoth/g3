@@ -8,18 +8,15 @@ define(['jquery',
 
     'use strict';
 
-    var PlacementView = function() {
+    var OmitView = function() {
 
-        this.trap_types = ['Delta', 'Milk Carton'];
-
-        this.selectedTrap = ko.observable(Controller.gadget.selectedSite().trap_type);
+        this.omit_reasons = ['Delta', 'Milk Carton'];
 
         this.op = Controller.gadget.operationalSite();
 
-        this.startPlacement = function(){
-            this.op.trap_type = this.selectedTrap();
-            console.log(JSON.stringify(this.op));
-            Controller.gadget.changeView('confirm');
+        this.startOmit = function(){
+            this.op.trap_type = 'Omit';
+            Controller.gadget.changeView('omit');
         };
 
         this.message = ko.computed(function(){
@@ -33,6 +30,6 @@ define(['jquery',
         }, this);
     };
 
-    return PlacementView;
+    return OmitView;
 
 });

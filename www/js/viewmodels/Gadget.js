@@ -10,6 +10,7 @@ define(['jquery',
     'src/viewmodels/Splash',
     'src/viewmodels/Home',
     'src/viewmodels/Placement',
+    'src/viewmodels/Omit',
     'src/viewmodels/Confirm'
 ], function($,
             _,
@@ -23,6 +24,7 @@ define(['jquery',
             SplashView,
             HomeView,
             PlacementView,
+            OmitView,
             ConfirmView) {
 
     'use strict';
@@ -35,13 +37,17 @@ define(['jquery',
 
         this.selectedSite = ko.observable(new Site());
 
-        this.operationalSite = ko.observable(new Site());
-
         this.position = ko.observable(new Position());
 
         this.sitesList = ko.observableArray();
 
+        this.sitesList.subscribe(function(){
+            Geolocation.findNearest(this.position().utm());
+        }, this);
+
         this.nearestSites = ko.observableArray();
+
+        this.operationalSite = ko.observable(new Site());
 
         this.initialize = function(){
             this.home = new HomeView();
@@ -57,17 +63,19 @@ define(['jquery',
             switch(name){
                 case('home'):
                     this.operationalSite(new Site());
-                    //force update;
                     Geolocation.start();
                     break;
                 case('placement'):
                     Geolocation.stop();
                     this.initializeOperation();
                     this.place = new PlacementView();
+                    break;
                 case('omit'):
-                    this.operationalSite().trap_type = 'Omit';
+                    this.omit = new OmitView();
+                    break;
                 case('confirm'):
                     this.confirm = new ConfirmView();
+                    break;
                 case('extras'):
                     Geolocation.stop();
                     //alert(JSON.stringify(this.position().utm()));
