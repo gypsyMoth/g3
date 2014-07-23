@@ -1,13 +1,17 @@
-<div id="manualLockHeader" class="formHeader">
-    <select id="selectSite">
-        <% _.each(nearestSites, function(nearest) { %>
-        <option><%= nearest.quad + ':' + nearest.site_id %></option>
-        <% }); %>
-        <option><%= disableMessage %></option>
-    </select>
-</div>
+<div id="manualLockDiv" data-bind="with: manual">
+    <div id="manualLockHeader" class="formHeader">
+        <select id="selectSite" data-bind="options: lockOptions,
+                                           optionsText: 'label',
+                                           value: selectedLock">
+            <!--<% _.each(nearestSites, function(nearest) { %>
+            <option><%= nearest.quad + ':' + nearest.site_id %></option>
+            <% }); %>
+            <option><%= disableMessage %></option>-->
+        </select>
+    </div>
 
-<div id="manualLockFooter" class="formFooter">
-    <input type="button" id="btnManualLockOk" class="gadgetButton fastButton" value="Ok">
-    <input type="button" id="btnManualLockCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    <div id="manualLockFooter" class="formFooter">
+        <input type="button" id="btnManualLockOk" class="gadgetButton fastButton" value="Ok" data-bind="click: function(){this.goHomeManual()}">
+        <input type="button" id="btnManualLockCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    </div>
 </div>

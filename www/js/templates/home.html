@@ -11,16 +11,17 @@
         <img id="homeImage" data-bind="attr: {src: image()}"/>
     </div>
 
-    <div id="infoDiv">
-        <div id="lockDiv" data-bind="visible: $root.manualLock()" style="float: left;">
-            <img id="lockImage" src="img/locked.gif"/>
-        </div>
-        <div id="inspectDiv" data-bind="visible: inspected()" style="float: right;">
-            <img id="inspectImage" src="img/magGlassSmall.gif"/>
-        </div>
-    </div>
+
 
     <div id="homeFooter" class="homeFooter">
+        <div id="infoDiv">
+            <div id="lockDiv" data-bind="visible: $root.manualLock()" style="float: left;">
+                <img id="lockImage" src="img/locked.gif"/>
+            </div>
+            <div id="inspectDiv" data-bind="visible: inspected()" style="float: right;">
+                <img id="inspectImage" src="img/magGlassSmall.gif"/>
+            </div>
+        </div>
 
         <div id="distanceDiv" class="homeDiv">
             <span id="distanceSpan" class="message" data-bind="text: positionInfo()"></span>

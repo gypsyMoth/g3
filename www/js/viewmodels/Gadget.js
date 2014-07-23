@@ -12,7 +12,8 @@ define(['jquery',
     'src/viewmodels/Placement',
     'src/viewmodels/Omit',
     'src/viewmodels/Confirm',
-    'src/viewmodels/Caution'
+    'src/viewmodels/Caution',
+    'src/viewmodels/ManualLock'
 ], function($,
             _,
             ko,
@@ -27,7 +28,8 @@ define(['jquery',
             PlacementView,
             OmitView,
             ConfirmView,
-            CautionView) {
+            CautionView,
+            ManualLockView) {
 
     'use strict';
 
@@ -57,15 +59,16 @@ define(['jquery',
             this.splash.initializeGadget();
         };
 
-        this.relativePosition = ko.observable();/*computed(function(){
-            return NearestNeighbor.relativePosition(this.selectedSite(), this.position().utm());
-        }, this);*/
+        this.relativePosition = ko.observable();
 
         this.changeView = function(name){
             switch(name){
                 case('home'):
                     this.operationalSite(new Site());
                     Geolocation.start();
+                    break;
+                case('manualLock'):
+                    this.manual = new ManualLockView();
                     break;
                 case('placement'):
                     Geolocation.stop();
