@@ -36,10 +36,10 @@ define(['jquery',
         }, this);
 
         this.goHomeManual = function(){
-            alert("You will now be locked exclusively on " + this.selectedLock().label + "!");
             if (this.selectedLock().label !== 'Disable Manual Lock'){
-               Controller.gadget.selectedSite(this.selectedLock().site);
-               Controller.gadget.manualLock(true);
+                Controller.gadget.selectedSite(this.selectedLock().site);
+                Controller.gadget.manualLock(true);
+                alert("You will now be locked exclusively on " + this.selectedLock().label + "!");
             } else {
                 Controller.gadget.manualLock(false);
                 Geolocation.findNearest(Controller.gadget.position().utm());

@@ -31,7 +31,6 @@ define(['jquery',
                     });
                 });
             });
-            //Geolocation.findNearest(Controller.gadget.position().utm());
             Controller.gadget.manualLock(false);
         };
 
