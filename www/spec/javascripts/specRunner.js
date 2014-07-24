@@ -55,7 +55,7 @@
         'util/GeolocationSpec',
         'util/NearestNeighborSpec',
         'util/DecoderSpec',
-        'models/CurrentPositionSpec',
+        /*'models/CurrentPositionSpec',
         'models/TransactionSpec',
         'models/RelativePositionSpec',
         'models/SitesFileSpec',
@@ -70,7 +70,7 @@
         'views/RandomSpec',
         'views/OmitSpec',
         'views/HistorySpec',
-        'views/InspectionSpec',
+        'views/InspectionSpec',*/
         'viewmodels/HomeSpec'
     ];
 
@@ -81,7 +81,6 @@
 
             // Initialize the HTML Reporter and execute the environment (setup by `boot.js`)
             window.onload();
-
             App.initialize();
         });
     });

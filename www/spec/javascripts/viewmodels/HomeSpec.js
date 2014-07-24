@@ -1,12 +1,15 @@
 define(["jquery",
     "underscore",
+    "knockout",
     "src/models/CurrentPosition",
     "src/models/RelativePosition",
     "src/models/NearestSite",
     "src/util/Date",
     "src/collections/NearestSiteCollection",
-    "src/views/Home"
-], function($, _, CurrentPosition, RelativePosition, NearestSite, DateFormatter, NearestSiteCollection, HomeView) { 'use strict';
+    "src/viewmodels/Home",
+    "src/util/Controller",
+    "src/viewmodels/Gadget"
+], function($, _, ko, CurrentPosition, RelativePosition, NearestSite, DateFormatter, NearestSiteCollection, HomeView, Controller, GadgetView) { 'use strict';
 
     $(describe("Home View", function() {
        var view;
@@ -26,8 +29,8 @@ define(["jquery",
                 "zone":15,
                 "xth":"300000",
                 "yth":"3000000",
-                "xact": 400000,
-                "yact": 4000000,
+                "xact": "400000",
+                "yact": "4000000",
                 "quad":"TEST",
                 "site_id":1,
                 "grid":"300",
@@ -39,8 +42,8 @@ define(["jquery",
                 "zone":15,
                 "xth":"300000",
                 "yth":"3000000",
-                "xact": 400000,
-                "yact": 4000000,
+                "xact": "400000",
+                "yact": "4000000",
                 "quad":"TEST",
                 "site_id":1,
                 "grid":"300",
@@ -67,8 +70,8 @@ define(["jquery",
                 "zone":15,
                 "xth":"300000",
                 "yth":"3000000",
-                "xact": 400000,
-                "yact": 4000000,
+                "xact": "400000",
+                "yact": "4000000",
                 "quad":"TEST",
                 "site_id":1,
                 "grid":"300",
@@ -79,36 +82,41 @@ define(["jquery",
             }
         };
 
+        Controller.gadget = new GadgetView();
+        ko.applyBindings(Controller.gadget);
+        Controller.gadget.initialize();
+        Controller.gadget.position().latitude(37.24);
+        Controller.gadget.position().longitude(-80.41);
+        Controller.gadget.position().accuracy(1.0);
+
+
        beforeEach(function() {
-          view = new HomeView({model: new CurrentPosition()});
+           view = Controller.gadget.home;
+           loadFixtures('../../../js/templates/home.html');
+           Controller.gadget.changeView('home');
        });
 
        it("Can be instantiated", function() {
-          expect(view).toBeDefined();
-       });
-
-       it("Has a model", function() {
-           expect(view.model).toBeDefined();
-       });
-
-       it("Clears the operation on initial load", function() {
-           view.model.set({operation: {easting: 123456, northing: 1234567, date: '01/01/14', traptype: 'Delta'}});
-           view = new HomeView({model: new CurrentPosition()});
-           var op = view.model.get('operation');
-           expect(op).toEqual({easting: '', northing: '', zone: '', date: '', traptype: '', omitReason: '', omitCode: '', catch : undefined, condition : undefined, visit : undefined, passFail : undefined, failReason : undefined });
+           expect(view).toBeDefined();
        });
 
        describe("Manual lock display", function() {
-          it("Shows the lock icon when manual lock is enabled", function() {
-             view.model.set('manualLock', false);
-             view.model.set('manualLock', true);
-              expect(view.$el.find('#lockDiv').css('visibility')).toEqual('visible');
+
+          it("Shows the lock icon when manual lock is enabled", function(){
+              //Controller.gadget.selectedSite(testSites.midseasonInspection);
+              Controller.gadget.manualLock(false);
+              Controller.gadget.manualLock(true);
+
+              alert(Controller.gadget.manualLock());
+              expect($("#lockDiv").attr("data-bind")).toEqual("visible: true");
           });
 
            it("Hides the lock icon when manual lock is disabled", function() {
-               view.model.set('manualLock', true);
-               view.model.set('manualLock', false);
-               expect(view.$el.find('#lockDiv').css('visibility')).toEqual('hidden');
+               //Controller.gadget.selectedSite(testSites.placedMilkCarton);
+               Controller.gadget.manualLock(true);
+               Controller.gadget.manualLock(false);
+               expect($("#lockDiv")).toBeHidden();
+               //expect(view.$el.find('#lockDiv').css('visibility')).toEqual('hidden');
            });
        });
 

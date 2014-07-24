@@ -13,7 +13,8 @@ define(['jquery',
     'src/viewmodels/Omit',
     'src/viewmodels/Confirm',
     'src/viewmodels/Caution',
-    'src/viewmodels/ManualLock'
+    'src/viewmodels/ManualLock',
+    'src/viewmodels/LoadSites'
 ], function($,
             _,
             ko,
@@ -29,11 +30,14 @@ define(['jquery',
             OmitView,
             ConfirmView,
             CautionView,
-            ManualLockView) {
+            ManualLockView,
+            LoadSitesView) {
 
     'use strict';
 
     var Gadget = function () {
+
+        this.sitesFiles = ko.observableArray();
 
         this.manualLock = ko.observable(false);
 
@@ -67,9 +71,6 @@ define(['jquery',
                     this.operationalSite(new Site());
                     Geolocation.start();
                     break;
-                case('manualLock'):
-                    this.manual = new ManualLockView();
-                    break;
                 case('placement'):
                     Geolocation.stop();
                     this.initializeOperation();
@@ -89,6 +90,12 @@ define(['jquery',
                     //alert(JSON.stringify(this.position().utm()));
                     //alert(JSON.stringify(this.selectedSite()));
                     //alert(JSON.stringify(this.nearestSites()));
+                    break;
+                case('manualLock'):
+                    this.manual = new ManualLockView();
+                    break;
+                case('loadSites'):
+                    this.loadSites = new LoadSitesView();
                     break;
             }
             this.currentView(name);

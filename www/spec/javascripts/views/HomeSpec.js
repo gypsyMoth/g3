@@ -3,7 +3,7 @@ define(["jquery",
     "knockout",
     "src/util/Controller",
     "src/util/Date",
-    "src/viewmodels/Home"
+    "src/views/Home"
 ], function($, _, ko, Controller, DateFormatter, HomeView) { 'use strict';
 
     $(describe("Home ViewModel", function() {

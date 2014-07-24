@@ -62,9 +62,11 @@ define (['jquery',
             var directoryReader = my.root.createReader();
             directoryReader.readEntries(function(entries) {
                 _.each(my.filterSitesFiles(entries), function(fileEntry) {
-                    sitesFiles.push(new SitesFile({fileEntry: fileEntry}));
+                    var sitesFile = new SitesFile();
+                    sitesFile.fileEntry = fileEntry;
+                    sitesFiles.push(sitesFile);
                 });
-               deferred.resolve(new SitesFileCollection(sitesFiles));
+                deferred.resolve(sitesFiles);
             }, my.fail);
             return deferred.promise();
         };
