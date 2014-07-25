@@ -37,6 +37,7 @@ define(['jquery',
             DB.loadSites(this.selectedFile().fileEntry).then(_.bind(function (data) {
                 Controller.gadget.sitesList(data);
             }, this));
+            Controller.gadget.manualLock(false);
             Controller.gadget.changeView('home');
         };
     };
