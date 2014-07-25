@@ -1,6 +1,12 @@
 define(['jquery',
-    'src/util/Geolocation'],
-    function($, Geolocation) { 'use strict';
+    'knockout',
+    'src/util/Controller',
+    'src/util/Geolocation',
+    'src/viewmodels/Gadget'],
+    function($, ko, Controller, Geolocation, GadgetView) { 'use strict';
+
+    Controller.gadget = new GadgetView();
+
     describe("Geolocation Module", function() {
         it("Has a start method", function() {
             expect(Geolocation.start).toBeDefined();
@@ -35,8 +41,8 @@ define(['jquery',
                 "moth_count":0
             }];
 
-            Geolocation.SitesList = list;
-            expect(Geolocation.SitesList).toEqual(list);
+            Controller.gadget.sitesList(list); //Geolocation.SitesList = list;
+            expect(Controller.gadget.sitesList()).toEqual(list); //Geolocation.SitesList).toEqual(list);
             var site = Geolocation.getSiteById('TEST', 2);
             expect(site).toEqual(list[1]);
         });

@@ -54,8 +54,8 @@
         'util/EncoderSpec',
         'util/GeolocationSpec',
         'util/NearestNeighborSpec',
-        'util/DecoderSpec',
-        /*'models/CurrentPositionSpec',
+        'util/DecoderSpec'/*,
+        'models/CurrentPositionSpec',
         'models/TransactionSpec',
         'models/RelativePositionSpec',
         'models/SitesFileSpec',
@@ -70,8 +70,8 @@
         'views/RandomSpec',
         'views/OmitSpec',
         'views/HistorySpec',
-        'views/InspectionSpec',*/
-        'viewmodels/HomeSpec'
+        'views/InspectionSpec',
+        'viewmodels/HomeSpec'*/
     ];
 
     require(['src/app', 'boot', 'jasmine-jquery'], function (App) {

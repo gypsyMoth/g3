@@ -88,7 +88,7 @@ define(['jquery',
     };
 
     my.getSiteById = function(quad, site_id) {
-        return _.find(this.SitesList, function(site) {
+        return _.find(Controller.gadget.sitesList(), function(site) {
             return (site.quad === quad && site.site_id === site_id);
         });
     };
