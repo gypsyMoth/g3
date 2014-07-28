@@ -15,7 +15,7 @@ define(function() { 'use strict';
         this.moth_count = undefined;
         this.visit = undefined;
         this.condition = undefined;
-        this.pass_fail = undefined;
+        //this.pass_fail = undefined;
         this.fail_reason = undefined;
     };
 

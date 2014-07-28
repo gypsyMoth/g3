@@ -116,7 +116,7 @@ define(['jquery',
             op.txn_date = DateFormatter.getSitesFormatDate(Date.now());
         };
 
-        this.codedString = function() {
+        /*this.codedString = function() {
             var op = this.operationalSite();
 
             var ret = Encoder.transactionLog.BANG + ',';
@@ -159,7 +159,7 @@ define(['jquery',
             ret += ',' + Encoder.transactionLog.DOLLAR;
             ret += '\r\n';
             return ret;
-        }
+        }*/
     };
 
     return Gadget;

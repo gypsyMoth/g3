@@ -25,7 +25,7 @@ define(['jquery',
             sites.remove(this.site);
             sites.push(this.op);
             DB.initialize().then(function() {
-                DB.logOperation(Controller.gadget.codedString()).then( function() {
+                DB.logOperation(Encoder.codedString()).then( function() {
                     DB.saveSites(Controller.gadget.sitesList()).then( function() {
                         Controller.gadget.changeView('home');
                     });
@@ -38,12 +38,16 @@ define(['jquery',
             var msg;
             msg = "<span>Confirm ";
             if (this.op.visit !== undefined){
-                if (this.op.pass_fail !== undefined){
-                    msg += this.op.pass_fail + " ";
+                if (this.op.fail_reason !== undefined){
+                    if (this.op.fail_reason === 'Passed'){
+                        msg += this.op.fail_reason.toUpperCase() + " ";
+                    } else {
+                        msg += "FAILED ";
+                    }
                     msg += this.op.visit + " QC Inspection of ";
                     msg += this.op.condition + " trap ";
-                    if (this.op.fail_reason !== undefined){
-                        msg += "(" + this.op.failReason + ") "
+                    if (this.op.fail_reason !== 'Passed'){
+                        msg += "(" + this.op.fail_reason + ") "
                     }
                 } else {
                     msg += this.op.visit + " Inspection of ";
@@ -51,9 +55,12 @@ define(['jquery',
                     msg += this.op.moth_count + " moths ";
                 }
             } else if (this.op.trap_type === 'Omit'){
-                msg += "omit (" + this.op.omit_reason + ") ";
+                msg += "OMIT (" + this.op.omit_reason + ") ";
             } else {
-                msg += "placement of " + this.op.trap_type + " trap "
+                msg += "placement of " + this.op.trap_type.toUpperCase() + " trap ";
+                if (Controller.gadget.relativePosition().distanceOutside > 0){
+                    msg += "(outside target circle) ";
+                }
             }
             msg += "at site "
             msg += this.op.quad + ":" + this.op.site_id + ", coordinates ";

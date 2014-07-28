@@ -27,12 +27,12 @@ define (['src/util/Date',
         FINAL: 'FINAL'
     };
 
-    my.getString = function(currentPosition) {
+    /*my.getString = function(currentPosition) {
         var ret = my.constants.BANG;
         ret += my.constants.ROW;
         ret += my.constants.MESSAGE;
         ret += my.constants.HEMISPHERE;
-    };
+    };*/
 
     my.omitReasons = [
         {value: 'H', label:'Nothing to hang trap on', text:'No structure on which to hang trap'},
@@ -90,8 +90,8 @@ define (['src/util/Date',
         return null;
     };
 
-    my.codedString = function(op) {
-
+    my.codedString = function() {
+        var op = Controller.gadget.operationalSite();
         var ret = this.transactionLog.BANG + ',';
         ret += this.transactionLog.ROW + ',';
         ret += this.transactionLog.MESSAGE + ',';
@@ -135,7 +135,7 @@ define (['src/util/Date',
         return ret;
     };
 
-    my.visitCode = function(fullText) {
+    /*my.visitCode = function(fullText) {
       var code = '';
       switch(fullText) {
           case "MIDSEASON":
@@ -218,7 +218,7 @@ define (['src/util/Date',
                 break;
         }
         return code;
-    };
+    };*/
 
 
     my.padSite = function(site) {

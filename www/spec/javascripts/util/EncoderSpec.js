@@ -16,7 +16,7 @@ define(['src/util/Encoder',
 
     describe("Encoder Module", function() {
        it("Has a method that returns an encoded string", function() {
-          expect(encoder.getString).toBeDefined();
+          expect(encoder.codedString).toBeDefined();
        });
 
        it("Pads site ids correctly", function() {
@@ -173,10 +173,11 @@ define(['src/util/Encoder',
                 op.visit = site.visit;
                 op.condition = site.condition;
                 op.moth_count = site.moth_count;
-                op.passFail = site.pass_fail;
+                //op.passFail = site.pass_fail;
                 op.fail_reason = site.fail_reason;
                 op.traptype = site.trap_type;
                 op.omit_reason = site.omit_reason;
+                op.txn_date = site.txn_date;
             };
 
             function setCompString(date, code){
