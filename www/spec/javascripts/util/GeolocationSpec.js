@@ -27,7 +27,8 @@ define(['jquery',
                 "site_id":1,
                 "grid":"8000",
                 "trap_type":"Milk Carton",
-                "moth_count":0
+                "moth_count":0,
+                "txn_date":"2013-02-06T00:00:00-00:00"
             },{
                 "zone":17,
                 "xth":"600000",
@@ -38,7 +39,8 @@ define(['jquery',
                 "site_id":2,
                 "grid":"8000",
                 "trap_type":"Milk Carton",
-                "moth_count":0
+                "moth_count":0,
+                "txn_date":"2013-02-06T00:00:00-00:00"
             }];
 
             Controller.gadget.sitesList(list); //Geolocation.SitesList = list;

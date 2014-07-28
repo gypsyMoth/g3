@@ -1,4 +1,11 @@
-define (function () { 'use strict';
+define (['src/util/Date',
+         'src/util/Controller'
+],  function (DateFormatter,
+              Controller
+    ) {
+
+    'use strict';
+
     var my = {};
 
     my.transactionLog = {
@@ -37,6 +44,34 @@ define (function () { 'use strict';
         {value: 'S', label:'Safety hazard', text:'Safety hazard'}
     ];
 
+    my.conditions = [
+        {value: 'G', label:'Good', text:'GOOD'},
+        {value: 'D', label:'Damaged', text:'DAMAGED'},
+        {value: 'M', label:'Missing', text:'MISSING'},
+        {value: 'I', label:'Inaccessible', text:'INACCESSIBLE'}
+    ];
+
+    my.visits = [
+        {value: 'M', label:'Midseason', text:'MIDSEASON'},
+        {value: 'F', label:'Final', text:'FINAL'}
+    ];
+
+    my.failReasons = [
+        {value:'P', label:'Passed',text:'Passed'},
+        {value:'A', label:'Trap not assembled correctly',text:'Trap not assembled correctly'},
+        {value:'C', label:'Trap placed outside target circle',text:'Trap placed outside target circle'},
+        {value:'D', label:'Directions to the site are incorrect or incomplete',text:'Directions to the site are incorrect or incomplete'},
+        {value:'G', label:'Grid set at wrong spacing',text:'Grid set at wrong spacing'},
+        {value:'I', label:'Trap info not recorded correctly on trap',text:'Trap info not recorded correctly on trap'},
+        {value:'R', label:'Record filled out, no trap set',text:'Record filled out, no trap set'},
+        {value:'T', label:'Wrong trap type',text:'Wrong trap type'},
+        {value:'U', label:'UTMs recorded incorrectly on data sheet',text:'UTMs recorded incorrectly on data sheet'},
+        {value:'X', label:'Trapper did not remove trap from field',text:'Trapper did not remove trap from field'},
+        {value:'M', label:'Multiple traps set at one site',text:'Multiple traps set at one site'},
+        {value:'S', label:'Trap set too low to ground',text:'Trap set too low to ground'},
+        {value:'W', label:'Incorrect inspection',text:'Incorrect inspection'}
+    ];
+
     my.getText = function(code, array){
         for (var i = 0; i < array.length; i++){
             if (array[i].value === code) {
@@ -53,6 +88,51 @@ define (function () { 'use strict';
             }
         }
         return null;
+    };
+
+    my.codedString = function(op) {
+
+        var ret = this.transactionLog.BANG + ',';
+        ret += this.transactionLog.ROW + ',';
+        ret += this.transactionLog.MESSAGE + ',';
+        ret += op.zone + ',';
+        ret += this.transactionLog.HEMISPHERE + ',';
+        ret += op.xact + ',';
+        ret += op.yact + ',';
+        ret += this.rpad(Controller.gadget.position().accuracy() + '.', 5, '0') + ',';
+        ret += DateFormatter.getOperationFormatDate(op.txn_date) + ',';
+        ret += DateFormatter.getOperationFormatTime(op.txn_date) + ',';
+        ret += this.transactionLog.PLACEHOLDER + ',';
+        ret += this.transactionLog.ZERO + ',';
+        ret += this.padQuad(op.quad) + this.padSite(op.site_id);
+
+        if (op.visit) {
+            ret += this.getCode(op.visit, this.visits);
+            ret += this.getCode(op.condition, this.conditions);
+            if ((op.condition === 'GOOD' || op.condition === 'DAMAGED') && !(op.fail_reason)) {
+                ret += this.padCatch(op.moth_count);
+            }
+            if (op.fail_reason) {
+                if ((op.condition === 'MISSING') || (op.condition === 'INACCESSIBLE')) {
+                    ret += ' ';
+                } else {
+                    ret += this.transactionLog.ZERO;
+                }
+                if (op.fail_reason !== 'Passed') {
+                    ret += "F" + this.getCode(op.fail_reason, this.failReasons);
+                } else {
+                    ret += "P";
+                }
+            }
+        } else if (op.omit_reason) {
+            ret += 'O' + this.getCode(op.omit_reason, this.omitReasons);
+        } else {
+            ret += op.traptype === 'Delta' ? 'D' : 'M';
+            ret += Controller.gadget.relativePosition().distanceOutside > 0 ? 'B' : '';
+        }
+        ret += ',' + this.transactionLog.DOLLAR;
+        ret += '\r\n';
+        return ret;
     };
 
     my.visitCode = function(fullText) {

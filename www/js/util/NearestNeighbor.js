@@ -173,7 +173,6 @@ define (['jquery',
     };*/
 
     my.relative = function(site, current){
-        //var point = {x: site.xact() || site.xth(), y: site.yact() || site.yth()};
         var point = this.getPoint(site);
         var currentPnt = this.currentLocationToPoint(current);
         var distance = getDistance(point, currentPnt);

@@ -44,7 +44,10 @@ define(['jquery',
         }, this);
 
         this.isOut.subscribe(function(){
-            navigator.notification.beep(1);
+            //Added this unnecessary if statement to keep the navigator from breaking jasmine spec tests...
+            if (navigator.notification !== undefined) {
+                navigator.notification.beep(1);
+            }
         }, this);
 
         this.color = ko.computed(function(){
