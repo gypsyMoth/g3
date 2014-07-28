@@ -94,10 +94,9 @@ define(['jquery',
     };
 
     my.getNextRandomSiteId = function() {
-        var maxId = _.reduce(_.pluck(this.SitesList, 'site_id'), function(currentId, nextId) {
+        var maxId = _.reduce(_.pluck(Controller.gadget.sitesList(), 'site_id'), function(currentId, nextId) {
             return currentId > nextId ? currentId : nextId;
         }, 8999);
-
         if (maxId >= 9999) {
             throw new RangeError("Too many randoms--random ids must be between 9000 and 9999");
         }
@@ -106,7 +105,7 @@ define(['jquery',
     };
 
     my.addRandomSite = function(randomSite) {
-        this.SitesList.push(randomSite);
+        Controller.gadget.sitesList().push(randomSite);
     };
 
     return my;

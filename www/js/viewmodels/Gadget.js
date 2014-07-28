@@ -14,7 +14,8 @@ define(['jquery',
     'src/viewmodels/Confirm',
     'src/viewmodels/Caution',
     'src/viewmodels/ManualLock',
-    'src/viewmodels/LoadSites'
+    'src/viewmodels/LoadSites',
+    'src/viewmodels/Random'
 ], function($,
             _,
             ko,
@@ -31,7 +32,8 @@ define(['jquery',
             ConfirmView,
             CautionView,
             ManualLockView,
-            LoadSitesView) {
+            LoadSitesView,
+            RandomView) {
 
     'use strict';
 
@@ -96,6 +98,9 @@ define(['jquery',
                     break;
                 case('loadSites'):
                     this.loadSites = new LoadSitesView();
+                    break;
+                case('random'):
+                    this.random = new RandomView();
                     break;
             }
             this.currentView(name);
