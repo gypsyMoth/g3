@@ -18,7 +18,8 @@ define(['jquery',
     'src/viewmodels/LoadSites',
     'src/viewmodels/Random',
     'src/viewmodels/History',
-    'src/viewmodels/Inspection'
+    'src/viewmodels/Inspection',
+    'src/viewmodels/QC'
 ], function($,
             _,
             ko,
@@ -39,7 +40,8 @@ define(['jquery',
             LoadSitesView,
             RandomView,
             HistoryView,
-            InspectionView) {
+            InspectionView,
+            QCView) {
 
     'use strict';
 
@@ -110,6 +112,10 @@ define(['jquery',
                 case('random'):
                     this.random = new RandomView();
                     break;
+                case('qcInspection'):
+                    this.initializeOperation();
+                    this.qc = new QCView();
+                    break;
                 case('history'):
                     this.history = new HistoryView();
                     DB.getTransactions().then(_.bind(function(data){
@@ -134,51 +140,6 @@ define(['jquery',
             op.trap_type = site.trap_type;
             op.txn_date = DateFormatter.getSitesFormatDate(Date.now());
         };
-
-        /*this.codedString = function() {
-            var op = this.operationalSite();
-
-            var ret = Encoder.transactionLog.BANG + ',';
-            ret += Encoder.transactionLog.ROW + ',';
-            ret += Encoder.transactionLog.MESSAGE + ',';
-            ret += op.zone + ',';
-            ret += Encoder.transactionLog.HEMISPHERE + ',';
-            ret += op.xact + ',';
-            ret += op.yact + ',';
-            ret += Encoder.rpad((this.position().accuracy() + '.'), 5, '0') + ',';
-            ret += DateFormatter.getOperationFormatDate(op.txn_date) + ',';
-            ret += DateFormatter.getOperationFormatTime(op.txn_date) + ',';
-            ret += Encoder.transactionLog.PLACEHOLDER + ',';
-            ret += Encoder.transactionLog.ZERO + ',';
-            ret += Encoder.padQuad(op.quad) + Encoder.padSite(op.site_id);
-
-            if (op.visit) {
-                ret += Encoder.visitCode(op.visit);
-                ret += Encoder.conditionCode(op.condition);
-                if ((op.condition === 'GOOD' || op.condition === 'DAMAGED') && !(op.pass_fail)) {
-                    ret += Encoder.padCatch(op.catch);
-                }
-                if (op.pass_fail) {
-                    if ((op.condition === 'MISSING') || (op.condition === 'INACCESSIBLE')) {
-                        ret += ' ';
-                    } else {
-                        ret += Encoder.transactionLog.ZERO;
-                    }
-                    ret += Encoder.passCode(op.pass_fail);
-                    if (op.fail_reason !== 'Passed') {
-                        ret += Encoder.failReasonCode(op.fail_reason);
-                    }
-                }
-            } else if (op.omit_reason) {
-                ret += 'O' + Encoder.getCode(op.omit_reason, Encoder.omitReasons);
-            } else {
-                ret += op.traptype === 'Delta' ? 'D' : 'M';
-                ret += this.relativePosition().distanceOutside > 0 ? 'B' : '';
-            }
-            ret += ',' + Encoder.transactionLog.DOLLAR;
-            ret += '\r\n';
-            return ret;
-        }*/
     };
 
     return Gadget;

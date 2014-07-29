@@ -130,10 +130,10 @@ define (function () { 'use strict';
                 f = "trap info not recorded correctly on trap";
                 break;
             case('R'):
-                f = "record filled out, no trap set (bogus data)";
+                f = "record filled out, no trap set";
                 break;
             case('T'):
-                f = "delta trap set where milk carton indicated";
+                f = "delta trap set where milk carton indicated or vice versa";
                 break;
             case('U'):
                 f = "UTMs recorded incorrectly on data sheet";

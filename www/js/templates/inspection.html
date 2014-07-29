@@ -3,14 +3,12 @@
         <span class="message">Select Inspection Type</span><br>
         <select id="selectInspectionType" data-bind="options: visitTypes,
                                                     optionsText: 'label',
-                                                    value: selectedVisit,
-                                                    optionsCaption: 'Select Inspection Type...'">
+                                                    value: selectedVisit">
         </select><br>
         <span class="message">Select Trap Condition</span><br>
         <select id="selectCondition" data-bind="options: conditions,
                                                     optionsText: 'label',
-                                                    value: selectedCondition,
-                                                    optionsCaption: 'Select Trap Condition...'">
+                                                    value: selectedCondition">
         </select><br>
         <div id="enterCount" class="message" data-bind="visible: showCount">
             <span class="message">Enter Moth Count:</span><br>
