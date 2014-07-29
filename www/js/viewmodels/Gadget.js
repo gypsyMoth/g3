@@ -17,7 +17,8 @@ define(['jquery',
     'src/viewmodels/ManualLock',
     'src/viewmodels/LoadSites',
     'src/viewmodels/Random',
-    'src/viewmodels/History'
+    'src/viewmodels/History',
+    'src/viewmodels/Inspection'
 ], function($,
             _,
             ko,
@@ -37,7 +38,8 @@ define(['jquery',
             ManualLockView,
             LoadSitesView,
             RandomView,
-            HistoryView) {
+            HistoryView,
+            InspectionView) {
 
     'use strict';
 
@@ -81,6 +83,11 @@ define(['jquery',
                     Geolocation.stop();
                     this.initializeOperation();
                     this.place = new PlacementView();
+                    break;
+                case('inspection'):
+                    Geolocation.stop();
+                    this.initializeOperation();
+                    this.inspection = new InspectionView();
                     break;
                 case('omit'):
                     this.omit = new OmitView();

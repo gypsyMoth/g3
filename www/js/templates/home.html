@@ -1,17 +1,13 @@
 <div id="homeDiv" class="view" data-bind="with: home">
     <div id="homeHeader" class="homeHeader">
         <div id="locationDiv" class="homeDiv">
-                    <span id="locationSpan" class="locationSpan" data-bind="text: location()">
-                        <!--<%= currentUtm.Zone + ", " + currentUtm.Easting + "E, " + currentUtm.Northing + "N" %>-->
-                    </span>
+                    <span id="locationSpan" class="locationSpan" data-bind="text: location()"></span>
         </div>
     </div>
 
     <div id="ActionDiv" class="actionDiv" data-bind="click: function(){$root.changeView(this.operation());}">
         <img id="homeImage" data-bind="attr: {src: image()}"/>
     </div>
-
-
 
     <div id="homeFooter" class="homeFooter">
         <div id="infoDiv">

@@ -1,23 +1,25 @@
-<div id="omitHeader" class="formHeader">
-    <span class="message">Select Inspection Type</span><br>
-    <select id="selectInspectionType">
-        <option value="MIDSEASON">Midseason</option>
-        <option value="FINAL">Final</option>
-    </select><br>
-    <span class="message">Trap Condition</span><br>
-    <select id="selectCondition">
-        <option value="GOOD">Good</option>
-        <option value="DAMAGED">Damaged</option>
-        <option value="MISSING">Missing</option>
-        <option value="INACCESSIBLE">Inaccessible</option>
-    </select><br>
-    <div id="enterCount">
-        <span class="message">Enter Moth Count:</span><br>
-        <input id="mothCount" value=null type="number">
+<div id="inspectionDiv" data-bind="with: inspection">
+    <div id="inspectionHeader" class="formHeader">
+        <span class="message">Select Inspection Type</span><br>
+        <select id="selectInspectionType" data-bind="options: visitTypes,
+                                                    optionsText: 'label',
+                                                    value: selectedVisit,
+                                                    optionsCaption: 'Select Inspection Type...'">
+        </select><br>
+        <span class="message">Select Trap Condition</span><br>
+        <select id="selectCondition" data-bind="options: conditions,
+                                                    optionsText: 'label',
+                                                    value: selectedCondition,
+                                                    optionsCaption: 'Select Trap Condition...'">
+        </select><br>
+        <div id="enterCount" class="message" data-bind="visible: showCount">
+            <span class="message">Enter Moth Count:</span><br>
+            <input class="message" id="mothCount" data-bind="value: moths" type="number"/>
+        </div>
     </div>
-</div>
 
-<div id="omitFooter" class="formFooter">
-    <input type="button" id="btnInspectionOk" class="gadgetButton fastButton" value="Ok">
-    <input type="button" id="btnInspectionCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    <div id="inspectionFooter" class="formFooter">
+        <input type="button" id="btnInspectionOk" class="gadgetButton fastButton" value="Ok" data-bind="click: function(){this.startInspection()}">
+        <input type="button" id="btnInspectionCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    </div>
 </div>
