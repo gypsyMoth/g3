@@ -12,7 +12,7 @@ define(['jquery',
     ], function($, _, Backbone, ko, Router, GadgetView, Geolocation, DB, Controller, Splash, SplashView) { 'use strict';
 
      var my = {};
-    _.extend(my, Backbone.Events);
+    //_.extend(my, Backbone.Events);
 
     my.isInitialized = false;
 
@@ -26,14 +26,14 @@ define(['jquery',
         Controller.gadget.initialize();
     };
 
-    var exitApplication = function(message) {
+    /*var exitApplication = function(message) {
         alert(message);
         if (navigator.app) {
             navigator.app.exitApp();
         } else if (navigator.device) {
             navigator.device.exitApp();
         }
-    };
+    };*/
 
     my.fail = function (error) {
         console.log('G3 error: ' + error.message);

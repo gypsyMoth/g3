@@ -21,10 +21,10 @@ require.config({
     }
 });
 
-require(['src/App', 'src/views/ViewExtensions', 'knockout', 'knockout-amd-helpers', 'text'], function (App, ViewExtensions, ko) { 'use strict';
-    /*document.ontouchmove = function(e){
+require(['src/App', 'knockout', 'knockout-amd-helpers', 'text'], function (App, ko) { 'use strict';
+    document.ontouchmove = function(e){
         e.preventDefault();
-    };*/
+    };
     ko.amdTemplateEngine.defaultSuffix = ".html";
     ko.amdTemplateEngine.defaultPath = "src/templates";
     App.initialize();
