@@ -158,18 +158,18 @@ define (function () { 'use strict';
 
     my.historyString = function(transaction){
 
-        var code = transaction.get("codedString");
-        var e = transaction.get("easting");
-        var n = transaction.get("northing");
+        var code = transaction.codedString;
+        var e = transaction.easting;
+        var n = transaction.northing;
         var codeOp = this.operation(code);
 
-        var decoded = transaction.get("date") + " ";
+        var decoded = transaction.date + " ";
 
         if (e.match(/^\d+$/) && n.match(/^\d+$/) && codeOp != 'Invalid Transaction'){
             decoded += this.quad(code) + " ";
             decoded += this.site(code) + " ";
-            decoded += transaction.get("easting") + "E, ";
-            decoded += transaction.get("northing") + "N\n";
+            decoded += transaction.easting + "E, ";
+            decoded += transaction.northing + "N\n";
             var codeOp = this.operation(code);
             var t = "";
             switch(codeOp){

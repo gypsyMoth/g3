@@ -1,29 +1,22 @@
-<div id="historyDiv" class="historyHeader">
-    <%if (pages.total === 0) { %>
-    <span id="historyMessage" class="message">No history yet!</span>
-    <% } else { %>
-    <table id="historyTable" class="stripedTable">
-        <tbody>
-        <% _.each(messages, function(msg) { %>
-        <tr>
-            <td><%= msg %></td>
-        </tr>
-        <% }); %>
-        </tbody>
-        <tfoot>
-        <tr>
-            <td>Page <%= pages.page %> of <%= pages.total %></td>
-        </tr>
-        </tfoot>
-    </table>
-    <% } %>
-</div>
-<div id="historyFooter" class="formFooter">
-    <% if(pages.previous) { %>
-    <input type="button" id="btnHistoryPrev" class="gadgetButton fastButton" value="Previous">
-    <% } %>
-    <% if(pages.next) { %>
-    <input type="button" id="btnHistoryNext" class="gadgetButton fastButton" value="Next">
-    <% } %>
-    <input type="button" id="btnHistoryClose" class="cancelButton fastButton" value="Exit" data-bind="click: function(){$root.changeView('home');}">
+<div id="historyDiv" data-bind="with: history">
+    <div id="historyHeader" class="historyHeader">
+        <span id="historyMessage" class="message" data-bind="visible: pages() < 1">No history yet!</span>
+        <table id="historyTable" class="stripedTable">
+            <tbody data-bind="foreach: currentPage">
+            <tr>
+                <td data-bind="text: message"></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td data-bind="visible: pages() > 0, text: pageCounter()"></td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div id="historyFooter" class="formFooter">
+        <input type="button" id="btnHistoryPrev" class="gadgetButton fastButton" value="Previous" data-bind="enable: previous, click: function(){this.changePage(-1);}">
+        <input type="button" id="btnHistoryNext" class="gadgetButton fastButton" value="Next" data-bind="enable: next, click: function(){this.changePage(1);}">
+        <input type="button" id="btnHistoryClose" class="cancelButton fastButton" value="Exit" data-bind="click: function(){$root.changeView('home');}">
+    </div>
 </div>

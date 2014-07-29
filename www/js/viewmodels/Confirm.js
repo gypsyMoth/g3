@@ -22,10 +22,11 @@ define(['jquery',
 
         this.confirmOperation = function(){
             var sites = Controller.gadget.sitesList;
+            var operation = Encoder.codedString();
             sites.remove(this.site);
             sites.push(this.op);
             DB.initialize().then(function() {
-                DB.logOperation(Encoder.codedString()).then( function() {
+                DB.logOperation(operation).then( function() {
                     DB.saveSites(Controller.gadget.sitesList()).then( function() {
                         Controller.gadget.changeView('home');
                     });

@@ -199,18 +199,18 @@ define (['jquery',
                 dataLines.pop();
                 _.each(dataLines, function(line){
                     var properties = line.split(",");
-                    var t = new Transaction({
+                    var t = {
                         date: properties[8],
                         time: properties[9],
                         easting: properties[5],
                         northing: properties[6],
                         codedString: properties[12]
-                    });
+                    };
                     history.push(t);
                 });
-                deferred.resolve(new Transactions(history));
+                deferred.resolve(history);
             }).fail(function(){
-                deferred.resolve(new Transactions());
+                deferred.resolve([]);
             });
             return deferred.promise();
         };

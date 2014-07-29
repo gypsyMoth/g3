@@ -54,7 +54,7 @@
         'util/EncoderSpec',
         'util/GeolocationSpec',
         'util/NearestNeighborSpec',
-        'util/DecoderSpec'/*,
+        'util/DecoderSpec',/*
         'models/CurrentPositionSpec',
         'models/TransactionSpec',
         'models/RelativePositionSpec',
@@ -68,8 +68,8 @@
         'views/LoadSitesSpec',
         'views/ManualLockSpec',
         'views/RandomSpec',
-        'views/OmitSpec',
-        'views/HistorySpec',
+        'views/OmitSpec',*/
+        'viewmodels/HistorySpec'/*,
         'views/InspectionSpec',
         'viewmodels/HomeSpec'*/
     ];

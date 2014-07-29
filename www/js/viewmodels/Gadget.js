@@ -1,6 +1,7 @@
 define(['jquery',
     'underscore',
     'knockout',
+    'src/util/DB',
     'src/util/Geolocation',
     'src/util/Date',
     'src/util/Encoder',
@@ -15,10 +16,12 @@ define(['jquery',
     'src/viewmodels/Caution',
     'src/viewmodels/ManualLock',
     'src/viewmodels/LoadSites',
-    'src/viewmodels/Random'
+    'src/viewmodels/Random',
+    'src/viewmodels/History'
 ], function($,
             _,
             ko,
+            DB,
             Geolocation,
             DateFormatter,
             Encoder,
@@ -33,7 +36,8 @@ define(['jquery',
             CautionView,
             ManualLockView,
             LoadSitesView,
-            RandomView) {
+            RandomView,
+            HistoryView) {
 
     'use strict';
 
@@ -89,9 +93,6 @@ define(['jquery',
                     break;
                 case('extras'):
                     Geolocation.stop();
-                    //alert(JSON.stringify(this.position().utm()));
-                    //alert(JSON.stringify(this.selectedSite()));
-                    //alert(JSON.stringify(this.nearestSites()));
                     break;
                 case('manualLock'):
                     this.manual = new ManualLockView();
@@ -101,6 +102,12 @@ define(['jquery',
                     break;
                 case('random'):
                     this.random = new RandomView();
+                    break;
+                case('history'):
+                    this.history = new HistoryView();
+                    DB.getTransactions().then(_.bind(function(data){
+                        this.history.initialize(data);
+                    }, this));
                     break;
             }
             this.currentView(name);
