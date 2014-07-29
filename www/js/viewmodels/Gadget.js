@@ -14,6 +14,7 @@ define(['jquery',
     'src/viewmodels/Omit',
     'src/viewmodels/Confirm',
     'src/viewmodels/Caution',
+    'src/viewmodels/Extras',
     'src/viewmodels/ManualLock',
     'src/viewmodels/LoadSites',
     'src/viewmodels/Random',
@@ -36,6 +37,7 @@ define(['jquery',
             OmitView,
             ConfirmView,
             CautionView,
+            ExtrasView,
             ManualLockView,
             LoadSitesView,
             RandomView,
@@ -102,6 +104,7 @@ define(['jquery',
                     break;
                 case('extras'):
                     Geolocation.stop();
+                    this.extras = new ExtrasView();
                     break;
                 case('manualLock'):
                     this.manual = new ManualLockView();
@@ -117,10 +120,6 @@ define(['jquery',
                     this.qc = new QCView();
                     break;
                 case('history'):
-                    this.history = new HistoryView();
-                    DB.getTransactions().then(_.bind(function(data){
-                        this.history.initialize(data);
-                    }, this));
                     break;
             }
             this.currentView(name);
