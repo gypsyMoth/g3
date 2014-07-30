@@ -1,10 +1,7 @@
 define (['jquery',
     'underscore',
-    'src/models/SitesFile',
-    'src/models/Transaction',
-    'src/collections/SitesFileCollection',
-    'src/collections/Transactions'],
-    function ($, _, SitesFile, Transaction, SitesFileCollection, Transactions) { 'use strict';
+    'src/models/SitesFile'],
+    function ($, _, SitesFile) { 'use strict';
         var my = {};
 
         var PERSISTENT;

@@ -23,14 +23,6 @@ define(["jquery",
 
         });
 
-        /*it("Can be instantiated", function() {
-            expect(view).toBeDefined();
-        });*/
-
-        /*it("Has a transactions", function() {
-            expect(view.transactions).toBeDefined();
-        });*/
-
         it("Sorts an array of dates and times in reverse chronological order", function(){
             expect(view.transactions()[0].site_id).toEqual(6);
             expect(view.transactions()[1].site_id).toEqual(5);

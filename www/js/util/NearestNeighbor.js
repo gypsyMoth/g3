@@ -1,11 +1,7 @@
 define (['jquery',
     'underscore',
-    'src/models/RelativePosition',
-    'src/models/NearestSite',
-    'src/viewmodels/Site',
-    'src/collections/NearestSiteCollection',
-    'src/util/Controller'],
-    function ($, _, RelativePosition, NearestSite, Site, NearestSiteCollection, Controller) { 'use strict';
+    'src/models/Site'],
+    function ($, _, Site) { 'use strict';
 
     // Private methods
     var my = {};
@@ -92,38 +88,6 @@ define (['jquery',
         return nearestSites;
     };
 
-    /*my.getSiteToReplace = function(distance, nearestSites) {
-        var siteToReplace = null;
-        this.sortByDistanceDescending(nearestSites); // undef, undef, 4, 3, 2
-        // Grab the first undefined site
-        siteToReplace = nearestSites.indexOf(function(site) {
-            var currentDistance = site.dist;
-            return distance < currentDistance;
-        });
-
-        return siteToReplace;
-    };*/
-
-    /*my.assignSite = function (siteToReplace, distance, site, currentPoint) {
-        var relativePosition, newSite, newNearestSite;
-
-        relativePosition = new RelativePosition({
-            distance: Math.round(distance),
-            distanceOutside: Math.round(distance - (site.grid * 0.3)),
-            bearing: getBearingString(this.getPoint(site), currentPoint),
-            found: true
-        });
-
-        //newNearestSite = $.extend(true, {}, siteToReplace);
-
-        siteToReplace.set({
-            site: site,
-            relativePosition: relativePosition
-        });
-
-        //siteToReplace = newNearestSite;
-    };*/
-
     my.currentLocationToPoint = function(currentLocation) {
         return {x: currentLocation.Easting, y: currentLocation.Northing};
     };
@@ -149,28 +113,13 @@ define (['jquery',
         nearestSites.sort(function(site1, site2){
             return site1.dist === site2.dist ? 0 : (site1.dist > site2.dist ? -1 : 1);
         })
-        /*nearestSites.comparator = function(nearest) {
-            return -(nearest.get('relativePosition').get('distance'));
-        };
-        nearestSites.sort();*/
     };
 
     my.sortByDistanceAscending = function(nearestSites) {
         nearestSites.sort(function(site1, site2){
             return site1.dist === site2.dist ? 0 : (site1.dist < site2.dist ? -1 : 1)
         })
-        /*nearestSites.comparator = function(site){return site.get('relativePosition').get('distance'); };
-        nearestSites.sort();*/
     };
-
-    /*my.getSelectedSite = function(currentLocation, site) {
-        var nearestSite = new NearestSite({site: site, relativePosition: new RelativePosition()});
-        var currentPoint = this.currentLocationToPoint(currentLocation);
-        var point = this.getPoint(site);
-        var distance = getDistance(point, currentPoint);
-        this.assignSite(nearestSite, distance, site, currentPoint);
-        return nearestSite;
-    };*/
 
     my.relative = function(site, current){
         var point = this.getPoint(site);

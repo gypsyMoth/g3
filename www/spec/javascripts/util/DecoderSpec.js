@@ -1,4 +1,4 @@
-define(['src/util/Decoder', 'src/models/Transaction'], function(Decoder, Transaction) {
+define(['src/util/Decoder'], function(Decoder) {
     describe("Decoder Module", function() {
 
         describe("Translates operations correctly from a string", function() {

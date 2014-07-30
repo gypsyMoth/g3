@@ -1,6 +1,6 @@
 define(['jquery',
     'knockout',
-    'src/viewmodels/Site',
+    'src/models/Site',
     'src/util/Geolocation',
     'src/util/Controller'
 ], function($,

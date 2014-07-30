@@ -1,12 +1,8 @@
 define(['underscore',
     'src/util/NearestNeighbor',
     'src/util/Controller',
-    'src/viewmodels/Gadget',
-    'src/viewmodels/Site',
-    'src/models/NearestSite',
-    'src/models/RelativePosition',
-    'src/collections/NearestSiteCollection'],
-    function(_, NearestNeighbor, Controller, GadgetView, Site, NearestSite, RelativePosition, NearestSiteCollection) { 'use strict';
+    'src/viewmodels/Gadget'],
+    function(_, NearestNeighbor, Controller, GadgetView) { 'use strict';
 
     Controller.gadget = new GadgetView();
 
