@@ -119,30 +119,36 @@ define (['jquery',
             return deferred.promise();
         };
 
-        my.downloadSites = function (state, bidunit){
+        my.downloadSites = function (fileTransfer, state, bidunit){
             var deferred = new $.Deferred();
-            var fileTransfer = new FileTransfer();
+            /*var fileTransfer = new FileTransfer();
+            fileTransfer.onprogress = function(pe){
+                console.log(pe.loaded);
+            };*/
+            //var uri = encodeURI("http://yt.ento.vt.edu/G3/VA_8.txt");
+            //var filename = my.root.toURL() + "/VA_8.txt";
             var uri = encodeURI("http://yt.ento.vt.edu/SlowTheSpread/gadgetsites/" + state + "/" + bidunit + "?format=json");
-            var filename = my.root.fullPath + '/' + makeFilename(state, bidunit);
-
-            fileTransfer.download(
-                uri,
-                filename,
-                function(entry) {
-                    //console.log("G3 file downloaded; filename = " + filename + "; fileentry = " + entry.fullPath);
-                    getFile(entry).then(loadFile).then(function() {
-                        deferred.resolve();
-                    });
-                },
-                function(error) {
-                    if (error.code === 3) {
-                        alert("No network connection");
-                    } else {
-                        console.log(error.code);
+            var filename = my.root.toURL() + "/" + makeFilename(state, bidunit);
+            getFileEntry(my.root, makeFilename(state, bidunit), {create: true, exclusive: false}).then(function(fileEntry){
+                fileTransfer.download(
+                    uri,
+                    filename,
+                    function(entry) {
+                        //console.log("G3 file downloaded; filename = " + filename + "; fileentry = " + entry.fullPath);
+                        getFile(entry).then(loadFile).then(function(data) {
+                            deferred.resolve(JSON.parse(data));
+                        });
+                    },
+                    function(error) {
+                        if (error.code === 3) {
+                            alert("No network connection");
+                        } else {
+                            console.log(error.code);
+                        }
+                        deferred.reject();
                     }
-                    deferred.reject();
-                }
-            );
+                );
+            });
             return deferred.promise();
         };
 

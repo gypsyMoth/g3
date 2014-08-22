@@ -12,3 +12,11 @@
     padding: 1%;
 }
 
+.progress{
+    margin: auto;
+    padding: 1%;
+    background-color: #9CCB3B;
+    font-size: 1.5em;
+    float: left;
+}
+

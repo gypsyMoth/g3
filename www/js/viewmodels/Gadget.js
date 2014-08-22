@@ -20,7 +20,8 @@ define(['jquery',
     'src/viewmodels/Random',
     'src/viewmodels/History',
     'src/viewmodels/Inspection',
-    'src/viewmodels/QC'
+    'src/viewmodels/QC',
+    'src/viewmodels/Download'
 ], function($,
             _,
             ko,
@@ -43,7 +44,8 @@ define(['jquery',
             RandomView,
             HistoryView,
             InspectionView,
-            QCView) {
+            QCView,
+            DownloadView) {
 
     'use strict';
 
@@ -120,6 +122,9 @@ define(['jquery',
                     this.qc = new QCView();
                     break;
                 case('history'):
+                    break;
+                case('download'):
+                    this.download = new DownloadView();
                     break;
             }
             this.currentView(name);

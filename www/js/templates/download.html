@@ -1,0 +1,15 @@
+<div id="downloadDiv" data-bind="with: download">
+    <div id="downloadHeader" class="formHeader">
+
+        <span class="message">Select State</span><br>
+        <select id="selectState" data-bind="options: states, value: selectedState"></select><br>
+        <span class="message">Select Bid Unit Number</span><br>
+        <select id="selectBidUnit" data-bind="options: bidUnits, value: selectedBidUnit"></select><br>
+        <div id="progressDiv" class="progress" data-bind="style: {width: progress()}, visible: showProgress"></div>
+    </div>
+
+    <div id="downloadFooter" class="formFooter">
+        <input type="button" id="btnDownloadOk" class="gadgetButton fastButton" value="Ok" data-bind="click: function(){this.downloadFile()}">
+        <input type="button" id="btnDownloadCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    </div>
+</div>

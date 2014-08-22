@@ -87,17 +87,17 @@ define(['jquery',
         }, this);
 
         this.positionInfo = ko.computed(function(){
-            if (this.relPos().distance !== undefined) {
-                return this.relPos().distance + " (\xB1" + this.current().accuracy() + ") meters " + this.relPos().bearing;
-            } else {
+            if (JSON.stringify(this.site()) === '{}') {
                 return "No sites found in Zone " + this.current().utm().Zone + "!";
+            } else {
+                return this.relPos().distance + " (\xB1" + this.current().accuracy() + ") meters " + this.relPos().bearing;
             }
         }, this);
 
         this.operationType = function(){
             var site = this.site();
             var operationType = '';
-            if (site.quad === '') {
+            if (site.quad === undefined) {
                 operationType = Encoder.operationTypes.ERROR;
             } else if (typeof site.xact === 'undefined') {
                 operationType = Encoder.operationTypes.UNADDRESSED;
