@@ -13,12 +13,14 @@ define(['jquery',
     'src/views/Extras',
     'src/views/Placement',
     'src/views/Omit',
+    'src/views/Inspection',
     'src/views/Caution',
     'src/views/Confirm',
 	'src/views/History',
     'src/views/LoadSites',
     'src/views/ManualLock',
-    'src/views/Random'
+    'src/views/Random',
+    'src/views/QC'
 ], function($, _, Backbone,
             Geolocation,
             NearestNeighbor,
@@ -32,12 +34,14 @@ define(['jquery',
             ExtrasView,
             PlacementView,
             OmitView,
+            InspectionView,
             CautionView,
             ConfirmView,
             HistoryView,
             LoadSitesView,
             ManualLockView,
-            RandomView) { 'use strict';
+            RandomView,
+            QCInspectionView) { 'use strict';
 
     var Router = Backbone.Router.extend({
         routes : {
@@ -46,12 +50,14 @@ define(['jquery',
             "extras" : "extras",
             "placement" : "placement",
             "omit" : "omit",
+            "inspection" : "inspection",
             "caution" : "caution",
             "confirm" : "confirm",
 			"history" : "history",
             "loadSites" : "loadSites",
             "manualLock" : "manualLock",
-            "random" : "random"
+            "random" : "random",
+            "qcInspection": "qcInspection"
         },
 
         splash: function() {
@@ -59,7 +65,7 @@ define(['jquery',
         },
 
         extras: function() {
-            this.loadView(new ExtrasView({model: new Filesystem()}));
+            this.loadView(new ExtrasView({model: Geolocation.Here}));
         },
 
         random: function() {
@@ -76,6 +82,14 @@ define(['jquery',
 
         omit: function() {
             this.loadView(new OmitView({model: Geolocation.Here}));
+        },
+
+        inspection: function() {
+            this.loadView(new InspectionView({model: Geolocation.Here}));
+        },
+
+        qcInspection: function() {
+            this.loadView(new QCInspectionView({model: Geolocation.Here}));
         },
 
         caution: function() {

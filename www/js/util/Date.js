@@ -14,5 +14,9 @@ define (['moment'], function (moment) { 'use strict';
         return moment(date).format('MMM-DD-YYYY');
     };
 
+    my.getOperationFormatTime = function(date) {
+        return moment(date).format('HH:mm:ss');
+    }
+
     return my;
 });

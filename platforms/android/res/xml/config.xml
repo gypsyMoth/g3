@@ -29,6 +29,7 @@
     </feature>
     <name>G3</name>
     <description>
+        Version 0.0.2
         Phonegap implementation of the STS Trapper Gadget
     </description>
     <author email="imf@vt.edu" href="http://gmsts.org">

@@ -199,6 +199,7 @@ define (['jquery',
                     var properties = line.split(",");
                     var t = new Transaction({
                         date: properties[8],
+                        time: properties[9],
                         easting: properties[5],
                         northing: properties[6],
                         codedString: properties[12]
