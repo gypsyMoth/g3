@@ -26,31 +26,36 @@ define(['jquery',
 
         this.progress = ko.observable('0%');
 
-        this.downloadFile = function(){
-            var fileExists = false; /*DB.initialize().then(function(){
-                DB.root.getFile(DB.activityLog, {})
-            }); //, function(){return true;}, function(){return false;});
-            alert (fileExists);*/
-            if (fileExists) {
-                alert("Please upload transaction log prior to downloading a new sites file.")
-            } else {
-                this.showProgress(true);
+        this.download = function() {
+            this.showProgress(true);
 
-                var fileTransfer = new FileTransfer();
-                fileTransfer.onprogress = _.bind(function(pe){
-                    var percent = Math.round(pe.loaded/pe.total*100)
-                    console.log(percent + "%");
-                    this.progress(percent + "%");
-                }, this);
+            var fileTransfer = new FileTransfer();
+            fileTransfer.onprogress = _.bind(function(pe){
+                var percent = Math.round(pe.loaded/pe.total*100);
+                console.log(percent + "%");
+                this.progress(percent + "%");
+            }, this);
 
-                DB.downloadSites(fileTransfer, this.selectedState(), this.selectedBidUnit()).then(function(data){
-                    DB.getSitesFiles().then(_.bind(function(sitesFiles) {
-                        Controller.gadget.sitesFiles(sitesFiles);
-                    }, this));
-                    alert("Download Complete!");
-                    Controller.gadget.changeView('loadSites');
-                }, this);
-            };
+            DB.downloadSites(fileTransfer, this.selectedState(), this.selectedBidUnit()).then(function(data){
+                DB.getSitesFiles().then(_.bind(function(sitesFiles) {
+                    Controller.gadget.sitesFiles(sitesFiles);
+                }, this));
+                alert("Download Complete!");
+                Controller.gadget.changeView('loadSites');
+            }, this);
+        };
+
+        this.requestDownload = function(){
+            //var self = this;
+            DB.initialize().then(_.bind(function(){
+                DB.root.getFile(DB.activityLog, {create: false},
+                function(){
+                    alert("Please upload transaction log prior to downloading a new sites file.")
+                },
+                _.bind(function(){
+                    this.download();
+                },this));
+            },this));
         };
 
     };
