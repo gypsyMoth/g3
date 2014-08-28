@@ -1,19 +1,22 @@
-/* Created by Ian on 1/24/14.*/
-$(describe("Caution View", function() {
+define(["jquery",
+    "src/models/CurrentPosition",
+    "src/views/Caution"],
+    function($, CurrentPosition, CautionView) {'use strict';
 
-    var view;
+    $(describe("Caution View", function() {
 
-    beforeEach(function() {
-        loadFixtures('caution.html');
-        $('body').append();
-        view = new app.views.Caution({model: new app.models.CurrentPosition(), template: _.template($('#caution-template').html())});
-    });
+        var view;
 
-    it("Can be instantiated", function() {
-        expect(view).toBeDefined();
-    });
+        beforeEach(function() {
+            view = new CautionView({model: new CurrentPosition()});
+        });
 
-    it("Has a model", function() {
-        expect(view.model).toBeDefined();
-    });
-}));
+        it("Can be instantiated", function() {
+            expect(view).toBeDefined();
+        });
+
+        it("Has a model", function() {
+            expect(view.model).toBeDefined();
+        });
+    }));
+});

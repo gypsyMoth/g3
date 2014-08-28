@@ -1,87 +1,85 @@
-var app = {
-    views: {},
-    models: {},
-    router: {},
-    CoordinateConverter: {},
-    NearestNeighbor: {},
-    db: {},
-    encoder: {},
-    DateFormatter: {},
-    SitesList: [],
-    Here: {},
-    isInitialized: false,
+define(['jquery',
+    'underscore',
+    'backbone',
+    'src/Router',
+    'src/util/Geolocation',
+    'src/util/DB',
+    'src/util/Controller',
+    'src/models/Splash',
+    'src/views/Splash'
+    ], function($, _, Backbone, Router, Geolocation, DB, Controller, Splash, SplashView) { 'use strict';
 
-    operationTypes: {
-        ERROR: 'ERROR',
-        UNADDRESSED: 'UNADDRESSED',
-        PLACED: 'PLACED',
-        OMITTED: 'OMITTED',
-        MIDSEASON: 'MIDSEASON',
-        FINAL: 'FINAL'
-    },
+     var my = {};
+    _.extend(my, Backbone.Events);
 
-    start: function() {},
-    onDeviceReady: function() {},
+    my.isInitialized = false;
 
-    rpad: function (string, width, padding) {
-        return (width <= string.length) ? string : this.rpad(string + padding, width, padding)
-    },
-
-    lpad: function (string, width, padding) {
-        return (width <= string.length) ? string : this.lpad(padding + string, width, padding)
-    }
-};
-
-$(document).on("ready", function () {
-    'use strict';
-
-    app.pageRouter = new app.Router();
-    Backbone.history.start();
-
-    app.start = function() {
-        app.watchId = app.watchId || navigator.geolocation.watchPosition(app.onPositionUpdate,
-            function(error) {
-                console.log(error.message);
-            },
-            {enableHighAccuracy:true, timeout:3000, maximumAge:0 }
-        );
+    my.initialize = function () {
+        document.addEventListener('deviceready', _.bind(this.onDeviceReady, this), false);
     };
 
-    app.onPositionUpdate = function (position) {
-        app.Startup.set('gotSignal', true); //Tell the splash screen we're good now
-        var p = app.CoordinateConverter.datumShift({ Lon:position.coords.longitude, Lat:position.coords.latitude});
-        var utm = app.CoordinateConverter.project(p);
-        var latLon = {
-            Latitude: position.coords.latitude,
-            Longitude: position.coords.longitude,
-            Accuracy: Math.round(position.coords.accuracy)
-        };
-        var nearest = app.NearestNeighbor.Nearest(utm, app.SitesList);
-        app.Here.set({currentLatLon: latLon, currentUtm: utm, relativePosition: nearest.relativePosition, site: nearest.site});
-    };
+    my.onDeviceReady = function () {
+        Controller.router = new Router();
+        Backbone.history.start();
 
-    app.stop = function() {
-        if (app.watchId !== null) {
-            navigator.geolocation.clearWatch(app.watchId);
-            app.watchId = null;
-        }
-    };
-
-    app.onDeviceReady = function() {
-        console.log("G3 Device Ready!");
-
-        if (app.isInitialized) {
-            app.pageRouter.navigate('home', true);
+        if (this.isInitialized) {
+            Controller.router.navigate('home', {trigger: true, replace: true});
         } else {
-            app.Startup = new app.models.Splash();
-            app.Here = new app.models.CurrentPosition();
-            app.pageRouter.navigate('splash', true);
+            this.showSplash();
         }
     };
 
-    app.fail = function(error) {
+    my.showSplash = function () {
+        this.Startup = new Splash();
+        Controller.router.loadView(new SplashView({model: this.Startup}));
+        this.Startup.set('message', 'Initializing filesystem...');
+        DB.initialize().then(_.bind(this.initSites, this));
+    };
+
+    my.initSites = function() {
+        this.Startup.set('message', 'Loading sites from file...');
+        DB.getSitesFiles().then(_.bind(function(sitesFiles) {
+            if (sitesFiles.length > 0) {
+                _.bind(loadSites, this, (sitesFiles.first().get('fileEntry')))();
+            } else {
+                exitApplication("No sites files found; please load at least one set of sites.");
+            }
+        }, this));
+    };
+
+    var loadSites = function(sitesFile) {
+        DB.loadSites(sitesFile).then(_.bind(function (data) {
+            Geolocation.SitesList = data;
+            _.bind(this.initializeGps, this)();
+        }, this));
+    };
+
+    var exitApplication = function(message) {
+        alert(message);
+        if (navigator.app) {
+            navigator.app.exitApp();
+        } else if (navigator.device) {
+            navigator.device.exitApp();
+        }
+    };
+
+    my.initializeGps = function() {
+        this.Startup.set('message', 'Acquiring Satellites');
+        Geolocation.start();
+        this.listenTo(Geolocation.currentLatLon, 'change', this.gotGpsSignal);
+        if (Geolocation.gotSignal) {
+            this.gotGpsSignal();
+        }
+    };
+
+     my.gotGpsSignal = function() {
+         this.stopListening(Geolocation.currentLatLon);
+         Controller.router.navigate('home', {trigger: true, replace: true});
+     };
+
+    my.fail = function (error) {
         console.log('G3 error: ' + error.message);
     };
 
-    document.addEventListener('deviceready', app.onDeviceReady, false);
+    return my;
 });

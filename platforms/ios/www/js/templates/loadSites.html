@@ -1,0 +1,12 @@
+<div id="loadSitesHeader" class="formHeader">
+    <select id="selectSitesFile">
+        <% _.each(sitesFiles, function(sitesFile) { %>
+        <option><%= sitesFile.get('fileEntry').name %></option>
+        <% }); %>
+    </select>
+</div>
+
+<div id="loadSitesFooter" class="formFooter">
+    <input type="button" id="btnLoadSitesOk" class="gadgetButton fastButton" value="Ok">
+    <input type="button" id="btnLoadSitesCancel" class="cancelButton fastButton" value="Cancel">
+</div>
