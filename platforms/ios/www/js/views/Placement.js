@@ -1,15 +1,18 @@
-/*Created by Ian on 1/18/14.*/
-(function () {
-    'use strict';
+define(['underscore',
+    'backbone',
+    'src/util/Date',
+    'src/util/Controller',
+    'text!src/templates/placement.html'
+], function(_, Backbone, DateFormatter, Controller, placementTemplate) { 'use strict';
 
-    app.views.Placement = Backbone.View.extend({
+    var PlacementView = Backbone.View.extend({
 
         tagName: "div",
 
         className: "view",
 
         initialize: function(options) {
-            this.template = options.template;
+            this.template = _.template(placementTemplate);
             this.setOperationData();
         },
 
@@ -22,24 +25,27 @@
 
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
+            if (this.model.get('selectedSite').get('site').site_id > 8999) {
+                this.$el.find('#btnPlacementOmit').prop('disabled', true);
+            }
             return this;
         },
 
         onOkClicked: function() {
-            var site = this.model.get("relativePosition");
-            if (site.DistanceOutside > 0) {
-                app.pageRouter.navigate('caution', {trigger: true, replace: true});
+            var relativePosition = this.model.get('selectedSite').get('relativePosition');
+            if (relativePosition.get('distanceOutside') > 0) {
+                Controller.router.navigate('caution', {trigger: true, replace: true});
             } else {
-                app.pageRouter.navigate('confirm', {trigger: true, replace: true});
+                Controller.router.navigate('confirm', {trigger: true, replace: true});
             }
         },
 
         onOmitClicked: function() {
-            alert("Omit is not implemented");
+            Controller.router.navigate('omit', {trigger: true, replace: true});
         },
 
         onCancelClicked: function() {
-            app.pageRouter.navigate('home', {trigger: true, replace: true});
+            Controller.router.navigate('home', {trigger: true, replace: true});
         },
 
         onTraptypeChanged: function(e) {
@@ -51,15 +57,16 @@
         setOperationData: function() {
             var op = this.model.get('operation');
             var utm = this.model.get('currentUtm');
-            var site = this.model.get('site');
-            var latlon = this.model.get('currentLatLon');
+            var site = this.model.get('selectedSite').get('site');
+            var accuracy = this.model.get('accuracy');
             op.zone = utm.Zone;
             op.easting = utm.Easting;
             op.northing = utm.Northing;
-            op.accuracy = latlon.Accuracy;
+            op.accuracy = accuracy;
             op.traptype = site.trap_type;
-            op.date = app.DateFormatter.getSitesFormatDate();
+            op.date = Date.now();
         }
-
     });
-})();
+
+    return PlacementView;
+});

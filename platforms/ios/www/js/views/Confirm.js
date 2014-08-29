@@ -1,17 +1,20 @@
-/**
- * Created by Ian on 1/20/14.
- */
-(function () {
+define(['underscore', 
+    'backbone',
+    'src/util/DB',
+    'src/util/Geolocation',
+    'src/util/Controller',
+    'text!src/templates/confirm.html'
+], function(_, Backbone, DB, Geolocation, Controller, confirmTemplate) {
     'use strict';
 
-    app.views.Confirm = Backbone.View.extend({
+    var Confirm = Backbone.View.extend({
 
         tagName: "div",
 
         className: "view",
 
         initialize: function(options) {
-            this.template = options.template;
+            this.template = _.template(confirmTemplate);
         },
 
         events: {
@@ -25,16 +28,30 @@
         },
 
         onOkClicked: function() {
-            this.model.saveSites();
-            app.db.logOperation(this.model.codedString()).then( function() {
-                app.db.saveSites(app.SitesList).then( function() {
-                    app.pageRouter.navigate('home', {trigger: true, replace: true});
+            var self, site;
+            self = this;
+
+            // Fix this for inspections...
+            site = self.model.get('selectedSite').get('site');
+            if (site.site_id > 8999 && !Geolocation.getSiteById(site.quad, site.site_id)){
+                Geolocation.addRandomSite(site);
+            }
+            self.model.saveSites();
+            DB.initialize().then(function() {
+                DB.logOperation(self.model.codedString()).then( function() {
+                    DB.saveSites(Geolocation.SitesList).then( function() {
+                        self.model.clearOperation();
+                        Controller.router.navigate('home', {trigger: true, replace: true});
+                    });
                 });
             });
+            self.model.set('manualLock', false);
         },
 
         onCancelClicked: function() {
-            app.pageRouter.navigate('home', {trigger: true, replace: true});
+            Controller.router.navigate('home', {trigger: true, replace: true});
         }
     });
-})();
+
+    return Confirm;
+});

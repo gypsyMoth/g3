@@ -1,0 +1,3 @@
+# view AndroidManifest.xml #generated:6
+-keep class com.phonegap.g3.G3 { <init>(...); }
+

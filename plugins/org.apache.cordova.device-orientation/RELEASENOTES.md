@@ -49,3 +49,20 @@
 * [ubuntu] add missing files
 * Add support for Tizen.
 * FFOS info added
+
+### 0.3.6 (Apr 17, 2014)
+* CB-6381: [WP8] unexpected error object
+* CB-6422: [windows8] use cordova/exec/proxy
+* CB-6460: Update license headers
+* CB-6465: Add license headers to Tizen code
+* Add NOTICE file
+
+### 0.3.7 (Jun 05, 2014)
+* CB-6799 Add license
+* windows8. makes getHeading callback spec compliant
+* CB-6491 add CONTRIBUTING.md
+
+### 0.3.8 (Aug 06, 2014)
+* **FFOS** update compass.js
+* CB-7187 ios: Add explicit dependency on CoreLocation.framework
+* CB-7187 Delete unused #import of CDVShared.h

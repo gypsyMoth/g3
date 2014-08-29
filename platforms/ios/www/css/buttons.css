@@ -1,4 +1,9 @@
-﻿span.message {
+﻿.fastButton, a {
+    -ms-touch-action: none; // Deprecated as of IE 11, Microsoft recommends the the standard below
+    touch-action: none; // webkit
+}
+
+span.message {
     font-size: 2em;
     font-weight: bold;
 }

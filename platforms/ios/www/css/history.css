@@ -1,0 +1,21 @@
+body {
+}
+
+.stripedTable tbody tr:nth-child(odd) {
+        background-color: #9CCB3B;
+}
+
+.historyHeader {
+    background-color: transparent;
+}
+
+#historyTable {
+    font-size: 1.5em;
+    background-color: transparent;
+    text-align: left;
+}
+
+#historyTable tfoot {
+    text-align: center;
+}
+

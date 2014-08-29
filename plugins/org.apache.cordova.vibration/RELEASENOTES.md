@@ -54,3 +54,21 @@
 ### 0.3.7 (Feb 05, 2014)
 * Add support for Tizen.
 * CB-3206 - Supported platforms updated
+
+### 0.3.8 (Apr 17, 2014)
+* CB-6465: Add license headers to Tizen code
+* CB-6460: Update license headers
+* Add NOTICE file
+
+### 0.3.9 (Jun 05, 2014)
+* updated notice file
+* Github close #11
+* Extended vibrateWithPattern to allow for pattern repetition, implemented a complementary cancelVibration function and adapted documentation.
+* Implemented vibrateWithPattern (for android) and adapted documentation.
+* CB-6811 Add license to CONTRIBUTING.md
+* CB-6491 add CONTRIBUTING.md
+
+### 0.3.10 (Aug 06, 2014)
+* ubuntu: Implemented vibrateWithPattern/cancelVibration
+* **FFOS** update VibrationProxy.js
+* CB-6127 Updated translations for docs

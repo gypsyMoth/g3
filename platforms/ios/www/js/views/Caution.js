@@ -1,15 +1,17 @@
-/* Created by Ian on 1/20/14.*/
-(function () {
-    'use strict';
+define(['underscore',
+    'backbone',
+    'src/util/Controller',
+    'text!src/templates/caution.html'
+], function(_, Backbone, Controller, cautionTemplate) { 'use strict';
 
-    app.views.Caution = Backbone.View.extend({
+    var Caution = Backbone.View.extend({
 
         tagName: "div",
 
         className: "view",
 
         initialize: function(options) {
-            this.template = options.template;
+            this.template = _.template(cautionTemplate);
         },
 
         events: {
@@ -23,11 +25,13 @@
         },
 
         onOkClicked: function() {
-            app.pageRouter.navigate('confirm', {trigger: true, replace: true});
+            Controller.router.navigate('confirm', {trigger: true, replace: true});
         },
 
         onCancelClicked: function() {
-            app.pageRouter.navigate('home', {trigger: true, replace: true});
+            Controller.router.navigate('home', {trigger: true, replace: true});
         }
     });
-})();
+
+    return Caution;
+});

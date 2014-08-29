@@ -1,41 +1,129 @@
-/*Created by Ian on 1/18/14.*/
-app.Router = Backbone.Router.extend({
-    routes : {
-        "splash" : "splash",
-        "home" : "home",
-        "extras" : "extras",
-        "placement" : "placement",
-        "caution" : "caution",
-        "confirm" : "confirm"
-    },
+define(['jquery',
+    'underscore',
+    'backbone',
+    'src/util/Geolocation',
+    'src/util/NearestNeighbor',
+    'src/util/DB',
+    'src/models/FileSystem',
+    'src/models/Splash',
+    'src/collections/Transactions',
+    'src/collections/SitesFileCollection',
+    'src/views/Splash',
+    'src/views/Home',
+    'src/views/Extras',
+    'src/views/Placement',
+    'src/views/Omit',
+    'src/views/Inspection',
+    'src/views/Caution',
+    'src/views/Confirm',
+	'src/views/History',
+    'src/views/LoadSites',
+    'src/views/ManualLock',
+    'src/views/Random',
+    'src/views/QC'
+], function($, _, Backbone,
+            Geolocation,
+            NearestNeighbor,
+            DB,
+            Filesystem,
+            Splash,
+            Transactions,
+            SitesFileCollection,
+            SplashView,
+            HomeView,
+            ExtrasView,
+            PlacementView,
+            OmitView,
+            InspectionView,
+            CautionView,
+            ConfirmView,
+            HistoryView,
+            LoadSitesView,
+            ManualLockView,
+            RandomView,
+            QCInspectionView) { 'use strict';
 
-    splash: function() {
-        this.loadView(new app.views.Splash({model: app.Startup, template: _.template($('#splash-template').html())}));
-    },
+    var Router = Backbone.Router.extend({
+        routes : {
+            "splash" : "splash",
+            "home" : "home",
+            "extras" : "extras",
+            "placement" : "placement",
+            "omit" : "omit",
+            "inspection" : "inspection",
+            "caution" : "caution",
+            "confirm" : "confirm",
+			"history" : "history",
+            "loadSites" : "loadSites",
+            "manualLock" : "manualLock",
+            "random" : "random",
+            "qcInspection": "qcInspection"
+        },
 
-    home : function() {
-        this.loadView(new app.views.Home({model: app.Here, template: _.template($('#home-template').html())}));
-    },
+        splash: function() {
+            this.loadView(new SplashView({model: new Splash()}));
+        },
 
-    extras: function() {
-        this.loadView(new app.views.Extras({model: new app.models.Filesystem, template: _.template($('#extras-template').html())}));
-    },
+        extras: function() {
+            this.loadView(new ExtrasView({model: Geolocation.Here}));
+        },
 
-    placement : function() {
-        this.loadView(new app.views.Placement({model: app.Here, template: _.template($('#placement-template').html())}));
-    },
+        random: function() {
+            this.loadView(new RandomView({model: Geolocation.Here}));
+        },
 
-    caution: function() {
-        this.loadView(new app.views.Caution({model: app.Here, template: _.template($('#caution-template').html())}));
-    },
+        home : function() {
+            this.loadView(new HomeView({model: Geolocation.Here}));
+        },
 
-    confirm: function() {
-        this.loadView(new app.views.Confirm({model: app.Here, template: _.template($('#confirm-template').html())}));
-    },
+        placement : function() {
+            this.loadView(new PlacementView({model: Geolocation.Here}));
+        },
 
-    loadView : function(view) {
-        this.view && this.view.remove();
-        this.view = view;
-        $("#content").append(this.view.render().el);
-    }
+        omit: function() {
+            this.loadView(new OmitView({model: Geolocation.Here}));
+        },
+
+        inspection: function() {
+            this.loadView(new InspectionView({model: Geolocation.Here}));
+        },
+
+        qcInspection: function() {
+            this.loadView(new QCInspectionView({model: Geolocation.Here}));
+        },
+
+        caution: function() {
+            this.loadView(new CautionView({model: Geolocation.Here}));
+        },
+
+        confirm: function() {
+            this.loadView(new ConfirmView({model: Geolocation.Here}));
+        },
+
+        manualLock: function() {
+            this.loadView(new ManualLockView({model: Geolocation.Here}));
+        },
+		
+		history: function() {
+            DB.getTransactions().then(_.bind(function(transactions) {
+                this.loadView(new HistoryView({collection: transactions}));
+            }, this));
+        },
+
+        loadSites: function() {
+            DB.getSitesFiles().then(_.bind(function(sitesFiles) {
+                this.loadView(new LoadSitesView({collection: sitesFiles}));
+            }, this));
+        },
+
+        loadView : function(view) {
+            if (this.view) {
+                this.view.close();
+            }
+            this.view = view;
+            $("#content").append(this.view.render().el);
+        }
+    });
+
+    return Router;
 });
