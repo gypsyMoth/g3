@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EAC99735-70AF-461C-A168-C94D2B46AE3E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>G3</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>385766FF-F700-4D6B-81DC-5DBB42E9E88A</key>
+		<string>https://github.com/gypsymoth/g3</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>platforms/ios/G3.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>385766FF-F700-4D6B-81DC-5DBB42E9E88A</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/gypsymoth/g3</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>385766FF-F700-4D6B-81DC-5DBB42E9E88A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>385766FF-F700-4D6B-81DC-5DBB42E9E88A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>g3_debug</string>
+		</dict>
+	</array>
+</dict>
+</plist>
