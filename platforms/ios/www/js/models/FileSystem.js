@@ -1,10 +1,6 @@
-/**
- * Created by Ian on 1/23/14.
- */
-(function () {
-    'use strict';
+define(['underscore', 'backbone'], function(_, Backbone) { 'use strict';
 
-    app.models.Filesystem = Backbone.Model.extend({
+    var FilesystemModel = Backbone.Model.extend({
         defaults: {
             canDownload: false,
             fileCount: ''
@@ -13,6 +9,7 @@
         initialize: function(options) {
 
         }
-
     });
-})();
+
+    return FilesystemModel;
+});

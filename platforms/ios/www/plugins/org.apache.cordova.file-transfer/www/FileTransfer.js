@@ -1,4 +1,4 @@
-cordova.define("org.apache.cordova.file-transfer.FileTransfer", function(require, exports, module) {/*
+cordova.define("org.apache.cordova.file-transfer.FileTransfer", function(require, exports, module) { /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -125,7 +125,7 @@ FileTransfer.prototype.upload = function(filePath, server, successCallback, erro
     }
 
     var fail = errorCallback && function(e) {
-        var error = new FileTransferError(e.code, e.source, e.target, e.http_status, e.body);
+        var error = new FileTransferError(e.code, e.source, e.target, e.http_status, e.body, e.exception);
         errorCallback(error);
     };
 
@@ -184,13 +184,14 @@ FileTransfer.prototype.download = function(source, target, successCallback, erro
             entry.isFile = result.isFile;
             entry.name = result.name;
             entry.fullPath = result.fullPath;
-            entry.filesystem = new FileSystem(result.filesystem == window.PERSISTENT ? 'persistent' : 'temporary');
+            entry.filesystem = new FileSystem(result.filesystemName || (result.filesystem == window.PERSISTENT ? 'persistent' : 'temporary'));
+            entry.nativeURL = result.nativeURL;
             successCallback(entry);
         }
     };
 
     var fail = errorCallback && function(e) {
-        var error = new FileTransferError(e.code, e.source, e.target, e.http_status, e.body);
+        var error = new FileTransferError(e.code, e.source, e.target, e.http_status, e.body, e.exception);
         errorCallback(error);
     };
 
@@ -206,4 +207,5 @@ FileTransfer.prototype.abort = function() {
 };
 
 module.exports = FileTransfer;
+
 });

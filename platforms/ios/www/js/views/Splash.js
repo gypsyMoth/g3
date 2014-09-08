@@ -1,30 +1,28 @@
-/* Created by Ian on 1/20/14.*/
-(function () {
-    'use strict';
+define(['underscore',
+    'backbone',
+    'text!src/templates/splash.html'
+], function(_, Backbone, splashTemplate) { 'use strict';
 
-    app.views.Splash = Backbone.View.extend({
+    var SplashView = Backbone.View.extend({
 
         tagName: "div",
 
         className: "view",
 
         initialize: function(options) {
-            this.template = options.template;
+            this.template = _.template(splashTemplate);
             this.listenTo(this.model, 'change:message', this.render);
-            this.listenTo(this.model, 'change:gotSignal', this.gotGpsSignal);
         },
 
-        events: {
-
+        onClose: function(){
+            this.model.unbind("change:message", this.render);
         },
 
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
             return this;
-        },
-
-        gotGpsSignal: function() {
-            app.pageRouter.navigate('home', {trigger: true, replace: true});
         }
     });
-})();
+
+    return SplashView;
+});

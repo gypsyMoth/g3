@@ -2,16 +2,17 @@
 <widget id="com.phonegap.g3" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 
     <name>G3</name>
+
     <description>
+        Version 0.0.2
         Phonegap implementation of the STS Trapper Gadget
     </description>
+
     <author email="imf@vt.edu" href="http://gmsts.org">
         Ian Firkin
         Slow the Spread of the Gypsy Moth
     </author>
-<!--     <feature name="http://api.phonegap.com/1.0/device" />
-    <feature name="http://api.phonegap.com/1.0/file"/>
-    <feature name="http://api.phonegap.com/1.0/geolocation"/> -->
+
     <preference name="phonegap-version" value="3.3.0" /> 
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
@@ -28,6 +29,10 @@
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
+
+    <feature name="Storage">
+        <param name="android-package" value="org.apache.cordova.Storage" />
+    </feature>
 
     <!-- Core plugins -->
 <!--     <gap:plugin name="org.apache.cordova.battery-status" />
@@ -46,25 +51,23 @@
     <gap:plugin name="org.apache.cordova.inappbrowser" />
     <gap:plugin name="org.apache.cordova.media" />
     <gap:plugin name="org.apache.cordova.network-information" />
-    <gap:plugin name="org.apache.cordova.splashscreen" />
-    <gap:plugin name="org.apache.cordova.vibration" /> -->
-
-<!--     <gap:plugin name="Compass" value="org.apache.cordova.core.CompassListener" />
-    <gap:plugin name="Geolocation" value="org.apache.cordova.core.GeoBroker" />
-    <gap:plugin name="File" value="org.apache.cordova.file.FileUtils" />
-    <gap:plugin name="FileTransfer" value="org.apache.cordova.core.FileTransfer" /> -->
+    <gap:plugin name="org.apache.cordova.splashscreen" />-->
+    <gap:plugin name="org.apache.cordova.vibration" />
 
     <icon src="icon.png" />
     <icon gap:density="ldpi" gap:platform="android" src="res/icon/android/icon-36-ldpi.png" />
     <icon gap:density="mdpi" gap:platform="android" src="res/icon/android/icon-48-mdpi.png" />
     <icon gap:density="hdpi" gap:platform="android" src="res/icon/android/icon-72-hdpi.png" />
     <icon gap:density="xhdpi" gap:platform="android" src="res/icon/android/icon-96-xhdpi.png" />
+
     <icon gap:platform="blackberry" src="res/icon/blackberry/icon-80.png" />
     <icon gap:platform="blackberry" gap:state="hover" src="res/icon/blackberry/icon-80.png" />
+
     <icon gap:platform="ios" height="57" src="res/icon/ios/icon-57.png" width="57" />
     <icon gap:platform="ios" height="72" src="res/icon/ios/icon-72.png" width="72" />
     <icon gap:platform="ios" height="114" src="res/icon/ios/icon-57-2x.png" width="114" />
     <icon gap:platform="ios" height="144" src="res/icon/ios/icon-72-2x.png" width="144" />
+
     <icon gap:platform="webos" src="res/icon/webos/icon-64.png" />
     <icon gap:platform="winphone" src="res/icon/windows-phone/icon-48.png" />
     <icon gap:platform="winphone" gap:role="background" src="res/icon/windows-phone/icon-173.png" />
