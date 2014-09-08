@@ -46,18 +46,25 @@ define(['jquery',
         };
 
         this.requestDownload = function(){
-            //var self = this;
-            DB.initialize().then(_.bind(function(){
-                DB.root.getFile(DB.activityLog, {create: false},
-                function(){
-                    alert("Please upload transaction log prior to downloading a new sites file.")
-                },
-                _.bind(function(){
-                    this.download();
-                },this));
-            },this));
+            var self = this;
+            var filename = this.selectedState() + "_" + this.selectedBidUnit() + ".json"
+            DB.initialize().then(function(){
+                DB.fileExists(DB.activityLog).then(function(exists){
+                    if (exists){
+                        DB.fileExists(filename).then(function(exists){
+                            if (exists) {
+                                 alert("Please upload transaction log prior to downloading a new sites file.");
+                             } else {
+                                 self.download();
+                             }
+                        });
+                    }
+                    else {
+                        self.download();
+                    }
+                });
+            });
         };
-
     };
 
     return DownloadView;

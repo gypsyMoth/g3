@@ -119,6 +119,15 @@ define (['jquery',
             return deferred.promise();
         };
 
+        my.fileExists = function(filename){
+            var deferred = new $.Deferred();
+            my.root.getFile(filename, {create: false},
+                function(){deferred.resolve(true)},
+                function(){deferred.resolve(false)}
+            );
+            return deferred.promise();
+        };
+
         my.downloadSites = function (fileTransfer, state, bidunit){
             var deferred = new $.Deferred();
             /*var fileTransfer = new FileTransfer();

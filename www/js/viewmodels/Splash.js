@@ -26,8 +26,12 @@ define(['jquery',
             this.message('Loading Sites From File...');
             DB.getSitesFiles().then(_.bind(function(sitesFiles) {
                 Controller.gadget.sitesFiles(sitesFiles);
-                if (sitesFiles.length > 0) {
+                if (sitesFiles.length === 1) {
                     _.bind(loadSites, this, (sitesFiles[0].fileEntry))(); //.first().get('fileEntry')))();
+                } else if (sitesFiles.length > 1) {
+                    Controller.gadget.changeView('loadSites');
+                } else if (sitesFiles.length === 0) {
+                    Controller.gadget.changeView('download');
                 } else {
                     exitApplication("No sites files found; please load at least one set of sites.");
                 }
