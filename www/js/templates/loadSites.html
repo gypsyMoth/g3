@@ -1,12 +1,13 @@
-<div id="loadSitesHeader" class="formHeader">
-    <select id="selectSitesFile">
-        <% _.each(sitesFiles, function(sitesFile) { %>
-        <option><%= sitesFile.get('fileEntry').name %></option>
-        <% }); %>
-    </select>
-</div>
+<div id="loadSitesDiv" data-bind="with: loadSites">
+    <div id="loadSitesHeader" class="formHeader">
+        <select id="selectSitesFile" data-bind="options: optionsArray,
+                                                optionsText: 'label',
+                                                value: selectedFile">
+        </select>
+    </div>
 
-<div id="loadSitesFooter" class="formFooter">
-    <input type="button" id="btnLoadSitesOk" class="gadgetButton fastButton" value="Ok">
-    <input type="button" id="btnLoadSitesCancel" class="cancelButton fastButton" value="Cancel">
+    <div id="loadSitesFooter" class="formFooter">
+        <input type="button" id="btnLoadSitesOk" class="gadgetButton fastButton" value="Ok" data-bind="click: function(){this.loadFile();}">
+        <input type="button" id="btnLoadSitesCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    </div>
 </div>

@@ -1,8 +1,10 @@
-<div id="randomHeader" class="formHeader">
-    <span id="randomMessage" class="message">Place a Random Site?</span>
-</div>
+<div id="randomDiv" data-bind="with: random">
+    <div id="randomHeader" class="formHeader">
+        <span id="randomMessage" class="message">Place a Random Site?</span>
+    </div>
 
-<div id="randomFooter" class="formFooter">
-    <input type="button" id="btnRandomOk" class="gadgetButton fastButton" value="Ok">
-    <input type="button" id="btnRandomCancel" class="cancelButton fastButton" value="Cancel">
+    <div id="randomFooter" class="formFooter">
+        <input type="button" id="btnRandomOk" class="gadgetButton fastButton" value="Ok" data-bind="click: function(){this.startRandom()};">
+        <input type="button" id="btnRandomCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    </div>
 </div>

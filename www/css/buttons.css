@@ -6,6 +6,7 @@
 span.message {
     font-size: 2em;
     font-weight: bold;
+    text-align: center;
 }
 
 span.dataMessage {
@@ -64,9 +65,11 @@ select {
     font-weight:700;
     color:red;
     text-align:center;
+    font-size: 2em;
 }
 
 #cautionImage {
+    padding: 1em;
     margin: auto;
     text-align: center;
 }

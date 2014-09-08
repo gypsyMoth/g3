@@ -1,4 +1,4 @@
-define(['src/util/Decoder', 'src/models/Transaction'], function(Decoder, Transaction) {
+define(['src/util/Decoder'], function(Decoder) {
     describe("Decoder Module", function() {
 
         describe("Translates operations correctly from a string", function() {
@@ -51,22 +51,22 @@ define(['src/util/Decoder', 'src/models/Transaction'], function(Decoder, Transac
             var t;
 
             it("Reads a placement from a transaction model", function() {
-                t = new Transaction({codedString:'GLACE0001D', date:'Mar-06-2014', easting:'551087', northing:'4119824'});
+                t = {codedString:'GLACE0001D', date:'Mar-06-2014', easting:'551087', northing:'4119824'};
                 expect(Decoder.historyString(t)).toEqual('Mar-06-2014 GLACE 0001 551087E, 4119824N\ndelta trap placement');
             });
 
             it("Reads an inspection from a transaction model", function() {
-                t = new Transaction({codedString:'GLACE0001MG001', date:'Mar-06-2014', easting:'551087', northing:'4119824'});
+                t = {codedString:'GLACE0001MG001', date:'Mar-06-2014', easting:'551087', northing:'4119824'};
                 expect(Decoder.historyString(t)).toEqual('Mar-06-2014 GLACE 0001 551087E, 4119824N\nmid-season inspection of good trap with 001 moths');
             });
 
             it("Reads a QC inspection from a transaction model", function() {
-                t = new Transaction({codedString:'GLACE0001FD0FA', date:'Mar-06-2014', easting:'551087', northing:'4119824'});
+                t = {codedString:'GLACE0001FD0FA', date:'Mar-06-2014', easting:'551087', northing:'4119824'};
                 expect(Decoder.historyString(t)).toEqual('Mar-06-2014 GLACE 0001 551087E, 4119824N\nfailed final QC inspection of damaged trap: the trap is not assembled correctly');
             });
 
             it("Returns an error for bad coordinate", function(){
-                t = new Transaction({codedString:'GLACE0001FD0FA', date:'Mar-06-2014', easting:'551087E', northing:'4119824'});
+                t = {codedString:'GLACE0001FD0FA', date:'Mar-06-2014', easting:'551087E', northing:'4119824'};
                 expect(Decoder.historyString(t)).toEqual('Mar-06-2014 ***INVALID DATA*** Check trans_log.txt!');
             });
 

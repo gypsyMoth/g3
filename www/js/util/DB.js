@@ -1,10 +1,7 @@
 define (['jquery',
     'underscore',
-    'src/models/SitesFile',
-    'src/models/Transaction',
-    'src/collections/SitesFileCollection',
-    'src/collections/Transactions'],
-    function ($, _, SitesFile, Transaction, SitesFileCollection, Transactions) { 'use strict';
+    'src/models/SitesFile'],
+    function ($, _, SitesFile) { 'use strict';
         var my = {};
 
         var PERSISTENT;
@@ -62,9 +59,11 @@ define (['jquery',
             var directoryReader = my.root.createReader();
             directoryReader.readEntries(function(entries) {
                 _.each(my.filterSitesFiles(entries), function(fileEntry) {
-                    sitesFiles.push(new SitesFile({fileEntry: fileEntry}));
+                    var sitesFile = new SitesFile();
+                    sitesFile.fileEntry = fileEntry;
+                    sitesFiles.push(sitesFile);
                 });
-               deferred.resolve(new SitesFileCollection(sitesFiles));
+                deferred.resolve(sitesFiles);
             }, my.fail);
             return deferred.promise();
         };
@@ -197,18 +196,18 @@ define (['jquery',
                 dataLines.pop();
                 _.each(dataLines, function(line){
                     var properties = line.split(",");
-                    var t = new Transaction({
+                    var t = {
                         date: properties[8],
                         time: properties[9],
                         easting: properties[5],
                         northing: properties[6],
                         codedString: properties[12]
-                    });
+                    };
                     history.push(t);
                 });
-                deferred.resolve(new Transactions(history));
+                deferred.resolve(history);
             }).fail(function(){
-                deferred.resolve(new Transactions());
+                deferred.resolve([]);
             });
             return deferred.promise();
         };

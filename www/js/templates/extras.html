@@ -1,8 +1,10 @@
-<div id="extrasFooter" class="formFooter">
-    <input type="button" id="btnExtrasHistory" class="gadgetButton fastButton" value="History">
-    <input type="button" id="btnExtrasManualLock" class="gadgetButton fastButton" value="Manual Lock">
-    <input type="button" id="btnExtrasLoadSites" class="gadgetButton fastButton" value="Trapping Area">
-    <input type="button" id="btnExtrasRandom" class="gadgetButton fastButton" value="Random Site">
-    <input type="button" id="btnExtrasQC" class="gadgetButton fastButton" value="QC">
-    <input type="button" id="btnExtrasCancel" class="cancelButton fastButton" value="Cancel">
+<div id="extrasDiv" data-bind="with: extras">
+    <div id="extrasFooter" class="formFooter">
+        <input type="button" id="btnExtrasHistory" class="gadgetButton fastButton" value="History" data-bind="click: function(){this.clickHistory()}">
+        <input type="button" id="btnExtrasManualLock" class="gadgetButton fastButton" value="Manual Lock" data-bind="click: function(){$root.changeView('manualLock');}">
+        <input type="button" id="btnExtrasLoadSites" class="gadgetButton fastButton" value="Trapping Area" data-bind="click: function(){$root.changeView('loadSites');}">
+        <input type="button" id="btnExtrasRandom" class="gadgetButton fastButton" value="Random Site" data-bind="click: function(){$root.changeView('random');}">
+        <input type="button" id="btnExtrasQC" class="gadgetButton fastButton" value="QC" data-bind="click: function(){this.clickQC();}">
+        <input type="button" id="btnExtrasCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    </div>
 </div>

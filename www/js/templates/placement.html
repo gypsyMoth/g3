@@ -1,14 +1,13 @@
-<div id="placementTop" class="formHeader">
-    <span class="message">Confirm placement of</span><br />
-    <select id="selectTraptype">
-        <option val="0" selected="selected"><%= selectedSite.get('site').trap_type%></option>
-        <option val="1"><%= selectedSite.get('site').trap_type === 'Delta' ? 'Milk Carton' : 'Delta'%></option>
-    </select>
-    <span class="message">at site <%=selectedSite.get('site').quad + ':' + selectedSite.get('site').site_id%></span><br />
-    <span class="message"><%= currentUtm.Easting + 'E ' + currentUtm.Northing + 'N' %></span>
-</div>
-<div id="placementBottom" class="formFooter">
-    <input type="button" id="btnPlacementOk" class="gadgetButton fastButton" value="Place Trap">
-    <input type="button" id="btnPlacementOmit" class="gadgetButton fastButton" value="Omit Site">
-    <input type="button" id="btnPlacementCancel" class="cancelButton fastButton" value="Cancel">
+<div id="placementDiv" data-bind="with: place">
+    <div id="placementTop" class="formHeader">
+        <span class="message">Confirm placement of</span><br />
+        <select id="selectTraptype" data-bind="options: trap_types, value: selectedTrap">
+         </select>
+        <span class="message" data-bind="html: message()"></span><br />
+    </div>
+    <div id="placementBottom" class="formFooter">
+        <input type="button" id="btnPlacementOk" class="gadgetButton fastButton" value="Place Trap" data-bind="click: function(){this.startPlacement()}">
+        <input type="button" id="btnPlacementOmit" class="gadgetButton fastButton" value="Omit Site" data-bind="enable: $root.selectedSite().site_id < 9000, click: function(){$root.changeView('omit')}">
+        <input type="button" id="btnPlacementCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    </div>
 </div>
