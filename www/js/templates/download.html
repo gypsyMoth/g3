@@ -3,8 +3,11 @@
 
         <span class="message">Select State</span><br>
         <select id="selectState" data-bind="options: states, value: selectedState"></select><br>
-        <span class="message">Select Bid Unit Number</span><br>
-        <select id="selectBidUnit" data-bind="options: bidUnits, value: selectedBidUnit"></select><br>
+        <span class="message">Select Bid Unit</span><br>
+        <select id="selectBidUnit" data-bind="options: bidUnits,
+                                              optionsText: 'bidunit',
+                                              value: selectedBidUnit">
+        </select><br>
         <div id="progressDiv" class="progress" data-bind="style: {width: progress()}, visible: showProgress"></div>
     </div>
 

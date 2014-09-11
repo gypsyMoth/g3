@@ -67,6 +67,8 @@ define(['jquery',
             Geolocation.findNearest(this.position().utm());
         }, this);
 
+        this.bidUnitList = ko.observableArray();
+
         this.nearestSites = ko.observableArray();
 
         this.operationalSite = ko.observable(new Site());
@@ -125,6 +127,14 @@ define(['jquery',
                     break;
                 case('download'):
                     this.download = new DownloadView();
+                    var list = this.bidUnitList;
+                    if (list().length <= 0) {
+                        var uri = encodeURI("http://yt.ento.vt.edu/SlowTheSpread/bidunits?format=json");
+                        $.get(uri).done(function(data){
+                            _.each(data, function(unit){list.push(unit);});
+                        });
+                    }
+                    console.log(JSON.stringify(this.bidUnitList()));
                     break;
             }
             this.currentView(name);

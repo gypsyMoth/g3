@@ -18,7 +18,14 @@ define(['jquery',
 
         this.selectedState = ko.observable();
 
-        this.bidUnits = _.range(99);
+        this.bidUnits = ko.computed(function(){
+            var state = this.selectedState();
+            var units = _.filter(Controller.gadget.bidUnitList(), function(unit) {
+                return unit.state === state;
+            });
+            console.log(units);
+            return units.length > 0 ? units : [{state:'', bidunit:'Loading Bid Units...'}];
+        }, this);
 
         this.selectedBidUnit = ko.observable();
 
@@ -36,7 +43,7 @@ define(['jquery',
                 this.progress(percent + "%");
             }, this);
 
-            DB.downloadSites(fileTransfer, this.selectedState(), this.selectedBidUnit()).then(function(data){
+            DB.downloadSites(fileTransfer, this.selectedState(), this.selectedBidUnit().bidunit).then(function(data){
                 DB.getSitesFiles().then(_.bind(function(sitesFiles) {
                     Controller.gadget.sitesFiles(sitesFiles);
                 }, this));
@@ -47,7 +54,7 @@ define(['jquery',
 
         this.requestDownload = function(){
             var self = this;
-            var filename = this.selectedState() + "_" + this.selectedBidUnit() + ".json"
+            var filename = this.selectedState() + "_" + this.selectedBidUnit().bidunit + ".json"
             DB.initialize().then(function(){
                 DB.fileExists(DB.activityLog).then(function(exists){
                     if (exists){
