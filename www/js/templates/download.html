@@ -1,18 +1,36 @@
 <div id="downloadDiv" data-bind="with: download">
     <div id="downloadHeader" class="formHeader">
-
-        <span class="message">Select State</span><br>
-        <select id="selectState" data-bind="options: states, value: selectedState"></select><br>
+        <span class="message">Download Sites File</span><br>
+        <table class="center">
+            <tr>
+                <th class="message">State: </th>
+                <td>
+                    <select id="selectState" data-bind="enable: ready(), options: states, value: selectedState"></select>
+                </td>
+            </tr>
+            <tr>
+                <th class="message">Bid Unit: </th>
+                <td>
+                    <select id="selectBidUnit" data-bind="options: bidUnits,
+                                              optionsText: 'bidunit',
+                                              value: selectedBidUnit,
+                                              enable: ready()">
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <!--<select id="selectState" data-bind="enable: ready(), options: states, value: selectedState"></select><br>
         <span class="message">Select Bid Unit</span><br>
         <select id="selectBidUnit" data-bind="options: bidUnits,
                                               optionsText: 'bidunit',
-                                              value: selectedBidUnit">
-        </select><br>
+                                              value: selectedBidUnit,
+                                              enable: ready()">
+        </select><br>-->
         <div id="progressDiv" class="progress" data-bind="style: {width: progress()}, visible: showProgress"></div>
     </div>
 
     <div id="downloadFooter" class="formFooter">
-        <input type="button" id="btnDownloadOk" class="gadgetButton fastButton" value="Ok" data-bind="click: function(){this.requestDownload()}">
+        <input type="button" id="btnDownloadOk" class="gadgetButton fastButton" value="Ok" data-bind="enable: ready(), click: function(){this.requestDownload()}">
         <input type="button" id="btnDownloadCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
     </div>
 </div>
