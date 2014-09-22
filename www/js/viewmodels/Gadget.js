@@ -20,7 +20,8 @@ define(['jquery',
     'src/viewmodels/Random',
     'src/viewmodels/History',
     'src/viewmodels/Inspection',
-    'src/viewmodels/QC'
+    'src/viewmodels/QC',
+    'src/viewmodels/Download'
 ], function($,
             _,
             ko,
@@ -43,7 +44,8 @@ define(['jquery',
             RandomView,
             HistoryView,
             InspectionView,
-            QCView) {
+            QCView,
+            DownloadView) {
 
     'use strict';
 
@@ -64,6 +66,8 @@ define(['jquery',
         this.sitesList.subscribe(function(){
             Geolocation.findNearest(this.position().utm());
         }, this);
+
+        this.bidUnitList = ko.observableArray();
 
         this.nearestSites = ko.observableArray();
 
@@ -120,6 +124,17 @@ define(['jquery',
                     this.qc = new QCView();
                     break;
                 case('history'):
+                    break;
+                case('download'):
+                    this.download = new DownloadView();
+                    var list = this.bidUnitList;
+                    if (list().length <= 0) {
+                        var uri = encodeURI("http://yt.ento.vt.edu/SlowTheSpread/bidunits?format=json");
+                        $.get(uri).done(function(data){
+                            _.each(data, function(unit){list.push(unit);});
+                        });
+                    }
+                    console.log(JSON.stringify(this.bidUnitList()));
                     break;
             }
             this.currentView(name);
