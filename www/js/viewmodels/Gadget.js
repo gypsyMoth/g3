@@ -21,7 +21,8 @@ define(['jquery',
     'src/viewmodels/History',
     'src/viewmodels/Inspection',
     'src/viewmodels/QC',
-    'src/viewmodels/Download'
+    'src/viewmodels/Download',
+    'src/viewmodels/Upload'
 ], function($,
             _,
             ko,
@@ -45,7 +46,8 @@ define(['jquery',
             HistoryView,
             InspectionView,
             QCView,
-            DownloadView) {
+            DownloadView,
+            UploadView) {
 
     'use strict';
 
@@ -135,6 +137,9 @@ define(['jquery',
                         });
                     }
                     console.log(JSON.stringify(this.bidUnitList()));
+                    break;
+                case('upload'):
+                    this.upload = new UploadView();
                     break;
             }
             this.currentView(name);

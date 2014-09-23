@@ -155,6 +155,36 @@ define (['jquery',
             return deferred.promise();
         };
 
+        my.uploadTransLog = function (fileTransfer, initials, loadDate){
+            var deferred = new $.Deferred();
+            var uploadedFile = initials + loadDate
+            var uri = encodeURI("http://yt.ento.vt.edu/stsweb_test/Upload/TrapData/" + uploadedFile);
+            var filePath = my.root.toURL() + "/" + my.activityLog;
+
+            var options = new FileUploadOptions();
+            options.fileName = uploadedFile;
+
+            function success(result){
+                console.log("Success!");
+                console.log(result.response);
+                deferred.resolve();
+            };
+
+            function fail(error){
+                console.log("Fail!");
+                if (error.code === 3) {
+                    alert("No network connection");
+                } else {
+                    console.log(error.code);
+                }
+                deferred.reject();
+            };
+
+            fileTransfer.upload(filePath, uri, success, fail, options);
+
+            return deferred.promise();
+        };
+
         my.saveSites = function(sitesList) {
             var deferred = new $.Deferred();
             var data = JSON.stringify(sitesList);
