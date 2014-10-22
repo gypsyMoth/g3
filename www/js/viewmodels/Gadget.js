@@ -84,6 +84,9 @@ define(['jquery',
         this.changeView = function(name){
             switch(name){
                 case('home'):
+                    this.home.timer = setInterval(_.bind(function(){
+                        this.home.now(Date.now());
+                    }, this), 1000);
                     this.operationalSite(new Site());
                     Geolocation.start();
                     break;

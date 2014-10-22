@@ -1,4 +1,5 @@
 define(['jquery',
+    'underscore',
     'knockout',
     'src/util/Controller',
     'src/util/Geolocation',
@@ -6,6 +7,7 @@ define(['jquery',
     'src/util/Date',
     'src/util/Encoder'
 ], function($,
+            _,
             ko,
             Controller,
             Geolocation,
@@ -22,12 +24,41 @@ define(['jquery',
             return Controller.gadget.position();
         });
 
+        this.found = ko.computed(function(){
+            return this.current().timestamp() !== undefined;
+        }, this);
+
         this.site = ko.computed(function(){
             return Controller.gadget.selectedSite();
         });
 
+        this.foundSite = ko.computed(function(){
+            return JSON.stringify(this.site()) !== '{}';
+        }, this);
+
+        this.gpsStatus = ko.observable(false);
+
+        this.now = ko.observable(Date.now());
+
+        this.gpsAge = ko.computed(function(){
+            var timestamp = this.current().timestamp() || 0;
+            var age = this.now() - timestamp;
+            return age <= 0 ? 0 : Math.floor(age/1000);
+        }, this);
+
+        this.signalCount = ko.computed(function(){
+            if (this.gpsAge() > 20) {
+                this.gpsStatus(false);
+                return '100%';
+            } else {
+                this.gpsStatus(true);
+                var counter =  (20 - this.gpsAge()) * 5;
+                return counter + '%'
+            }
+        }, this);
+
         this.location = ko.computed(function(){
-            return this.current().utm().Zone + ", " + this.current().utm().Easting + "E, " + this.current().utm().Northing + "N"
+            return this.current().utm().Zone + ", " + this.current().utm().Easting + "E, " + this.current().utm().Northing + "N";
         }, this);
 
         this.inspected = ko.computed(function(){
@@ -67,7 +98,7 @@ define(['jquery',
         }, this);
 
         this.image = ko.computed(function(){
-            var imagePath = 'img/'
+            var imagePath = 'img/';
             if (this.site().omit_reason) {
                 imagePath += 'omittedTree';
             } else {
@@ -79,15 +110,17 @@ define(['jquery',
         }, this);
 
         this.siteInfo = ko.computed(function(){
-            if (JSON.stringify(this.site()) === '{}') {
-                return "NO SITE";
-            } else {
+            if (this.foundSite()) {
                 return this.site().quad + ":"  + this.site().site_id;
+            } else {
+                return "NO SITE";
             }
         }, this);
 
         this.positionInfo = ko.computed(function(){
-            if (JSON.stringify(this.site()) === '{}') {
+            if (this.gpsStatus() === false) {
+                return "Acquiring Satellites..."
+            } else if (!this.foundSite()) {
                 return "No sites found in Zone " + this.current().utm().Zone + "!";
             } else {
                 return this.relPos().distance + " (\xB1" + this.current().accuracy() + ") meters " + this.relPos().bearing;
@@ -167,6 +200,12 @@ define(['jquery',
             }
             return msg;
         }, this);
+
+        this.goToView = function(view){
+            console.log("FOUND SITE: " + this.foundSite());
+            clearInterval(this.timer);
+            Controller.gadget.changeView(view);
+        };
 
     };
 
