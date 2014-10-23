@@ -5,7 +5,7 @@
         <input type="button" id="btnExtrasLoadSites" class="gadgetButton fastButton" value="Change Trapping Area" data-bind="click: function(){$root.changeView('loadSites');}">
         <input type="button" id="btnDownloadSites" class="gadgetButton fastButton" value="Download Sites File" data-bind="click: function(){$root.changeView('download');}">
         <input type="button" id="btnExtrasRandom" class="gadgetButton fastButton" value="Random Site" data-bind="click: function(){$root.changeView('random');}">
-        <input type="button" id="btnExtrasQC" class="gadgetButton fastButton" value="QC" data-bind="enable: foundSite(), click: function(){this.clickQC();}">
+        <input type="button" id="btnExtrasQC" class="gadgetButton fastButton" value="QC" data-bind="enable: foundSite, click: function(){this.clickQC();}">
         <input type="button" id="btnExtrasCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
     </div>
 </div>
