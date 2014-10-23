@@ -32,7 +32,6 @@ define(['jquery',
     };
 
     my.onPositionUpdate = function (position) {
-        //this.gotSignal = true;
         Gadget = Controller.gadget;
         if (Gadget.currentView() === 'splash'){
             Gadget.changeView('home');
@@ -40,6 +39,7 @@ define(['jquery',
         Gadget.position().latitude(position.coords.latitude);
         Gadget.position().longitude(position.coords.longitude);
         Gadget.position().accuracy(Math.round(position.coords.accuracy));
+        Gadget.position().timestamp(position.timestamp);
         if (!Gadget.manualLock()){
             this.findNearest(Gadget.position().utm());
         }

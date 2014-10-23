@@ -16,6 +16,10 @@ define(['jquery',
 
     var ExtrasView = function() {
 
+        this.foundSite = ko.computed(function(){
+            return JSON.stringify(Controller.gadget.selectedSite()) !== '{}';
+        });
+
         this.clickQC = function(){
             var site = Controller.gadget.selectedSite();
             if (site.xact === undefined || site.trap_type === 'Omit'){

@@ -27,7 +27,9 @@ define(['jquery',
                 var obj = {};
                 obj.site = sites[i];
                 obj.label = sites[i].quad + ":" + sites[i].site_id;
-                array.push(obj);
+                if (sites[i].quad !== undefined) {
+                    array.push(obj);
+                }
             }
             var disable = {site:{},label:'Disable Manual Lock'};
             array.push(disable);

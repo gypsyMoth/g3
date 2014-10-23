@@ -1,12 +1,15 @@
 <div id="homeDiv" class="view" data-bind="with: home">
     <div id="homeHeader" class="homeHeader">
         <div id="locationDiv" class="homeDiv">
-                    <span id="locationSpan" class="locationSpan" data-bind="text: location()"></span>
+            <span id="locationSpan" class="locationSpan" data-bind="text: location(), style:{color: gpsStatus() ? 'black' : 'red'}, visible: found()"></span><br>
+            <div id="counterDiv" class="signalDiv" data-bind="style: {backgroundColor: gpsStatus() ? '#9CCB3B' : 'transparent', width: signalCount()}"></div>
         </div>
+
     </div>
 
-    <div id="ActionDiv" class="actionDiv" data-bind="click: function(){$root.changeView(this.operation());}">
-        <img id="homeImage" data-bind="attr: {src: image()}"/>
+    <div id="ActionDiv" class="actionDiv" >
+        <!--<img id="homeImage" data-bind="click: function(){this.goToView(this.operation());}, attr: {src: image()}"/>-->
+        <input id="homeImage" type="image" data-bind="enable: foundSite, click: function(){this.goToView(this.operation());}, attr: {src: image()}"/>
     </div>
 
     <div id="homeFooter" class="homeFooter">
@@ -28,7 +31,7 @@
         </div>
 
         <div id="messageDiv" class="homeDiv">
-            <input type="button" id="btnHomeExtras" data-bind="click: function(){$root.changeView('extras');}">
+            <input type="button" id="btnHomeExtras" data-bind="click: function(){this.goToView('extras');}">
             <span id="messageSpan" data-bind="text: message()"></span>
         </div>
     </div>
