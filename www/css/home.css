@@ -30,6 +30,10 @@ div.homeDiv {
     margin:3% auto 3% auto;
 }
 
+#homeImage:focus {
+    outline: none;
+}
+
 .homeFooter {
     position:absolute;
     bottom:0;
@@ -38,7 +42,10 @@ div.homeDiv {
 }
 
 .signalDiv {
-    background-color: red;
+    margin: auto;
+    padding: 1%;
+    font-size: 1.5em;
+    float: left;
 }
 
 .signalSpan {
