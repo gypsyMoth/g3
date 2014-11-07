@@ -11,6 +11,8 @@ define (['jquery',
         my.filecount = 0;
         my.sitesFile = null;
         my.activityLog = "trans_log.txt";
+        my.urlPrefix = "http://testSkynet.ento.vt.edu/";
+        //my.urlPrefix = "http://yt.ento.vt.edu/";
 
         my.initialize = function() {
             return getFileSystem().then(getRootDirectory);
@@ -43,13 +45,86 @@ define (['jquery',
 
         var getRootDirectory = function() {
             var deferred = new $.Deferred();
-            //console.log(my.filesystem.root.toURL());
-            my.filesystem.root.getDirectory("G3", {create: true, exclusive: false}, function(dirEntry) {
+            var sd = "file:///storage/extSdCard";
+            window.resolveLocalFileSystemURL(
+                sd,
+                function(entry){
+                    var myFileSystem = entry.filesystem;
+                    myFileSystem.root.getDirectory("storage/extSdCard/G3", {create: true, exclusive:false},
+                        function(dirEntry){
+                            my.root = dirEntry;
+                            alert(dirEntry.name + " CREATED ON EXTERNAL SD CARD!");
+                            deferred.resolve();
+                        },
+                        function(error){
+                            console.error("EXTERNAL getRootDirectory: " + error.code);
+                        }
+                    );
+                },
+                // The mess that "looped" me into the external sdcard...
+                    /*var dirReader = entry.filesystem.root.createReader();
+                    dirReader.readEntries(
+                        function(entries){
+                            var i = 1
+                            alert("LEVEL ONE");
+                            _.each(entries, function(entry){
+                                alert(i + " " + entry.name);
+                                if (entry.name === 'storage'){
+                                    var subReader = entry.createReader();
+                                    subReader.readEntries(
+                                        function(subEntries){
+                                            alert("LEVEL TWO");
+                                            _.each(subEntries, function(subEntry){
+                                                alert(subEntry.name);
+                                                if (subEntry.name === 'extSdCard'){
+                                                    var subSubReader = entry.createReader();
+                                                    subSubReader.readEntries(
+                                                        function(subSubEntries){
+                                                            alert("LEVEL THREE");
+                                                            _.each(subSubEntries, function(subSubEntry){
+                                                                var cardUrl = subSubEntry.nativeURL;
+                                                                alert(cardUrl);
+                                                                if (subSubEntry.nativeURL === cardUrl){
+                                                                    alert("GOT CARD!");
+                                                                    subSubEntry.getDirectory("G3_TEST", {create: true, exclusive:false}, function(dirEntry){
+                                                                        alert(dirEntry.name + " CREATED!");
+                                                                    });
+                                                                }
+                                                            });
+                                                    });
+                                                }
+                                            });
+                                        });
+                                }
+                                i += 1;
+                            });
+
+                        },
+                        function(){
+                            alert("FAILED!");
+                        }
+                    );*/
+                function(error){
+                    console.log("EXTERNAL SD CARD NOT FOUND: " + error);
+                    my.filesystem.root.getDirectory("G3", {create: true, exclusive:false},
+                        function(dirEntry){
+                            my.root = dirEntry;
+                            console.log(dirEntry.name + " CREATED ON INTERNAL SDCARD");
+                            deferred.resolve();
+                        },
+                        function(error){
+                            console.error("INTERNAL getRootDirectory: " + error.code);
+                        }
+                    );
+                }
+            );
+
+            /*my.filesystem.root.getDirectory("G3", {create: true, exclusive: false}, function(dirEntry) {
                 my.root = dirEntry;
                 deferred.resolve();
             }, function(error) {
                 console.error("getRootDirectory: " + error.code);
-            });
+            });*/
             return deferred.promise();
         };
 
@@ -130,7 +205,7 @@ define (['jquery',
 
         my.downloadSites = function (fileTransfer, state, bidunit){
             var deferred = new $.Deferred();
-            var uri = encodeURI("http://yt.ento.vt.edu/SlowTheSpread/gadgetsites/" + state + "/" + bidunit + "?format=json");
+            var uri = encodeURI(my.urlPrefix + "SlowTheSpread/gadgetsites/" + state + "/" + bidunit + "?format=json");
             var filename = my.root.toURL() + "/" + makeFilename(state, bidunit);
             getFileEntry(my.root, makeFilename(state, bidunit), {create: true, exclusive: false}).then(function(fileEntry){
                 fileTransfer.download(
@@ -158,7 +233,7 @@ define (['jquery',
         my.uploadTransLog = function (fileTransfer, initials, loadDate){
             var deferred = new $.Deferred();
             var uploadedFile = initials + loadDate
-            var uri = encodeURI("http://yt.ento.vt.edu/stsweb_test/Upload/TrapData/" + uploadedFile);
+            var uri = encodeURI(my.urlPrefix + "/SlowTheSpread/Upload/TrapData/" + uploadedFile);
             var filePath = my.root.toURL() + "/" + my.activityLog;
 
             var options = new FileUploadOptions();

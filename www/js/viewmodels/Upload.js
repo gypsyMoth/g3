@@ -1,9 +1,11 @@
 define(['jquery',
+    'underscore',
     'knockout',
     'src/util/DB',
     'src/util/Date',
     'src/util/Controller'
 ], function($,
+            _,
             ko,
             DB,
             DateFormatter,
