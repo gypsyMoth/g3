@@ -22,5 +22,9 @@ define (['moment'], function (moment) { 'use strict';
         return moment(date).format('MMDD');
     };
 
+    my.getBatchDate = function(date) {
+        return moment(date).format('MMDDHHmmssSSS');
+    }
+
     return my;
 });

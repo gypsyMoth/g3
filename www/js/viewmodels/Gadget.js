@@ -53,6 +53,10 @@ define(['jquery',
 
     var Gadget = function () {
 
+        this.initials = ko.observable('BGP');
+
+        this.state = ko.observable('VA');
+
         this.sitesFiles = ko.observableArray();
 
         this.manualLock = ko.observable(false);

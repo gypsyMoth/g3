@@ -24,9 +24,19 @@ define(['jquery',
 
             this.showProgress(true);
 
+            var initials = Controller.gadget.initials();
+            var state = Controller.gadget.state();
             var loadDate = DateFormatter.getLoadFormatDate(Date.now());
-            var initials = 'BGP'
+            var batch = 'sts.' + state + '.' + DateFormatter.getBatchDate(Date.now());
+
             var fileTransfer = new FileTransfer();
+
+            var activityFileName = initials + loadDate;
+            var trackFileName = "Track" + initials + loadDate;
+            var jobFileName = "job.dat";
+            var activityPath = DB.root.toURL() + DB.activityLog;
+            var trackPath = DB.root.toURL() + DB.trackLog;
+            var jobPath = DB.root.toURL() + jobFileName;
 
             fileTransfer.onprogress = _.bind(function(pe){
                 var percent = Math.round(pe.loaded/pe.total*100);
@@ -34,9 +44,13 @@ define(['jquery',
                 this.progress(percent + "%");
             }, this);
 
-            DB.uploadTransLog(fileTransfer, initials, loadDate).then(function(){
-                alert('Upload Completed Successfully!');
-                Controller.gadget.changeView('home');
+            DB.uploadFile(fileTransfer, activityPath, batch, activityFileName).then(function(){
+                DB.uploadFile(new FileTransfer(), trackPath, batch, trackFileName).then(function(){
+                    DB.uploadFile(new FileTransfer(), jobPath, batch, jobFileName).then(function(){
+                        alert('Upload Completed Successfully!');
+                        Controller.gadget.changeView('home');
+                    });
+                });
             });
         };
 

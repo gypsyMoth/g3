@@ -61,7 +61,7 @@ define(['jquery',
                 Controller.gadget.changeView('home');
             };
 
-            DB.downloadSites(fileTransfer, this.selectedState(), this.selectedBidUnit().bidunit).then(function(data){
+            DB.downloadSites(fileTransfer, this.selectedState(), this.selectedBidUnit().bidunit).then(function(){
                 DB.getSitesFiles().then(function(sitesFiles) {
                     Controller.gadget.sitesFiles(sitesFiles);
                     DB.root.getFile(filename, {create: false},

@@ -10,9 +10,10 @@ define (['jquery',
         my.filesystem = null;
         my.filecount = 0;
         my.sitesFile = null;
+        my.trackLog = "crumbs.txt";
         my.activityLog = "trans_log.txt";
-        my.urlPrefix = "http://testSkynet.ento.vt.edu/";
-        //my.urlPrefix = "http://yt.ento.vt.edu/";
+        my.urlPrefix = "http://testSkynet.ento.vt.edu/"; //TEST
+        //my.urlPrefix = "http://yt.ento.vt.edu/"; //PRODUCTION
 
         my.initialize = function() {
             return getFileSystem().then(getRootDirectory);
@@ -53,7 +54,7 @@ define (['jquery',
                     myFileSystem.root.getDirectory("storage/extSdCard/G3", {create: true, exclusive:false},
                         function(dirEntry){
                             my.root = dirEntry;
-                            alert(dirEntry.name + " CREATED ON EXTERNAL SD CARD!");
+                            console.log(dirEntry.name + " CREATED ON EXTERNAL SD CARD!");
                             deferred.resolve();
                         },
                         function(error){
@@ -105,7 +106,7 @@ define (['jquery',
                         }
                     );*/
                 function(error){
-                    console.log("EXTERNAL SD CARD NOT FOUND: " + error);
+                    console.log("EXTERNAL SD CARD NOT FOUND: " + error.code);
                     my.filesystem.root.getDirectory("G3", {create: true, exclusive:false},
                         function(dirEntry){
                             my.root = dirEntry;
@@ -200,48 +201,50 @@ define (['jquery',
                 function(){deferred.resolve(true)},
                 function(){deferred.resolve(false)}
             );
-            return deferred.promise();
         };
 
         my.downloadSites = function (fileTransfer, state, bidunit){
             var deferred = new $.Deferred();
             var uri = encodeURI(my.urlPrefix + "SlowTheSpread/gadgetsites/" + state + "/" + bidunit + "?format=json");
-            var filename = my.root.toURL() + "/" + makeFilename(state, bidunit);
-            getFileEntry(my.root, makeFilename(state, bidunit), {create: true, exclusive: false}).then(function(fileEntry){
-                fileTransfer.download(
-                    uri,
-                    filename,
-                    function(entry) {
-                        console.log("G3 file downloaded; filename = " + filename + "; fileentry = " + entry.fullPath);
-                        getFile(entry).then(loadFile).then(function(data) {
-                            deferred.resolve(JSON.parse(data));
-                        });
-                    },
-                    function(error) {
-                        if (error.code === 3) {
-                            alert("No network connection");
-                        } else {
-                            console.log(error.code);
-                        }
-                        deferred.reject();
+            var filename = my.root.toURL() + makeFilename(state, bidunit);
+            //getFileEntry(my.root, makeFilename(state, bidunit), {create: true, exclusive: false}).then(function(fileEntry){
+            fileTransfer.download(
+                uri,
+                filename,
+                function(entry) {
+                    console.log("G3 file downloaded; filename = " + filename + "; fileentry = " + entry.fullPath);
+                    getFile(entry).then(loadFile).then(function(data) {
+                        deferred.resolve();//JSON.parse(data));
+                    });
+                },
+                function(error) {
+                    if (error.code === 3) {
+                        alert("No network connection");
+                    } else {
+                        console.log(error.code);
                     }
-                );
-            });
+                    deferred.reject();
+                }
+            );
+            //});
             return deferred.promise();
         };
 
-        my.uploadTransLog = function (fileTransfer, initials, loadDate){
+        my.uploadFile = function (fileTransfer, filePath, batch, filename){
             var deferred = new $.Deferred();
-            var uploadedFile = initials + loadDate
-            var uri = encodeURI(my.urlPrefix + "/SlowTheSpread/Upload/TrapData/" + uploadedFile);
-            var filePath = my.root.toURL() + "/" + my.activityLog;
+            alert(filename);
+
+            //var uploadedFile = initials + loadDate
+            var uri = encodeURI(my.urlPrefix + "/SlowTheSpread/Upload/TrapData/" + batch + "/" + filename);
+            //var filePath = my.root.toURL() + "/" + my.activityLog;
 
             var options = new FileUploadOptions();
-            options.fileName = uploadedFile;
+            options.fileName = filename;
+            //options.mimeType = "text/csv";
 
             function success(result){
                 console.log("Success!");
-                console.log(result.response);
+                console.log(result.response.code);
                 deferred.resolve();
             };
 
