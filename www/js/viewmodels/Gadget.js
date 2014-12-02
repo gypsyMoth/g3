@@ -87,6 +87,8 @@ define(['jquery',
 
         this.relativePosition = ko.observable();
 
+        this.connectionStatus = ko.observable(false);
+
         this.changeView = function(name){
             switch(name){
                 case('home'):
@@ -117,6 +119,7 @@ define(['jquery',
                     break;
                 case('extras'):
                     Geolocation.stop();
+                    this.connectionStatus(DB.checkConnection());
                     this.extras = new ExtrasView();
                     break;
                 case('manualLock'):
@@ -136,14 +139,7 @@ define(['jquery',
                     break;
                 case('download'):
                     this.download = new DownloadView();
-                    var list = this.bidUnitList;
-                    if (list().length <= 0) {
-                        var uri = encodeURI("http://yt.ento.vt.edu/SlowTheSpread/bidunits?format=json");
-                        $.get(uri).done(function(data){
-                            _.each(data, function(unit){list.push(unit);});
-                        });
-                    }
-                    console.log(JSON.stringify(this.bidUnitList()));
+                    this.download.loadBidUnits();
                     break;
                 case('upload'):
                     this.upload = new UploadView();
@@ -165,6 +161,15 @@ define(['jquery',
             op.grid = site.grid;
             op.trap_type = site.trap_type;
             op.txn_date = DateFormatter.getSitesFormatDate(Date.now());
+        };
+
+        this.exitApplication = function(message) {
+            alert(message);
+            if (navigator.app) {
+                navigator.app.exitApp();
+            } else if (navigator.device) {
+                navigator.device.exitApp();
+            }
         };
     };
 

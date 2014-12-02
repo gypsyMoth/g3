@@ -1,7 +1,8 @@
 define (['jquery',
     'underscore',
-    'src/models/SitesFile'],
-    function ($, _, SitesFile) { 'use strict';
+    'src/models/SitesFile',
+    'src/util/Controller'],
+    function ($, _, SitesFile, Controller) { 'use strict';
         var my = {};
 
         var PERSISTENT;
@@ -201,6 +202,25 @@ define (['jquery',
                 function(){deferred.resolve(true)},
                 function(){deferred.resolve(false)}
             );
+            return deferred.promise();
+        };
+
+        my.checkConnection = function(){
+            return navigator.connection.type !== 'none';
+        };
+
+        var transferFail = function(error){
+            console.log("Fail!");
+            if (error.code === 3) {
+                alert(Controller.errors.timeout);
+            } else {
+                console.log(error.code);
+            }
+            if (Controller.gadget.sitesFiles().length > 0) {
+                Controller.gadget.changeView('home');
+            } else {
+                Controller.gadget.exitApplication(Controller.errors.sites);
+            }
         };
 
         my.downloadSites = function (fileTransfer, state, bidunit){
@@ -218,11 +238,7 @@ define (['jquery',
                     });
                 },
                 function(error) {
-                    if (error.code === 3) {
-                        alert("No network connection");
-                    } else {
-                        console.log(error.code);
-                    }
+                    transferFail(error);
                     deferred.reject();
                 }
             );
@@ -249,12 +265,7 @@ define (['jquery',
             };
 
             function fail(error){
-                console.log("Fail!");
-                if (error.code === 3) {
-                    alert("No network connection");
-                } else {
-                    console.log(error.code);
-                }
+                transferFail(error);
                 deferred.reject();
             };
 
