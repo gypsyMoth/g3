@@ -34,10 +34,10 @@ define(['jquery',
                     if (DB.checkConnection()) {
                             Controller.gadget.changeView('download');
                     } else {
-                            DB.exitApplication(Controller.errors.sites);
+                        Controller.gadget.exitApplication(Controller.errors.sites);
                     }
                 } else {
-                    DB.exitApplication("Error loading sites files!");
+                    Controller.gadget.exitApplication("Error loading sites files!");
                 }
             }, this));
         };

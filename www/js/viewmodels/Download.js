@@ -30,7 +30,7 @@ define(['jquery',
 
         this.states = ['IA','IL','IN','KY','MN','OH','NC','TN', 'VA','WI','WV'];
 
-        this.selectedState = ko.observable();
+        this.selectedState = ko.observable();//.extend({notify: 'always'});
 
         this.loadBidUnits = _.bind(function(){
             var list = Controller.gadget.bidUnitList;
@@ -50,9 +50,10 @@ define(['jquery',
 
         this.bidUnits = ko.computed(function(){
             var state = this.selectedState();
-            var units = _.filter(Controller.gadget.bidUnitList(), function(unit) {
-                return unit.state === state;
-            });
+            //alert(state);
+            var units = _.filter(Controller.gadget.bidUnitList(), _.bind(function(unit) {
+                return unit.state === this.selectedState();
+            }, this));
             return units.length > 0 ? units : [{state:'', bidunit: 'Loading...'}];
         }, this);
 

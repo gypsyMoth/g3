@@ -13,8 +13,8 @@ define (['jquery',
         my.sitesFile = null;
         my.trackLog = "crumbs.txt";
         my.activityLog = "trans_log.txt";
-        my.urlPrefix = "http://testSkynet.ento.vt.edu/"; //TEST
-        //my.urlPrefix = "http://yt.ento.vt.edu/"; //PRODUCTION
+        //my.urlPrefix = "http://testSkynet.ento.vt.edu/"; //TEST
+        my.urlPrefix = "http://yt.ento.vt.edu/"; //PRODUCTION
 
         my.initialize = function() {
             return getFileSystem().then(getRootDirectory);
@@ -227,18 +227,28 @@ define (['jquery',
             var deferred = new $.Deferred();
             var uri = encodeURI(my.urlPrefix + "SlowTheSpread/gadgetsites/" + state + "/" + bidunit + "?format=json");
             var filename = my.root.toURL() + makeFilename(state, bidunit);
+            var requestTimeout = setTimeout(function(){
+                var error = new FileTransferError();
+                error.code = 3;
+                transferFail(error);
+                fileTransfer.abort();
+                alert ("REQUEST CANCELLED");
+            }, 30000);
             //getFileEntry(my.root, makeFilename(state, bidunit), {create: true, exclusive: false}).then(function(fileEntry){
             fileTransfer.download(
                 uri,
                 filename,
                 function(entry) {
+                    clearTimeout(requestTimeout);
                     console.log("G3 file downloaded; filename = " + filename + "; fileentry = " + entry.fullPath);
                     getFile(entry).then(loadFile).then(function(data) {
                         deferred.resolve();//JSON.parse(data));
                     });
                 },
                 function(error) {
+                    clearTimeout(requestTimeout);
                     transferFail(error);
+                    fileTransfer.abort();
                     deferred.reject();
                 }
             );
