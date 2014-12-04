@@ -213,7 +213,7 @@ define (['jquery',
             console.log("Fail!");
             if (error.code === 3) {
                 alert(Controller.errors.timeout);
-            } else {
+            } else if (error.code !== 4) {
                 alert(Controller.errors.upload);
                 console.log(error.code);
             }
