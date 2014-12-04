@@ -13,8 +13,8 @@ define (['jquery',
         my.sitesFile = null;
         my.trackLog = "crumbs.txt";
         my.activityLog = "trans_log.txt";
-        //my.urlPrefix = "http://testSkynet.ento.vt.edu/"; //TEST
-        my.urlPrefix = "http://yt.ento.vt.edu/"; //PRODUCTION
+        my.urlPrefix = "http://skynet.ento.vt.edu/"; //TEST
+        //my.urlPrefix = "http://yt.ento.vt.edu/"; //PRODUCTION
 
         my.initialize = function() {
             return getFileSystem().then(getRootDirectory);
@@ -214,6 +214,7 @@ define (['jquery',
             if (error.code === 3) {
                 alert(Controller.errors.timeout);
             } else {
+                alert(Controller.errors.upload);
                 console.log(error.code);
             }
             if (Controller.gadget.sitesFiles().length > 0) {
@@ -232,7 +233,7 @@ define (['jquery',
                 error.code = 3;
                 transferFail(error);
                 fileTransfer.abort();
-                alert ("REQUEST CANCELLED");
+                console.log("REQUEST CANCELLED");
             }, 30000);
             //getFileEntry(my.root, makeFilename(state, bidunit), {create: true, exclusive: false}).then(function(fileEntry){
             fileTransfer.download(
@@ -258,7 +259,7 @@ define (['jquery',
 
         my.uploadFile = function (fileTransfer, filePath, batch, filename){
             var deferred = new $.Deferred();
-            alert(filename);
+            console.log(filename);
 
             //var uploadedFile = initials + loadDate
             var uri = encodeURI(my.urlPrefix + "/SlowTheSpread/Upload/TrapData/" + batch + "/" + filename);
@@ -270,12 +271,13 @@ define (['jquery',
 
             function success(result){
                 console.log("Success!");
-                console.log(result.response.code);
+                //console.log(result.response.code);
                 deferred.resolve();
             };
 
             function fail(error){
                 transferFail(error);
+                fileTransfer.abort();
                 deferred.reject();
             };
 
@@ -283,6 +285,49 @@ define (['jquery',
 
             return deferred.promise();
         };
+
+        my.backUp = function(newName){
+            var deferred = new $.Deferred();
+            getFileEntry(my.root, my.activityLog, {create: false, exclusive: false}).then(function(entry){
+                my.root.getDirectory("Backups", {create: true, exclusive:false},
+                    function(dirEntry){
+                        entry.copyTo(dirEntry, newName,
+                            function(entry){
+                                deferred.resolve();
+                            },
+                            function(error){
+                                deferred.reject();
+                                alert("Back up error! Please contact technical support.");
+                        });
+                    },
+                    function(error){
+                        alert("Unable to access backup directory! Please contact technical support.");
+                });
+            });
+            return deferred.promise();
+        };
+
+        my.deleteLogs = function(){
+            getFileEntry(my.root, my.activityLog, {create: false, exclusive: false}).then(function(entry){
+                entry.remove(function(){console.log("Removed " + my.activityLog)});
+                getFileEntry(my.root, my.trackLog, {create: false, exclusive: false}).then(function(entry) {
+                    entry.remove(function(){console.log("Removed " + my.trackLog)});
+                });
+            });
+        };
+
+        my.deleteBackups = function(activityBackup, trackBackup){
+            my.root.getDirectory("Backups", {create: false, exclusive: false}, function(dirEntry){
+                getFileEntry(dirEntry, activityBackup, {create: false, exclusive: false}).then(function(entry){
+                    entry.remove(function(){console.log("Removed " + activityBackup)});
+                });
+                getFileEntry(dirEntry, trackBackup, {create: false, exclusive: false}).then(function(entry) {
+                    entry.remove(function(){console.log("Removed " + trackBackup)});
+                });
+            });
+        };
+
+
 
         my.saveSites = function(sitesList) {
             var deferred = new $.Deferred();

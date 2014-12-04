@@ -18,7 +18,15 @@ define(['jquery',
 
         this.showProgress = ko.observable(false);
 
-        this.progress = ko.observable('0%');
+        this.logProgress = ko.observable(0);
+        this.trackProgress = ko.observable(0);
+        this.jobProgress = ko.observable(0);
+
+        this.progress = ko.computed(function(){
+            var percent = (this.logProgress()/3) + (this.trackProgress()/3) + (this.jobProgress()/3);
+            console.log(percent + '%');
+            return percent + '%';
+        }, this);
 
         this.upload = function(){
 
@@ -29,7 +37,20 @@ define(['jquery',
             var loadDate = DateFormatter.getLoadFormatDate(Date.now());
             var batch = 'sts.' + state + '.' + DateFormatter.getBatchDate(Date.now());
 
-            var fileTransfer = new FileTransfer();
+            var logTransfer = new FileTransfer();
+            logTransfer.onprogress = _.bind(function(pe){
+                this.logProgress(Math.round(pe.loaded/pe.total*100));
+            }, this);
+
+            var trackTransfer = new FileTransfer();
+            trackTransfer.onprogress = _.bind(function(pe){
+                this.trackProgress(Math.round(pe.loaded/pe.total*100));
+            }, this);
+
+            var jobTransfer = new FileTransfer();
+            jobTransfer.onprogress = _.bind(function(pe){
+                this.jobProgress(Math.round(pe.loaded/pe.total*100));
+            }, this);
 
             var activityFileName = initials + loadDate;
             var trackFileName = "Track" + initials + loadDate;
@@ -38,19 +59,29 @@ define(['jquery',
             var trackPath = DB.root.toURL() + DB.trackLog;
             var jobPath = DB.root.toURL() + jobFileName;
 
-            fileTransfer.onprogress = _.bind(function(pe){
-                var percent = Math.round(pe.loaded/pe.total*100);
-                console.log(percent + "%");
-                this.progress(percent + "%");
-            }, this);
+            var uploadFailure = function(){
+                DB.deleteBackups(activityFileName + ".txt", trackFileName + ".txt");
+            };
 
-            DB.uploadFile(fileTransfer, activityPath, batch, activityFileName).then(function(){
-                DB.uploadFile(new FileTransfer(), trackPath, batch, trackFileName).then(function(){
-                    DB.uploadFile(new FileTransfer(), jobPath, batch, jobFileName).then(function(){
-                        alert('Upload Completed Successfully!');
-                        Controller.gadget.changeView('home');
-                    });
-                });
+            DB.backUp(activityFileName + ".txt").then(DB.backUp(trackFileName + ".txt")).then(function(){
+                DB.uploadFile(logTransfer, activityPath, batch, activityFileName).then(
+                    function(){
+                        DB.uploadFile(trackTransfer, trackPath, batch, trackFileName).then(
+                            function(){
+                                DB.uploadFile(jobTransfer, jobPath, batch, jobFileName).then(
+                                    function(){
+                                        alert('Upload Completed Successfully!');
+                                        DB.deleteLogs();
+                                        Controller.gadget.changeView('home');
+                                    },
+                                    function(){uploadFailure();}
+                                );
+                            },
+                            function(){uploadFailure();}
+                        );
+                    },
+                    function(){uploadFailure();}
+                );
             });
         };
 
