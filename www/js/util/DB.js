@@ -339,7 +339,21 @@ define (['jquery',
             });
         };
 
-
+        my.jobFile = function(filename){
+            var deferred = new $.Deferred();
+            getFileEntry(my.root, filename, {create: true, exclusive: false}).then(function(entry){
+                writeFile(entry, Controller.gadget.email()).then(
+                   function(){
+                       deferred.resolve();
+                   },
+                   function(){
+                       alert("Unable to create job file!");
+                       deferred.reject();
+                   }
+                );
+            });
+            return deferred.promise();
+        }
 
         my.saveSites = function(sitesList) {
             var deferred = new $.Deferred();

@@ -57,6 +57,8 @@ define(['jquery',
 
         this.state = ko.observable('VA');
 
+        this.email = ko.observable('bgpogue@vt.edu');
+
         this.sitesFiles = ko.observableArray();
 
         this.manualLock = ko.observable(false);

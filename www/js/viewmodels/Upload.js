@@ -84,29 +84,36 @@ define(['jquery',
 
             var deferred = new $.Deferred();
 
-            DB.fileExists(DB.activityLog).then(
+            DB.jobFile(job.filename).then(
                 function(){
-                    alert("Found activity log!");
-                    activity.found = true;
-                    DB.backUp(activity.filename + ".txt").then(
-                        DB.fileExists(DB.trackLog).then(
-                            function() {
-                                alert("Found track log!");
-                                track.found = true;
-                                DB.backUp(track.filename + ".txt").then(function() {
-                                    deferred.resolve();
-                                });
-                            },
-                            function(){
-                                alert("Skipping track log!");
-                                deferred.resolve();
-                            }
-                        )
-                    );
+                    DB.fileExists(DB.activityLog).then(
+                        function(){
+                            alert("Found activity log!");
+                            activity.found = true;
+                            DB.backUp(activity.filename + ".txt").then(
+                                DB.fileExists(DB.trackLog).then(
+                                    function() {
+                                        alert("Found track log!");
+                                        track.found = true;
+                                        DB.backUp(track.filename + ".txt").then(function() {
+                                            deferred.resolve();
+                                        });
+                                    },
+                                    function(){
+                                        alert("Skipping track log!");
+                                        deferred.resolve();
+                                    }
+                                )
+                            );
+                        },
+                        function(){
+                            alert("No activity log found! Please try again after a placement or inspection has been completed.");
+                            deferred.reject();
+                        }
+                    )
                 },
                 function(){
-                    alert("No activity log found! Please try again after a placement or inspection has been completed.");
-                    deferred.reject();
+                    uploadFailure();
                 }
             );
             return deferred.promise();
