@@ -111,21 +111,22 @@ define(['jquery',
 
         this.requestDownload = function(){
             var self = this;
-            DB.initialize().then(function () {
-                DB.fileExists(DB.activityLog).then(function (exists) {
-                    if (exists) {
-                        DB.fileExists(self.downloadFilename()).then(function (exists) {
-                            if (exists) {
+            DB.initialize().then(function (){
+                DB.fileExists(DB.activityLog).then(
+                    function (){
+                        DB.fileExists(self.downloadFilename()).then(
+                            function (){
                                 alert("Please upload transaction log prior to downloading a new sites file.");
-                            } else {
+                            },
+                            function(){
                                 self.download();
                             }
-                        });
-                    }
-                    else {
+                        );
+                    },
+                    function(){
                         self.download();
                     }
-                });
+                );
             });
         };
     };

@@ -199,8 +199,8 @@ define (['jquery',
         my.fileExists = function(filename){
             var deferred = new $.Deferred();
             my.root.getFile(filename, {create: false},
-                function(){deferred.resolve(true)},
-                function(){deferred.resolve(false)}
+                function(){deferred.resolve()},
+                function(){deferred.reject()}
             );
             return deferred.promise();
         };
@@ -305,6 +305,18 @@ define (['jquery',
                 });
             });
             return deferred.promise();
+        };
+
+        my.deleteFile = function(dirEntry, filename){
+            getFileEntry(dirEntry, filename, {create: false, exclusive: false}).then(
+                function(entry){
+                    entry.remove();
+                    console.log("Removed " + filename);
+                },
+                function(){
+                    console.log(filename + " not found!");
+                }
+            )
         };
 
         my.deleteLogs = function(){
