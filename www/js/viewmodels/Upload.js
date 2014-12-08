@@ -21,6 +21,10 @@ define(['jquery',
         var loadDate = DateFormatter.getLoadFormatDate(Date.now());
         var batch = 'sts.' + state + '.' + DateFormatter.getBatchDate(Date.now());
 
+        this.tag = ko.observable('');
+
+        this.showTag = ko.observable(false);
+
         var backupDir = function() {
             var directory;
             DB.root.getDirectory("Backups", {create: false}, function (dirEntry) {
@@ -31,6 +35,7 @@ define(['jquery',
 
         var activity = {
             filename: initials + loadDate,
+            backup: "",
             path: DB.root.toURL() + DB.activityLog,
             transfer: new FileTransfer(),
             found: false
@@ -42,6 +47,7 @@ define(['jquery',
 
         var track = {
             filename: "Track" + initials + loadDate,
+            backup: "",
             path: DB.root.toURL() + DB.trackLog,
             transfer: new FileTransfer(),
             found: false
@@ -67,8 +73,8 @@ define(['jquery',
             track.transfer.abort();
             job.transfer.abort();
             DB.root.getDirectory("Backups", {create: false, exclusive: false}, function(dirEntry){
-                DB.deleteFile(dirEntry, activity.filename + ".txt");
-                DB.deleteFile(dirEntry, track.filename + ".txt");
+                DB.deleteFile(dirEntry, activity.backup);
+                DB.deleteFile(dirEntry, track.backup);
             });
             this.showProgress(false);
         }, this);
@@ -84,36 +90,55 @@ define(['jquery',
 
             var deferred = new $.Deferred();
 
+            var tag = this.tag;
+            var progress = this.showProgress;
+            var show = this.showTag;
+
             DB.jobFile(job.filename).then(
                 function(){
-                    DB.fileExists(DB.activityLog).then(
+                    DB.fileExists(DB.root, DB.activityLog).then(
                         function(){
-                            alert("Found activity log!");
                             activity.found = true;
-                            DB.backUp(activity.filename + ".txt").then(
-                                DB.fileExists(DB.trackLog).then(
-                                    function() {
-                                        alert("Found track log!");
-                                        track.found = true;
-                                        DB.backUp(track.filename + ".txt").then(function() {
-                                            deferred.resolve();
-                                        });
+                            DB.root.getDirectory("Backups", {create: false, exclusive: false}, function(dirEntry) {
+                                DB.fileExists(dirEntry, activity.filename + tag() + ".txt").then(
+                                    function () {
+                                        alert("Upload file already exists! Please add a new tag in the text box!");
+                                        show(true);
+                                        progress(false);
+                                        tag('');
+                                        deferred.reject();
                                     },
-                                    function(){
-                                        alert("Skipping track log!");
-                                        deferred.resolve();
+                                    function () {
+                                        activity.filename = activity.filename + tag();
+                                        activity.backup = activity.filename + ".txt";
+                                        track.filename = track.filename + tag();
+                                        track.backup = track.filename + ".txt";
+                                        DB.backUp(activity.backup).then(
+                                            DB.fileExists(DB.root, DB.trackLog).then(
+                                                function () {
+                                                    track.found = true;
+                                                    DB.backUp(track.backup).then(function () {
+                                                        deferred.resolve();
+                                                    });
+                                                },
+                                                function () {
+                                                    deferred.resolve();
+                                                }
+                                            )
+                                        );
                                     }
-                                )
-                            );
+                                );
+                            });
                         },
                         function(){
                             alert("No activity log found! Please try again after a placement or inspection has been completed.");
+                            Controller.gadget.changeView('home');
                             deferred.reject();
                         }
                     )
                 },
                 function(){
-                    uploadFailure();
+                    deferred.reject();
                 }
             );
             return deferred.promise();
@@ -142,67 +167,46 @@ define(['jquery',
             this.showProgress(true);
 
             checkFiles().then(
-                function() {
+                function(){
                     DB.uploadFile(activity.transfer, activity.path, batch, activity.filename).then(
                         function () {
                             if (track.found) {
                                 DB.uploadFile(track.transfer, track.path, batch, track.filename).then(
-                                    function(){
+                                    function () {
                                         DB.uploadFile(job.transfer, job.path, batch, job.filename).then(
-                                            function(){
+                                            function () {
                                                 uploadSuccess();
                                             },
-                                            function(){
+                                            function () {
                                                 uploadFailure();
                                             }
                                         );
                                     },
-                                    function(){
+                                    function () {
                                         uploadFailure();
                                     }
                                 );
                             } else {
                                 DB.uploadFile(job.transfer, job.path, batch, job.filename).then(
-                                    function(){
+                                    function () {
                                         uploadSuccess();
                                     },
-                                    function(){
+                                    function () {
                                         uploadFailure();
                                     }
                                 );
                             }
                         },
-                        function () {
+                        function() {
                             uploadFailure();
                         }
                     );
                 },
-                function(){
+                function() {
                     uploadFailure();
                 }
             );
-            /*DB.backUp(activityFileName + ".txt").then(DB.backUp(trackFileName + ".txt")).then(function(){
-                DB.uploadFile(activityTransfer, activityPath, batch, activityFileName).then(
-                    function(){
-                        DB.uploadFile(trackTransfer, trackPath, batch, trackFileName).then(
-                            function(){
-                                DB.uploadFile(jobTransfer, jobPath, batch, jobFileName).then(
-                                    function(){
-                                        alert('Upload Completed Successfully!');
-                                        DB.deleteLogs();
-                                        Controller.gadget.changeView('home');
-                                    },
-                                    function(){uploadFailure();}
-                                );
-                            },
-                            function(){uploadFailure();}
-                        );
-                    },
-                    function(){uploadFailure();}
-                );
-            });*/
         };
-
     };
 
     return UploadView;

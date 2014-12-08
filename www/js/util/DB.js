@@ -196,9 +196,9 @@ define (['jquery',
             return deferred.promise();
         };
 
-        my.fileExists = function(filename){
+        my.fileExists = function(dirEntry, filename){
             var deferred = new $.Deferred();
-            my.root.getFile(filename, {create: false},
+            dirEntry.getFile(filename, {create: false},
                 function(){deferred.resolve()},
                 function(){deferred.reject()}
             );

@@ -112,9 +112,9 @@ define(['jquery',
         this.requestDownload = function(){
             var self = this;
             DB.initialize().then(function (){
-                DB.fileExists(DB.activityLog).then(
+                DB.fileExists(DB.root, DB.activityLog).then(
                     function (){
-                        DB.fileExists(self.downloadFilename()).then(
+                        DB.fileExists(DB.root, self.downloadFilename()).then(
                             function (){
                                 alert("Please upload transaction log prior to downloading a new sites file.");
                             },
