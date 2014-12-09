@@ -8,16 +8,17 @@
     </div>
 
     <div id="ActionDiv" class="actionDiv" >
-        <!--<img id="homeImage" data-bind="click: function(){this.goToView(this.operation());}, attr: {src: image()}"/>-->
-        <input id="homeImage" type="image" data-bind="enable: foundSite, click: function(){this.goToView(this.operation());}, attr: {src: image()}"/>
+        <img id="arrowImage" class="homeImg" src="img/arrow.png"/>
+        <img id="cardinalImage" class="homeImg" src="img/cardinal.png"/>
+        <input id="homeImage" class="homeImg" type="image" data-bind="enable: foundSite, click: function(){this.goToView(this.operation());}, attr: {src: image()}"/>
     </div>
 
     <div id="homeFooter" class="homeFooter">
-        <div id="infoDiv">
-            <div id="lockDiv" data-bind="visible: $root.manualLock()" style="float: left;">
+        <div id="infoDiv" class="homeDiv">
+            <div id="lockDiv" data-bind="visible: $root.manualLock()">
                 <img id="lockImage" src="img/locked.gif"/>
             </div>
-            <div id="inspectDiv" data-bind="visible: inspected()" style="float: right;">
+            <div id="inspectDiv" data-bind="visible: inspected()">
                 <img id="inspectImage" src="img/magGlassSmall.gif"/>
             </div>
         </div>

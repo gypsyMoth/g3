@@ -105,7 +105,7 @@ define(['jquery',
                 imagePath += this.color();
                 imagePath += this.imageType();
             }
-            imagePath += '.gif';
+            imagePath += '.png';
             return imagePath;
         }, this);
 
