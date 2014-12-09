@@ -7,7 +7,7 @@ define(['jquery',
     'src/util/Controller'
     ], function($, _, ko, GadgetView, Geolocation, DB, Controller) { 'use strict';
 
-     var my = {};
+    var my = {};
 
     my.isInitialized = false;
 

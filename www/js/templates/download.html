@@ -18,12 +18,12 @@
                     </select>
                 </td>
             </tr>
-        </table>
+        </table><br>
         <div id="progressDiv" class="progress" data-bind="style: {width: progress()}, visible: showProgress"></div>
     </div>
 
     <div id="downloadFooter" class="formFooter">
         <input type="button" id="btnDownloadOk" class="gadgetButton fastButton" value="Ok" data-bind="enable: ready(), click: function(){this.requestDownload()}">
-        <input type="button" id="btnDownloadCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+        <input type="button" id="btnDownloadCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){this.cancel()}">
     </div>
 </div>

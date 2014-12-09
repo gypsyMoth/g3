@@ -80,5 +80,7 @@ C:\Dev\Repo\g3\platforms\android\ant-build\classes\org\apache\cordova\filetransf
 C:\Dev\Repo\g3\platforms\android\ant-build\classes\org\apache\cordova\filetransfer\FileTransfer$TrackingInputStream.class \
 C:\Dev\Repo\g3\platforms\android\ant-build\classes\org\apache\cordova\filetransfer\FileTransfer.class \
 C:\Dev\Repo\g3\platforms\android\ant-build\classes\org\apache\cordova\filetransfer\FileUploadResult.class \
+C:\Dev\Repo\g3\platforms\android\ant-build\classes\org\apache\cordova\networkinformation\NetworkManager$1.class \
+C:\Dev\Repo\g3\platforms\android\ant-build\classes\org\apache\cordova\networkinformation\NetworkManager.class \
 C:\Dev\Repo\g3\platforms\android\ant-build\classes\org\apache\cordova\vibration\Vibration.class \
 C:\Dev\Repo\g3\platforms\android\ant-build\dexedLibs\classes-f9c09e34e8dc5bec78eb59fdfa985f22.jar \

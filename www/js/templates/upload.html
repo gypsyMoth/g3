@@ -1,0 +1,12 @@
+<div id="uploadDiv" data-bind="with: upload">
+    <div id="uploadHeader" class="formHeader">
+        <span id="uploadMessage" class="message">Upload Trapping Activity Log?</span><br>
+        <div id="progressDiv" class="progress" data-bind="style: {width: progress()}, visible: showProgress"></div>
+    </div>
+
+    <div id="uploadFooter" class="formFooter">
+        <input type="text" id="tagInput" data-bind="value: tag, visible: showTag">
+        <input type="button" id="btnRandomOk" class="gadgetButton fastButton" value="Ok" data-bind="click: function(){this.upload()};">
+        <input type="button" id="btnRandomCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){this.cancel();}">
+    </div>
+</div>

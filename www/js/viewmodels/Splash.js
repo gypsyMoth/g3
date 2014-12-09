@@ -31,9 +31,13 @@ define(['jquery',
                 } else if (sitesFiles.length > 1) {
                     Controller.gadget.changeView('loadSites');
                 } else if (sitesFiles.length === 0) {
-                    Controller.gadget.changeView('download');
+                    if (DB.checkConnection()) {
+                            Controller.gadget.changeView('download');
+                    } else {
+                        Controller.gadget.exitApplication(Controller.errors.sites);
+                    }
                 } else {
-                    exitApplication("No sites files found; please load at least one set of sites.");
+                    Controller.gadget.exitApplication("Error loading sites files!");
                 }
             }, this));
         };
@@ -46,14 +50,14 @@ define(['jquery',
             }, this));
         };
 
-        var exitApplication = function(message) {
+        /*var exitApplication = function(message) {
             alert(message);
             if (navigator.app) {
                 navigator.app.exitApp();
             } else if (navigator.device) {
                 navigator.device.exitApp();
             }
-        };
+        };*/
 
         this.initializeGps = function() {
             this.message('Acquiring Satellites...');

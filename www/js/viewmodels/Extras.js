@@ -47,6 +47,35 @@ define(['jquery',
             });
 
         };
+
+        this.clickDownload = function(){
+            //var list = Controller.gadget.bidUnitList;
+            if (DB.checkConnection()) {
+                Controller.gadget.changeView('download');
+                /*if (list().length <= 0) {
+                    var uri = encodeURI("http://yt.ento.vt.edu/SlowTheSpread/bidunits?format=json");
+                    $.get(uri).done(function (data) {
+                        _.each(data, function (unit) {
+                            list.push(unit);
+                        });
+                    }).fail(function () {
+                        alert(Controller.errors.timeout);
+                        Controller.gadget.changeView('extras');
+                    });
+                }
+                console.log(JSON.stringify(this.bidUnitList()));*/
+            } else {
+                alert(Controller.errors.network);
+            }
+        };
+
+        this.clickUpload = function() {
+            if (DB.checkConnection()) {
+                Controller.gadget.changeView('upload');
+            } else {
+                alert(Controller.errors.network);
+            }
+        };
     };
 
     return ExtrasView;

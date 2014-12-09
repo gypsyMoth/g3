@@ -18,5 +18,13 @@ define (['moment'], function (moment) { 'use strict';
         return moment(dateString.substring(0,19), 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss');
     }
 
+    my.getLoadFormatDate = function(date) {
+        return moment(date).format('MMDD');
+    };
+
+    my.getBatchDate = function(date) {
+        return moment(date).format('MMDDHHmmssSSS');
+    }
+
     return my;
 });

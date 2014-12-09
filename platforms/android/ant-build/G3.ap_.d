@@ -88,6 +88,7 @@ C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\placement.html \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\qcInspection.html \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\random.html \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\splash.html \
+C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\upload.html \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\util\Controller.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\util\CoordinateConverter.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\util\Date.js \
@@ -112,10 +113,12 @@ C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Position.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\QC.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Random.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Splash.js \
+C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Upload.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.device-orientation \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.dialogs \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.file \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.file-transfer \
+C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.network-information \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.vibration \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.device-orientation\www \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.device-orientation\www\compass.js \
@@ -151,6 +154,9 @@ C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.file\www\
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.file-transfer\www \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.file-transfer\www\FileTransfer.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.file-transfer\www\FileTransferError.js \
+C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.network-information\www \
+C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.network-information\www\Connection.js \
+C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.network-information\www\network.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.vibration\www \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.vibration\www\vibration.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\res\icon \
