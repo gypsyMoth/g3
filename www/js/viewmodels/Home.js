@@ -20,6 +20,8 @@ define(['jquery',
 
     var HomeView = function() {
 
+        var watchId = null;
+
         this.current = ko.computed(function(){
             return Controller.gadget.position();
         });
@@ -127,6 +129,40 @@ define(['jquery',
             }
         }, this);
 
+        this.heading = ko.observable(0);
+
+        this.bearing = ko.observable(0);
+
+        this.startCompass = function(){
+            var options = {
+                frequency: 100
+            };
+            console.log("Starting Compass!");
+            var myHeading = this.heading;
+            watchId = navigator.compass.watchHeading(
+                function(heading){
+                    myHeading(Math.round(heading.magneticHeading));
+                },
+                function(error) {
+                    console.log(error.code);
+                },
+                options
+            );
+        };
+
+        this.cardinalRotation = ko.computed(function(){
+            var rotation = 360 - this.heading();
+            return 'translate(-50%, -50%) rotate(' + rotation + 'deg)';
+        }, this);
+
+        this.arrowRotation = ko.computed(function(){
+            var rotation = this.relPos().compassBearing - this.heading();
+            if (rotation < 0) {
+                rotation += 360;
+            }
+            return 'translate(-50%, -50%) rotate(' + rotation + 'deg)';
+        }, this);
+
         this.operationType = function(){
             var site = this.site();
             var operationType = '';
@@ -204,6 +240,7 @@ define(['jquery',
         this.goToView = function(view){
             console.log("FOUND SITE: " + this.foundSite());
             clearInterval(this.timer);
+            navigator.compass.clearWatch(watchId);
             Controller.gadget.changeView(view);
         };
 
