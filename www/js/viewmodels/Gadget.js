@@ -98,6 +98,7 @@ define(['jquery',
                         this.home.now(Date.now());
                     }, this), 1000);
                     this.operationalSite(new Site());
+                    this.home.startCompass();
                     Geolocation.start();
                     break;
                 case('placement'):

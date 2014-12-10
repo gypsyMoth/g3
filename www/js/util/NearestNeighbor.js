@@ -128,7 +128,10 @@ define (['jquery',
         var rel =  {
             distance: Math.round(distance),
             distanceOutside: Math.round(distance - (site.grid * 0.3)),
-            bearing: getBearingString(point, currentPnt)
+            bearing: getBearingString(point, currentPnt),
+            // Calculated bearing from atan2 based on counter-clockwise angle from (1,0) in four quadrant system.
+            // Compass uses azimuth angles, so you have to switch bearingDeg to azimuth values by subtracting from 360.
+            compassBearing: 360 - Math.round(getBearing(point, currentPnt))
         };
         return rel;
     };
