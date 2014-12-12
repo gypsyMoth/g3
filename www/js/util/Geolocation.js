@@ -5,8 +5,9 @@ define(['jquery',
     'src/util/NearestNeighbor',
     'src/viewmodels/Position',
     'src/models/Site',
+    'src/util/DB',
     'src/util/Controller'
-], function($, _, Backbone, CoordinateConverter, NearestNeighbor, Position, Site, Controller) { 'use strict';
+], function($, _, Backbone, CoordinateConverter, NearestNeighbor, Position, Site, DB, Controller) { 'use strict';
 
     var my = {};
 
@@ -40,6 +41,7 @@ define(['jquery',
         Gadget.position().longitude(position.coords.longitude);
         Gadget.position().accuracy(Math.round(position.coords.accuracy));
         Gadget.position().timestamp(position.timestamp);
+        DB.logTrack(Gadget.position());
         if (!Gadget.manualLock()){
             this.findNearest(Gadget.position().utm());
         }

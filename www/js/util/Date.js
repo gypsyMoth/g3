@@ -26,5 +26,11 @@ define (['moment'], function (moment) { 'use strict';
         return moment(date).format('MMDDHHmmssSSS');
     }
 
+    my.getTrackDate = function(date) {
+        return moment(date).format('M/D/YY h:mm:ss A');
+    }
+
+
+
     return my;
 });

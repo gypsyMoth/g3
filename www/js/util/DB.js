@@ -1,8 +1,9 @@
 define (['jquery',
     'underscore',
     'src/models/SitesFile',
+    'src/util/Date',
     'src/util/Controller'],
-    function ($, _, SitesFile, Controller) { 'use strict';
+    function ($, _, SitesFile, DateFormatter, Controller) { 'use strict';
         var my = {};
 
         var PERSISTENT;
@@ -353,7 +354,7 @@ define (['jquery',
                 );
             });
             return deferred.promise();
-        }
+        };
 
         my.saveSites = function(sitesList) {
             var deferred = new $.Deferred();
@@ -383,6 +384,26 @@ define (['jquery',
                 appendFile(fileEntry, data).then( function() {
                     deferred.resolve();
                 });
+            });
+            return deferred.promise();
+        };
+
+        my.logTrack = function(position){
+            var deferred = new $.Deferred();
+            getFileEntry(my.root, my.trackLog, {create: true, exclusive: false}).then(function(fileEntry) {
+                fileEntry.createWriter(function(writer) {
+                    writer.onwriteend = function(evt) {
+                        deferred.resolve();
+                    };
+                    writer.seek(writer.length);
+                    if (writer.length === 0){
+                        writer.write("lat,lon,date_time,fix\n");
+                        //console.log("lat,lon,date_time,fix\n")
+                    }
+                    var trackDate = DateFormatter.getTrackDate(new Date(position.timestamp()));
+                    writer.write(position.latitude() + "," + position.longitude() + "," + trackDate + "," + position.accuracy() + "\n");
+                    //console.log(position.latitude() + "," + position.longitude() + "," + trackDate + "," + position.accuracy() + "\n");
+                }, my.fail);
             });
             return deferred.promise();
         };
