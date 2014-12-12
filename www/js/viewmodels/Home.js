@@ -119,13 +119,27 @@ define(['jquery',
             }
         }, this);
 
+        var conversion = function(meters){
+            var dist, units;
+            if (Controller.gadget.metric === false){
+                dist = meters > 1609.34 ? Math.round(meters/1609.34*10)/10 : Math.round(meters * 1.09361);
+                units = meters > 1609.34 ? "mi" : "yd";
+            } else {
+                dist = meters > 1000 ? Math.round(meters/1000*10)/10 : meters;
+                units = meters > 1000 ? "km" : "m";
+            }
+            return dist + " " + units;
+        };
+
         this.positionInfo = ko.computed(function(){
             if (this.gpsStatus() === false) {
                 return "Acquiring Satellites..."
             } else if (!this.foundSite()) {
                 return "No sites found in Zone " + this.current().utm().Zone + "!";
             } else {
-                return this.relPos().distance + " (\xB1" + this.current().accuracy() + ") meters " + this.relPos().bearing;
+                var distance = conversion(this.relPos().distance);
+                var accuracy = conversion(this.current().accuracy());
+                return distance + " (\xB1" + accuracy + ") " + this.relPos().bearing;
             }
         }, this);
 

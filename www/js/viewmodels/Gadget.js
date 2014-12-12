@@ -59,6 +59,8 @@ define(['jquery',
 
         this.email = ko.observable('bgpogue@vt.edu');
 
+        this.metric = true;
+
         this.sitesFiles = ko.observableArray();
 
         this.manualLock = ko.observable(false);

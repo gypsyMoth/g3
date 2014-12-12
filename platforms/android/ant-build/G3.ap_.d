@@ -81,6 +81,7 @@ C:\Dev\Repo\g3\platforms\android\assets\www\js\lib\require-min.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\lib\require.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\lib\text.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\lib\underscore-min.js \
+C:\Dev\Repo\g3\platforms\android\assets\www\js\models\config.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\models\Site.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\models\SitesFile.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\caution.html \
