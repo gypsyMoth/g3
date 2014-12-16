@@ -1,9 +1,10 @@
 define (['jquery',
     'underscore',
     'src/models/SitesFile',
+    'src/models/Config',
     'src/util/Date',
     'src/util/Controller'],
-    function ($, _, SitesFile, DateFormatter, Controller) { 'use strict';
+    function ($, _, SitesFile, Config, DateFormatter, Controller) { 'use strict';
         var my = {};
 
         var PERSISTENT;
@@ -17,8 +18,41 @@ define (['jquery',
         my.urlPrefix = "http://skynet.ento.vt.edu/"; //TEST
         //my.urlPrefix = "http://yt.ento.vt.edu/"; //PRODUCTION
 
+        my.setConfig = function(){
+            var deferred = new $.Deferred();
+            my.fileExists(my.root, 'config.json').then(
+                function(entry){
+                    getFile(entry).then(loadFile).then(function(data){
+                        Controller.gadget.config(JSON.parse(data));
+                        alert(data);
+                        deferred.resolve();
+                    });
+                },
+                function(){
+                    getFileEntry(my.root, 'config.json', {create: true, exclusive: false}).then(function(entry){
+                        var configuration = new Config();
+                        writeFile(entry, configuration).then(
+                            function(){
+                                alert("New Config!");
+                                alert(JSON.stringify(configuration));
+                                Controller.gadget.config(configuration);
+                                deferred.resolve();
+                            },
+                            function(){
+                                alert("Unable to create config file!");
+                                deferred.reject();
+                            }
+                        );
+                    });
+                }
+            );
+            return deferred.promise();
+        };
+
         my.initialize = function() {
-            return getFileSystem().then(getRootDirectory);
+            return getFileSystem().then(getRootDirectory).then(function(){
+                my.setConfig();
+            });
         };
 
         var getFileSystem = function() {
@@ -200,7 +234,7 @@ define (['jquery',
         my.fileExists = function(dirEntry, filename){
             var deferred = new $.Deferred();
             dirEntry.getFile(filename, {create: false},
-                function(){deferred.resolve()},
+                function(fileEntry){deferred.resolve(fileEntry)},
                 function(){deferred.reject()}
             );
             return deferred.promise();
@@ -356,6 +390,8 @@ define (['jquery',
             return deferred.promise();
         };
 
+
+
         my.saveSites = function(sitesList) {
             var deferred = new $.Deferred();
             var data = JSON.stringify(sitesList);
@@ -389,23 +425,23 @@ define (['jquery',
         };
 
         my.logTrack = function(position){
-            var deferred = new $.Deferred();
+            //var deferred = new $.Deferred();
             getFileEntry(my.root, my.trackLog, {create: true, exclusive: false}).then(function(fileEntry) {
                 fileEntry.createWriter(function(writer) {
                     writer.onwriteend = function(evt) {
-                        deferred.resolve();
+                        //deferred.resolve();
                     };
                     writer.seek(writer.length);
                     if (writer.length === 0){
-                        writer.write("lat,lon,date_time,fix\n");
-                        //console.log("lat,lon,date_time,fix\n")
+                        writer.write("lat,lon,date_time,fix\r\n");
+                        //console.log("lat,lon,date_time,fix\r\n")
                     }
                     var trackDate = DateFormatter.getTrackDate(new Date(position.timestamp()));
-                    writer.write(position.latitude() + "," + position.longitude() + "," + trackDate + "," + position.accuracy() + "\n");
-                    //console.log(position.latitude() + "," + position.longitude() + "," + trackDate + "," + position.accuracy() + "\n");
+                    writer.write(position.latitude() + "," + position.longitude() + "," + trackDate + "," + position.accuracy() + "\r\n");
+                    //console.log(position.latitude() + "," + position.longitude() + "," + trackDate + "," + position.accuracy() + "\r\n");
                 }, my.fail);
             });
-            return deferred.promise();
+            //return deferred.promise();
         };
 
         var readTransLog = function(){

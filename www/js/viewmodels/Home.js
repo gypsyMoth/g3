@@ -121,7 +121,7 @@ define(['jquery',
 
         var conversion = function(meters){
             var dist, units;
-            if (Controller.gadget.metric === false){
+            if (Controller.gadget.config().metric === false){
                 dist = meters > 1609.34 ? Math.round(meters/1609.34*10)/10 : Math.round(meters * 1.09361);
                 units = meters > 1609.34 ? "mi" : "yd";
             } else {

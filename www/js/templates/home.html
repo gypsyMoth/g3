@@ -8,8 +8,8 @@
     </div>
 
     <div id="ActionDiv" class="actionDiv" >
-        <img id="arrowImage" class="homeImg" src="img/arrow.png" data-bind="style:{webkitTransform: arrowRotation()}"/>
-        <img id="cardinalImage" class="homeImg" src="img/cardinal.png" data-bind="style:{webkitTransform: cardinalRotation()}"/>
+        <img id="arrowImage" class="homeImg" src="img/arrow.png" data-bind="visible: $root.config().compass, style:{webkitTransform: arrowRotation()}"/>
+        <img id="cardinalImage" class="homeImg" src="img/cardinal.png" data-bind="visible: $root.config().compass, style:{webkitTransform: cardinalRotation()}"/>
         <input id="homeImage" class="homeImg" type="image" data-bind="enable: foundSite, click: function(){this.goToView(this.operation());}, attr: {src: image()}"/>
     </div>
 
