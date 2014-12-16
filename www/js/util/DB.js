@@ -18,13 +18,12 @@ define (['jquery',
         my.urlPrefix = "http://skynet.ento.vt.edu/"; //TEST
         //my.urlPrefix = "http://yt.ento.vt.edu/"; //PRODUCTION
 
-        my.setConfig = function(){
+        my.getConfig = function(){
             var deferred = new $.Deferred();
             my.fileExists(my.root, 'config.json').then(
                 function(entry){
                     getFile(entry).then(loadFile).then(function(data){
                         Controller.gadget.config(JSON.parse(data));
-                        alert(data);
                         deferred.resolve();
                     });
                 },
@@ -33,8 +32,6 @@ define (['jquery',
                         var configuration = new Config();
                         writeFile(entry, configuration).then(
                             function(){
-                                alert("New Config!");
-                                alert(JSON.stringify(configuration));
                                 Controller.gadget.config(configuration);
                                 deferred.resolve();
                             },
@@ -49,9 +46,25 @@ define (['jquery',
             return deferred.promise();
         };
 
+        my.setConfig = function(data){
+            var deferred = new $.Deferred();
+            getFileEntry(my.root, 'config.json', {create: true, exclusive: false}).then(function(entry){
+                writeFile(entry, data).then(
+                    function(){
+                        deferred.resolve();
+                    },
+                    function(){
+                        alert("Unable to write config file!");
+                        deferred.reject();
+                    }
+                );
+            });
+            return deferred.promise();
+        };
+
         my.initialize = function() {
             return getFileSystem().then(getRootDirectory).then(function(){
-                my.setConfig();
+                my.getConfig();
             });
         };
 

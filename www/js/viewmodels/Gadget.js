@@ -139,8 +139,8 @@ define(['jquery',
                     Geolocation.stop();
                     this.connectionStatus(DB.checkConnection());
                     this.extras = new ExtrasView();
-                    var config = this.config();
-                    alert(config.state + " " + config.initials + " " + config.email + " " + config.metric + " " + config.compass + " " + config.track+ " " + config.directUpload);
+                    //var config = this.config();
+                    //alert(config.state + " " + config.initials + " " + config.email + " " + config.metric + " " + config.compass + " " + config.track+ " " + config.directUpload);
                     break;
                 case('manualLock'):
                     this.manual = new ManualLockView();

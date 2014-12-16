@@ -3,12 +3,14 @@ define(['jquery',
     'knockout',
     'src/util/DB',
     'src/util/Date',
+    'src/models/Config',
     'src/util/Controller'
 ], function($,
             _,
             ko,
             DB,
             DateFormatter,
+            Config,
             Controller
     ) {
 
@@ -16,44 +18,37 @@ define(['jquery',
 
     var SettingsView = function() {
 
-        this.config = ko.computed(function(){
-            return Controller.gadget.config();
-        });
-
         this.states = ['IA','IL','IN','KY','MN','OH','NC','TN', 'VA','WI','WV'];
 
-        this.selectedState = ko.observable(this.config.state);
+        this.selectedState = ko.observable(Controller.gadget.config().state);
 
-        this.email = ko.observable(this.config.email);
+        this.email = ko.observable(Controller.gadget.config().email);
 
-        this.initials = ko.observable(this.config.initials);
+        this.initials = ko.observable(Controller.gadget.config().initials);
 
-        this.measureArray = [{label: 'Metric', value: true}, {label: 'US', value: false}];
+        this.metric = ko.observable(Controller.gadget.config().metric);
 
-        this.selectedMeasure = ko.observable(this.measureArray[false]);
+        this.compass = ko.observable(Controller.gadget.config().compass);
 
-        this.compassArray = [{label: 'On', value: true}, {label: 'Off', value: false}];
+        this.track = ko.observable(Controller.gadget.config().track);
 
-        this.selectedCompass = ko.observable(Controller.gadget.state());
-
-        this.trackArray = [{label: 'On', value: true}, {label: 'Off', value: false}];
-
-        this.selectedTrack = ko.observable(Controller.gadget.state());
-
-        this.uploadArray = [{label: 'On', value: true}, {label: 'Off', value: false}];
-
-        this.selectedUpload = ko.observable(Controller.gadget.directUpload());
+        this.upload = ko.observable(Controller.gadget.config().directUpload);
 
         this.updateSettings = function(){
-            Controller.gadget.state(this.selectedState());
-            Controller.gadget.initials(this.initials());
-            Controller.gadget.email(this.email());
-            Controller.gadget.metric(this.selectedMeasure().value);
-            Controller.gadget.compass(this.selectedCompass().value);
-            Controller.gadget.track(this.selectedTrack().value);
-            Controller.gadget.directUpload(this.selectedUpload().value);
-            alert(this.selectedState() + " " + this.initials() + " " + this.email() + " " + this.selectedMeasure() + " " + this.selectedCompass() + " " + this.selectedTrack()+ " " + this.selectedUpload());
-            Controller.gadget.changeView('home');
+            var configuration = new Config();
+            configuration.state = this.selectedState();
+            configuration.email = this.email();
+            configuration.initials = this.initials();
+            configuration.metric = this.metric();
+            configuration.compass = this.compass();
+            configuration.track = this.track();
+            configuration.directUpload = this.upload();
+            Controller.gadget.config(configuration);
+            DB.setConfig(configuration).then(
+                function(){
+                    Controller.gadget.changeView('home');
+                }
+            )
         };
 
     };
