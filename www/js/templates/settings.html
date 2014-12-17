@@ -1,12 +1,12 @@
 <div id="settingsDiv" data-bind="with: settings">
     <div id="settingsFooter" class="formFooter">
-        <span class="message">State: </span><select id="selectState" data-bind="options: states, value: selectedState"></select><br>
-        <span class="message">Email: </span><input type="text" id="textEmail" data-bind="value: email"><br>
-        <span class="message">Initials: </span><input type="text" id="textInitials" data-bind="value: initials"><br>
-        <input type="checkbox" data-bind="checked: metric" /><span class="message"> Use Metric</span><br>
-        <input type="checkbox" data-bind="checked: compass" /><span class="message"> Display Compass</span><br>
-        <input type="checkbox" data-bind="checked: track" /><span class="message"> Track Logging</span><br>
-        <!--<span class="message"><input type="checkbox" data-bind="checked: upload" />Direct Data Uploads</span><br>-->
+        <span class="message">State: <select id="selectState" data-bind="options: states, value: selectedState"></select></span><br>
+        <span class="message">Email: <input type="text" id="textEmail" data-bind="value: email"></span><br>
+        <span class="message">Initials: <input type="text" id="textInitials" data-bind="value: initials"></span><br>
+        <span class="message"><input type="checkbox" data-bind="checked: metric" /> Use Metric</span><br>
+        <span class="message"><input type="checkbox" data-bind="checked: compass" /> Display Compass</span><br>
+        <span class="message"><input type="checkbox" data-bind="checked: track" /> Track Logging</span><br>
+        <span class="message"><input type="checkbox" data-bind="checked: upload" /> Direct Data Uploads</span><br>
         <input type="button" id="btnSettingsOK" class="gadgetButton fastButton" value="OK" data-bind="click: function(){this.updateSettings();}">
         <input type="button" id="btnSettingsCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
     </div>
