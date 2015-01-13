@@ -15,12 +15,12 @@ define (['jquery',
         my.sitesFile = null;
         my.trackLog = "crumbs.txt";
         my.activityLog = "trans_log.txt";
-        my.urlPrefix = "http://skynet.ento.vt.edu/"; //TEST
+        my.urlPrefix = "http://testskynet.ento.vt.edu/"; //TEST
         //my.urlPrefix = "http://yt.ento.vt.edu/"; //PRODUCTION
 
         my.getConfig = function(){
             var deferred = new $.Deferred();
-            my.fileExists(my.root, 'config.json').then(
+            my.fileExists(my.root, 'config.txt').then(
                 function(entry){
                     getFile(entry).then(loadFile).then(function(data){
                         Controller.gadget.config(JSON.parse(data));
@@ -28,7 +28,7 @@ define (['jquery',
                     });
                 },
                 function(){
-                    getFileEntry(my.root, 'config.json', {create: true, exclusive: false}).then(function(entry){
+                    getFileEntry(my.root, 'config.txt', {create: true, exclusive: false}).then(function(entry){
                         var configuration = new Config();
                         writeFile(entry, configuration).then(
                             function(){
@@ -48,7 +48,7 @@ define (['jquery',
 
         my.setConfig = function(data){
             var deferred = new $.Deferred();
-            getFileEntry(my.root, 'config.json', {create: true, exclusive: false}).then(function(entry){
+            getFileEntry(my.root, 'config.txt', {create: true, exclusive: false}).then(function(entry){
                 writeFile(entry, data).then(
                     function(){
                         deferred.resolve();

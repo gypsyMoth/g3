@@ -72,7 +72,7 @@ define(['jquery',
             activity.transfer.abort();
             track.transfer.abort();
             job.transfer.abort();
-            DB.root.getDirectory("Backups", {create: false, exclusive: false}, function(dirEntry){
+            DB.root.getDirectory("Backups", {create: true, exclusive: false}, function(dirEntry){
                 DB.deleteFile(dirEntry, activity.backup);
                 DB.deleteFile(dirEntry, track.backup);
             });
@@ -99,7 +99,7 @@ define(['jquery',
                     DB.fileExists(DB.root, DB.activityLog).then(
                         function(){
                             activity.found = true;
-                            DB.root.getDirectory("Backups", {create: false, exclusive: false}, function(dirEntry) {
+                            DB.root.getDirectory("Backups", {create: true, exclusive: false}, function(dirEntry) {
                                 DB.fileExists(dirEntry, activity.filename + tag() + ".txt").then(
                                     function () {
                                         alert("Upload file already exists! Please add a new tag in the text box!");
