@@ -30,7 +30,7 @@ define (['jquery',
                 function(){
                     getFileEntry(my.root, 'config.txt', {create: true, exclusive: false}).then(function(entry){
                         var configuration = new Config();
-                        writeFile(entry, configuration).then(
+                        writeFile(entry, JSON.stringify(configuration)).then(
                             function(){
                                 Controller.gadget.config(configuration);
                                 deferred.resolve();
@@ -49,8 +49,9 @@ define (['jquery',
         my.setConfig = function(data){
             var deferred = new $.Deferred();
             getFileEntry(my.root, 'config.txt', {create: true, exclusive: false}).then(function(entry){
-                writeFile(entry, data).then(
+                writeFile(entry, JSON.stringify(data)).then(
                     function(){
+                        my.jobFile('job.dat');
                         deferred.resolve();
                     },
                     function(){
@@ -390,7 +391,7 @@ define (['jquery',
         my.jobFile = function(filename){
             var deferred = new $.Deferred();
             getFileEntry(my.root, filename, {create: true, exclusive: false}).then(function(entry){
-                writeFile(entry, Controller.gadget.email()).then(
+                writeFile(entry, Controller.gadget.config().email).then(
                    function(){
                        deferred.resolve();
                    },
