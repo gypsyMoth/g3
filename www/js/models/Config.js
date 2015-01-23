@@ -10,6 +10,7 @@ define(function() {
         this.compass = true;
         this.track = true;
         this.directUpload = false;
+        this.uploadURL = "TrapData"
     };
 
     return Config;

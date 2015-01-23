@@ -34,6 +34,8 @@ define(['jquery',
 
         this.upload = ko.observable(Controller.gadget.config().directUpload);
 
+        this.url = ko.observable(Controller.gadget.config().uploadURL);
+
         this.updateSettings = function(){
             var configuration = new Config();
             configuration.state = this.selectedState();
@@ -43,6 +45,7 @@ define(['jquery',
             configuration.compass = this.compass();
             configuration.track = this.track();
             configuration.directUpload = this.upload();
+            configuration.uploadURL = this.url();
             Controller.gadget.config(configuration);
             DB.setConfig(configuration).then(
                 function(){

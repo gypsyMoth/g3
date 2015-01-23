@@ -311,9 +311,9 @@ define (['jquery',
             console.log(filename);
 
             //var uploadedFile = initials + loadDate
-            var uri = encodeURI(my.urlPrefix + "/SlowTheSpread/Upload/TrapData/" + batch + "/" + filename);
+            var uri = encodeURI(my.urlPrefix + "SlowTheSpread/Upload/" + Controller.gadget.config().uploadURL + "/" + batch + "/" + filename);
             //var filePath = my.root.toURL() + "/" + my.activityLog;
-
+            console.log(uri);
             var options = new FileUploadOptions();
             options.fileName = filename;
             //options.mimeType = "text/csv";
