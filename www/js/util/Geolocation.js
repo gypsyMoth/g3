@@ -41,6 +41,12 @@ define(['jquery',
         Gadget.position().longitude(position.coords.longitude);
         Gadget.position().accuracy(Math.round(position.coords.accuracy));
         Gadget.position().timestamp(position.timestamp);
+
+        if (Gadget.previousUTMs().length >= 10) {
+            Gadget.previousUTMs.shift();
+        }
+        Gadget.previousUTMs.push(Gadget.position().utm());
+
         if (Gadget.config().track){
             DB.logTrack(Gadget.position());
         }

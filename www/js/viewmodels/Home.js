@@ -26,6 +26,10 @@ define(['jquery',
             return Controller.gadget.position();
         });
 
+        this.previous = ko.computed(function(){
+            return Controller.gadget.previousUTM();
+        });
+
         this.found = ko.computed(function(){
             return this.current().timestamp() !== undefined;
         }, this);
@@ -45,6 +49,7 @@ define(['jquery',
         this.gpsAge = ko.computed(function(){
             var timestamp = this.current().timestamp() || 0;
             var age = this.now() - timestamp;
+            //console.log(this.now() + "-" + timestamp + "=" + Math.floor(age/1000));
             return age <= 0 ? 0 : Math.floor(age/1000);
         }, this);
 
@@ -70,7 +75,7 @@ define(['jquery',
         this.isOut = ko.observable(false);
 
         this.relPos = ko.computed(function(){
-            var rp = NearestNeighbor.relative(this.site(), this.current().utm());
+            var rp = NearestNeighbor.relative(this.site(), this.current().utm(), this.previous());
             rp.distanceOutside > 0 ? this.isOut(true) : this.isOut(false);
             Controller.gadget.relativePosition(rp);
             return rp;
@@ -147,6 +152,10 @@ define(['jquery',
 
         this.bearing = ko.observable(0);
 
+        this.compass = ko.computed(function(){
+            return Controller.gadget.config().compass;
+        });
+
         this.startCompass = function(){
             var options = {
                 frequency: 100
@@ -159,18 +168,23 @@ define(['jquery',
                 },
                 function(error) {
                     console.log(error.code);
+                    Controller.gadget.config().compass = false;
+                    Controller.gadget.magneticCompass(false);
+                    navigator.compass.clearWatch(watchId);
                 },
                 options
             );
         };
 
         this.cardinalRotation = ko.computed(function(){
-            var rotation = 360 - this.heading();
+            //var rotation = 360 - this.heading();
+            var rotation = this.compass() ? 360 - this.heading() : 360 - this.relPos().motionHeading;
             return 'translate(-50%, -50%) rotate(' + rotation + 'deg)';
         }, this);
 
         this.arrowRotation = ko.computed(function(){
-            var rotation = this.relPos().compassBearing - this.heading();
+            //var rotation = this.relPos().compassBearing - this.heading();
+            var rotation = this.compass() ? this.relPos().compassBearing - this.heading() : this.relPos().compassBearing - this.relPos().motionHeading;
             if (rotation < 0) {
                 rotation += 360;
             }

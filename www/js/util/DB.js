@@ -96,7 +96,7 @@ define (['jquery',
 
         var getRootDirectory = function() {
             var deferred = new $.Deferred();
-            var sd = "file:///storage/extSdCard";
+            /*var sd = "file:///storage/extSdCard";
             window.resolveLocalFileSystemURL(
                 sd,
                 function(entry){
@@ -154,7 +154,7 @@ define (['jquery',
                         function(){
                             alert("FAILED!");
                         }
-                    );*/
+                    );
                 function(error){
                     console.log("EXTERNAL SD CARD NOT FOUND: " + error.code);
                     my.filesystem.root.getDirectory("G3", {create: true, exclusive:false},
@@ -168,14 +168,14 @@ define (['jquery',
                         }
                     );
                 }
-            );
+            );*/
 
-            /*my.filesystem.root.getDirectory("G3", {create: true, exclusive: false}, function(dirEntry) {
+            my.filesystem.root.getDirectory("G3", {create: true, exclusive: false}, function(dirEntry) {
                 my.root = dirEntry;
                 deferred.resolve();
             }, function(error) {
                 console.error("getRootDirectory: " + error.code);
-            });*/
+            });
             return deferred.promise();
         };
 

@@ -67,6 +67,8 @@ define(['jquery',
 
         this.compass = ko.observable(true);
 
+        this.magneticCompass = ko.observable(true);
+
         this.track = ko.observable(true);
 
         this.directUpload = ko.observable(false);
@@ -82,6 +84,25 @@ define(['jquery',
 
         this.position = ko.observable(new Position());
 
+        this.previousUTMs = ko.observableArray();
+
+        this.previousUTM = ko.computed(function(){
+            var east = 0;
+            var north = 0;
+            var n = this.previousUTMs().length;
+            var zone = this.selectedSite().zone;
+            _.each(this.previousUTMs(), function(utm){
+                east += utm.Easting;
+                north += utm.Northing;
+            });
+            var avgUTM = {
+                Zone: zone,
+                Easting: Math.round(east/n),
+                Northing: Math.round(north/n)
+            };
+            return avgUTM;
+        }, this);
+
         this.sitesList = ko.observableArray();
 
         this.sitesList.subscribe(function(){
@@ -95,7 +116,6 @@ define(['jquery',
         this.operationalSite = ko.observable(new Site());
 
         this.initialize = function(){
-            this.home = new HomeView();
             this.splash = new SplashView();
             this.splash.initializeGadget();
         };
@@ -107,6 +127,7 @@ define(['jquery',
         this.changeView = function(name){
             switch(name){
                 case('home'):
+                    this.home = new HomeView();
                     this.home.timer = setInterval(_.bind(function(){
                         this.home.now(Date.now());
                     }, this), 1000);
