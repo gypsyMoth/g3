@@ -23,7 +23,8 @@ define(['jquery',
     'src/viewmodels/QC',
     'src/viewmodels/Download',
     'src/viewmodels/Upload',
-    'src/viewmodels/Settings'
+    'src/viewmodels/Settings',
+    'src/models/Config'
 ], function($,
             _,
             ko,
@@ -49,13 +50,14 @@ define(['jquery',
             QCView,
             DownloadView,
             UploadView,
-            SettingsView) {
+            SettingsView,
+            Config) {
 
     'use strict';
 
     var Gadget = function () {
 
-        this.config = ko.observable();
+        this.config = ko.observable(new Config());
         // Configuration options...
         this.initials = ko.observable('BGP');
 
@@ -117,6 +119,7 @@ define(['jquery',
 
         this.initialize = function(){
             this.splash = new SplashView();
+            this.home = new HomeView();
             this.splash.initializeGadget();
         };
 
@@ -127,7 +130,6 @@ define(['jquery',
         this.changeView = function(name){
             switch(name){
                 case('home'):
-                    this.home = new HomeView();
                     this.home.timer = setInterval(_.bind(function(){
                         this.home.now(Date.now());
                     }, this), 1000);

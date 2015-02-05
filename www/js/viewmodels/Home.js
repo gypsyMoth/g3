@@ -84,6 +84,7 @@ define(['jquery',
         this.isOut.subscribe(function(){
             //Added this unnecessary if statement to keep the navigator from breaking jasmine spec tests...
             if (navigator.notification !== undefined) {
+                //console.log("BEEP!");
                 navigator.notification.beep(1);
             }
         }, this);
