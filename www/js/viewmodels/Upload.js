@@ -16,8 +16,8 @@ define(['jquery',
 
     var UploadView = function() {
 
-        var initials = Controller.gadget.initials();
-        var state = Controller.gadget.state();
+        var initials = Controller.gadget.config().initials;
+        var state = Controller.gadget.config().state;
         var loadDate = DateFormatter.getLoadFormatDate(Date.now());
         var batch = 'sts.' + state + '.' + DateFormatter.getBatchDate(Date.now());
 

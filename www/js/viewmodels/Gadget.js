@@ -59,7 +59,7 @@ define(['jquery',
 
         this.config = ko.observable(new Config());
         // Configuration options...
-        this.initials = ko.observable('BGP');
+        /*this.initials = ko.observable('BGP');
 
         this.state = ko.observable('VA');
 
@@ -73,7 +73,7 @@ define(['jquery',
 
         this.track = ko.observable(true);
 
-        this.directUpload = ko.observable(false);
+        this.directUpload = ko.observable(false);*/
 
         // Application objects...
         this.sitesFiles = ko.observableArray();
