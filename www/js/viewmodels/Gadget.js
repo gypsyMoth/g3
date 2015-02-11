@@ -22,7 +22,9 @@ define(['jquery',
     'src/viewmodels/Inspection',
     'src/viewmodels/QC',
     'src/viewmodels/Download',
-    'src/viewmodels/Upload'
+    'src/viewmodels/Upload',
+    'src/viewmodels/Settings',
+    'src/models/Config'
 ], function($,
             _,
             ko,
@@ -47,18 +49,33 @@ define(['jquery',
             InspectionView,
             QCView,
             DownloadView,
-            UploadView) {
+            UploadView,
+            SettingsView,
+            Config) {
 
     'use strict';
 
     var Gadget = function () {
 
-        this.initials = ko.observable('BGP');
+        this.config = ko.observable(new Config());
+        // Configuration options...
+        /*this.initials = ko.observable('BGP');
 
         this.state = ko.observable('VA');
 
         this.email = ko.observable('bgpogue@vt.edu');
 
+        this.metric = ko.observable(true);
+
+        this.compass = ko.observable(true);
+
+        this.magneticCompass = ko.observable(true);
+
+        this.track = ko.observable(true);
+
+        this.directUpload = ko.observable(false);*/
+
+        // Application objects...
         this.sitesFiles = ko.observableArray();
 
         this.manualLock = ko.observable(false);
@@ -68,6 +85,25 @@ define(['jquery',
         this.selectedSite = ko.observable(new Site());
 
         this.position = ko.observable(new Position());
+
+        this.previousUTMs = ko.observableArray();
+
+        this.previousUTM = ko.computed(function(){
+            var east = 0;
+            var north = 0;
+            var n = this.previousUTMs().length;
+            var zone = this.selectedSite().zone;
+            _.each(this.previousUTMs(), function(utm){
+                east += utm.Easting;
+                north += utm.Northing;
+            });
+            var avgUTM = {
+                Zone: zone,
+                Easting: Math.round(east/n),
+                Northing: Math.round(north/n)
+            };
+            return avgUTM;
+        }, this);
 
         this.sitesList = ko.observableArray();
 
@@ -82,8 +118,8 @@ define(['jquery',
         this.operationalSite = ko.observable(new Site());
 
         this.initialize = function(){
-            this.home = new HomeView();
             this.splash = new SplashView();
+            this.home = new HomeView();
             this.splash.initializeGadget();
         };
 
@@ -98,7 +134,9 @@ define(['jquery',
                         this.home.now(Date.now());
                     }, this), 1000);
                     this.operationalSite(new Site());
-                    this.home.startCompass();
+                    if (this.config().compass){
+                        this.home.startCompass();
+                    };
                     Geolocation.start();
                     break;
                 case('placement'):
@@ -124,6 +162,8 @@ define(['jquery',
                     Geolocation.stop();
                     this.connectionStatus(DB.checkConnection());
                     this.extras = new ExtrasView();
+                    //var config = this.config();
+                    //alert(config.state + " " + config.initials + " " + config.email + " " + config.metric + " " + config.compass + " " + config.track+ " " + config.directUpload);
                     break;
                 case('manualLock'):
                     this.manual = new ManualLockView();
@@ -146,6 +186,9 @@ define(['jquery',
                     break;
                 case('upload'):
                     this.upload = new UploadView();
+                    break;
+                case('settings'):
+                    this.settings = new SettingsView();
                     break;
             }
             this.currentView(name);

@@ -1,7 +1,8 @@
 define (['jquery',
     'underscore',
+    'src/util/Controller',
     'src/models/Site'],
-    function ($, _, Site) { 'use strict';
+    function ($, _, Controller, Site) { 'use strict';
 
     // Private methods
     var my = {};
@@ -121,9 +122,10 @@ define (['jquery',
         })
     };
 
-    my.relative = function(site, current){
+    my.relative = function(site, current, previous){
         var point = this.getPoint(site);
         var currentPnt = this.currentLocationToPoint(current);
+        var prevPnt = this.currentLocationToPoint(previous);
         var distance = getDistance(point, currentPnt);
         var rel =  {
             distance: Math.round(distance),
@@ -131,7 +133,8 @@ define (['jquery',
             bearing: getBearingString(point, currentPnt),
             // Calculated bearing from atan2 based on counter-clockwise angle from (1,0) in four quadrant system.
             // Compass uses azimuth angles, so you have to switch bearingDeg to azimuth values by subtracting from 360.
-            compassBearing: 360 - Math.round(getBearing(point, currentPnt))
+            compassBearing: 360 - Math.round(getBearing(point, currentPnt)),
+            motionHeading: 360 - Math.round(getBearing(currentPnt, prevPnt))
         };
         return rel;
     };

@@ -1,0 +1,14 @@
+<div id="settingsDiv" data-bind="with: settings">
+    <div id="settingsFooter" class="formFooter">
+        <span class="message">State: <select id="selectState" data-bind="options: states, value: selectedState"></select><br></span>
+        <span class="message">Email: <input type="text" id="textEmail" data-bind="value: email"><br></span>
+        <span class="message">Initials: <input type="text" id="textInitials" data-bind="value: initials"><br></span>
+        <span class="message"><input type="checkbox" data-bind="checked: metric" /> Display Metric Units<br></span>
+        <span class="message" data-bind="visible: $root.magneticCompass"><input type="checkbox" data-bind="checked: compass"/> Use Magnetic Compass<br></span>
+        <span class="message"><input type="checkbox" data-bind="checked: track" /> Track Logging<br></span>
+        <span class="message"><input type="checkbox" data-bind="checked: upload" /> Direct Data Uploads<br></span>
+        <span class="message" data-bind="visible: upload">Upload URL: <input type="text" id="textURL" data-bind="value: url"><br></span>
+        <input type="button" id="btnSettingsOK" class="gadgetButton fastButton" value="OK" data-bind="click: function(){this.updateSettings();}">
+        <input type="button" id="btnSettingsCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    </div>
+</div>

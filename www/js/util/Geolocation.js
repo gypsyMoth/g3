@@ -41,7 +41,15 @@ define(['jquery',
         Gadget.position().longitude(position.coords.longitude);
         Gadget.position().accuracy(Math.round(position.coords.accuracy));
         Gadget.position().timestamp(position.timestamp);
-        DB.logTrack(Gadget.position());
+
+        if (Gadget.previousUTMs().length >= 10) {
+            Gadget.previousUTMs.shift();
+        }
+        Gadget.previousUTMs.push(Gadget.position().utm());
+
+        if (Gadget.config().track){
+            DB.logTrack(Gadget.position());
+        }
         if (!Gadget.manualLock()){
             this.findNearest(Gadget.position().utm());
         }

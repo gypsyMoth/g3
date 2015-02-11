@@ -1,9 +1,10 @@
 define (['jquery',
     'underscore',
     'src/models/SitesFile',
+    'src/models/Config',
     'src/util/Date',
     'src/util/Controller'],
-    function ($, _, SitesFile, DateFormatter, Controller) { 'use strict';
+    function ($, _, SitesFile, Config, DateFormatter, Controller) { 'use strict';
         var my = {};
 
         var PERSISTENT;
@@ -14,11 +15,58 @@ define (['jquery',
         my.sitesFile = null;
         my.trackLog = "crumbs.txt";
         my.activityLog = "trans_log.txt";
-        my.urlPrefix = "http://skynet.ento.vt.edu/"; //TEST
+        my.urlPrefix = "http://testskynet.ento.vt.edu/"; //TEST
         //my.urlPrefix = "http://yt.ento.vt.edu/"; //PRODUCTION
 
+        my.getConfig = function(){
+            var deferred = new $.Deferred();
+            my.fileExists(my.root, 'config.txt').then(
+                function(entry){
+                    getFile(entry).then(loadFile).then(function(data){
+                        Controller.gadget.config(JSON.parse(data));
+                        deferred.resolve();
+                    });
+                },
+                function(){
+                    getFileEntry(my.root, 'config.txt', {create: true, exclusive: false}).then(function(entry){
+                        var configuration = new Config();
+                        writeFile(entry, JSON.stringify(configuration)).then(
+                            function(){
+                                Controller.gadget.config(configuration);
+                                deferred.resolve();
+                            },
+                            function(){
+                                alert("Unable to create config file!");
+                                deferred.reject();
+                            }
+                        );
+                    });
+                }
+            );
+            return deferred.promise();
+        };
+
+        my.setConfig = function(data){
+            var deferred = new $.Deferred();
+            getFileEntry(my.root, 'config.txt', {create: true, exclusive: false}).then(function(entry){
+                writeFile(entry, JSON.stringify(data)).then(
+                    function(){
+                        my.jobFile('job.dat');
+                        deferred.resolve();
+                    },
+                    function(){
+                        alert("Unable to write config file!");
+                        deferred.reject();
+                    }
+                );
+            });
+            return deferred.promise();
+        };
+
         my.initialize = function() {
-            return getFileSystem().then(getRootDirectory);
+            return getFileSystem().then(getRootDirectory).then(function(){
+                my.getConfig();
+            });
         };
 
         var getFileSystem = function() {
@@ -48,7 +96,7 @@ define (['jquery',
 
         var getRootDirectory = function() {
             var deferred = new $.Deferred();
-            var sd = "file:///storage/extSdCard";
+            /*var sd = "file:///storage/extSdCard";
             window.resolveLocalFileSystemURL(
                 sd,
                 function(entry){
@@ -106,7 +154,7 @@ define (['jquery',
                         function(){
                             alert("FAILED!");
                         }
-                    );*/
+                    );
                 function(error){
                     console.log("EXTERNAL SD CARD NOT FOUND: " + error.code);
                     my.filesystem.root.getDirectory("G3", {create: true, exclusive:false},
@@ -120,14 +168,14 @@ define (['jquery',
                         }
                     );
                 }
-            );
+            );*/
 
-            /*my.filesystem.root.getDirectory("G3", {create: true, exclusive: false}, function(dirEntry) {
+            my.filesystem.root.getDirectory("G3", {create: true, exclusive: false}, function(dirEntry) {
                 my.root = dirEntry;
                 deferred.resolve();
             }, function(error) {
                 console.error("getRootDirectory: " + error.code);
-            });*/
+            });
             return deferred.promise();
         };
 
@@ -200,7 +248,7 @@ define (['jquery',
         my.fileExists = function(dirEntry, filename){
             var deferred = new $.Deferred();
             dirEntry.getFile(filename, {create: false},
-                function(){deferred.resolve()},
+                function(fileEntry){deferred.resolve(fileEntry)},
                 function(){deferred.reject()}
             );
             return deferred.promise();
@@ -263,9 +311,9 @@ define (['jquery',
             console.log(filename);
 
             //var uploadedFile = initials + loadDate
-            var uri = encodeURI(my.urlPrefix + "/SlowTheSpread/Upload/TrapData/" + batch + "/" + filename);
+            var uri = encodeURI(my.urlPrefix + "SlowTheSpread/Upload/" + Controller.gadget.config().uploadURL + "/" + batch + "/" + filename);
             //var filePath = my.root.toURL() + "/" + my.activityLog;
-
+            console.log(uri);
             var options = new FileUploadOptions();
             options.fileName = filename;
             //options.mimeType = "text/csv";
@@ -287,9 +335,9 @@ define (['jquery',
             return deferred.promise();
         };
 
-        my.backUp = function(newName){
+        my.backUp = function(oldName, newName){
             var deferred = new $.Deferred();
-            getFileEntry(my.root, my.activityLog, {create: false, exclusive: false}).then(function(entry){
+            getFileEntry(my.root, oldName, {create: false, exclusive: false}).then(function(entry){
                 my.root.getDirectory("Backups", {create: true, exclusive:false},
                     function(dirEntry){
                         entry.copyTo(dirEntry, newName,
@@ -343,7 +391,7 @@ define (['jquery',
         my.jobFile = function(filename){
             var deferred = new $.Deferred();
             getFileEntry(my.root, filename, {create: true, exclusive: false}).then(function(entry){
-                writeFile(entry, Controller.gadget.email()).then(
+                writeFile(entry, Controller.gadget.config().email).then(
                    function(){
                        deferred.resolve();
                    },
@@ -355,6 +403,8 @@ define (['jquery',
             });
             return deferred.promise();
         };
+
+
 
         my.saveSites = function(sitesList) {
             var deferred = new $.Deferred();
@@ -389,23 +439,23 @@ define (['jquery',
         };
 
         my.logTrack = function(position){
-            var deferred = new $.Deferred();
+            //var deferred = new $.Deferred();
             getFileEntry(my.root, my.trackLog, {create: true, exclusive: false}).then(function(fileEntry) {
                 fileEntry.createWriter(function(writer) {
                     writer.onwriteend = function(evt) {
-                        deferred.resolve();
+                        //deferred.resolve();
                     };
                     writer.seek(writer.length);
                     if (writer.length === 0){
-                        writer.write("lat,lon,date_time,fix\n");
-                        //console.log("lat,lon,date_time,fix\n")
+                        writer.write("lat,lon,date_time,fix\r\n");
+                        //console.log("lat,lon,date_time,fix\r\n")
                     }
                     var trackDate = DateFormatter.getTrackDate(new Date(position.timestamp()));
-                    writer.write(position.latitude() + "," + position.longitude() + "," + trackDate + "," + position.accuracy() + "\n");
-                    //console.log(position.latitude() + "," + position.longitude() + "," + trackDate + "," + position.accuracy() + "\n");
+                    writer.write(position.latitude() + "," + position.longitude() + "," + trackDate + "," + position.accuracy() + "\r\n");
+                    //console.log(position.latitude() + "," + position.longitude() + "," + trackDate + "," + position.accuracy() + "\r\n");
                 }, my.fail);
             });
-            return deferred.promise();
+            //return deferred.promise();
         };
 
         var readTransLog = function(){

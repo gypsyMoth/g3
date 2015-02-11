@@ -81,6 +81,7 @@ C:\Dev\Repo\g3\platforms\android\assets\www\js\lib\require-min.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\lib\require.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\lib\text.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\lib\underscore-min.js \
+C:\Dev\Repo\g3\platforms\android\assets\www\js\models\Config.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\models\Site.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\models\SitesFile.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\caution.html \
@@ -96,6 +97,7 @@ C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\omit.html \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\placement.html \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\qcInspection.html \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\random.html \
+C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\settings.html \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\splash.html \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\upload.html \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\util\Controller.js \
@@ -121,6 +123,7 @@ C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Placement.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Position.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\QC.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Random.js \
+C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Settings.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Splash.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Upload.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.device-orientation \

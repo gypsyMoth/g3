@@ -26,6 +26,10 @@ define(['jquery',
             return Controller.gadget.position();
         });
 
+        this.previous = ko.computed(function(){
+            return Controller.gadget.previousUTM();
+        });
+
         this.found = ko.computed(function(){
             return this.current().timestamp() !== undefined;
         }, this);
@@ -45,6 +49,7 @@ define(['jquery',
         this.gpsAge = ko.computed(function(){
             var timestamp = this.current().timestamp() || 0;
             var age = this.now() - timestamp;
+            //console.log(this.now() + "-" + timestamp + "=" + Math.floor(age/1000));
             return age <= 0 ? 0 : Math.floor(age/1000);
         }, this);
 
@@ -70,7 +75,7 @@ define(['jquery',
         this.isOut = ko.observable(false);
 
         this.relPos = ko.computed(function(){
-            var rp = NearestNeighbor.relative(this.site(), this.current().utm());
+            var rp = NearestNeighbor.relative(this.site(), this.current().utm(), this.previous());
             rp.distanceOutside > 0 ? this.isOut(true) : this.isOut(false);
             Controller.gadget.relativePosition(rp);
             return rp;
@@ -79,6 +84,7 @@ define(['jquery',
         this.isOut.subscribe(function(){
             //Added this unnecessary if statement to keep the navigator from breaking jasmine spec tests...
             if (navigator.notification !== undefined) {
+                //console.log("BEEP!");
                 navigator.notification.beep(1);
             }
         }, this);
@@ -119,19 +125,37 @@ define(['jquery',
             }
         }, this);
 
+        var conversion = function(meters){
+            var dist, units;
+            if (Controller.gadget.config().metric === false){
+                dist = meters > 1609.34 ? Math.round(meters/1609.34*10)/10 : Math.round(meters * 1.09361);
+                units = meters > 1609.34 ? "mi" : "yd";
+            } else {
+                dist = meters > 1000 ? Math.round(meters/1000*10)/10 : meters;
+                units = meters > 1000 ? "km" : "m";
+            }
+            return dist + " " + units;
+        };
+
         this.positionInfo = ko.computed(function(){
             if (this.gpsStatus() === false) {
                 return "Acquiring Satellites..."
             } else if (!this.foundSite()) {
                 return "No sites found in Zone " + this.current().utm().Zone + "!";
             } else {
-                return this.relPos().distance + " (\xB1" + this.current().accuracy() + ") meters " + this.relPos().bearing;
+                var distance = conversion(this.relPos().distance);
+                var accuracy = conversion(this.current().accuracy());
+                return distance + " (\xB1" + accuracy + ") " + this.relPos().bearing;
             }
         }, this);
 
         this.heading = ko.observable(0);
 
         this.bearing = ko.observable(0);
+
+        this.compass = ko.computed(function(){
+            return Controller.gadget.config().compass;
+        });
 
         this.startCompass = function(){
             var options = {
@@ -145,18 +169,23 @@ define(['jquery',
                 },
                 function(error) {
                     console.log(error.code);
+                    Controller.gadget.config().compass = false;
+                    Controller.gadget.magneticCompass(false);
+                    navigator.compass.clearWatch(watchId);
                 },
                 options
             );
         };
 
         this.cardinalRotation = ko.computed(function(){
-            var rotation = 360 - this.heading();
+            //var rotation = 360 - this.heading();
+            var rotation = this.compass() ? 360 - this.heading() : 360 - this.relPos().motionHeading;
             return 'translate(-50%, -50%) rotate(' + rotation + 'deg)';
         }, this);
 
         this.arrowRotation = ko.computed(function(){
-            var rotation = this.relPos().compassBearing - this.heading();
+            //var rotation = this.relPos().compassBearing - this.heading();
+            var rotation = this.compass() ? this.relPos().compassBearing - this.heading() : this.relPos().compassBearing - this.relPos().motionHeading;
             if (rotation < 0) {
                 rotation += 360;
             }
