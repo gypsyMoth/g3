@@ -113,11 +113,14 @@ define(['jquery',
                                         activity.backup = activity.filename + ".txt";
                                         track.filename = track.filename + tag();
                                         track.backup = track.filename + ".txt";
-                                        DB.backUp(activity.backup).then(
+                                        DB.backUp(DB.activityLog, activity.backup).then(
                                             DB.fileExists(DB.root, DB.trackLog).then(
-                                                function () {
+                                                function (fileEntry) {
+                                                    fileEntry.file(function(file){
+                                                        track.size = file.size / 1000;
+                                                    })
                                                     track.found = true;
-                                                    DB.backUp(track.backup).then(function () {
+                                                    DB.backUp(DB.trackLog, track.backup).then(function () {
                                                         deferred.resolve();
                                                     });
                                                 },
@@ -170,7 +173,7 @@ define(['jquery',
                 function(){
                     DB.uploadFile(activity.transfer, activity.path, batch, activity.filename).then(
                         function () {
-                            if (track.found) {
+                            if (track.found && track.size < 30000) {
                                 DB.uploadFile(track.transfer, track.path, batch, track.filename).then(
                                     function () {
                                         DB.uploadFile(job.transfer, job.path, batch, job.filename).then(
@@ -187,6 +190,9 @@ define(['jquery',
                                     }
                                 );
                             } else {
+                                if (track.size >= 30000) {
+                                    alert("Track log file size larger than 30MB! File will not be uploaded to server, but a copy has been saved to the backup folder on the device.")
+                                }
                                 DB.uploadFile(job.transfer, job.path, batch, job.filename).then(
                                     function () {
                                         uploadSuccess();

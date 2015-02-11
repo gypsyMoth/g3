@@ -335,9 +335,9 @@ define (['jquery',
             return deferred.promise();
         };
 
-        my.backUp = function(newName){
+        my.backUp = function(oldName, newName){
             var deferred = new $.Deferred();
-            getFileEntry(my.root, my.activityLog, {create: false, exclusive: false}).then(function(entry){
+            getFileEntry(my.root, oldName, {create: false, exclusive: false}).then(function(entry){
                 my.root.getDirectory("Backups", {create: true, exclusive:false},
                     function(dirEntry){
                         entry.copyTo(dirEntry, newName,
