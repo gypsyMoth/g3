@@ -1,42 +1,25 @@
 <div id="homeDiv" class="view" data-bind="with: home">
-    <div id="homeHeader" class="homeHeader">
-        <div id="locationDiv" class="homeDiv">
-            <span id="locationSpan" class="locationSpan" data-bind="text: location(), style:{color: gpsStatus() ? 'black' : 'red'}, visible: found()"></span><br>
-            <div id="counterDiv" class="signalDiv" data-bind="style: {backgroundColor: gpsStatus() ? '#9CCB3B' : 'transparent', width: signalCount()}"></div>
+    <div id="homeBody" class="form main">
+        <div id="locationDiv">
+            <div id="locationSpan" class="message" data-bind="text: location(), style:{color: gpsStatus() ? 'black' : 'red'}, visible: found()"></div>
+            <div id="counterDiv" class="progress" data-bind="style: {backgroundColor: gpsStatus() ? '#9CCB3B' : 'transparent', width: signalCount()}"></div>
         </div>
-
-    </div>
-    <!--<div>
-        <span data-bind="text: heading()"></span>
-        <span data-bind="text: relPos().motionHeading"></span>
-    </div>-->
-    <div id="ActionDiv" class="actionDiv" >
-        <img id="arrowImage" class="homeImg" src="img/arrow.png" data-bind="style:{webkitTransform: arrowRotation()}"/>
-        <img id="cardinalImage" class="homeImg" src="img/cardinal.png" data-bind="style:{webkitTransform: cardinalRotation()}"/>
-        <input id="homeImage" class="homeImg" type="image" data-bind="enable: foundSite, click: function(){this.goToView(this.operation());}, attr: {src: image()}"/>
-    </div>
-
-    <div id="homeFooter" class="homeFooter">
-        <div id="infoDiv" class="homeDiv">
-            <div id="lockDiv" data-bind="visible: $root.manualLock()">
-                <img id="lockImage" src="img/locked.gif"/>
+        <div id="actionDiv" class="actionDiv">
+            <img id="arrowImage" class="homeImg" src="img/arrow.png" data-bind="style:{webkitTransform: arrowRotation()}"/>
+            <img id="cardinalImage" class="homeImg" src="img/cardinal.png" data-bind="style:{webkitTransform: cardinalRotation()}"/>
+            <input id="homeImage" class="homeImg" type="image" data-bind="enable: foundSite, click: function(){this.goToView(this.operation());}, attr: {src: image()}"/>
+            <img id="lockImage" src="img/locked.png" data-bind="visible: $root.manualLock()">
+            <img id="inspectImage" src="img/magGlassSmall.png" data-bind="visible: inspected()">
+            <div id="distanceSpan" class="message" data-bind="text: positionInfo()"></div>
+        </div>
+        <div id="homeInfo" class="homeInfo">
+            <div id="siteDiv" class="siteDiv" data-bind="style: {backgroundColor: relPos().distanceOutside > 0 ? 'red' : 'yellowgreen'}">
+                <span id="siteSpan" class="siteSpan" data-bind="text: siteInfo()"></span>
             </div>
-            <div id="inspectDiv" data-bind="visible: inspected()">
-                <img id="inspectImage" src="img/magGlassSmall.gif"/>
-            </div>
+            <span id="messageSpan" class="message" data-bind="text: message()"></span>
         </div>
-
-        <div id="distanceDiv" class="homeDiv">
-            <span id="distanceSpan" class="message" data-bind="text: positionInfo()"></span>
-        </div>
-
-        <div id="siteDiv" class="homeDiv siteDiv" data-bind="style: {backgroundColor: relPos().distanceOutside > 0 ? 'red' : 'yellowgreen'}">
-            <span id="siteSpan" class="siteSpan" data-bind="text: siteInfo()"></span>
-        </div>
-
-        <div id="messageDiv" class="homeDiv">
-            <input type="button" id="btnHomeExtras" data-bind="click: function(){this.goToView('extras');}">
-            <span id="messageSpan" data-bind="text: message()"></span>
-        </div>
+    </div>
+    <div id="homeFooter" class="form footer">
+        <input type="image" id="btnHomeExtras" class="menuButton" src="img/details.png" data-bind="click: function(){this.goToView('extras');}">
     </div>
 </div>

@@ -5,27 +5,412 @@
     font-family: 'MS Sans Serif', Geneva, sans-serif;
 }
 
-.view {
+#content {
+    height:100%;
     width: 100%;
-    height: 100%;
     margin: 0;
-    padding: 1%;
 }
 
-.progress {
-    margin: auto;
-    padding: 1%;
-    background-color: #9CCB3B;
+
+.view {
+    width: 99%;
+    height: 99%;
+    margin: 0.5%;
+}
+
+.form {
+    width: 99%;
+    text-align: center;
+}
+
+/*#locationDiv {
+    width: 100%;
+    text-align: center;
+    background-color: blue;
+}*/
+
+@media screen and (orientation: landscape) { /*(min-aspect-ratio: 1/1) and (min-width:400px) {*/
+    .main {
+        position: absolute;
+        top: 0;
+        height: 80%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        /*background-color: green;
+        opacity: 0.75;*/
+    }
+
+    .footer {
+        position: absolute;
+        height: 15%;
+        bottom: 0;
+        /*background-color: red;
+        opacity: 0.5;*/
+    }
+
+    .actionDiv {
+        position: absolute;
+        text-align: center;
+        width: 50%;
+        height: 90%;
+        left: 0;
+        top: 11%;
+        background-color: #F2F2F2;
+    }
+
+    .homeInfo {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        -webkit-transform: translate(0, -50%);
+        height: auto;
+        width: 50%;
+        //background-color: orange;
+    }
+}
+
+@media screen and (orientation: portrait) { /*(min-aspect-ratio: 1/1) {*/
+        .main {
+        position: absolute;
+        top: 0;
+        height: 88%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        /*background-color: green;
+        opacity: 0.75;*/
+    }
+
+    .footer {
+        position: absolute;
+        height: 10%;
+        bottom: 0;
+        /*background-color: red;
+        opacity: 0.75;*/
+    }
+
+    .actionDiv {
+        position: absolute;
+        top: 10%;
+        width: 100%;
+        height: 60%;
+        text-align: center;
+        background-color: #F2F2F2;
+        //opacity: 0.5;
+    }
+
+    .homeInfo {
+        position: absolute;
+        height: 30%;
+        bottom: 0;
+        width: 100%;
+        //background-color: orange;
+    }
+}
+
+.homeImg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    /*-ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);*/
+}
+
+#homeImage {
+    height:65%;
+}
+
+#homeImage:focus {
+    outline: none;
+}
+
+#arrowImage {
+    height: 85%;
+}
+
+#cardinalImage {
+    height: 85%;
+}
+
+#distanceSpan {
+    position: absolute;
+    bottom: 0;
+    background-color: transparent;
+}
+
+#lockImage {
+    height: 15%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#inspectImage {
+    height: 15%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.siteDiv {
+    background-color: #799839;
+}
+
+.siteSpan {
+    color: white;
+    font-size: 3em;
+    font-weight: bolder;
+}
+
+/*.distanceSpan {
     font-size: 1.5em;
+    font-weight: bold;
+}*/
+
+.progress {
+    padding-top: 1%;
+    background-color: #9CCB3B;
     float: left;
 }
 
 .center {
     margin-left: auto;
     margin-right: auto;
-
 }
 
-td {
+.vertical {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translate(0%, -50%);
+    /*-ms-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);*/
+}
+
+.fastButton, a {
+    -ms-touch-action: none; // Deprecated as of IE 11, Microsoft recommends the the standard below
+    touch-action: none; // webkit
+}
+
+.message {
+    width: 100%;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    //text-transform: uppercase;
+}
+
+.bigMessage {
+    width: 100%;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+/*span.dataMessage {
+    background-color: #C0C4BE;
+    display: block;
+    margin: auto;
+}*/
+
+select {
+    height: 2em;
+    font-size: 1.5em;
+    font-weight: bold;
+    background-color: #C0C4BE;
+    text-align: center;
+}
+
+.menuButton {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #9CCB3B;
+    height: 90%;
+    margin: 1%;
+}
+
+.gadgetButton {
+    background-color: #9CCB3B;
+    font-size: 1.5em;
+    font-weight: bolder;
+    height: 20%;
+    min-height: 2em;
+    max-height: 3em;
+    width:40%;
+    margin: 0 4% 2% 4%;
+    white-space: normal;
+}
+
+.okButton {
+    background-color: #9CCB3B;
+    font-size: 2em;
+    font-weight: bolder;
+    height: 95%;
+    width: 40%;
+    max-height: 2em;
+    max-width: 4em;
+    margin: 0 5% 0 5%;
+}
+
+.cancelButton {
+    background-color: #DEA625;
+    font-size: 2em;
+    font-weight: bolder;
+    height: 95%;
+    width:40%;
+    max-height: 2em;
+    max-width: 4em;
+    margin: 0% 5% 0 5%;
+}
+
+#cautionSpan {
+    display: block;
+    font-weight:700;
+    color:red;
+    text-align:center;
+    font-size: 4em;
+}
+
+#cautionImg {
+    display: block;
+    height: 30%;
+}
+
+#splashSpan {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#splashHeader {
+    width:100%;
+    height:25%;
+    float:left;
+    clear:left;
+}
+
+#splashImage {
+    width: 100%;
+    float: left;
+    clear: left;
+    text-align: center;
+}
+
+#splashText {
+    width: 100%;
+    float: left;
+    clear: left;
+    text-align: center;
+}
+
+/*#tagInput {
+    height: 1.5em;
+    font-size: 1.5em;
+    margin: 1em;
+}*/
+
+input[type=checkbox] {
+    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    vertical-align: text-bottom;
+    text-align: right;
+}
+
+input[type=text] {
+    height: 1.5em;
+    font-size: 1.5em;
+    vertical-align: text-bottom;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 0 0 1em 2%;
+}
+
+div.spacer {
+    padding:2%;
+}
+/*.imageDiv {
+    margin-top: 5%;
+    margin-bottom: 5%
+}
+
+div.imageDiv img {
+    display:block;
+    margin:auto;
+    height:60%;
+    width:60%;
+}*/
+
+/*.cautionSpan {
+    font-weight:700;
+    color:red;
+    text-align:center;
+}*/
+
+/*div.messageDiv {
+    height:25%;
+}*/
+
+/*td {
     padding: 5px;
+}*/
+#selectState, #selectTrap, #selectBidUnit {
+    width: auto;
 }
+
+#settings {
+    text-align:left;
+}
+
+.settingsTable {
+    width: 80%;
+    text-align: left;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.settingsTable tr {
+    vertical-align: middle;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.stripedTable tbody tr:nth-child(odd) {
+    background-color: #9CCB3B;
+}
+
+.historyHeader {
+    background-color: transparent;
+}
+
+#historyTable {
+    font-size: 1.5em;
+    background-color: transparent;
+    text-align: left;
+}
+
+#historyTable tfoot {
+    text-align: center;
+}
+
+
+
+
+
+
+/*#btnHomeExtras {
+    float:left;
+    background-color: yellowgreen;
+    height: 90%;
+    width: 3em;
+    margin: 1% 1% 1% 1%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}*/
+

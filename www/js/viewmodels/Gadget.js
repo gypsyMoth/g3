@@ -69,13 +69,15 @@ define(['jquery',
 
         this.compass = ko.observable(true);
 
-        this.magneticCompass = ko.observable(true);
+        
 
         this.track = ko.observable(true);
 
         this.directUpload = ko.observable(false);*/
 
         // Application objects...
+        this.magneticCompass = ko.observable(true);
+
         this.sitesFiles = ko.observableArray();
 
         this.manualLock = ko.observable(false);

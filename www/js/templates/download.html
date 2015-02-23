@@ -1,29 +1,25 @@
-<div id="downloadDiv" data-bind="with: download">
-    <div id="downloadHeader" class="formHeader">
-        <span class="message">Download Sites File</span><br>
-        <table class="center">
-            <tr>
-                <th class="message">State: </th>
-                <td>
-                    <select id="selectState" data-bind="enable: ready(), options: states, value: selectedState"></select>
-                </td>
-            </tr>
-            <tr>
-                <th class="message">Bid Unit: </th>
-                <td>
-                    <select id="selectBidUnit" data-bind="options: bidUnits,
-                                              optionsText: 'bidunit',
-                                              value: selectedBidUnit,
-                                              enable: ready()">
-                    </select>
-                </td>
-            </tr>
-        </table><br>
-        <div id="progressDiv" class="progress" data-bind="style: {width: progress()}, visible: showProgress"></div>
+<div id="downloadDiv" class="view" data-bind="with: download">
+    <div id="downloadBody" class="form main">
+        <div class="vertical center">
+            <span class="bigMessage">Download Sites File</span><br><br>
+            <div>
+                <span class="message">State: </span>
+                <select id="selectState" data-bind="enable: ready(), options: states, value: selectedState"></select>
+            </div><br>
+            <div>
+                <span class="message">Bid Unit: </span>
+                <select id="selectBidUnit" data-bind="options: bidUnits,
+                                                  optionsText: 'bidunit',
+                                                  value: selectedBidUnit,
+                                                  enable: ready()">
+                </select>
+            </div><br><br>
+            <div id="progressDiv" class="progress" data-bind="style: {width: progress()}, visible: showProgress"></div>
+        </div>
     </div>
 
-    <div id="downloadFooter" class="formFooter">
-        <input type="button" id="btnDownloadOk" class="gadgetButton fastButton" value="Ok" data-bind="enable: ready(), click: function(){this.requestDownload()}">
+    <div id="downloadFooter" class="form footer">
+        <input type="button" id="btnDownloadOk" class="okButton fastButton" value="OK" data-bind="enable: ready(), click: function(){this.requestDownload()}">
         <input type="button" id="btnDownloadCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){this.cancel()}">
     </div>
 </div>

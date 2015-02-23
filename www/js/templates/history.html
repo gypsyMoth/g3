@@ -1,5 +1,5 @@
-<div id="historyDiv" data-bind="with: history">
-    <div id="historyHeader" class="historyHeader">
+<div id="historyDiv" class="view" data-bind="with: history">
+    <div id="historyBody" class="form main">
         <span id="historyMessage" class="message" data-bind="visible: pages() < 1">No history yet!</span>
         <table id="historyTable" class="stripedTable">
             <tbody data-bind="foreach: currentPage">
@@ -12,11 +12,11 @@
                 <td data-bind="visible: pages() > 0, text: pageCounter()"></td>
             </tr>
             </tfoot>
-        </table>
-    </div>
-    <div id="historyFooter" class="formFooter">
+        </table><br>
         <input type="button" id="btnHistoryPrev" class="gadgetButton fastButton" value="Previous" data-bind="enable: previous, click: function(){this.changePage(-1);}">
         <input type="button" id="btnHistoryNext" class="gadgetButton fastButton" value="Next" data-bind="enable: next, click: function(){this.changePage(1);}">
+    </div>
+    <div id="historyFooter" class="form footer">
         <input type="button" id="btnHistoryClose" class="cancelButton fastButton" value="Exit" data-bind="click: function(){$root.changeView('home');}">
     </div>
 </div>

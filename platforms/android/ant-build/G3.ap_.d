@@ -44,6 +44,7 @@ C:\Dev\Repo\g3\platforms\android\assets\www\img\auxRibbon.gif \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\cardinal.png \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\caution.gif \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\caution.png \
+C:\Dev\Repo\g3\platforms\android\assets\www\img\details.png \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\extras.png \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\greenDelta.gif \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\greenDelta.png \
@@ -52,9 +53,11 @@ C:\Dev\Repo\g3\platforms\android\assets\www\img\greenMilkCarton.png \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\greenTree.gif \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\greenTree.png \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\locked.gif \
+C:\Dev\Repo\g3\platforms\android\assets\www\img\locked.png \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\logo.png \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\magGlassSmall.gif \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\magGlassSmall.jpg \
+C:\Dev\Repo\g3\platforms\android\assets\www\img\magGlassSmall.png \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\omittedTree.gif \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\omittedTree.png \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\redDelta.gif \

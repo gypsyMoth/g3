@@ -1,20 +1,21 @@
-<div id="qcDiv" data-bind="with: qc">
-    <div id="qcHeader" class="formHeader">
-
-        <span class="message">Select Trap Condition</span><br>
-        <select id="selectCondition" data-bind="options: conditions,
-                                                        optionsText: 'label',
-                                                        value: selectedCondition">
-        </select><br>
-        <span class="message">Select Pass or Fail Reason</span><br>
-        <select id="selectInspectionType" data-bind="options: failOptions,
-                                                        optionsText: 'label',
-                                                        value: selectedFail">
-        </select>
+<div id="qcDiv" class="view" data-bind="with: qc">
+    <div id="qcBody" class="form main">
+        <div class="vertical center">
+            <span class="bigMessage">Select Trap Condition</span><br>
+            <select id="selectCondition" data-bind="options: conditions,
+                                                            optionsText: 'label',
+                                                            value: selectedCondition">
+            </select><br><br>
+            <span class="bigMessage">Select Pass or Fail Reason</span><br>
+            <select id="selectInspectionType" data-bind="options: failOptions,
+                                                            optionsText: 'label',
+                                                            value: selectedFail">
+            </select>
+        </div>
     </div>
 
-    <div id="qcFooter" class="formFooter">
-        <input type="button" id="btnQCOk" class="gadgetButton fastButton" value="Ok" data-bind="click: function(){this.startQC()}">
+    <div id="qcFooter" class="form footer">
+        <input type="button" id="btnQCOk" class="okButton fastButton" value="Ok" data-bind="click: function(){this.startQC()}">
         <input type="button" id="btnQCCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
     </div>
 </div>
