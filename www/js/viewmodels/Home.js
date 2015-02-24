@@ -21,8 +21,13 @@ define(['jquery',
     var HomeView = function() {
 
         var watchId = null;
-
-        //window.addEventListener("orientationchange", function(){alert(window.screen.width); alert(window.screen.height);});
+        //var o = window.orientation;
+        /*window.addEventListener("orientationchange", function(e) {
+            var o = Math.round(e.angle);
+            console.log(e.angle);
+            //console.log("OLD: " + o + "; NEW: " + window.orientation + "; CHANGE: " + chg);
+            //o = window.orientation;
+        });*/
 
         this.current = ko.computed(function(){
             return Controller.gadget.position();
@@ -180,6 +185,7 @@ define(['jquery',
         };
 
         this.cardinalRotation = ko.computed(function(){
+            //console.log(window.orientation);
             //var rotation = 360 - this.heading();
             var rotation = this.compass() ? 360 - this.heading() - window.orientation : 360 - this.relPos().motionHeading;
             return 'translate(-50%, -50%) rotate(' + rotation + 'deg)';
