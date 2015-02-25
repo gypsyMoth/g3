@@ -30,18 +30,26 @@
 }*/
 
 
-@media screen and (max-height: 400px) and (orientation: landscape), screen and (max-height: 800px) and (orientation: portrait) {
+@media only screen and (max-height: 400px) and (orientation: landscape), screen and (max-height: 800px) and (orientation: portrait) {
     .view {
-        font-size: 75%;
+        background-color: orange;
+        //font-size: 75%;
     }
 }
 
-@media screen and (orientation: landscape) { /*(min-aspect-ratio: 1/1) and (min-width:400px) {*/
+/*@media only screen and (max-device-width: 667px){
+    .view {
+        font-size: 75%;
+        background-color: orange;
+    }
+}*/
+
+@media only screen and (orientation: landscape) {
     .main {
         position: absolute;
         top: 0;
-        height: 80%;
-        padding-top: 1%;
+        height: 78%;
+        padding-top: 3%;
         padding-bottom: 1%;
     }
 
@@ -70,12 +78,12 @@
     }
 }
 
-@media screen and (orientation: portrait) { /*(min-aspect-ratio: 1/1) {*/
+@media only screen and (orientation: portrait) {
         .main {
         position: absolute;
         top: 0;
-        height: 88%;
-        padding-top: 1%;
+        height: 87%;
+        padding-top: 2%;
         padding-bottom: 1%;
     }
 
@@ -223,16 +231,21 @@ select {
     margin: 1%;
 }
 
+input[type=button]{
+    vertical-align: text-top;
+    white-space: normal;
+}
+
 .gadgetButton {
     background-color: #9CCB3B;
     font-size: 1.5em;
     font-weight: bolder;
     height: 20%;
     min-height: 2em;
-    max-height: 3em;
+    max-height: 5em;
     width:40%;
-    margin: 0 4% 2% 4%;
-    white-space: normal;
+    margin: 2% 4% 0 4%;
+    -webkit-appearance: none;
 }
 
 .okButton {
@@ -244,6 +257,9 @@ select {
     max-height: 2em;
     max-width: 4em;
     margin: 0 5% 0 5%;
+    -webkit-appearance: none;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .cancelButton {
@@ -255,6 +271,9 @@ select {
     max-height: 2em;
     max-width: 4em;
     margin: 0% 5% 0 5%;
+    -webkit-appearance: none;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 #cautionSpan {

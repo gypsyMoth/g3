@@ -21,13 +21,6 @@ define(['jquery',
     var HomeView = function() {
 
         var watchId = null;
-        //var o = window.orientation;
-        /*window.addEventListener("orientationchange", function(e) {
-            var o = Math.round(e.angle);
-            console.log(e.angle);
-            //console.log("OLD: " + o + "; NEW: " + window.orientation + "; CHANGE: " + chg);
-            //o = window.orientation;
-        });*/
 
         this.current = ko.computed(function(){
             return Controller.gadget.position();
@@ -184,8 +177,10 @@ define(['jquery',
             );
         };
 
+        this.orientation = ko.observable("0");
+
         this.cardinalRotation = ko.computed(function(){
-            //console.log(window.orientation);
+            this.orientation(window.orientation + " : " + window.screen.width + "x" + window.screen.height);
             //var rotation = 360 - this.heading();
             var rotation = this.compass() ? 360 - this.heading() - window.orientation : 360 - this.relPos().motionHeading;
             return 'translate(-50%, -50%) rotate(' + rotation + 'deg)';
@@ -259,14 +254,14 @@ define(['jquery',
                 } else {
                     var date = DateFormatter.getScreenFormatDate(this.site().txn_date);
                     if (this.site().trap_type === 'Omit'){
-                        msg = "This trap was omitted on " + date;
+                        msg = "This trap was omitted on \u2060" + date + "\u2060";
                     } else {
                         if (this.site().visit === undefined){
-                            msg = "This trap was placed on " + date;
+                            msg = "This trap was placed on \u2060" + date + "\u2060";
                         } else if (this.site().fail_reason === undefined){
-                            msg = "A " + this.site().visit + " Inspection was done for this trap on " + date;
+                            msg = "A " + this.site().visit + " Inspection was done for this trap on \u2060" + date + "\u2060";
                         } else {
-                            msg = "A QC Inspection was done for this trap on " + date;
+                            msg = "A QC Inspection was done for this trap on \u2060" + date + "\u2060";
                         }
                     }
                 }

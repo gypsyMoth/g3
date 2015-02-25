@@ -87,6 +87,7 @@ C:\Dev\Repo\g3\platforms\android\assets\www\js\lib\underscore-min.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\models\Config.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\models\Site.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\models\SitesFile.js \
+C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\about.html \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\caution.html \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\confirm.html \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\download.html \
@@ -111,6 +112,7 @@ C:\Dev\Repo\g3\platforms\android\assets\www\js\util\Decoder.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\util\Encoder.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\util\Geolocation.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\util\NearestNeighbor.js \
+C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\About.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Caution.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Confirm.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Download.js \

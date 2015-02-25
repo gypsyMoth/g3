@@ -5,12 +5,13 @@
             <div id="counterDiv" class="progress" data-bind="style: {backgroundColor: gpsStatus() ? '#9CCB3B' : 'transparent', width: signalCount()}"></div>
         </div>
         <div id="actionDiv" class="actionDiv">
+            <div id="orientation" class="message" data-bind="text: orientation()"></div>
             <img id="arrowImage" class="homeImg" src="img/arrow.png" data-bind="style:{webkitTransform: arrowRotation()}"/>
             <img id="cardinalImage" class="homeImg" src="img/cardinal.png" data-bind="style:{webkitTransform: cardinalRotation()}"/>
             <input id="homeImage" class="homeImg" type="image" data-bind="enable: foundSite, click: function(){this.goToView(this.operation());}, attr: {src: image()}"/>
             <img id="lockImage" src="img/locked.png" data-bind="visible: $root.manualLock()">
             <img id="inspectImage" src="img/magGlassSmall.png" data-bind="visible: inspected()">
-            <div id="distanceSpan" class="message" data-bind="text: positionInfo()"></div>
+            <div id="distanceSpan" class="message" data-bind="text: positionInfo(), click: function(){this.switchUnits();}"></div>
         </div>
         <div id="homeInfo" class="homeInfo">
             <div id="siteDiv" class="siteDiv" data-bind="style: {backgroundColor: relPos().distanceOutside > 0 ? 'red' : 'yellowgreen'}">

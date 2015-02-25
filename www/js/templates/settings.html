@@ -1,19 +1,17 @@
 <div id="settingsDiv" class="view" data-bind="with: settings">
     <div id="settingsBody" class="form main">
-        <div class="vertical center">
-            <form id="settings">
-                <ul>
-                    <li><label class="message">State: </label><select form="settings" id="selectState" data-bind="options: states, value: selectedState"></select></li>
-                    <li><label class="message">Email: </label><input type="text" id="textEmail" data-bind="value: email" /></li>
-                    <li><label class="message">Initials: </label><input type="text" id="textInitials" data-bind="value: initials"></li>
-                    <li><label class="message">Display Metric Units </label><input type="checkbox" data-bind="checked: metric" /></li>
-                    <li data-bind="visible: $root.magneticCompass"><label class="message">Use Magnetic Compass </label><input type="checkbox" data-bind="checked: compass"/></li>
-                    <li><label class="message">Track Logging </label><input type="checkbox" data-bind="checked: track" /></li>
-                    <li><label class="message">Data Uploads </label><input type="checkbox" data-bind="checked: upload" /></li>
-                    <li data-bind="visible: upload"><label class="message">URL: </label><input type="text" id="textURL" data-bind="value: url" /></li>
-                </ul>
-            </form>
-        </div>
+        <form id="settings">
+            <ul>
+                <li><label class="message">State: </label><select form="settings" id="selectState" data-bind="options: states, value: selectedState"></select></li>
+                <li><label class="message">Email: </label><input type="text" id="textEmail" data-bind="value: email" /></li>
+                <li><label class="message">Initials: </label><input type="text" id="textInitials" data-bind="value: initials"></li>
+                <li><label class="message">Display Metric Units </label><input type="checkbox" data-bind="checked: metric" /></li>
+                <li data-bind="visible: $root.magneticCompass"><label class="message">Use Magnetic Compass </label><input type="checkbox" data-bind="checked: compass"/></li>
+                <li><label class="message">Track Logging </label><input type="checkbox" data-bind="checked: track" /></li>
+                <li><label class="message">Data Uploads </label><input type="checkbox" data-bind="checked: upload" /></li>
+                <li data-bind="visible: upload"><label class="message">URL: </label><input type="text" id="textURL" data-bind="value: url" /></li>
+            </ul>
+        </form>
     </div>
     <div id="settingsFooter" class="form footer">
         <input type="button" id="btnSettingsOK" class="okButton fastButton" value="OK" data-bind="click: function(){this.updateSettings();}">

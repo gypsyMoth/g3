@@ -8,6 +8,7 @@
         <input type="button" id="btnExtrasSettings" class="gadgetButton fastButton" value="Settings" data-bind="click: function(){$root.changeView('settings');}">
         <input type="button" id="btnExtrasQC" class="gadgetButton fastButton" value="QC" data-bind="enable: foundSite, click: function(){this.clickQC();}">
         <input type="button" id="btnExtrasUpload" class="gadgetButton fastButton" value="Upload Data" data-bind="visible: $root.config().directUpload, click: function(){this.clickUpload();}">
+        <input type="button" id="btnExtrasAbout" class="gadgetButton fastButton" value="About" data-bind="click: function(){$root.changeView('about');}">
     </div>
     <div id="extrasFooter" class="form footer">
         <input type="button" id="btnExtrasCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">

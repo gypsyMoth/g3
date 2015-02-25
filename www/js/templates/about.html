@@ -1,0 +1,10 @@
+<div id="aboutDiv" class="view" data-bind="with: about">
+    <div id="aboutBody" class="form main">
+        <div class="vertical center">
+        	<div id="aboutMessage" data-bind="html: message()"></div>
+        </div>
+    </div>
+    <div id="confirmFooter" class="form footer">
+        <input type="button" id="btnConfirmOk" class="okButton fastButton" value="OK" data-bind="click: function(){$root.changeView('home');}">
+    </div>
+</div>
