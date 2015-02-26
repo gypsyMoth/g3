@@ -1,14 +1,16 @@
-<div id="loadSitesDiv" data-bind="with: loadSites">
-    <div id="loadSitesHeader" class="formHeader">
-        <span class="message">Select a Sites File</span><br>
-        <select id="selectSitesFile" data-bind="options: optionsArray,
-                                                optionsText: 'label',
-                                                value: selectedFile">
-        </select><br>
+<div id="loadSitesDiv" class="view" data-bind="with: loadSites">
+    <div id="loadSitesHeader" class="form main">
+        <div class="vertical center">
+            <span class="bigMessage">Select a Sites File</span><br><br>
+            <select id="selectSitesFile" data-bind="options: optionsArray,
+                                                    optionsText: 'label',
+                                                    value: selectedFile">
+            </select>
+        </div>
     </div>
 
-    <div id="loadSitesFooter" class="formFooter">
-        <input type="button" id="btnLoadSitesOk" class="gadgetButton fastButton" value="Ok" data-bind="click: function(){this.loadFile();}">
-        <input type="button" id="btnLoadSitesCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    <div id="loadSitesFooter" class="form footer">
+        <input type="button" id="btnLoadSitesOk" class="ok footerButton fastButton" value="OK" data-bind="click: function(){this.loadFile();}">
+        <input type="button" id="btnLoadSitesCancel" class="cancel footerButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
     </div>
 </div>

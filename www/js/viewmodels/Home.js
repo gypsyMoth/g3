@@ -161,6 +161,7 @@ define(['jquery',
             var options = {
                 frequency: 100
             };
+            Controller.gadget.magneticCompass(true);
             console.log("Starting Compass!");
             var myHeading = this.heading;
             watchId = navigator.compass.watchHeading(
@@ -177,15 +178,18 @@ define(['jquery',
             );
         };
 
+        this.orientation = ko.observable("0");
+
         this.cardinalRotation = ko.computed(function(){
+            this.orientation(window.orientation + " : " + window.screen.width + "x" + window.screen.height);
             //var rotation = 360 - this.heading();
-            var rotation = this.compass() ? 360 - this.heading() : 360 - this.relPos().motionHeading;
+            var rotation = this.compass() ? 360 - this.heading() - window.orientation : 360 - this.relPos().motionHeading;
             return 'translate(-50%, -50%) rotate(' + rotation + 'deg)';
         }, this);
 
         this.arrowRotation = ko.computed(function(){
             //var rotation = this.relPos().compassBearing - this.heading();
-            var rotation = this.compass() ? this.relPos().compassBearing - this.heading() : this.relPos().compassBearing - this.relPos().motionHeading;
+            var rotation = this.compass() ? this.relPos().compassBearing - this.heading() - window.orientation : this.relPos().compassBearing - this.relPos().motionHeading;
             if (rotation < 0) {
                 rotation += 360;
             }
@@ -251,14 +255,14 @@ define(['jquery',
                 } else {
                     var date = DateFormatter.getScreenFormatDate(this.site().txn_date);
                     if (this.site().trap_type === 'Omit'){
-                        msg = "This trap was omitted on " + date;
+                        msg = "This trap was omitted on \u2060" + date + "\u2060";
                     } else {
                         if (this.site().visit === undefined){
-                            msg = "This trap was placed on " + date;
+                            msg = "This trap was placed on \u2060" + date + "\u2060";
                         } else if (this.site().fail_reason === undefined){
-                            msg = "A " + this.site().visit + " Inspection was done for this trap on " + date;
+                            msg = "A " + this.site().visit + " Inspection was done for this trap on \u2060" + date + "\u2060";
                         } else {
-                            msg = "A QC Inspection was done for this trap on " + date;
+                            msg = "A QC Inspection was done for this trap on \u2060" + date + "\u2060";
                         }
                     }
                 }

@@ -24,6 +24,8 @@ define(['jquery',
     'src/viewmodels/Download',
     'src/viewmodels/Upload',
     'src/viewmodels/Settings',
+    'src/viewmodels/UploadSettings',
+    'src/viewmodels/About',
     'src/models/Config'
 ], function($,
             _,
@@ -51,6 +53,8 @@ define(['jquery',
             DownloadView,
             UploadView,
             SettingsView,
+            UploadSettingsView,
+            AboutView,
             Config) {
 
     'use strict';
@@ -69,13 +73,15 @@ define(['jquery',
 
         this.compass = ko.observable(true);
 
-        this.magneticCompass = ko.observable(true);
+        
 
         this.track = ko.observable(true);
 
         this.directUpload = ko.observable(false);*/
 
         // Application objects...
+        this.magneticCompass = ko.observable();
+
         this.sitesFiles = ko.observableArray();
 
         this.manualLock = ko.observable(false);
@@ -162,8 +168,6 @@ define(['jquery',
                     Geolocation.stop();
                     this.connectionStatus(DB.checkConnection());
                     this.extras = new ExtrasView();
-                    //var config = this.config();
-                    //alert(config.state + " " + config.initials + " " + config.email + " " + config.metric + " " + config.compass + " " + config.track+ " " + config.directUpload);
                     break;
                 case('manualLock'):
                     this.manual = new ManualLockView();
@@ -189,6 +193,12 @@ define(['jquery',
                     break;
                 case('settings'):
                     this.settings = new SettingsView();
+                    break;
+                case('uploadSettings'):
+                    this.uploadSettings = new UploadSettingsView();
+                    break;
+                case('about'):
+                    this.about = new AboutView();
                     break;
             }
             this.currentView(name);

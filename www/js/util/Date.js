@@ -7,7 +7,7 @@ define (['moment'], function (moment) { 'use strict';
     };
 
     my.getScreenFormatDate = function(dateString) {
-        return moment(dateString.substring(0,10), 'YYYY-MM-DD').format('MM/DD/YY');
+        return moment(dateString.substring(0,10), 'YYYY-MM-DD').format('M/DD/YY');
     };
 
     my.getOperationFormatDate = function(date) {

@@ -20,7 +20,7 @@ define (['jquery',
 
         my.getConfig = function(){
             var deferred = new $.Deferred();
-            my.fileExists(my.root, 'config.txt').then(
+            my.fileExists(my.root, 'config').then(
                 function(entry){
                     getFile(entry).then(loadFile).then(function(data){
                         Controller.gadget.config(JSON.parse(data));
@@ -28,7 +28,7 @@ define (['jquery',
                     });
                 },
                 function(){
-                    getFileEntry(my.root, 'config.txt', {create: true, exclusive: false}).then(function(entry){
+                    getFileEntry(my.root, 'config', {create: true, exclusive: false}).then(function(entry){
                         var configuration = new Config();
                         writeFile(entry, JSON.stringify(configuration)).then(
                             function(){
@@ -48,7 +48,7 @@ define (['jquery',
 
         my.setConfig = function(data){
             var deferred = new $.Deferred();
-            getFileEntry(my.root, 'config.txt', {create: true, exclusive: false}).then(function(entry){
+            getFileEntry(my.root, 'config', {create: true, exclusive: false}).then(function(entry){
                 writeFile(entry, JSON.stringify(data)).then(
                     function(){
                         my.jobFile('job.dat');

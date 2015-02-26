@@ -1,23 +1,26 @@
-<div id="inspectionDiv" data-bind="with: inspection">
-    <div id="inspectionHeader" class="formHeader">
-        <span class="message">Select Inspection Type</span><br>
-        <select id="selectInspectionType" data-bind="options: visitTypes,
-                                                    optionsText: 'label',
-                                                    value: selectedVisit">
-        </select><br>
-        <span class="message">Select Trap Condition</span><br>
-        <select id="selectCondition" data-bind="options: conditions,
-                                                    optionsText: 'label',
-                                                    value: selectedCondition">
-        </select><br>
-        <div id="enterCount" class="message" data-bind="visible: showCount">
-            <span class="message">Enter Moth Count:</span><br>
-            <input class="message" id="mothCount" data-bind="value: moths" type="number"/>
+<div id="inspectionDiv" class="view" data-bind="with: inspection">
+    <div id="inspectionBody" class="form main">
+        <div class="vertical center">
+            <span class="bigMessage">Select Inspection Type</span><br>
+            <select id="selectInspectionType" data-bind="options: visitTypes,
+                                                        optionsText: 'label',
+                                                        value: selectedVisit">
+            </select><br><br>
+            <span class="bigMessage">Select Trap Condition</span><br>
+            <select id="selectCondition" data-bind="options: conditions,
+                                                        optionsText: 'label',
+                                                        value: selectedCondition">
+            </select><br><br>
+            <div id="enterCount" data-bind="visible: showCount">
+                <ul>
+                    <li><label class="bigMessage">Enter Moth Count: </label><input id="mothCount" data-bind="value: moths" type="number"/></li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <div id="inspectionFooter" class="formFooter">
-        <input type="button" id="btnInspectionOk" class="gadgetButton fastButton" value="Ok" data-bind="click: function(){this.startInspection()}">
-        <input type="button" id="btnInspectionCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    <div id="inspectionFooter" class="form footer">
+        <input type="button" id="btnInspectionOk" class="ok footerButton fastButton" value="OK" data-bind="click: function(){this.startInspection()}">
+        <input type="button" id="btnInspectionCancel" class="cancel footerButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
     </div>
 </div>

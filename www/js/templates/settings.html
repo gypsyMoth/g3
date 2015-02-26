@@ -1,14 +1,18 @@
-<div id="settingsDiv" data-bind="with: settings">
-    <div id="settingsFooter" class="formFooter">
-        <span class="message">State: <select id="selectState" data-bind="options: states, value: selectedState"></select><br></span>
-        <span class="message">Email: <input type="text" id="textEmail" data-bind="value: email"><br></span>
-        <span class="message">Initials: <input type="text" id="textInitials" data-bind="value: initials"><br></span>
-        <span class="message"><input type="checkbox" data-bind="checked: metric" /> Display Metric Units<br></span>
-        <span class="message" data-bind="visible: $root.magneticCompass"><input type="checkbox" data-bind="checked: compass"/> Use Magnetic Compass<br></span>
-        <span class="message"><input type="checkbox" data-bind="checked: track" /> Track Logging<br></span>
-        <span class="message"><input type="checkbox" data-bind="checked: upload" /> Direct Data Uploads<br></span>
-        <span class="message" data-bind="visible: upload">Upload URL: <input type="text" id="textURL" data-bind="value: url"><br></span>
-        <input type="button" id="btnSettingsOK" class="gadgetButton fastButton" value="OK" data-bind="click: function(){this.updateSettings();}">
-        <input type="button" id="btnSettingsCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+<div id="settingsDiv" class="view" data-bind="with: settings">
+    <div id="settingsBody" class="form main">
+        <span class="bigMessage">Application Settings</span><br><br>
+        <form id="settings" data-bind="submit: confirm">
+            <ul>
+                <li><label class="message">Display Metric Units </label><input type="checkbox" data-bind="checked: metric" /></li>
+                <li data-bind="visible: $root.magneticCompass"><label class="message">Use Magnetic Compass </label><input type="checkbox" data-bind="checked: compass"/></li>
+                <li data-bind="visible: !codeMatch()"><label class="message">Advanced Settings Passcode: </label><br><input type="password" data-bind="value: code"><input type="submit" value="Submit"/></li>
+                <li data-bind="visible: codeMatch()"><label class="message">Track Logging </label><input type="checkbox" data-bind="checked: track" /></li>
+                <li data-bind="visible: codeMatch()"><label class="message">Data Uploads </label><input type="checkbox" data-bind="checked: upload" /></li>
+            </ul>
+        </form>
+    </div>
+    <div id="settingsFooter" class="form footer">
+        <input type="button" id="btnSettingsOK" class="ok footerButton fastButton" value="OK" data-bind="click: function(){this.updateSettings();}">
+        <input type="button" id="btnSettingsCancel" class="cancel footerButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
     </div>
 </div>

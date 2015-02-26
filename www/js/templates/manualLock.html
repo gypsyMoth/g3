@@ -1,17 +1,16 @@
-<div id="manualLockDiv" data-bind="with: manual">
-    <div id="manualLockHeader" class="formHeader">
-        <select id="selectSite" data-bind="options: lockOptions,
-                                           optionsText: 'label',
-                                           value: selectedLock">
-            <!--<% _.each(nearestSites, function(nearest) { %>
-            <option><%= nearest.quad + ':' + nearest.site_id %></option>
-            <% }); %>
-            <option><%= disableMessage %></option>-->
-        </select>
+<div id="manualLockDiv" class="view" data-bind="with: manual">
+    <div id="manualLockBody" class="form main">
+        <div class="vertical center">
+            <span class="bigMessage">Select a site:</span><br><br>
+            <select id="selectSite" data-bind="options: lockOptions,
+                                               optionsText: 'label',
+                                               value: selectedLock">
+            </select>
+        </div>
     </div>
 
-    <div id="manualLockFooter" class="formFooter">
-        <input type="button" id="btnManualLockOk" class="gadgetButton fastButton" value="Ok" data-bind="click: function(){this.goHomeManual()}">
-        <input type="button" id="btnManualLockCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    <div id="manualLockFooter" class="form footer">
+        <input type="button" id="btnManualLockOk" class="ok footerButton fastButton" value="OK" data-bind="click: function(){this.goHomeManual()}">
+        <input type="button" id="btnManualLockCancel" class="cancel footerButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
     </div>
 </div>

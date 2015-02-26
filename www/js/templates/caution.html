@@ -1,17 +1,17 @@
-<div id="cautionDiv" data-bind="with: caution">
+<div id="cautionDiv" class="view" data-bind="with: caution">
 
-    <div id="cautionImage">
-        <img src="img/caution.png"/>
-        <span id="cautionSpan">CAUTION</span>
+    <div id="cautionBody" class="form main">
+        <div class="vertical center">
+            <img id="cautionImg" class="center" src="img/caution.png"/>
+            <span id="cautionSpan">CAUTION</span>
+            <div id="cautionHeader">
+                <span id="cautionMessage" class="message" data-bind="html: message()"></span>
+            </div>
+        </div>
     </div>
 
-    <div id="cautionHeader" class="formHeader">
-        <span id="cautionMessage" class="message" data-bind="html: message()">
-        </span>
-    </div>
-
-    <div id="cautionFooter" class="formFooter">
-        <input type="button" id="btnCautionOk" class="gadgetButton fastButton" value="Ok" data-bind="click: function(){$root.changeView('confirm');}">
-        <input type="button" id="btnCautionCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    <div id="cautionFooter" class="form footer">
+        <input type="button" id="btnCautionOk" class="ok footerButton fastButton" value="OK" data-bind="click: function(){$root.changeView('confirm');}">
+        <input type="button" id="btnCautionCancel" class="cancel footerButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
     </div>
 </div>
