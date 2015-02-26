@@ -19,7 +19,7 @@ define(["src/util/Date"], function(DateFormatter) { 'use strict';
         });
 
         it("Formats the current time correctly to write to the transaction log", function() {
-            var day = new Date(2014, 1, 6, 13, 0, 0); // month is zero based
+            var day = '2014-01-06T13:00:00'; //new Date(2014, 1, 6, 13, 0, 0); // month is zero based
             var formattedDate = DateFormatter.getOperationFormatTime(day);
             expect(formattedDate).toEqual('13:00:00');
         });

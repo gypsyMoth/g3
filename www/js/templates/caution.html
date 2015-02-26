@@ -1,15 +1,17 @@
-<div id="cautionImage">
-    <img src="img/caution.png" height="50%" width="50%"/>
-    <span id="cautionSpan">CAUTION</span>
-</div>
+<div id="cautionDiv" class="view" data-bind="with: caution">
 
-<div id="cautionHeader" class="formHeader">
-    <span id="cautionMessage" class="message">
-        You are <%=selectedSite.get('relativePosition').get('distanceOutside') %> meters outside the target circle.  Proceed?
-    </span>
-</div>
+    <div id="cautionBody" class="form main">
+        <div class="vertical center">
+            <img id="cautionImg" class="center" src="img/caution.png"/>
+            <span id="cautionSpan">CAUTION</span>
+            <div id="cautionHeader">
+                <span id="cautionMessage" class="message" data-bind="html: message()"></span>
+            </div>
+        </div>
+    </div>
 
-<div id="cautionFooter" class="formFooter">
-    <input type="button" id="btnCautionOk" class="gadgetButton fastButton" value="Ok">
-    <input type="button" id="btnCautionCancel" class="cancelButton fastButton" value="Cancel">
+    <div id="cautionFooter" class="form footer">
+        <input type="button" id="btnCautionOk" class="ok footerButton fastButton" value="OK" data-bind="click: function(){$root.changeView('confirm');}">
+        <input type="button" id="btnCautionCancel" class="cancel footerButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    </div>
 </div>

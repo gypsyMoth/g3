@@ -5,16 +5,38 @@
     <feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
     </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+    </feature>
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" />
+    </feature>
+    <feature name="Compass">
+        <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
+    </feature>
+    <feature name="Vibration">
+        <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
     <name>G3</name>
     <description>
-        Version 0.0.2
-        Phonegap implementation of the STS Trapper Gadget
+        GMSTS Trapper Gadget
+        G3 Mobile Application
+        Version 1.0.0
     </description>
-    <author email="imf@vt.edu" href="http://gmsts.org">
-        Ian Firkin
+    <author email="bpogue@vt.edu" href="http://gmsts.org">
+        Brad Pogue
         Slow the Spread of the Gypsy Moth
     </author>
-    <preference name="phonegap-version" value="3.3.0" />
+    <preference name="phonegap-version" value="3.5.0" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
@@ -30,9 +52,6 @@
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
-    <feature name="Storage">
-        <param name="android-package" value="org.apache.cordova.Storage" />
-    </feature>
     <gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="org.apache.cordova.device-motion" />
     <gap:plugin name="org.apache.cordova.device-orientation" />
@@ -66,20 +85,4 @@
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="*" />
-    <feature name="Compass">
-        <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
-    </feature>
-    <feature name="Notification">
-        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
-    </feature>
-    <feature name="File">
-        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="FileTransfer">
-        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
-    </feature>
-    <feature name="Vibration">
-        <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
-    </feature>
 </widget>

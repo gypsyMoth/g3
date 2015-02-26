@@ -1,10 +1,10 @@
 define (['jquery',
     'underscore',
     'src/models/SitesFile',
-    'src/models/Transaction',
-    'src/collections/SitesFileCollection',
-    'src/collections/Transactions'],
-    function ($, _, SitesFile, Transaction, SitesFileCollection, Transactions) { 'use strict';
+    'src/models/Config',
+    'src/util/Date',
+    'src/util/Controller'],
+    function ($, _, SitesFile, Config, DateFormatter, Controller) { 'use strict';
         var my = {};
 
         var PERSISTENT;
@@ -13,10 +13,60 @@ define (['jquery',
         my.filesystem = null;
         my.filecount = 0;
         my.sitesFile = null;
+        my.trackLog = "crumbs.txt";
         my.activityLog = "trans_log.txt";
+        my.urlPrefix = "http://testskynet.ento.vt.edu/"; //TEST
+        //my.urlPrefix = "http://yt.ento.vt.edu/"; //PRODUCTION
+
+        my.getConfig = function(){
+            var deferred = new $.Deferred();
+            my.fileExists(my.root, 'config').then(
+                function(entry){
+                    getFile(entry).then(loadFile).then(function(data){
+                        Controller.gadget.config(JSON.parse(data));
+                        deferred.resolve();
+                    });
+                },
+                function(){
+                    getFileEntry(my.root, 'config', {create: true, exclusive: false}).then(function(entry){
+                        var configuration = new Config();
+                        writeFile(entry, JSON.stringify(configuration)).then(
+                            function(){
+                                Controller.gadget.config(configuration);
+                                deferred.resolve();
+                            },
+                            function(){
+                                alert("Unable to create config file!");
+                                deferred.reject();
+                            }
+                        );
+                    });
+                }
+            );
+            return deferred.promise();
+        };
+
+        my.setConfig = function(data){
+            var deferred = new $.Deferred();
+            getFileEntry(my.root, 'config', {create: true, exclusive: false}).then(function(entry){
+                writeFile(entry, JSON.stringify(data)).then(
+                    function(){
+                        my.jobFile('job.dat');
+                        deferred.resolve();
+                    },
+                    function(){
+                        alert("Unable to write config file!");
+                        deferred.reject();
+                    }
+                );
+            });
+            return deferred.promise();
+        };
 
         my.initialize = function() {
-            return getFileSystem().then(getRootDirectory);
+            return getFileSystem().then(getRootDirectory).then(function(){
+                my.getConfig();
+            });
         };
 
         var getFileSystem = function() {
@@ -46,7 +96,80 @@ define (['jquery',
 
         var getRootDirectory = function() {
             var deferred = new $.Deferred();
-            //console.log(my.filesystem.root.toURL());
+            /*var sd = "file:///storage/extSdCard";
+            window.resolveLocalFileSystemURL(
+                sd,
+                function(entry){
+                    var myFileSystem = entry.filesystem;
+                    myFileSystem.root.getDirectory("storage/extSdCard/G3", {create: true, exclusive:false},
+                        function(dirEntry){
+                            my.root = dirEntry;
+                            console.log(dirEntry.name + " CREATED ON EXTERNAL SD CARD!");
+                            deferred.resolve();
+                        },
+                        function(error){
+                            console.error("EXTERNAL getRootDirectory: " + error.code);
+                        }
+                    );
+                },
+                // The mess that "looped" me into the external sdcard...
+                    /*var dirReader = entry.filesystem.root.createReader();
+                    dirReader.readEntries(
+                        function(entries){
+                            var i = 1
+                            alert("LEVEL ONE");
+                            _.each(entries, function(entry){
+                                alert(i + " " + entry.name);
+                                if (entry.name === 'storage'){
+                                    var subReader = entry.createReader();
+                                    subReader.readEntries(
+                                        function(subEntries){
+                                            alert("LEVEL TWO");
+                                            _.each(subEntries, function(subEntry){
+                                                alert(subEntry.name);
+                                                if (subEntry.name === 'extSdCard'){
+                                                    var subSubReader = entry.createReader();
+                                                    subSubReader.readEntries(
+                                                        function(subSubEntries){
+                                                            alert("LEVEL THREE");
+                                                            _.each(subSubEntries, function(subSubEntry){
+                                                                var cardUrl = subSubEntry.nativeURL;
+                                                                alert(cardUrl);
+                                                                if (subSubEntry.nativeURL === cardUrl){
+                                                                    alert("GOT CARD!");
+                                                                    subSubEntry.getDirectory("G3_TEST", {create: true, exclusive:false}, function(dirEntry){
+                                                                        alert(dirEntry.name + " CREATED!");
+                                                                    });
+                                                                }
+                                                            });
+                                                    });
+                                                }
+                                            });
+                                        });
+                                }
+                                i += 1;
+                            });
+
+                        },
+                        function(){
+                            alert("FAILED!");
+                        }
+                    );
+                function(error){
+                    console.log("EXTERNAL SD CARD NOT FOUND: " + error.code);
+                    my.filesystem.root.getDirectory("G3", {create: true, exclusive:false},
+                        function(dirEntry){
+                            my.root = dirEntry;
+                            console.log(dirEntry.name + " CREATED ON INTERNAL SDCARD");
+                            deferred.resolve();
+                        },
+                        function(error){
+                            console.error("INTERNAL getRootDirectory: " + error.code);
+                        }
+                    );
+                }
+            );*/
+
             my.filesystem.root.getDirectory("G3", {create: true, exclusive: false}, function(dirEntry) {
                 my.root = dirEntry;
                 deferred.resolve();
@@ -62,9 +185,11 @@ define (['jquery',
             var directoryReader = my.root.createReader();
             directoryReader.readEntries(function(entries) {
                 _.each(my.filterSitesFiles(entries), function(fileEntry) {
-                    sitesFiles.push(new SitesFile({fileEntry: fileEntry}));
+                    var sitesFile = new SitesFile();
+                    sitesFile.fileEntry = fileEntry;
+                    sitesFiles.push(sitesFile);
                 });
-               deferred.resolve(new SitesFileCollection(sitesFiles));
+                deferred.resolve(sitesFiles);
             }, my.fail);
             return deferred.promise();
         };
@@ -120,32 +245,166 @@ define (['jquery',
             return deferred.promise();
         };
 
-        my.downloadSites = function (state, bidunit){
+        my.fileExists = function(dirEntry, filename){
             var deferred = new $.Deferred();
-            var fileTransfer = new FileTransfer();
-            var uri = encodeURI("http://yt.ento.vt.edu/SlowTheSpread/gadgetsites/" + state + "/" + bidunit + "?format=json");
-            var filename = my.root.fullPath + '/' + makeFilename(state, bidunit);
+            dirEntry.getFile(filename, {create: false},
+                function(fileEntry){deferred.resolve(fileEntry)},
+                function(){deferred.reject()}
+            );
+            return deferred.promise();
+        };
 
+        my.checkConnection = function(){
+            return navigator.connection.type !== 'none';
+        };
+
+        var transferFail = function(error){
+            console.log("Fail!");
+            if (error.code === 3) {
+                alert(Controller.errors.timeout);
+            } else if (error.code !== 4) {
+                alert(Controller.errors.upload);
+                console.log(error.code);
+            }
+            if (Controller.gadget.sitesFiles().length > 0) {
+                Controller.gadget.changeView('home');
+            } else {
+                Controller.gadget.exitApplication(Controller.errors.sites);
+            }
+        };
+
+        my.downloadSites = function (fileTransfer, state, bidunit){
+            var deferred = new $.Deferred();
+            var uri = encodeURI(my.urlPrefix + "SlowTheSpread/gadgetsites/" + state + "/" + bidunit + "?format=json");
+            var filename = my.root.toURL() + makeFilename(state, bidunit);
+            var requestTimeout = setTimeout(function(){
+                var error = new FileTransferError();
+                error.code = 3;
+                transferFail(error);
+                fileTransfer.abort();
+                console.log("REQUEST CANCELLED");
+            }, 30000);
+            //getFileEntry(my.root, makeFilename(state, bidunit), {create: true, exclusive: false}).then(function(fileEntry){
             fileTransfer.download(
                 uri,
                 filename,
                 function(entry) {
-                    //console.log("G3 file downloaded; filename = " + filename + "; fileentry = " + entry.fullPath);
-                    getFile(entry).then(loadFile).then(function() {
-                        deferred.resolve();
+                    clearTimeout(requestTimeout);
+                    console.log("G3 file downloaded; filename = " + filename + "; fileentry = " + entry.fullPath);
+                    getFile(entry).then(loadFile).then(function(data) {
+                        deferred.resolve();//JSON.parse(data));
                     });
                 },
                 function(error) {
-                    if (error.code === 3) {
-                        alert("No network connection");
-                    } else {
-                        console.log(error.code);
-                    }
+                    clearTimeout(requestTimeout);
+                    transferFail(error);
+                    fileTransfer.abort();
                     deferred.reject();
                 }
             );
+            //});
             return deferred.promise();
         };
+
+        my.uploadFile = function (fileTransfer, filePath, batch, filename){
+            var deferred = new $.Deferred();
+            console.log(filename);
+
+            //var uploadedFile = initials + loadDate
+            var uri = encodeURI(my.urlPrefix + "SlowTheSpread/Upload/" + Controller.gadget.config().uploadURL + "/" + batch + "/" + filename);
+            //var filePath = my.root.toURL() + "/" + my.activityLog;
+            console.log(uri);
+            var options = new FileUploadOptions();
+            options.fileName = filename;
+            //options.mimeType = "text/csv";
+
+            function success(result){
+                console.log("Success!");
+                //console.log(result.response.code);
+                deferred.resolve();
+            };
+
+            function fail(error){
+                transferFail(error);
+                fileTransfer.abort();
+                deferred.reject();
+            };
+
+            fileTransfer.upload(filePath, uri, success, fail, options);
+
+            return deferred.promise();
+        };
+
+        my.backUp = function(oldName, newName){
+            var deferred = new $.Deferred();
+            getFileEntry(my.root, oldName, {create: false, exclusive: false}).then(function(entry){
+                my.root.getDirectory("Backups", {create: true, exclusive:false},
+                    function(dirEntry){
+                        entry.copyTo(dirEntry, newName,
+                            function(entry){
+                                deferred.resolve();
+                            },
+                            function(error){
+                                deferred.reject();
+                                alert("Back up error! Please contact technical support.");
+                        });
+                    },
+                    function(error){
+                        alert("Unable to access backup directory! Please contact technical support.");
+                });
+            });
+            return deferred.promise();
+        };
+
+        my.deleteFile = function(dirEntry, filename){
+            getFileEntry(dirEntry, filename, {create: false, exclusive: false}).then(
+                function(entry){
+                    entry.remove();
+                    console.log("Removed " + filename);
+                },
+                function(){
+                    console.log(filename + " not found!");
+                }
+            )
+        };
+
+        my.deleteLogs = function(){
+            getFileEntry(my.root, my.activityLog, {create: false, exclusive: false}).then(function(entry){
+                entry.remove(function(){console.log("Removed " + my.activityLog)});
+                getFileEntry(my.root, my.trackLog, {create: false, exclusive: false}).then(function(entry) {
+                    entry.remove(function(){console.log("Removed " + my.trackLog)});
+                });
+            });
+        };
+
+        my.deleteBackups = function(activityBackup, trackBackup){
+            my.root.getDirectory("Backups", {create: false, exclusive: false}, function(dirEntry){
+                getFileEntry(dirEntry, activityBackup, {create: false, exclusive: false}).then(function(entry){
+                    entry.remove(function(){console.log("Removed " + activityBackup)});
+                });
+                getFileEntry(dirEntry, trackBackup, {create: false, exclusive: false}).then(function(entry) {
+                    entry.remove(function(){console.log("Removed " + trackBackup)});
+                });
+            });
+        };
+
+        my.jobFile = function(filename){
+            var deferred = new $.Deferred();
+            getFileEntry(my.root, filename, {create: true, exclusive: false}).then(function(entry){
+                writeFile(entry, Controller.gadget.config().email).then(
+                   function(){
+                       deferred.resolve();
+                   },
+                   function(){
+                       alert("Unable to create job file!");
+                       deferred.reject();
+                   }
+                );
+            });
+            return deferred.promise();
+        };
+
+
 
         my.saveSites = function(sitesList) {
             var deferred = new $.Deferred();
@@ -179,6 +438,26 @@ define (['jquery',
             return deferred.promise();
         };
 
+        my.logTrack = function(position){
+            //var deferred = new $.Deferred();
+            getFileEntry(my.root, my.trackLog, {create: true, exclusive: false}).then(function(fileEntry) {
+                fileEntry.createWriter(function(writer) {
+                    writer.onwriteend = function(evt) {
+                        //deferred.resolve();
+                    };
+                    writer.seek(writer.length);
+                    if (writer.length === 0){
+                        writer.write("lat,lon,date_time,fix\r\n");
+                        //console.log("lat,lon,date_time,fix\r\n")
+                    }
+                    var trackDate = DateFormatter.getTrackDate(new Date(position.timestamp()));
+                    writer.write(position.latitude() + "," + position.longitude() + "," + trackDate + "," + position.accuracy() + "\r\n");
+                    //console.log(position.latitude() + "," + position.longitude() + "," + trackDate + "," + position.accuracy() + "\r\n");
+                }, my.fail);
+            });
+            //return deferred.promise();
+        };
+
         var readTransLog = function(){
             var deferred = new $.Deferred();
             getFileEntry(my.root, my.activityLog).then(getFile).then(loadFile).then(function(data){
@@ -197,18 +476,18 @@ define (['jquery',
                 dataLines.pop();
                 _.each(dataLines, function(line){
                     var properties = line.split(",");
-                    var t = new Transaction({
+                    var t = {
                         date: properties[8],
                         time: properties[9],
                         easting: properties[5],
                         northing: properties[6],
                         codedString: properties[12]
-                    });
+                    };
                     history.push(t);
                 });
-                deferred.resolve(new Transactions(history));
+                deferred.resolve(history);
             }).fail(function(){
-                deferred.resolve(new Transactions());
+                deferred.resolve([]);
             });
             return deferred.promise();
         };

@@ -1,14 +1,9 @@
-define(['underscore', 'backbone'], function(_, Backbone) { 'use strict';
+define(function() { 'use strict';
 
-    var SitesFile = Backbone.Model.extend({
-        defaults: {
-            fileEntry: null
-        },
+    var SitesFile = function(){
 
-        initialize: function(options) {
+        this.fileEntry = null;
 
-        }
-    });
-
+    };
     return SitesFile;
 });

@@ -22,12 +22,31 @@ div.homeDiv {
     line-height:50%;
     float:left;
     text-align:center;
+    position:relative;
+}
+
+.homeImg {
+    position: absolute;
+    top: 50%;
+    left:50%;
+    -webkit-transform: translate(-50%, -50%);
+    /*-ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);*/
 }
 
 #homeImage {
-    height:75%;
-    display:block;
-    margin:3% auto 3% auto;
+    height:70%;
+}
+#homeImage:focus {
+    outline: none;
+}
+
+#arrowImage {
+    height: 95%;
+}
+
+#cardinalImage {
+    height: 95%;
 }
 
 .homeFooter {
@@ -35,10 +54,15 @@ div.homeDiv {
     bottom:0;
     width:100%;
     height:45%;
+    float: left;
+    content-align: center;
 }
 
 .signalDiv {
-    background-color: red;
+    margin: auto;
+    padding: 1%;
+    font-size: 1.5em;
+    float: left;
 }
 
 .signalSpan {
@@ -94,4 +118,12 @@ div.homeDiv {
 
 #infoDiv {
     height: 62px;
+}
+
+#lockDiv{
+    float:left;
+}
+
+#inspectDiv{
+    float:right;
 }

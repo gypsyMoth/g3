@@ -99,4 +99,7 @@
     <feature name="Vibration">
         <param name="ios-package" value="CDVVibration" />
     </feature>
+    <feature name="NetworkStatus">
+        <param name="ios-package" value="CDVConnection" />
+    </feature>
 </widget>
