@@ -32,17 +32,10 @@
 
 @media only screen and (max-height: 400px) and (orientation: landscape), screen and (max-height: 800px) and (orientation: portrait) {
     .view {
-        background-color: orange;
+        //background-color: orange;
         font-size: 75%;
     }
 }
-
-/*@media only screen and (max-device-width: 667px){
-    .view {
-        font-size: 75%;
-        background-color: orange;
-    }
-}*/
 
 @media only screen and (orientation: landscape) {
     .main {
