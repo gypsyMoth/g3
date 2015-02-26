@@ -1,6 +1,6 @@
 <div id="uploadSettingsDiv" class="view" data-bind="with: uploadSettings">
     <div id="uploadSettingsBody" class="form main">
-        <span class="bigMessage">Confirm Upload Settings</span><br>
+        <span class="bigMessage">Confirm Upload Settings</span><br><br>
         <form id="uploadSettings">
             <ul>
                 <li><label class="message">State: </label><select form="uploadSettings" id="selectState" data-bind="options: states, value: selectedState"></select></li>
@@ -11,7 +11,7 @@
         </form>
     </div>
     <div id="uploadSettingsFooter" class="form footer">
-        <input type="button" id="btnUploadSettingsOK" class="okButton fastButton" value="OK" data-bind="click: function(){this.updateSettings();}">
-        <input type="button" id="btnUploadSettingsCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+        <input type="button" id="btnUploadSettingsOK" class="ok footerButton fastButton" value="OK" data-bind="click: function(){this.updateSettings();}">
+        <input type="button" id="btnUploadSettingsCancel" class="cancel footerButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
     </div>
 </div>

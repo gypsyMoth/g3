@@ -28,13 +28,16 @@ define(['jquery',
 
         this.code = ko.observable();
 
-        this.codeMatch = ko.computed(function(){
+        this.codeMatch = ko.observable(false);
+
+        this.confirm = function() {
             if (this.code() === 'g2y0p1s5y') {
-                return true;
+                this.codeMatch(true);
             } else {
-                return false;
+                alert("Incorrect Passcode!");
+                this.codeMatch(false);
             }
-        }, this);
+        }
 
         this.updateSettings = function(){
             Controller.gadget.config().metric = this.metric();

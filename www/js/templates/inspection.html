@@ -5,21 +5,22 @@
             <select id="selectInspectionType" data-bind="options: visitTypes,
                                                         optionsText: 'label',
                                                         value: selectedVisit">
-            </select><br>
+            </select><br><br>
             <span class="bigMessage">Select Trap Condition</span><br>
             <select id="selectCondition" data-bind="options: conditions,
                                                         optionsText: 'label',
                                                         value: selectedCondition">
-            </select><br>
+            </select><br><br>
             <div id="enterCount" data-bind="visible: showCount">
-                <span class="bigMessage">Enter Moth Count:</span><br>
-                <input id="mothCount" data-bind="value: moths" type="number"/>
+                <ul>
+                    <li><label class="bigMessage">Enter Moth Count: </label><input id="mothCount" data-bind="value: moths" type="number"/></li>
+                </ul>
             </div>
         </div>
     </div>
 
     <div id="inspectionFooter" class="form footer">
-        <input type="button" id="btnInspectionOk" class="okButton fastButton" value="Ok" data-bind="click: function(){this.startInspection()}">
-        <input type="button" id="btnInspectionCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+        <input type="button" id="btnInspectionOk" class="ok footerButton fastButton" value="OK" data-bind="click: function(){this.startInspection()}">
+        <input type="button" id="btnInspectionCancel" class="cancel footerButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
     </div>
 </div>

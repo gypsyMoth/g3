@@ -13,10 +13,10 @@
             </tr>
             </tfoot>
         </table><br>
-        <input type="button" id="btnHistoryPrev" class="gadgetButton fastButton" value="Previous" data-bind="enable: previous, click: function(){this.changePage(-1);}">
-        <input type="button" id="btnHistoryNext" class="gadgetButton fastButton" value="Next" data-bind="enable: next, click: function(){this.changePage(1);}">
     </div>
     <div id="historyFooter" class="form footer">
-        <input type="button" id="btnHistoryClose" class="cancelButton fastButton" value="Exit" data-bind="click: function(){$root.changeView('home');}">
+        <input type="button" id="btnHistoryPrev" class="footerButton fastButton" value="<<" data-bind="enable: previous, click: function(){this.changePage(-1);}">
+        <input type="button" id="btnHistoryClose" class="cancel footerButton fastButton" value="Exit" data-bind="click: function(){$root.changeView('home');}">
+        <input type="button" id="btnHistoryNext" class="footerButton fastButton" value=">>" data-bind="enable: next, click: function(){this.changePage(1);}">
     </div>
 </div>

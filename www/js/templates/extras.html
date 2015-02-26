@@ -10,7 +10,7 @@
         <input type="button" id="btnExtrasUpload" class="gadgetButton fastButton" value="Upload Data" data-bind="visible: $root.config().directUpload, click: function(){this.clickUpload();}">
     </div>
     <div id="extrasFooter" class="form footer">
-        <input type="button" id="btnExtrasCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
-        <span id="appInfo" data-bind="click: function(){this.goToView('about');}">App Info</span>
+        <input type="button" id="btnExtrasCancel" class="cancel footerButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+        <span id="appInfo" class="bottomRight" data-bind="click: function(){$root.changeView('about');}">App Info</span>
     </div>
 </div>
