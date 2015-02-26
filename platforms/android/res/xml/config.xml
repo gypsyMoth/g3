@@ -28,14 +28,15 @@
     </feature>
     <name>G3</name>
     <description>
-        Version 0.0.2
-        Phonegap implementation of the STS Trapper Gadget
+        GMSTS Trapper Gadget
+        G3 Mobile Application
+        Version 1.0.0
     </description>
-    <author email="imf@vt.edu" href="http://gmsts.org">
-        Ian Firkin
+    <author email="bpogue@vt.edu" href="http://gmsts.org">
+        Brad Pogue
         Slow the Spread of the Gypsy Moth
     </author>
-    <preference name="phonegap-version" value="3.3.0" />
+    <preference name="phonegap-version" value="3.5.0" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />

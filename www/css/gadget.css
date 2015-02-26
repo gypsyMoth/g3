@@ -23,16 +23,8 @@
     text-align: center;
 }
 
-/*#locationDiv {
-    width: 100%;
-    text-align: center;
-    background-color: blue;
-}*/
-
-
 @media only screen and (max-height: 400px) and (orientation: landscape), screen and (max-height: 800px) and (orientation: portrait) {
     .view {
-        //background-color: orange;
         font-size: 75%;
     }
 }
@@ -157,11 +149,6 @@
     font-weight: bolder;
 }
 
-/*.distanceSpan {
-    font-size: 1.5em;
-    font-weight: bold;
-}*/
-
 .progress {
     padding-top: 1%;
     background-color: #9CCB3B;
@@ -200,12 +187,6 @@
     font-weight: bold;
     text-align: center;
 }
-
-/*span.dataMessage {
-    background-color: #C0C4BE;
-    display: block;
-    margin: auto;
-}*/
 
 .bottomLeft {
     position: absolute;
@@ -259,29 +240,11 @@
 .ok {
     background-color: #9CCB3B;
     width: 40%;
-    /*font-size: 2em;
-    font-weight: bolder;
-    height: 95%;
-    max-height: 2em;
-    max-width: 4em;
-    margin: 0 5% 0 5%;
-    -webkit-appearance: none;
-    padding-left: 1%;
-    padding-right: 1%;*/
 }
 
 .cancel {
     background-color: #DEA625;
     width:40%;
-    /*font-size: 2em;
-    font-weight: bolder;
-    height: 95%;
-    max-height: 2em;
-    max-width: 4em;
-    margin: 0% 5% 0 5%;
-    -webkit-appearance: none;
-    padding-left: 1%;
-    padding-right: 1%;*/
 }
 
 #btnHistoryPrev, #btnHistoryNext {
@@ -363,34 +326,6 @@ li {
     margin: 0 0 1em 2%;
 }
 
-div.spacer {
-    padding:2%;
-}
-/*.imageDiv {
-    margin-top: 5%;
-    margin-bottom: 5%
-}
-
-div.imageDiv img {
-    display:block;
-    margin:auto;
-    height:60%;
-    width:60%;
-}*/
-
-/*.cautionSpan {
-    font-weight:700;
-    color:red;
-    text-align:center;
-}*/
-
-/*div.messageDiv {
-    height:25%;
-}*/
-
-/*td {
-    padding: 5px;
-}*/
 #selectState, #selectTrap, #selectBidUnit {
     width: auto;
 }
@@ -429,20 +364,3 @@ div.imageDiv img {
 #historyTable tfoot {
     text-align: center;
 }
-
-
-
-
-
-
-/*#btnHomeExtras {
-    float:left;
-    background-color: yellowgreen;
-    height: 90%;
-    width: 3em;
-    margin: 1% 1% 1% 1%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}*/
-
