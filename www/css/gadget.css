@@ -33,7 +33,7 @@
 @media only screen and (max-height: 400px) and (orientation: landscape), screen and (max-height: 800px) and (orientation: portrait) {
     .view {
         background-color: orange;
-        //font-size: 75%;
+        font-size: 75%;
     }
 }
 
@@ -56,7 +56,7 @@
     .footer {
         position: absolute;
         height: 15%;
-        bottom: 0;
+        bottom: 0.5%;
     }
 
     .actionDiv {
@@ -90,7 +90,7 @@
     .footer {
         position: absolute;
         height: 10%;
-        bottom: 0;
+        bottom: 0.5%;
     }
 
     .actionDiv {
@@ -224,10 +224,24 @@ select {
 
 .menuButton {
     position: absolute;
+    background-color: #9CCB3B;
+    height: 85%;
+    margin: 1%;
     bottom: 0;
     left: 0;
-    background-color: #9CCB3B;
-    height: 90%;
+    -webkit-border-radius: 5px;
+}
+
+#btnHomeExtras {
+
+}
+
+#appInfo {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 1.5em;
+    font-weight: bold;
     margin: 1%;
 }
 

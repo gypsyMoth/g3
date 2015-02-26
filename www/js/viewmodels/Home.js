@@ -161,6 +161,7 @@ define(['jquery',
             var options = {
                 frequency: 100
             };
+            Controller.gadget.magneticCompass(true);
             console.log("Starting Compass!");
             var myHeading = this.heading;
             watchId = navigator.compass.watchHeading(

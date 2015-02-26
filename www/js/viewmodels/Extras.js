@@ -70,15 +70,8 @@ define(['jquery',
         };
 
         this.clickUpload = function() {
-            var email = Controller.gadget.config().email;
-            var initials = Controller.gadget.config().initials;
-            var state = Controller.gadget.config().state;
             if (DB.checkConnection()) {
-                if ((email && email !== '') && (initials && initials !== '') && (state && state !== '')){
-                    Controller.gadget.changeView('upload');
-                } else {
-                    alert("Please go to application settings and configure state, email address, and initials prior to uploading data!");
-                }
+                Controller.gadget.changeView('uploadSettings');
             } else {
                 alert(Controller.errors.network);
             }

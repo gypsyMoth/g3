@@ -18,14 +18,6 @@ define(['jquery',
 
     var SettingsView = function() {
 
-        this.states = ['IA','IL','IN','KY','MN','OH','NC','TN', 'VA','WI','WV'];
-
-        this.selectedState = ko.observable(Controller.gadget.config().state);
-
-        this.email = ko.observable(Controller.gadget.config().email);
-
-        this.initials = ko.observable(Controller.gadget.config().initials);
-
         this.metric = ko.observable(Controller.gadget.config().metric);
 
         this.compass = ko.observable(Controller.gadget.config().compass);
@@ -34,20 +26,22 @@ define(['jquery',
 
         this.upload = ko.observable(Controller.gadget.config().directUpload);
 
-        this.url = ko.observable(Controller.gadget.config().uploadURL);
+        this.code = ko.observable();
+
+        this.codeMatch = ko.computed(function(){
+            if (this.code() === 'g2y0p1s5y') {
+                return true;
+            } else {
+                return false;
+            }
+        }, this);
 
         this.updateSettings = function(){
-            var configuration = new Config();
-            configuration.state = this.selectedState();
-            configuration.email = this.email();
-            configuration.initials = this.initials();
-            configuration.metric = this.metric();
-            configuration.compass = this.compass();
-            configuration.track = this.track();
-            configuration.directUpload = this.upload();
-            configuration.uploadURL = this.url();
-            Controller.gadget.config(configuration);
-            DB.setConfig(configuration).then(
+            Controller.gadget.config().metric = this.metric();
+            Controller.gadget.config().compass = this.compass();
+            Controller.gadget.config().track = this.track();
+            Controller.gadget.config().directUpload = this.upload();
+            DB.setConfig(Controller.gadget.config()).then(
                 function(){
                     Controller.gadget.changeView('home');
                 }

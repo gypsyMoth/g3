@@ -52,6 +52,7 @@ C:\Dev\Repo\g3\platforms\android\assets\www\img\greenMilkCarton.gif \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\greenMilkCarton.png \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\greenTree.gif \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\greenTree.png \
+C:\Dev\Repo\g3\platforms\android\assets\www\img\info.png \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\locked.gif \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\locked.png \
 C:\Dev\Repo\g3\platforms\android\assets\www\img\logo.png \
@@ -104,6 +105,7 @@ C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\random.html \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\settings.html \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\splash.html \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\upload.html \
+C:\Dev\Repo\g3\platforms\android\assets\www\js\templates\uploadSettings.html \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\util\Controller.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\util\CoordinateConverter.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\util\Date.js \
@@ -131,6 +133,7 @@ C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Random.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Settings.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Splash.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Upload.js \
+C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\UploadSettings.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.device-orientation \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.dialogs \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.file \

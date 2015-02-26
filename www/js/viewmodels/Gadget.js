@@ -24,6 +24,7 @@ define(['jquery',
     'src/viewmodels/Download',
     'src/viewmodels/Upload',
     'src/viewmodels/Settings',
+    'src/viewmodels/UploadSettings',
     'src/viewmodels/About',
     'src/models/Config'
 ], function($,
@@ -52,6 +53,7 @@ define(['jquery',
             DownloadView,
             UploadView,
             SettingsView,
+            UploadSettingsView,
             AboutView,
             Config) {
 
@@ -78,7 +80,7 @@ define(['jquery',
         this.directUpload = ko.observable(false);*/
 
         // Application objects...
-        this.magneticCompass = ko.observable(true);
+        this.magneticCompass = ko.observable();
 
         this.sitesFiles = ko.observableArray();
 
@@ -191,6 +193,9 @@ define(['jquery',
                     break;
                 case('settings'):
                     this.settings = new SettingsView();
+                    break;
+                case('uploadSettings'):
+                    this.uploadSettings = new UploadSettingsView();
                     break;
                 case('about'):
                     this.about = new AboutView();

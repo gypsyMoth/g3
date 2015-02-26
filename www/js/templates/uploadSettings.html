@@ -1,0 +1,17 @@
+<div id="uploadSettingsDiv" class="view" data-bind="with: uploadSettings">
+    <div id="uploadSettingsBody" class="form main">
+        <span class="bigMessage">Confirm Upload Settings</span><br>
+        <form id="uploadSettings">
+            <ul>
+                <li><label class="message">State: </label><select form="uploadSettings" id="selectState" data-bind="options: states, value: selectedState"></select></li>
+                <li><label class="message">Email: </label><input type="text" id="textEmail" data-bind="value: email" /></li>
+                <li><label class="message">Initials: </label><input type="text" id="textInitials" data-bind="value: initials"></li>
+                <li><label class="message">URL: </label><input type="text" id="textURL" data-bind="value: url" /></li>
+            </ul>
+        </form>
+    </div>
+    <div id="uploadSettingsFooter" class="form footer">
+        <input type="button" id="btnUploadSettingsOK" class="okButton fastButton" value="OK" data-bind="click: function(){this.updateSettings();}">
+        <input type="button" id="btnUploadSettingsCancel" class="cancelButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    </div>
+</div>
