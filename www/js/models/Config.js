@@ -9,7 +9,9 @@ define(function() {
         this.metric = true;
         this.compass = true;
         this.track = true;
-        this.directUpload = true;
+        this.directUpload = false;
+        this.baseURL = "http://yt.ento.vt.edu/SlowTheSpread/";
+        //this.baseURL = "http://testSkynet.ento.vt.edu/SlowTheSpread/";
         this.uploadURL = "TrapData";
     };
 
