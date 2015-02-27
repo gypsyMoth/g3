@@ -255,14 +255,14 @@ define(['jquery',
                 } else {
                     var date = DateFormatter.getScreenFormatDate(this.site().txn_date);
                     if (this.site().trap_type === 'Omit'){
-                        msg = "This trap was omitted on \u2060" + date + "\u2060";
+                        msg = "This trap was omitted on " + date;
                     } else {
                         if (this.site().visit === undefined){
-                            msg = "This trap was placed on \u2060" + date + "\u2060";
+                            msg = "This trap was placed on " + date;
                         } else if (this.site().fail_reason === undefined){
-                            msg = "A " + this.site().visit + " Inspection was done for this trap on \u2060" + date + "\u2060";
+                            msg = "A " + this.site().visit + " Inspection was done for this trap on " + date;
                         } else {
-                            msg = "A QC Inspection was done for this trap on \u2060" + date + "\u2060";
+                            msg = "A QC Inspection was done for this trap on " + date;
                         }
                     }
                 }
