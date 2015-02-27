@@ -9,7 +9,7 @@ define(function() {
         this.metric = true;
         this.compass = true;
         this.track = true;
-        this.directUpload = false;
+        this.directUpload = true;
         this.uploadURL = "TrapData";
     };
 
