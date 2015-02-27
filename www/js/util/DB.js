@@ -275,7 +275,7 @@ define (['jquery',
 
         my.downloadSites = function (fileTransfer, state, bidunit){
             var deferred = new $.Deferred();
-            var uri = encodeURI(my.urlPrefix + "SlowTheSpread/gadgetsites/" + state + "/" + bidunit + "?format=json");
+            var uri = encodeURI(Controller.gadget.config().baseURL + "gadgetsites/" + state + "/" + bidunit + "?format=json");
             var filename = my.root.toURL() + makeFilename(state, bidunit);
             var requestTimeout = setTimeout(function(){
                 var error = new FileTransferError();
@@ -311,7 +311,7 @@ define (['jquery',
             console.log(filename);
 
             //var uploadedFile = initials + loadDate
-            var uri = encodeURI(my.urlPrefix + "SlowTheSpread/Upload/" + Controller.gadget.config().uploadURL + "/" + batch + "/" + filename);
+            var uri = encodeURI(Controller.gadget.config().baseURL + "Upload/" + Controller.gadget.config().uploadURL + "/" + batch + "/" + filename);
             //var filePath = my.root.toURL() + "/" + my.activityLog;
             console.log(uri);
             var options = new FileUploadOptions();

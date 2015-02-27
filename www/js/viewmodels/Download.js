@@ -30,12 +30,12 @@ define(['jquery',
 
         this.states = ['IA','IL','IN','KY','MN','OH','NC','TN', 'VA','WI','WV'];
 
-        this.selectedState = ko.observable();//.extend({notify: 'always'});
+        this.selectedState = ko.observable();
 
         this.loadBidUnits = _.bind(function(){
             var list = Controller.gadget.bidUnitList;
             if (list().length <= 0) {
-                var uri = encodeURI("http://yt.ento.vt.edu/SlowTheSpread/bidunits?format=json");
+                var uri = encodeURI(Controller.gadget.config().baseURL + "bidunits?format=json");
                 $.get(uri).done(function (data) {
                     _.each(data, function (unit) {
                         list.push(unit);
