@@ -66,3 +66,25 @@
 * **FFOS** update compass.js
 * CB-7187 ios: Add explicit dependency on CoreLocation.framework
 * CB-7187 Delete unused #import of CDVShared.h
+
+### 0.3.9 (Sep 17, 2014)
+* CB-7471 cordova-plugin-device-orientation documentation translation: cordova-plugin-device-orientation
+* Fixed problem with watchCompass if pressed twice
+* CB-7086 Renamed dir, added nested plugin.xml
+* added documentation for manual tests
+* Fixed problem with watchCompass if pressed twice
+* CB-7086 Renamed dir, added nested plugin.xml
+* added documentation for manual tests
+* Updated docs for browser
+* Add support for the browser
+* CB-7249 cordova-plugin-device-orientation documentation translation
+* CB-6960 Added manual tests
+* CB-6960 Port compass tests to plugin-test-framework
+
+### 0.3.10 (Dec 02, 2014)
+* CB-7977 Mention `deviceready` in plugin docs
+* CB-7700 cordova-plugin-device-orientation documentation translation: cordova-plugin-device-orientation
+* CB-7571 Bump version of nested plugin to match parent plugin
+
+### 0.3.11 (Feb 04, 2015)
+* CB-8351 ios: Use argumentForIndex rather than NSArray extension
