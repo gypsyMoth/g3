@@ -88,28 +88,28 @@ V1.2.0、現在重要なファイル システム ディレクトリへの Url �
 
 | デバイス ・ パス                            | `cordova.file.*`            | `iosExtraFileSystems` | r/w ですか？ | 永続的なですか？ | OS を消去します  |   同期   | プライベート |
 |:------------------------------------ |:--------------------------- |:--------------------- |:--------:|:--------:|:----------:|:------:|:------:|
-| `/var/モバイル/アプリケーション/< UUID >/` | applicationStorageDirectory | -                     |   r/o    |   N/A    |    N/A     |  N/A   |   はい   |
-|    `appname.app/`                    | ディレクトリ                      | バンドル                  |   r/o    |   N/A    |    N/A     |  N/A   |   はい   |
-|       `www/`                         | -                           | -                     |   r/o    |   N/A    |    N/A     |  N/A   |   はい   |
+| `/var/モバイル/アプリケーション/< UUID >/` | applicationStorageDirectory | -                     |    r     |   N/A    |    N/A     |  N/A   |   はい   |
+|    `appname.app/`                    | ディレクトリ                      | バンドル                  |    r     |   N/A    |    N/A     |  N/A   |   はい   |
+|       `www/`                         | -                           | -                     |    r     |   N/A    |    N/A     |  N/A   |   はい   |
 |    `Documents/`                      | documentsDirectory          | ドキュメント                |   r/w    |    はい    |    いいえ     |   はい   |   はい   |
 |       `NoCloud/`                     | -                           | ドキュメント nosync         |   r/w    |    はい    |    いいえ     |  いいえ   |   はい   |
 |    `Library`                         | -                           | ライブラリ                 |   r/w    |    はい    |    いいえ     | はいですか？ |   はい   |
 |       `NoCloud/`                     | dataDirectory               | ライブラリ nosync          |   r/w    |    はい    |    いいえ     |  いいえ   |   はい   |
 |       `Cloud/`                       | syncedDataDirectory         | -                     |   r/w    |    はい    |    いいえ     |   はい   |   はい   |
-|       `Caches/`                      | cacheDirectory              | キャッシュ                 |   r/w    |   はい *   | はい \* * *| |  いいえ   |   はい   |
-|    `tmp/`                            | tempDirectory               | -                     |   r/w    | いいえ * *  | はい \* * *| |  いいえ   |   はい   |
+|       `Caches/`                      | cacheDirectory              | キャッシュ                 |   r/w    |   はい *   | はい * * *| |  いいえ   |   はい   |
+|    `tmp/`                            | tempDirectory               | -                     |   r/w    | いいえ * *  | はい * * *| |  いいえ   |   はい   |
 
 * アプリを再起動し、アップグレードとの間でファイルを保持が、OS を希望するたびにこのディレクトリを削除することができます。アプリを削除可能性があります任意のコンテンツを再作成することができる必要があります。
 
 * * ファイル アプリケーション再起動を渡って続くことがありますが、この動作に依存しないでください。 ファイルは、更新を維持するは保証されません。 アプリが該当する場合このディレクトリからファイルを削除する必要があります、これらのファイルが削除されるとき (または場合でも)、OS は保証しません。
 
-\* * *| OS はそれ、必要だと感じているときにこのディレクトリの内容を消去可能性がありますが、これに依存しません。 この適切なディレクトリに、アプリケーションをオフにする必要があります。
+* * *| OS はそれ、必要だと感じているときにこのディレクトリの内容を消去可能性がありますが、これに依存しません。 この適切なディレクトリに、アプリケーションをオフにする必要があります。
 
 ### 人造人間ファイル ・ システム ・ レイアウト
 
 | デバイス ・ パス                         | `cordova.file.*`                    | `AndroidExtraFileSystems` | r/w ですか？ | 永続的なですか？ | OS を消去します | プライベート |
 |:--------------------------------- |:----------------------------------- |:------------------------- |:--------:|:--------:|:---------:|:------:|
-| `file:///android_asset/`          | ディレクトリ                              |                           |   r/o    |   N/A    |    N/A    |   はい   |
+| `file:///android_asset/`          | ディレクトリ                              |                           |    r     |   N/A    |    N/A    |   はい   |
 | `/データ/データ/< app id >/`      | applicationStorageDirectory         | -                         |   r/w    |   N/A    |    N/A    |   はい   |
 |    `cache`                        | cacheDirectory                      | キャッシュ                     |   r/w    |    はい    |   はい *    |   はい   |
 |    `files`                        | dataDirectory                       | ファイル                      |   r/w    |    はい    |    いいえ    |   はい   |
@@ -129,8 +129,8 @@ V1.2.0、現在重要なファイル システム ディレクトリへの Url �
 
 | デバイス ・ パス                                         | `cordova.file.*`            | r/w ですか？ | 永続的なですか？ | OS を消去します | プライベート |
 |:------------------------------------------------- |:--------------------------- |:--------:|:--------:|:---------:|:------:|
-| `file:///accounts/1000/appdata/< app id >/` | applicationStorageDirectory |   r/o    |   N/A    |    N/A    |   はい   |
-|    `app/native`                                   | ディレクトリ                      |   r/o    |   N/A    |    N/A    |   はい   |
+| `file:///accounts/1000/appdata/< app id >/` | applicationStorageDirectory |    r     |   N/A    |    N/A    |   はい   |
+|    `app/native`                                   | ディレクトリ                      |    r     |   N/A    |    N/A    |   はい   |
 |    `data/webviews/webfs/temporary/local__0`       | cacheDirectory              |   r/w    |   いいえ    |    はい     |   はい   |
 |    `data/webviews/webfs/persistent/local__0`      | dataDirectory               |   r/w    |    はい    |    いいえ    |   はい   |
 | `file:///accounts/1000/removable/sdcard`          | externalRemovableDirectory  |   r/w    |    はい    |    いいえ    |  いいえ   |

@@ -88,28 +88,28 @@ Bien que techniquement un détail d'implémentation, il peut être très utile d
 
 | Chemin de l'unité                            | `Cordova.file.*`            | `iosExtraFileSystems` | r/w ? | persistants ? |  OS efface  | Sync  | privé |
 |:-------------------------------------------- |:--------------------------- |:--------------------- |:-----:|:-------------:|:-----------:|:-----:|:-----:|
-| `/ var/mobile/Applications/< UUID > /` | applicationStorageDirectory | -                     |  r/o  |      N/A      |     N/A     |  N/A  |  Oui  |
-|    `appname.app/`                            | applicationDirectory        | Bundle                |  r/o  |      N/A      |     N/A     |  N/A  |  Oui  |
-|       `www/`                                 | -                           | -                     |  r/o  |      N/A      |     N/A     |  N/A  |  Oui  |
+| `/ var/mobile/Applications/< UUID > /` | applicationStorageDirectory | -                     |   r   |      N/A      |     N/A     |  N/A  |  Oui  |
+|    `appname.app/`                            | applicationDirectory        | Bundle                |   r   |      N/A      |     N/A     |  N/A  |  Oui  |
+|       `www/`                                 | -                           | -                     |   r   |      N/A      |     N/A     |  N/A  |  Oui  |
 |    `Documents/`                              | documentsDirectory          | documents             |  r/w  |      Oui      |     Non     |  Oui  |  Oui  |
 |       `NoCloud/`                             | -                           | documents-nosync      |  r/w  |      Oui      |     Non     |  Non  |  Oui  |
 |    `Library`                                 | -                           | Bibliothèque          |  r/w  |      Oui      |     Non     | Oui ? |  Oui  |
 |       `NoCloud/`                             | dataDirectory               | Bibliothèque-nosync   |  r/w  |      Oui      |     Non     |  Non  |  Oui  |
 |       `Cloud/`                               | syncedDataDirectory         | -                     |  r/w  |      Oui      |     Non     |  Oui  |  Oui  |
-|       `Caches/`                              | cacheDirectory              | cache                 |  r/w  |     Oui *     | Oui \* * *| |  Non  |  Oui  |
-|    `tmp/`                                    | tempDirectory               | -                     |  r/w  |    Ne * *     | Oui \* * *| |  Non  |  Oui  |
+|       `Caches/`                              | cacheDirectory              | cache                 |  r/w  |     Oui *     | Oui * * *| |  Non  |  Oui  |
+|    `tmp/`                                    | tempDirectory               | -                     |  r/w  |    Ne * *     | Oui * * *| |  Non  |  Oui  |
 
 * Fichiers persistent à travers les redémarrages de l'application et mises à niveau, mais ce répertoire peut être effacé à chaque fois que les désirs de l'OS. Votre application doit être en mesure de recréer tout contenu qui pourrait être supprimé.
 
 * * Fichiers peuvent persister redémarrages de l'application, mais ne vous fiez pas ce comportement. Les fichiers ne sont pas garantis à persister dans l'ensemble de mises à jour. Votre application doit supprimer les fichiers de ce répertoire lorsqu'elle s'applique, comme le système d'exploitation ne garantit pas quand (ou même si) ces fichiers sont supprimés.
 
-\* * *| L'OS peut effacer le contenu de ce répertoire chaque fois qu'il se sent il est nécessaire, mais ne comptez pas là-dessus. Vous devez supprimer ce répertoire comme approprié pour votre application.
+* * *| L'OS peut effacer le contenu de ce répertoire chaque fois qu'il se sent il est nécessaire, mais ne comptez pas là-dessus. Vous devez supprimer ce répertoire comme approprié pour votre application.
 
 ### Agencement de système de fichiers Android
 
 | Chemin de l'unité                   | `Cordova.file.*`                    | `AndroidExtraFileSystems` | r/w ? | persistants ? | OS efface | privé |
 |:----------------------------------- |:----------------------------------- |:------------------------- |:-----:|:-------------:|:---------:|:-----:|
-| `file:///android_asset/`            | applicationDirectory                |                           |  r/o  |      N/A      |    N/A    |  Oui  |
+| `file:///android_asset/`            | applicationDirectory                |                           |   r   |      N/A      |    N/A    |  Oui  |
 | `/ données/data/app < id > /` | applicationStorageDirectory         | -                         |  r/w  |      N/A      |    N/A    |  Oui  |
 |    `cache`                          | cacheDirectory                      | cache                     |  r/w  |      Oui      |   Oui *   |  Oui  |
 |    `files`                          | dataDirectory                       | fichiers                  |  r/w  |      Oui      |    Non    |  Oui  |
@@ -129,8 +129,8 @@ Bien que techniquement un détail d'implémentation, il peut être très utile d
 
 | Chemin de l'unité                                   | `Cordova.file.*`            | r/w ? | persistants ? | OS efface | privé |
 |:--------------------------------------------------- |:--------------------------- |:-----:|:-------------:|:---------:|:-----:|
-| `file:///Accounts/1000/AppData/ < id app > /` | applicationStorageDirectory |  r/o  |      N/A      |    N/A    |  Oui  |
-|    `app/native`                                     | applicationDirectory        |  r/o  |      N/A      |    N/A    |  Oui  |
+| `file:///Accounts/1000/AppData/ < id app > /` | applicationStorageDirectory |   r   |      N/A      |    N/A    |  Oui  |
+|    `app/native`                                     | applicationDirectory        |   r   |      N/A      |    N/A    |  Oui  |
 |    `data/webviews/webfs/temporary/local__0`         | cacheDirectory              |  r/w  |      Non      |    Oui    |  Oui  |
 |    `data/webviews/webfs/persistent/local__0`        | dataDirectory               |  r/w  |      Oui      |    Non    |  Oui  |
 | `file:///Accounts/1000/Removable/sdcard`            | externalRemovableDirectory  |  r/w  |      Oui      |    Non    |  Non  |

@@ -243,3 +243,66 @@
 * CB-6922: Use getFileMetadata consistently to get metadata
 * changed fullPath to self.rootDocsPath
 * CB-6890: Fix pluginManager access for 4.0.x branch
+
+### 1.3.1 (Sep 17, 2014)
+* CB-7471 cordova-plugin-file documentation translation
+* CB-7272 Replace confusing "r/o" abbreviation with just "r"
+* CB-7423 encode path before attempting to resolve
+* CB-7375 Fix the filesystem name in resolveLocalFileSystemUri
+* CB-7445 [BlackBerry10] resolveLocalFileSystemURI - change DEFAULT_SIZE to MAX_SIZE
+* CB-7458 [BlackBerry10] resolveLocalFileSystemURL - add filesystem property
+* CB-7445 [BlackBerry10] Add default file system size to prevent quota exceeded error on initial install
+* CB-7431 Avoid calling done() twice in file.spec.109 test
+* CB-7413 Adds support of 'ms-appdata://' URIs
+* CB-7422 [File Tests] Use proper fileSystem to create fullPath
+* CB-7375 [Entry] get proper filesystem in Entry
+* Amazon related changes.
+* CB-7375 Remove leading slash statement from condition
+* Refactored much of the logic in FileMetadata constructor.  Directory.size will return 0
+* CB-7419 [WP8] Added support to get metada from dir
+* CB-7418 [DirectoryEntry] Added fullPath variable as part of condition
+* CB-7417 [File tests] added proper matcher to compare fullPath property
+* CB-7375 Partial revert to resolve WP8 failures
+* Overwrite existing file on getFile when create is true
+* CB-7375 CB-6148: Ensure that return values from copy and move operations reference the correct filesystem
+* CB-6724 changed style detail on documentation
+* Added new js files to amazon-fireos platform.
+* Adds Windows platform
+* Fixes multiple mobilespec tests errors
+* Removed test/tests.js module from main plugin.xml
+* CB-7094 renamed folder to tests + added nested plugin.xml
+* added documentation for manual tests
+* CB-6923 Adding support to handle relative paths
+* Style improvements on Manual tests
+* CB-7094 Ported File manual tests
+
+### 1.3.2 (Dec 02, 2014)
+* Gets rid of thread block error in File plugin
+* CB-7917 Made tests file.spec.114 - 116 pass for **Windows** platform
+* CB-7977 Mention `deviceready` in plugin docs
+* CB-7602: Fix `isCopyOnItself` logic
+* CB-7700 cordova-plugin-file documentation translation: cordova-plugin-file
+* Use one proxy for both **Windows** and **Windows8** platforms
+* CB-6994 Fixes result, returned by proxy's write method
+* [fxos] update `__format__` to match `pathsPrefix`
+* CB-6994 Improves merged code to be able to write a File
+* Optimize `FileProxy` for **Windows** platforms
+* Synchronize changes with **Windows** platform
+* Fix function write for big files on **Windows 8**
+* Write file in background
+* CB-7487 **Android** Broadcast file write This allows MTP USB shares to show the file immediately without reboot/manual refresh using 3rd party app.
+* CB-7700 cordova-plugin-file documentation translation: cordova-plugin-file
+* CB-7571 Bump version of nested plugin to match parent plugin
+
+### 1.3.3 (Feb 04, 2015)
+* CB-7927 Encoding data to bytes instead of chars when writing a file.
+* ios: Fix compile warning about implicit int conversion
+* CB-8351 ios: Use base64EncodedStringWithOptions instead of CordovaLib's class extension
+* CB-8351 ios: Use argumentForIndex rather than NSArray extension
+* CB-8351 ios: Use a local copy of valueForKeyIsNumber rather than CordovaLib's version
+* windows: Handle url's containing absolute windows path starting with drive letter and colon (encoded as %3A) through root FS
+* windows: Rework to use normal url form
+* android: refactor: Make Filesystem base class store its own name, rootUri, and rootEntry
+* android: Simplify code a bit by making makeEntryForPath not throw JSONException
+* CB-6431 android: Fix plugin breaking content: URLs
+* CB-7375 Never create new FileSystem instances (except on windows since they don't implement requestAllFileSystems())
