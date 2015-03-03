@@ -88,28 +88,28 @@ Obwohl technisch ein Implementierungsdetail, kann es sehr hilfreich zu wissen wi
 
 | Gerätepfad                                   | `Cordova.file.*`            | `iosExtraFileSystems` | R/w? | persistent? | OS löscht  | Sync | Private |
 |:-------------------------------------------- |:--------------------------- |:--------------------- |:----:|:-----------:|:----------:|:----:|:-------:|
-| `/ Var/mobile/Applications/< UUID > /` | applicationStorageDirectory | -                     | R/o  |     N/A     |    N/A     | N/A  |   Ja    |
-|    `appname.app/`                            | applicationDirectory        | Bundle                | R/o  |     N/A     |    N/A     | N/A  |   Ja    |
-|       `www/`                                 | -                           | -                     | R/o  |     N/A     |    N/A     | N/A  |   Ja    |
+| `/ Var/mobile/Applications/< UUID > /` | applicationStorageDirectory | -                     |  r   |     N/A     |    N/A     | N/A  |   Ja    |
+|    `appname.app/`                            | applicationDirectory        | Bundle                |  r   |     N/A     |    N/A     | N/A  |   Ja    |
+|       `www/`                                 | -                           | -                     |  r   |     N/A     |    N/A     | N/A  |   Ja    |
 |    `Documents/`                              | documentsDirectory          | Dokumente             | R/w  |     Ja      |    Nein    |  Ja  |   Ja    |
 |       `NoCloud/`                             | -                           | Dokumente-nosync      | R/w  |     Ja      |    Nein    | Nein |   Ja    |
 |    `Library`                                 | -                           | Bibliothek            | R/w  |     Ja      |    Nein    | Ja?  |   Ja    |
 |       `NoCloud/`                             | dataDirectory               | Bibliothek-nosync     | R/w  |     Ja      |    Nein    | Nein |   Ja    |
 |       `Cloud/`                               | syncedDataDirectory         | -                     | R/w  |     Ja      |    Nein    |  Ja  |   Ja    |
-|       `Caches/`                              | cacheDirectory              | Cache                 | R/w  |    Ja *     | Ja \* * *| | Nein |   Ja    |
-|    `tmp/`                                    | tempDirectory               | -                     | R/w  |  Nicht * *  | Ja \* * *| | Nein |   Ja    |
+|       `Caches/`                              | cacheDirectory              | Cache                 | R/w  |    Ja *     | Ja * * *| | Nein |   Ja    |
+|    `tmp/`                                    | tempDirectory               | -                     | R/w  |  Nicht * *  | Ja * * *| | Nein |   Ja    |
 
 * Dateien werden hinweg app Neustarts und Upgrades beibehalten, aber dieses Verzeichnis kann gelöscht werden, wenn das OS begehrt. Ihre Anwendung sollte in der Lage, Inhalte zu erschaffen, die möglicherweise gelöscht werden.
 
 * *-Dateien kann über app-Neustarts beizubehalten, aber verlasse dich nicht auf dieses Verhalten. Dateien sind nicht unbedingt Aktuelles beibehalten. Ihre Anwendung sollte Dateien aus diesem Verzeichnis entfernen, wenn es gilt, diese Dateien werden entfernt, da das OS nicht wann (oder auch wenn) garantiert.
 
-\* * *| The OS kann den Inhalt dieses Verzeichnisses löschen, wenn es sich anfühlt, ist es erforderlich, aber verlassen Sie sich nicht dazu. Sie sollten dieses Verzeichnis entsprechend Ihrer Anwendung deaktivieren.
+* * *| The OS kann den Inhalt dieses Verzeichnisses löschen, wenn es sich anfühlt, ist es erforderlich, aber verlassen Sie sich nicht dazu. Sie sollten dieses Verzeichnis entsprechend Ihrer Anwendung deaktivieren.
 
 ### Android File System-Layout
 
 | Gerätepfad                        | `Cordova.file.*`                    | `AndroidExtraFileSystems` | R/w? | persistent? | OS löscht | Private |
 |:--------------------------------- |:----------------------------------- |:------------------------- |:----:|:-----------:|:---------:|:-------:|
-| `file:///android_asset/`          | applicationDirectory                |                           | R/o  |     N/A     |    N/A    |   Ja    |
+| `file:///android_asset/`          | applicationDirectory                |                           |  r   |     N/A     |    N/A    |   Ja    |
 | `/ Data/Data/< app-Id > /`  | applicationStorageDirectory         | -                         | R/w  |     N/A     |    N/A    |   Ja    |
 |    `cache`                        | cacheDirectory                      | Cache                     | R/w  |     Ja      |   Ja *    |   Ja    |
 |    `files`                        | dataDirectory                       | Dateien                   | R/w  |     Ja      |   Nein    |   Ja    |
@@ -129,8 +129,8 @@ Obwohl technisch ein Implementierungsdetail, kann es sehr hilfreich zu wissen wi
 
 | Gerätepfad                                          | `Cordova.file.*`            | R/w? | persistent? | OS löscht | Private |
 |:--------------------------------------------------- |:--------------------------- |:----:|:-----------:|:---------:|:-------:|
-| `file:///Accounts/1000/APPDATA/ < app Id > /` | applicationStorageDirectory | R/o  |     N/A     |    N/A    |   Ja    |
-|    `app/native`                                     | applicationDirectory        | R/o  |     N/A     |    N/A    |   Ja    |
+| `file:///Accounts/1000/APPDATA/ < app Id > /` | applicationStorageDirectory |  r   |     N/A     |    N/A    |   Ja    |
+|    `app/native`                                     | applicationDirectory        |  r   |     N/A     |    N/A    |   Ja    |
 |    `data/webviews/webfs/temporary/local__0`         | cacheDirectory              | R/w  |    Nein     |    Ja     |   Ja    |
 |    `data/webviews/webfs/persistent/local__0`        | dataDirectory               | R/w  |     Ja      |   Nein    |   Ja    |
 | `file:///Accounts/1000/Removable/sdcard`            | externalRemovableDirectory  | R/w  |     Ja      |   Nein    |  Nein   |
@@ -138,7 +138,7 @@ Obwohl technisch ein Implementierungsdetail, kann es sehr hilfreich zu wissen wi
 
 *Hinweis*: Wenn die Anwendung bereitgestellt wird, um Perimeter zu arbeiten, alle Pfade sind relativ /accounts/1000-enterprise.
 
-## Android Macken
+## Android Eigenarten
 
 ### Android permanenten Speicherort
 

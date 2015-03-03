@@ -43,6 +43,10 @@
                 "parents": {
                     "/*": [
                         {
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"Compass\"><param name=\"ios-package\" value=\"CDVCompass\" /></feature>",
                             "count": 1
                         },
@@ -65,9 +69,15 @@
                         {
                             "xml": "<feature name=\"Vibration\"><param name=\"ios-package\" value=\"CDVVibration\" /></feature>",
                             "count": 1
-                        },
+                        }
+                    ]
+                }
+            },
+            "*-Info.plist": {
+                "parents": {
+                    "NSLocationWhenInUseUsageDescription": [
                         {
-                            "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
+                            "xml": "<string />",
                             "count": 1
                         }
                     ]
@@ -76,6 +86,9 @@
         }
     },
     "installed_plugins": {
+        "org.apache.cordova.network-information": {
+            "PACKAGE_NAME": "com.phonegap.g3"
+        },
         "org.apache.cordova.device-orientation": {
             "PACKAGE_NAME": "com.phonegap.g3"
         },
@@ -92,9 +105,6 @@
             "PACKAGE_NAME": "com.phonegap.g3"
         },
         "org.apache.cordova.vibration": {
-            "PACKAGE_NAME": "com.phonegap.g3"
-        },
-        "org.apache.cordova.network-information": {
             "PACKAGE_NAME": "com.phonegap.g3"
         }
     },

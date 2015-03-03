@@ -95,28 +95,28 @@
 
 | 設備路徑                            | `cordova.file.*`            | `iosExtraFileSystems` | r/w 嗎？ | 持續性嗎？  |   OS 清除    | 同步  | 私人 |
 |:------------------------------- |:--------------------------- |:--------------------- |:------:|:------:|:----------:|:---:|:--:|
-| `/ 無功/移動/應用程式/< UUID > /` | applicationStorageDirectory | -                     |  r/o   |  不適用   |    不適用     | 不適用 | 是啊 |
-|    `appname.app/`               | applicationDirectory        | 束                     |  r/o   |  不適用   |    不適用     | 不適用 | 是啊 |
-|       `www/`                    | -                           | -                     |  r/o   |  不適用   |    不適用     | 不適用 | 是啊 |
+| `/ 無功/移動/應用程式/< UUID > /` | applicationStorageDirectory | -                     |   r    |  不適用   |    不適用     | 不適用 | 是啊 |
+|    `appname.app/`               | applicationDirectory        | 束                     |   r    |  不適用   |    不適用     | 不適用 | 是啊 |
+|       `www/`                    | -                           | -                     |   r    |  不適用   |    不適用     | 不適用 | 是啊 |
 |    `Documents/`                 | documentsDirectory          | 檔                     |  r/w   |   是啊   |     無      | 是啊  | 是啊 |
 |       `NoCloud/`                | -                           | 檔 nosync              |  r/w   |   是啊   |     無      |  無  | 是啊 |
 |    `Library`                    | -                           | 圖書館                   |  r/w   |   是啊   |     無      | 是嗎？ | 是啊 |
 |       `NoCloud/`                | dataDirectory               | 圖書館 nosync            |  r/w   |   是啊   |     無      |  無  | 是啊 |
 |       `Cloud/`                  | syncedDataDirectory         | -                     |  r/w   |   是啊   |     無      | 是啊  | 是啊 |
-|       `Caches/`                 | cacheDirectory              | 快取記憶體                 |  r/w   |  是啊 *  | 是的 \* * *| |  無  | 是啊 |
-|    `tmp/`                       | tempDirectory               | -                     |  r/w   | 沒有 * * | 是的 \* * *| |  無  | 是啊 |
+|       `Caches/`                 | cacheDirectory              | 快取記憶體                 |  r/w   |  是啊 *  | 是的 * * *| |  無  | 是啊 |
+|    `tmp/`                       | tempDirectory               | -                     |  r/w   | 沒有 * * | 是的 * * *| |  無  | 是啊 |
 
 * 檔堅持跨應用程式重新開機和升級，但是每當 OS 的欲望，可以清除此目錄。您的應用程式應該能夠重新創建任何內容可能會被刪除。
 
 * * 檔可能會持續整個應用程式重新開機，但不是依賴于這種行為。 不保證檔在更新之間持續存在。 您的應用程式應該從這個目錄刪除檔，在適當的時候，作為作業系統並不能保證時 （或即使） 中刪除這些檔。
 
-\* * *| OS 可能會清除此目錄的內容，每當它感覺它是必要的但不是依賴于此。 你應該清除此目錄為適合您的應用程式。
+* * *| OS 可能會清除此目錄的內容，每當它感覺它是必要的但不是依賴于此。 你應該清除此目錄為適合您的應用程式。
 
 ### Android 的檔案系統佈局
 
 | 設備路徑                              | `cordova.file.*`                    | `AndroidExtraFileSystems` | r/w 嗎？ | 持續性嗎？ | OS 清除  | 私人 |
 |:--------------------------------- |:----------------------------------- |:------------------------- |:------:|:-----:|:------:|:--:|
-| `file:///android_asset/`          | applicationDirectory                |                           |  r/o   |  不適用  |  不適用   | 是啊 |
+| `file:///android_asset/`          | applicationDirectory                |                           |   r    |  不適用  |  不適用   | 是啊 |
 | `/ 資料資料/< 應用程式 id > /`      | applicationStorageDirectory         | -                         |  r/w   |  不適用  |  不適用   | 是啊 |
 |    `cache`                        | cacheDirectory                      | 快取記憶體                     |  r/w   |  是啊   |  是啊 *  | 是啊 |
 |    `files`                        | dataDirectory                       | 檔                         |  r/w   |  是啊   |   無    | 是啊 |
@@ -136,8 +136,8 @@
 
 | 設備路徑                                                 | `cordova.file.*`            | r/w 嗎？ | 持續性嗎？ | OS 清除 | 私人 |
 |:---------------------------------------------------- |:--------------------------- |:------:|:-----:|:-----:|:--:|
-| `file:///accounts/1000/appdata/ < 應用程式 id > /` | applicationStorageDirectory |  r/o   |  不適用  |  不適用  | 是啊 |
-|    `app/native`                                      | applicationDirectory        |  r/o   |  不適用  |  不適用  | 是啊 |
+| `file:///accounts/1000/appdata/ < 應用程式 id > /` | applicationStorageDirectory |   r    |  不適用  |  不適用  | 是啊 |
+|    `app/native`                                      | applicationDirectory        |   r    |  不適用  |  不適用  | 是啊 |
 |    `data/webviews/webfs/temporary/local__0`          | cacheDirectory              |  r/w   |   無   |  是啊   | 是啊 |
 |    `data/webviews/webfs/persistent/local__0`         | dataDirectory               |  r/w   |  是啊   |   無   | 是啊 |
 | `file:///accounts/1000/removable/sdcard`             | externalRemovableDirectory  |  r/w   |  是啊   |   無   | 無  |

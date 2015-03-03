@@ -42,7 +42,7 @@ Para tener una visión general de otras opciones de almacenamiento, consulte [Gu
 
 ## Plataformas soportadas
 
-*   Amazon fuego OS
+*   Amazon fire OS
 *   Android
 *   BlackBerry 10
 *   Firefox OS
@@ -88,28 +88,28 @@ Aunque técnicamente un detalle de la implementación, puede ser muy útil saber
 
 | Ruta de dispositivo                          | `Cordova.file.*`            | `iosExtraFileSystems` | ¿r/w? | ¿persistente? | OS despeja | sincronización | privado |
 |:-------------------------------------------- |:--------------------------- |:--------------------- |:-----:|:-------------:|:----------:|:--------------:|:-------:|
-| `/ var/mobile/Applications/< UUID > /` | applicationStorageDirectory | -                     |  r/o  |     N / A     |   N / A    |     N / A      |   Sí    |
-|    `appname.app/`                            | applicationDirectory        | Bundle                |  r/o  |     N / A     |   N / A    |     N / A      |   Sí    |
-|       `www/`                                 | -                           | -                     |  r/o  |     N / A     |   N / A    |     N / A      |   Sí    |
+| `/ var/mobile/Applications/< UUID > /` | applicationStorageDirectory | -                     |   r   |     N / A     |   N / A    |     N / A      |   Sí    |
+|    `appname.app/`                            | applicationDirectory        | Bundle                |   r   |     N / A     |   N / A    |     N / A      |   Sí    |
+|       `www/`                                 | -                           | -                     |   r   |     N / A     |   N / A    |     N / A      |   Sí    |
 |    `Documents/`                              | documentsDirectory          | documentos            |  r/w  |      Sí       |     No     |       Sí       |   Sí    |
 |       `NoCloud/`                             | -                           | documentos-nosync     |  r/w  |      Sí       |     No     |       No       |   Sí    |
 |    `Library`                                 | -                           | Biblioteca            |  r/w  |      Sí       |     No     |      ¿Sí?      |   Sí    |
 |       `NoCloud/`                             | dataDirectory               | Biblioteca-nosync     |  r/w  |      Sí       |     No     |       No       |   Sí    |
 |       `Cloud/`                               | syncedDataDirectory         | -                     |  r/w  |      Sí       |     No     |       Sí       |   Sí    |
-|       `Caches/`                              | cacheDirectory              | caché                 |  r/w  |     Sí *      | Si \* * *| |       No       |   Sí    |
-|    `tmp/`                                    | tempDirectory               | -                     |  r/w  |    No * *     | Si \* * *| |       No       |   Sí    |
+|       `Caches/`                              | cacheDirectory              | caché                 |  r/w  |     Sí *      | Si * * *| |       No       |   Sí    |
+|    `tmp/`                                    | tempDirectory               | -                     |  r/w  |    No * *     | Si * * *| |       No       |   Sí    |
 
 * Archivos persisten a través de la aplicación se reinicia y actualizaciones, pero este directorio puede ser despejó cuando el OS desea. Su aplicación debe ser capaz de recrear cualquier contenido que puede ser eliminado.
 
 * * Archivos pueden persistir a través de la aplicación se reinicia, pero no confiar en este comportamiento. Los archivos no se garantizan que persisten a través de actualizaciones. Su aplicación debe eliminar los archivos de este directorio cuando es aplicable, como el sistema operativo no garantiza cuando (o incluso si) estos archivos se quitan.
 
-\* * *| OS la puede borrar el contenido de este directorio cuando se siente que es necesario, pero no dependen de éste. Debe borrar este directorio según sea apropiado para su aplicación.
+* * *| OS la puede borrar el contenido de este directorio cuando se siente que es necesario, pero no dependen de éste. Debe borrar este directorio según sea apropiado para su aplicación.
 
 ### Disposición del sistema Android File
 
 | Ruta de dispositivo                       | `Cordova.file.*`                    | `AndroidExtraFileSystems` | ¿r/w? | ¿persistente? | OS despeja | privado |
 |:----------------------------------------- |:----------------------------------- |:------------------------- |:-----:|:-------------:|:----------:|:-------:|
-| `File:///android_asset/`                  | applicationDirectory                |                           |  r/o  |     N / A     |   N / A    |   Sí    |
+| `File:///android_asset/`                  | applicationDirectory                |                           |   r   |     N / A     |   N / A    |   Sí    |
 | `/Data/data/< id de aplicación > /` | applicationStorageDirectory         | -                         |  r/w  |     N / A     |   N / A    |   Sí    |
 |    `cache`                                | cacheDirectory                      | caché                     |  r/w  |      Sí       |    Sí *    |   Sí    |
 |    `files`                                | dataDirectory                       | archivos                  |  r/w  |      Sí       |     No     |   Sí    |
@@ -129,8 +129,8 @@ Aunque técnicamente un detalle de la implementación, puede ser muy útil saber
 
 | Ruta de dispositivo                                           | `Cordova.file.*`            | ¿r/w? | ¿persistente? | OS despeja | privado |
 |:------------------------------------------------------------- |:--------------------------- |:-----:|:-------------:|:----------:|:-------:|
-| `File:///accounts/1000/AppData/ < id de aplicación > /` | applicationStorageDirectory |  r/o  |     N / A     |   N / A    |   Sí    |
-|    `app/native`                                               | applicationDirectory        |  r/o  |     N / A     |   N / A    |   Sí    |
+| `File:///accounts/1000/AppData/ < id de aplicación > /` | applicationStorageDirectory |   r   |     N / A     |   N / A    |   Sí    |
+|    `app/native`                                               | applicationDirectory        |   r   |     N / A     |   N / A    |   Sí    |
 |    `data/webviews/webfs/temporary/local__0`                   | cacheDirectory              |  r/w  |      No       |     Sí     |   Sí    |
 |    `data/webviews/webfs/persistent/local__0`                  | dataDirectory               |  r/w  |      Sí       |     No     |   Sí    |
 | `File:///accounts/1000/Removable/sdcard`                      | externalRemovableDirectory  |  r/w  |      Sí       |     No     |   No    |
