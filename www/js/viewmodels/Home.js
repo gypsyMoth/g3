@@ -183,13 +183,13 @@ define(['jquery',
         this.cardinalRotation = ko.computed(function(){
             this.orientation(window.orientation + " : " + window.screen.width + "x" + window.screen.height);
             //var rotation = 360 - this.heading();
-            var rotation = this.compass() ? 360 - this.heading() - window.orientation : 360 - this.relPos().motionHeading;
+            var rotation = Controller.gadget.config().compass ? 360 - this.heading() - window.orientation : 360 - this.relPos().motionHeading;
             return 'translate(-50%, -50%) rotate(' + rotation + 'deg)';
         }, this);
 
         this.arrowRotation = ko.computed(function(){
             //var rotation = this.relPos().compassBearing - this.heading();
-            var rotation = this.compass() ? this.relPos().compassBearing - this.heading() - window.orientation : this.relPos().compassBearing - this.relPos().motionHeading;
+            var rotation = Controller.gadget.config().compass ? this.relPos().compassBearing - this.heading() - window.orientation : this.relPos().compassBearing - this.relPos().motionHeading;
             if (rotation < 0) {
                 rotation += 360;
             }
