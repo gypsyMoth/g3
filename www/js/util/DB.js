@@ -18,6 +18,21 @@ define (['jquery',
         my.urlPrefix = "http://testskynet.ento.vt.edu/"; //TEST
         //my.urlPrefix = "http://yt.ento.vt.edu/"; //PRODUCTION
 
+        my.findCompass = function() {
+            var deferred = new $.Deferred();
+            navigator.compass.getCurrentHeading(
+                function(heading){
+                    console.log("COMPASS FOUND!");
+                    deferred.resolve(true);
+                },
+                function(error){
+                    console.log("NO COMPASS!");
+                    deferred.resolve(false);
+                }
+            );
+            return deferred.promise();
+        }
+
         my.getConfig = function(){
             var deferred = new $.Deferred();
             my.fileExists(my.root, 'config').then(
@@ -29,17 +44,24 @@ define (['jquery',
                 },
                 function(){
                     getFileEntry(my.root, 'config', {create: true, exclusive: false}).then(function(entry){
-                        var configuration = new Config();
-                        writeFile(entry, JSON.stringify(configuration)).then(
-                            function(){
-                                Controller.gadget.config(configuration);
-                                deferred.resolve();
-                            },
-                            function(){
-                                alert("Unable to create config file!");
-                                deferred.reject();
-                            }
-                        );
+                        console.log("LOOKING FOR COMPASS!");
+                        my.findCompass().then(function(found) {
+                            var configuration = new Config();
+                            configuration.compass = found;
+                            configuration.magneticCompass = found;
+                            writeFile(entry, JSON.stringify(configuration)).then(
+                                function () {
+                                    console.log("WRITING FILE!");
+                                    Controller.gadget.config(configuration);
+                                    console.log(JSON.stringify(Controller.gadget.config()));
+                                    deferred.resolve();
+                                },
+                                function () {
+                                    alert("Unable to create config file!");
+                                    deferred.reject();
+                                }
+                            );
+                        });
                     });
                 }
             );

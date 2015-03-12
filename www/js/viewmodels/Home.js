@@ -99,10 +99,8 @@ define(['jquery',
 
         this.imageType = ko.computed(function(){
             if (!this.site().xact){ // === undefined || this.site().xact === null) {
-                console.log('Tree');
                 return 'Tree';
             } else {
-                console.log(this.site().trap_type);
                 return this.site().trap_type === 'Delta' ? 'Delta' : 'MilkCarton';
             }
         }, this);
@@ -163,7 +161,7 @@ define(['jquery',
             var options = {
                 frequency: 100
             };
-            Controller.gadget.magneticCompass(true);
+            //Controller.gadget.magneticCompass(true);
             console.log("Starting Compass!");
             var myHeading = this.heading;
             watchId = navigator.compass.watchHeading(
@@ -172,8 +170,8 @@ define(['jquery',
                 },
                 function(error) {
                     console.log(error.code);
-                    Controller.gadget.config().compass = false;
-                    Controller.gadget.magneticCompass(false);
+                    //Controller.gadget.config().compass = false;
+                    //Controller.gadget.magneticCompass(false);
                     navigator.compass.clearWatch(watchId);
                 },
                 options
