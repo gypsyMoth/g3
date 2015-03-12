@@ -98,9 +98,11 @@ define(['jquery',
         }, this);
 
         this.imageType = ko.computed(function(){
-            if (this.site().xact === undefined) {
+            if (!this.site().xact){ // === undefined || this.site().xact === null) {
+                console.log('Tree');
                 return 'Tree';
             } else {
+                console.log(this.site().trap_type);
                 return this.site().trap_type === 'Delta' ? 'Delta' : 'MilkCarton';
             }
         }, this);
@@ -199,12 +201,12 @@ define(['jquery',
         this.operationType = function(){
             var site = this.site();
             var operationType = '';
-            if (site.quad === undefined) {
+            if (!site.quad){// === undefined) {
                 operationType = Encoder.operationTypes.ERROR;
-            } else if (typeof site.xact === 'undefined') {
+            } else if (!site.xact){// === 'undefined') {
                 operationType = Encoder.operationTypes.UNADDRESSED;
-            } else if (typeof site.visit === 'undefined') {
-                if (typeof site.omit_reason === 'undefined') {
+            } else if (!site.visit){// === 'undefined') {
+                if (!site.omit_reason){// === 'undefined') {
                     operationType = Encoder.operationTypes.PLACED;
                 } else {
                     operationType = Encoder.operationTypes.OMITTED;
@@ -226,7 +228,7 @@ define(['jquery',
                     break;
                 case Encoder.operationTypes.PLACED:
                 case Encoder.operationTypes.MIDSEASON:
-                    if (DateFormatter.getOperationFormatDate(this.site().txn_date) === DateFormatter.getOperationFormatDate(Date.now()) && (this.site().fail_reason === undefined)) {
+                    if (DateFormatter.getOperationFormatDate(this.site().txn_date) === DateFormatter.getOperationFormatDate(Date.now()) && (!this.site().fail_reason)) {
                         alert("Site cannot be placed and inspected or inspected multiple times on the same day!");
                     } else {
                         if (this.relPos().distance > 100) {
@@ -250,16 +252,16 @@ define(['jquery',
             if (JSON.stringify(this.site()) === '{}'){
                 msg = '';
             } else  {
-                if (this.site().xact === undefined){
+                if (!this.site().xact){ // === undefined){
                     msg = "No trap at this site!"
                 } else {
                     var date = DateFormatter.getScreenFormatDate(this.site().txn_date);
                     if (this.site().trap_type === 'Omit'){
                         msg = "This trap was omitted on " + date;
                     } else {
-                        if (this.site().visit === undefined){
+                        if (!this.site().visit) { // === undefined){
                             msg = "This trap was placed on " + date;
-                        } else if (this.site().fail_reason === undefined){
+                        } else if (!this.site().fail_reason) { // === undefined){
                             msg = "A " + this.site().visit + " Inspection was done for this trap on " + date;
                         } else {
                             msg = "A QC Inspection was done for this trap on " + date;

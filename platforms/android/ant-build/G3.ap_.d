@@ -263,4 +263,5 @@ C:\Dev\Repo\g3\platforms\android\assets\www\spec\javascripts\util\EncoderSpec.js
 C:\Dev\Repo\g3\platforms\android\assets\www\spec\javascripts\util\GeolocationSpec.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\spec\javascripts\util\NearestNeighborSpec.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\spec\javascripts\viewmodels\HistorySpec.js \
+C:\Dev\Repo\g3\platforms\android\assets\www\spec\javascripts\viewmodels\HomeSpec.js \
 C:\Dev\Repo\g3\platforms\android\ant-build\AndroidManifest.xml \

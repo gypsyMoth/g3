@@ -2,7 +2,7 @@
     <div id="placementBody" class="form main">
         <div class="vertical center">
             <span class="bigMessage">Confirm placement of</span><br>
-            <select id="selectTrap" data-bind="options: trap_types, value: selectedTrap"></select><span class="bigMessage">trap</span><br>
+            <select id="selectTrap" data-bind="options: trap_types, value: selectedTrap"></select><span class="bigMessage"> trap</span><br>
             <span class="bigMessage" data-bind="html: message()"></span><br><br>
             <input type="button" id="btnPlacement" class="gadgetButton fastButton" value="Place Trap" data-bind="click: function(){this.startPlacement()}">
             <input type="button" id="btnOmit" class="gadgetButton fastButton" value="Omit Site" data-bind="enable: $root.selectedSite().site_id < 9000, click: function(){$root.changeView('omit')}">
