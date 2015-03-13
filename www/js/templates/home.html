@@ -8,7 +8,7 @@
             <!--<div id="orientation" class="message" data-bind="text: orientation()"></div>-->
             <img id="arrowImage" class="homeImg" src="img/arrow.png" data-bind="style:{webkitTransform: arrowRotation()}"/>
             <img id="cardinalImage" class="homeImg" src="img/cardinal.png" data-bind="style:{webkitTransform: cardinalRotation()}"/>
-            <input id="homeImage" class="homeImg" type="image" data-bind="enable: foundSite, click: function(){this.goToView(this.operation());}, attr: {src: image()}"/>
+            <input id="homeImage" class="homeImg" type="image" data-bind="click: function(){this.foundSite() ? this.goToView(this.operation()) : alert('No site found!');}, attr: {src: image()}"/>
             <img id="lockImage" src="img/locked.png" data-bind="visible: $root.manualLock()">
             <img id="inspectImage" src="img/magGlassSmall.png" data-bind="visible: inspected()">
             <div id="distanceSpan" class="message" data-bind="text: positionInfo(), click: function(){this.switchUnits();}"></div>

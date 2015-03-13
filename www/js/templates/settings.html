@@ -4,7 +4,7 @@
         <form id="settings" data-bind="submit: confirm">
             <ul>
                 <li><label class="message">Display Metric Units </label><input type="checkbox" data-bind="checked: metric" /></li>
-                <li data-bind="visible: $root.magneticCompass"><label class="message">Use Magnetic Compass </label><input type="checkbox" data-bind="checked: compass"/></li>
+                <li data-bind="visible: $root.config().magneticCompass"><label class="message">Use Magnetic Compass </label><input type="checkbox" data-bind="checked: compass"/></li>
                 <li data-bind="visible: !codeMatch()"><label class="message">Advanced Settings Passcode: </label><br><input type="password" data-bind="value: code"><input type="submit" value="Submit"/></li>
                 <li data-bind="visible: codeMatch()"><label class="message">Track Logging </label><input type="checkbox" data-bind="checked: track" /></li>
                 <li data-bind="visible: codeMatch()"><label class="message">Data Uploads </label><input type="checkbox" data-bind="checked: upload" /></li>

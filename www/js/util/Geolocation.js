@@ -42,7 +42,7 @@ define(['jquery',
         Gadget.position().accuracy(Math.round(position.coords.accuracy));
         Gadget.position().timestamp(position.timestamp);
 
-        if (Gadget.previousUTMs().length >= 10) {
+        if (Gadget.previousUTMs().length >= 5) {
             Gadget.previousUTMs.shift();
         }
         Gadget.previousUTMs.push(Gadget.position().utm());

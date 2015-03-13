@@ -38,8 +38,8 @@ define(['jquery',
         this.message = ko.computed(function(){
             var msg;
             msg = "<span>Confirm ";
-            if (this.op.visit !== undefined){
-                if (this.op.fail_reason !== undefined){
+            if (this.op.visit){
+                if (this.op.fail_reason){
                     if (this.op.fail_reason === 'Passed'){
                         msg += this.op.fail_reason.toUpperCase() + " ";
                     } else {

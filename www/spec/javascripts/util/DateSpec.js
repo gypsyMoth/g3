@@ -3,7 +3,7 @@ define(["src/util/Date"], function(DateFormatter) { 'use strict';
     describe("DateFormatter Module", function() {
         it ("Formats the date correctly from sites file to screen", function() {
             var formattedDate = DateFormatter.getScreenFormatDate("2013-02-06T00:00:00-00:00");
-            expect(formattedDate).toEqual('02/06/13');
+            expect(formattedDate).toEqual('2\u20116\u201113');
         });
 
         it ("Formats the current date correctly to write to a sites file", function() {
