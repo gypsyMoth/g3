@@ -73,14 +73,12 @@ define(['jquery',
 
         this.compass = ko.observable(true);
 
-        
-
         this.track = ko.observable(true);
 
         this.directUpload = ko.observable(false);*/
 
         // Application objects...
-        this.magneticCompass = ko.observable();
+        //this.magneticCompass = ko.observable();
 
         this.sitesFiles = ko.observableArray();
 
@@ -140,6 +138,7 @@ define(['jquery',
                         this.home.now(Date.now());
                     }, this), 1000);
                     this.operationalSite(new Site());
+                    console.log(this.config().compass);
                     if (this.config().compass){
                         this.home.startCompass();
                     };

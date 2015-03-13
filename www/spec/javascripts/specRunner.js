@@ -55,6 +55,7 @@
         'util/GeolocationSpec',
         'util/NearestNeighborSpec',
         'util/DecoderSpec',
+        'viewmodels/HomeSpec',
         'viewmodels/HistorySpec'
     ];
 

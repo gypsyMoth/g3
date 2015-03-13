@@ -98,7 +98,7 @@ define(['jquery',
         }, this);
 
         this.imageType = ko.computed(function(){
-            if (this.site().xact === undefined) {
+            if (!this.site().xact){ // === undefined || this.site().xact === null) {
                 return 'Tree';
             } else {
                 return this.site().trap_type === 'Delta' ? 'Delta' : 'MilkCarton';
@@ -161,7 +161,7 @@ define(['jquery',
             var options = {
                 frequency: 100
             };
-            Controller.gadget.magneticCompass(true);
+            //Controller.gadget.magneticCompass(true);
             console.log("Starting Compass!");
             var myHeading = this.heading;
             watchId = navigator.compass.watchHeading(
@@ -170,41 +170,56 @@ define(['jquery',
                 },
                 function(error) {
                     console.log(error.code);
-                    Controller.gadget.config().compass = false;
-                    Controller.gadget.magneticCompass(false);
+                    //Controller.gadget.config().compass = false;
+                    //Controller.gadget.magneticCompass(false);
                     navigator.compass.clearWatch(watchId);
                 },
                 options
             );
         };
 
-        this.orientation = ko.observable("0");
-
         this.cardinalRotation = ko.computed(function(){
-            this.orientation(window.orientation + " : " + window.screen.width + "x" + window.screen.height);
+            //this.orientation(window.orientation + " : " + window.screen.width + "x" + window.screen.height);
             //var rotation = 360 - this.heading();
-            var rotation = this.compass() ? 360 - this.heading() - window.orientation : 360 - this.relPos().motionHeading;
+            var rotation = Controller.gadget.config().compass ? 360 - this.heading() - window.orientation : 360 - this.relPos().motionHeading;
+            var msg = "";
+            msg = "Compass: " + this.relPos().compassBearing + "\r\nMotion: " + this.relPos().motionHeading;
+            msg += "\r\nCardinal: " + rotation;
+            console.log(msg);
             return 'translate(-50%, -50%) rotate(' + rotation + 'deg)';
         }, this);
 
         this.arrowRotation = ko.computed(function(){
             //var rotation = this.relPos().compassBearing - this.heading();
-            var rotation = this.compass() ? this.relPos().compassBearing - this.heading() - window.orientation : this.relPos().compassBearing - this.relPos().motionHeading;
+            var rotation = Controller.gadget.config().compass ? this.relPos().compassBearing - this.heading() - window.orientation : this.relPos().compassBearing - this.relPos().motionHeading;
             if (rotation < 0) {
                 rotation += 360;
             }
+            var msg = "";
+            msg += "\r\nArrow: " + rotation;
+            console.log(msg);
             return 'translate(-50%, -50%) rotate(' + rotation + 'deg)';
         }, this);
+
+        /*this.orientation = ko.computed(function(){
+            var arrow = Controller.gadget.config().compass ? this.relPos().compassBearing - this.heading() - window.orientation : this.relPos().compassBearing - this.relPos().motionHeading;
+            var cardinal = Controller.gadget.config().compass ? 360 - this.heading() - window.orientation : 360 - this.relPos().motionHeading;
+            var msg = "";
+            msg = "Compass: " + this.relPos().compassBearing + "\r\nMotion: " + this.relPos().motionHeading;
+            msg += "\r\nCardinal: " + cardinal + "\r\nArrow: " + arrow;
+            console.log("P: " + JSON.stringify(Controller.gadget.previousUTM()) + "U: " + JSON.stringify(Controller.gadget.previousUTMs()));
+            return msg;
+        }, this);*/
 
         this.operationType = function(){
             var site = this.site();
             var operationType = '';
-            if (site.quad === undefined) {
+            if (!site.quad){// === undefined) {
                 operationType = Encoder.operationTypes.ERROR;
-            } else if (typeof site.xact === 'undefined') {
+            } else if (!site.xact){// === 'undefined') {
                 operationType = Encoder.operationTypes.UNADDRESSED;
-            } else if (typeof site.visit === 'undefined') {
-                if (typeof site.omit_reason === 'undefined') {
+            } else if (!site.visit){// === 'undefined') {
+                if (!site.omit_reason){// === 'undefined') {
                     operationType = Encoder.operationTypes.PLACED;
                 } else {
                     operationType = Encoder.operationTypes.OMITTED;
@@ -226,7 +241,7 @@ define(['jquery',
                     break;
                 case Encoder.operationTypes.PLACED:
                 case Encoder.operationTypes.MIDSEASON:
-                    if (DateFormatter.getOperationFormatDate(this.site().txn_date) === DateFormatter.getOperationFormatDate(Date.now()) && (this.site().fail_reason === undefined)) {
+                    if (DateFormatter.getOperationFormatDate(this.site().txn_date) === DateFormatter.getOperationFormatDate(Date.now()) && (!this.site().fail_reason)) {
                         alert("Site cannot be placed and inspected or inspected multiple times on the same day!");
                     } else {
                         if (this.relPos().distance > 100) {
@@ -250,16 +265,16 @@ define(['jquery',
             if (JSON.stringify(this.site()) === '{}'){
                 msg = '';
             } else  {
-                if (this.site().xact === undefined){
+                if (!this.site().xact){ // === undefined){
                     msg = "No trap at this site!"
                 } else {
                     var date = DateFormatter.getScreenFormatDate(this.site().txn_date);
                     if (this.site().trap_type === 'Omit'){
                         msg = "This trap was omitted on " + date;
                     } else {
-                        if (this.site().visit === undefined){
+                        if (!this.site().visit) { // === undefined){
                             msg = "This trap was placed on " + date;
-                        } else if (this.site().fail_reason === undefined){
+                        } else if (!this.site().fail_reason) { // === undefined){
                             msg = "A " + this.site().visit + " Inspection was done for this trap on " + date;
                         } else {
                             msg = "A QC Inspection was done for this trap on " + date;

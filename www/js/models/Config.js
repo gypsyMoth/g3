@@ -8,6 +8,7 @@ define(function() {
         this.email = undefined;
         this.metric = true;
         this.compass = true;
+        this.magneticCompass = true;
         this.track = true;
         this.directUpload = false;
         this.baseURL = "http://yt.ento.vt.edu/SlowTheSpread/";
