@@ -178,12 +178,14 @@ define(['jquery',
             );
         };
 
-        this.orientation = ko.observable("0");
-
         this.cardinalRotation = ko.computed(function(){
-            this.orientation(window.orientation + " : " + window.screen.width + "x" + window.screen.height);
+            //this.orientation(window.orientation + " : " + window.screen.width + "x" + window.screen.height);
             //var rotation = 360 - this.heading();
             var rotation = Controller.gadget.config().compass ? 360 - this.heading() - window.orientation : 360 - this.relPos().motionHeading;
+            var msg = "";
+            msg = "Compass: " + this.relPos().compassBearing + "\r\nMotion: " + this.relPos().motionHeading;
+            msg += "\r\nCardinal: " + rotation;
+            console.log(msg);
             return 'translate(-50%, -50%) rotate(' + rotation + 'deg)';
         }, this);
 
@@ -193,8 +195,21 @@ define(['jquery',
             if (rotation < 0) {
                 rotation += 360;
             }
+            var msg = "";
+            msg += "\r\nArrow: " + rotation;
+            console.log(msg);
             return 'translate(-50%, -50%) rotate(' + rotation + 'deg)';
         }, this);
+
+        /*this.orientation = ko.computed(function(){
+            var arrow = Controller.gadget.config().compass ? this.relPos().compassBearing - this.heading() - window.orientation : this.relPos().compassBearing - this.relPos().motionHeading;
+            var cardinal = Controller.gadget.config().compass ? 360 - this.heading() - window.orientation : 360 - this.relPos().motionHeading;
+            var msg = "";
+            msg = "Compass: " + this.relPos().compassBearing + "\r\nMotion: " + this.relPos().motionHeading;
+            msg += "\r\nCardinal: " + cardinal + "\r\nArrow: " + arrow;
+            console.log("P: " + JSON.stringify(Controller.gadget.previousUTM()) + "U: " + JSON.stringify(Controller.gadget.previousUTMs()));
+            return msg;
+        }, this);*/
 
         this.operationType = function(){
             var site = this.site();
