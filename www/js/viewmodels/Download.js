@@ -33,28 +33,26 @@ define(['jquery',
         this.selectedState = ko.observable();
 
         this.loadBidUnits = _.bind(function(){
-            var list = Controller.gadget.bidUnitList;
-            if (list().length <= 0) {
+            var list = []; //Controller.gadget.bidUnitList;
+            if (Controller.gadget.bidUnitList().length <= 0) {
                 var uri = encodeURI(Controller.gadget.config().baseURL + "bidunits?format=json");
-                $.get(uri).done(function (data) {
-                    _.each(data, function (unit) {
+                $.get(uri).done(function(data) {
+                    _.each(data, function(unit) {
                         list.push(unit);
                     });
+                    Controller.gadget.bidUnitList(list);
                 }).fail(function () {
                     alert(Controller.errors.timeout);
                     failRoutes();
                 });
             }
-            //console.log(JSON.stringify(this.bidUnitList()));
         }, this);
 
         this.bidUnits = ko.computed(function(){
-            var state = this.selectedState();
-            //alert(state);
             var units = _.filter(Controller.gadget.bidUnitList(), _.bind(function(unit) {
                 return unit.state === this.selectedState();
             }, this));
-            return units.length > 0 ? units : [{state:'', bidunit: 'Loading...'}];
+            return this.ready() ? units.length > 0 ? units : [{state:'', bidunit: 'None'}] : [{state:'', bidunit: 'Loading...'}];
         }, this);
 
         this.selectedBidUnit = ko.observable('');
