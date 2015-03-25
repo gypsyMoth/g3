@@ -43,7 +43,7 @@ define(['jquery',
                 alert("Please enter initials!");
             } else if (initials.length > 3) {
                 alert("Initials must be 3 characters or less");
-            } else if (url !== 'TrapData' && url !== 'Direct') {
+            } else if (url.toLowerCase() !== 'trapdata' && url.toLowerCase() !== 'direct') {
                 alert("Please enter a valid website URL for data uploads!")
             } else {
                 Controller.gadget.config().state = state;
