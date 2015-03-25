@@ -109,23 +109,27 @@ define(['jquery',
 
         this.requestDownload = function(){
             var self = this;
-            DB.initialize().then(function (){
-                DB.fileExists(DB.root, DB.activityLog).then(
-                    function (){
-                        DB.fileExists(DB.root, self.downloadFilename()).then(
-                            function (){
-                                alert("Please upload transaction log prior to downloading a new sites file.");
-                            },
-                            function(){
-                                self.download();
-                            }
-                        );
-                    },
-                    function(){
-                        self.download();
-                    }
-                );
-            });
+            if (this.selectedBidUnit().bidunit !== 'None') {
+                DB.initialize().then(function () {
+                    DB.fileExists(DB.root, DB.activityLog).then(
+                        function () {
+                            DB.fileExists(DB.root, self.downloadFilename()).then(
+                                function () {
+                                    alert("Please upload transaction log prior to downloading a new sites file.");
+                                },
+                                function () {
+                                    self.download();
+                                }
+                            );
+                        },
+                        function () {
+                            self.download();
+                        }
+                    );
+                });
+            } else {
+                alert("No Bid Units Found!");
+            }
         };
     };
 

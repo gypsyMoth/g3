@@ -182,10 +182,10 @@ define(['jquery',
             //this.orientation(window.orientation + " : " + window.screen.width + "x" + window.screen.height);
             //var rotation = 360 - this.heading();
             var rotation = Controller.gadget.config().compass ? 360 - this.heading() - window.orientation : 360 - this.relPos().motionHeading;
-            var msg = "";
+            /*var msg = "";
             msg = "Compass: " + this.relPos().compassBearing + "\r\nMotion: " + this.relPos().motionHeading;
             msg += "\r\nCardinal: " + rotation;
-            console.log(msg);
+            console.log(msg);*/
             return 'translate(-50%, -50%) rotate(' + rotation + 'deg)';
         }, this);
 
@@ -195,9 +195,9 @@ define(['jquery',
             if (rotation < 0) {
                 rotation += 360;
             }
-            var msg = "";
+            /*var msg = "";
             msg += "\r\nArrow: " + rotation;
-            console.log(msg);
+            console.log(msg);*/
             return 'translate(-50%, -50%) rotate(' + rotation + 'deg)';
         }, this);
 
