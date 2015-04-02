@@ -120,7 +120,7 @@ define (['src/util/Date',
         } else if (op.omit_reason) {
             ret += 'O' + this.getCode(op.omit_reason, this.omitReasons);
         } else {
-            ret += op.traptype === 'Delta' ? 'D' : 'M';
+            ret += op.trap_type === 'Delta' ? 'D' : 'M';
             ret += Controller.gadget.relativePosition().distanceOutside > 0 ? 'B' : '';
         }
         ret += ',' + this.transactionLog.DOLLAR;
