@@ -16,6 +16,15 @@ define(['jquery',
     };
 
     my.onDeviceReady = function () {
+        var mql = window.matchMedia("(orientation: portrait)");
+        if (mql.matches) {
+            window.plugins.orientationLock.lock("landscape");
+            window.plugins.orientationLock.lock("portrait");
+        } else {
+            window.plugins.orientationLock.lock("portrait");
+            window.plugins.orientationLock.lock("landscape");
+        }
+        window.plugins.orientationLock.unlock();
         Controller.gadget = new GadgetView();
         ko.applyBindings(Controller.gadget);
         Controller.gadget.initialize();
