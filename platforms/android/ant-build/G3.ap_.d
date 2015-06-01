@@ -126,12 +126,15 @@ C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Settings.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Splash.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\Upload.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\js\viewmodels\UploadSettings.js \
+C:\Dev\Repo\g3\platforms\android\assets\www\plugins\com.phonegap.plugins.OrientationLock \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.device-orientation \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.dialogs \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.file \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.file-transfer \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.network-information \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.vibration \
+C:\Dev\Repo\g3\platforms\android\assets\www\plugins\com.phonegap.plugins.OrientationLock\www \
+C:\Dev\Repo\g3\platforms\android\assets\www\plugins\com.phonegap.plugins.OrientationLock\www\orientationLock.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.device-orientation\www \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.device-orientation\www\compass.js \
 C:\Dev\Repo\g3\platforms\android\assets\www\plugins\org.apache.cordova.device-orientation\www\CompassError.js \
