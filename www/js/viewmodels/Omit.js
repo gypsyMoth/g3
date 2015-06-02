@@ -20,6 +20,8 @@ define(['jquery',
 
         this.startOmit = function(){
             this.op.trap_type = 'Omit';
+            this.op.xact = Controller.gadget.selectedSite().xth;
+            this.op.yact = Controller.gadget.selectedSite().yth;
             this.op.omit_reason = this.selectedReason().text;
             Controller.gadget.changeView('confirm');
         };
