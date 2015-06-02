@@ -22,8 +22,8 @@ define(['jquery',
 
         this.clickQC = function(){
             var site = Controller.gadget.selectedSite();
-            if (!site.xact || site.trap_type === 'Omit'){
-                alert("Cannot QC inspect trap that is not yet placed or previously omitted!");
+            if (site.trap_type === 'Omit'){
+                alert("Cannot QC inspect trap that was previously omitted!");
             } else {
                 if (DateFormatter.getOperationFormatDate(site.txn_date) === DateFormatter.getOperationFormatDate(Date.now()) && site.fail_reason) {
                     alert("Trap cannot be QC inspected twice on the same day!");
