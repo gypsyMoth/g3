@@ -62,6 +62,7 @@ define(['jquery',
         this.initializeGps = function() {
             this.message('Acquiring Satellites...');
             Geolocation.start();
+            Controller.gadget.changeView('home');
             //this.listenTo(Geolocation.currentLatLon, 'change', this.gotGpsSignal);
             //if (Controller.viewModel.signal() === true) {
             //    this.gotGpsSignal();

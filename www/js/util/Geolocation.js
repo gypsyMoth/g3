@@ -4,25 +4,43 @@ define(['jquery',
     'src/util/CoordinateConverter',
     'src/util/NearestNeighbor',
     'src/viewmodels/Position',
+    'src/util/Date',
     'src/models/Site',
     'src/util/DB',
     'src/util/Controller'
-], function($, _, Backbone, CoordinateConverter, NearestNeighbor, Position, Site, DB, Controller) { 'use strict';
+], function($, _, Backbone, CoordinateConverter, NearestNeighbor, Position, Date, Site, DB, Controller) { 'use strict';
 
     var my = {};
 
     var Gadget;
 
+    var posCount;
+
     my.watchId = null;
     my.SitesList = [];
 
-    my.start = function () {
+    my.resumeGPS = function(){
         this.watchId = this.watchId || navigator.geolocation.watchPosition(_.bind(this.onPositionUpdate, this),
+                function (error) {
+                    console.log(error.message);
+                },
+                {enableHighAccuracy: true, timeout: 100, maximumAge: 0 }
+            );
+    };
+
+    my.start = function () {
+        navigator.geolocation.getCurrentPosition(function(){
+            console.log("GETTING CURRENT!");
+            my.resumeGPS();},
+        function(){
+            alert("Cannot acquire GPS position!");},
+        {enableHighAccuracy: true, maximumAge: 0});
+        /*this.watchId = this.watchId || navigator.geolocation.watchPosition(_.bind(this.onPositionUpdate, this),
             function (error) {
                 console.log(error.message);
             },
-            {enableHighAccuracy: true, timeout: 3000, maximumAge: 0 }
-        );
+            {enableHighAccuracy: true, timeout: 0, maximumAge: 0 }
+        );*/
     };
 
     my.stop = function () {
@@ -34,8 +52,11 @@ define(['jquery',
 
     my.onPositionUpdate = function (position) {
         Gadget = Controller.gadget;
-        if (Gadget.currentView() === 'splash'){
-            Gadget.changeView('home');
+        //if (Gadget.currentView() === 'splash'){
+        //    Gadget.changeView('home');
+        //}
+        if (!Controller.gadget.gpsFound()) {
+            Controller.gadget.gpsFound(true);
         }
         Gadget.position().latitude(position.coords.latitude);
         Gadget.position().longitude(position.coords.longitude);
@@ -47,10 +68,10 @@ define(['jquery',
         }
         Gadget.previousUTMs.push(Gadget.position().utm());
 
-        if (Gadget.config().track){
+        if (Gadget.config().track) {
             DB.logTrack(Gadget.position());
         }
-        if (!Gadget.manualLock()){
+        if (!Gadget.manualLock()) {
             this.findNearest(Gadget.position().utm());
         }
     };
