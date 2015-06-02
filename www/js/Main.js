@@ -25,6 +25,19 @@ require(['src/App', 'knockout', 'knockout-amd-helpers', 'text'], function (App, 
     document.ontouchmove = function(e){
         e.preventDefault();
     };
+
+   document.ontouchend = function(e){
+        var classStr = e.target.className;
+        if (classStr.indexOf("ok") >= 0){
+            e.preventDefault();
+            if (e.target.disabled === false) {
+                //console.log(classStr);
+                $(e.target).trigger("click");
+            }
+            e.target.disabled = true;
+        }
+    }
+
     ko.amdTemplateEngine.defaultSuffix = ".html";
     ko.amdTemplateEngine.defaultPath = "src/templates";
     App.initialize();
