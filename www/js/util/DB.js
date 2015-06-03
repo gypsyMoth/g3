@@ -284,6 +284,8 @@ define (['jquery',
             console.log("Fail!");
             if (error.code === 3) {
                 alert(Controller.errors.timeout);
+            } else if (error.code === 2) {
+                alert(Controller.errors.server);
             } else if (error.code !== 4) {
                 alert(Controller.errors.upload);
                 console.log(error.code);
@@ -341,9 +343,19 @@ define (['jquery',
             //options.mimeType = "text/csv";
 
             function success(result){
-                console.log("Success!");
-                //console.log(result.response.code);
-                deferred.resolve();
+                if (result.response.indexOf("UploadTrapData") >= 0 || result.response.indexOf("UploadDirect") >= 0) {
+                    //alert("VALID RESPONSE!");
+                    console.log("Success!");
+                    deferred.resolve();
+                } else {
+                    //alert("INVALID RESPONSE!");
+                    console.log(result.response);
+                    var error = new FileTransferError();
+                    error.code = 2;
+                    transferFail(error);
+                    fileTransfer.abort();
+                    deferred.reject();
+                }
             };
 
             function fail(error){
