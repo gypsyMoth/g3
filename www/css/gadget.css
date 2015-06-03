@@ -252,6 +252,16 @@
     width: 15%;
 }
 
+#btnConfirmOk {
+    font-size: 2em;
+    font-weight: bolder;
+    max-height: 2em;
+    max-width: 5em;
+    margin: 0 5% 0 5%;
+    -webkit-appearance: none;
+    padding: 1%;
+}
+
 #cautionSpan {
     display: block;
     font-weight:700;
