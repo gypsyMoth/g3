@@ -9,7 +9,7 @@ define(function() {
         this.metric = true;
         this.compass = true;
         this.magneticCompass = true;
-        this.track = true;
+        this.track = false;
         this.directUpload = false;
         this.baseURL = "http://yt.ento.vt.edu/SlowTheSpread/";
         //this.baseURL = "http://testSkynet.ento.vt.edu/SlowTheSpread/";

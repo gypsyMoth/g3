@@ -67,10 +67,10 @@ define(['jquery',
             Gadget.previousUTMs.shift();
         }
         Gadget.previousUTMs.push(Gadget.position().utm());
-
-        if (Gadget.config().track) {
-            DB.logTrack(Gadget.position());
-        }
+        DB.logTrack(Gadget.position());
+        //if (Gadget.config().track) {
+        //    DB.logTrack(Gadget.position());
+        //}
         if (!Gadget.manualLock()) {
             this.findNearest(Gadget.position().utm());
         }

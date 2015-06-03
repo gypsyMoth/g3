@@ -99,10 +99,12 @@ define(['jquery',
                     DB.fileExists(DB.root, DB.activityLog).then(
                         function(){
                             activity.found = true;
+                            document.getElementById("tagInput").blur();
                             DB.root.getDirectory("Backups", {create: true, exclusive: false}, function(dirEntry) {
                                 DB.fileExists(dirEntry, activity.filename + tag() + ".txt").then(
                                     function () {
-                                        alert("Upload file already exists! Please add a new tag in the text box!");
+                                        document.getElementById("btnUploadOk").disabled = false;
+                                        alert("A file with the name '" + activity.filename + tag() + "' was previously uploaded. Please add a unique tag (letter or number) in the text box!");
                                         show(true);
                                         progress(false);
                                         tag('');
@@ -173,7 +175,7 @@ define(['jquery',
                 function(){
                     DB.uploadFile(activity.transfer, activity.path, batch, activity.filename).then(
                         function () {
-                            if (track.found && track.size < 30000) {
+                            if (Controller.gadget.config().track && track.found && track.size < 30000) {
                                 DB.uploadFile(track.transfer, track.path, batch, track.filename).then(
                                     function () {
                                         DB.uploadFile(job.transfer, job.path, batch, job.filename).then(

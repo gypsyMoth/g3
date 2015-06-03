@@ -147,6 +147,8 @@ define(['jquery',
                     //alert(this.gpsFound());
                     if (this.gpsFound() === true) {
                         Geolocation.resumeGPS();
+                    } else {
+                        Geolocation.start();
                     }
                     break;
                 case('placement'):

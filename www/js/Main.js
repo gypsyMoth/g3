@@ -31,12 +31,12 @@ require(['src/App', 'knockout', 'knockout-amd-helpers', 'text'], function (App, 
         if (classStr.indexOf("ok") >= 0){
             e.preventDefault();
             if (e.target.disabled === false) {
-                //console.log(classStr);
+                console.log(classStr);
                 $(e.target).trigger("click");
             }
             e.target.disabled = true;
         }
-    }
+   };
 
     ko.amdTemplateEngine.defaultSuffix = ".html";
     ko.amdTemplateEngine.defaultPath = "src/templates";
