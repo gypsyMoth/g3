@@ -157,10 +157,17 @@ define(['jquery',
             return Controller.gadget.config().compass;
         });
 
+        this.initOrient = ko.observable();
+
         this.startCompass = function(){
-            var options = {
-                frequency: 100
-            };
+            var options;
+            if (Controller.gadget.os === 'iOS'){
+                options = {filter: 1};
+                this.initOrient(window.orientation);
+            } else {
+                options = {frequency: 100};
+                this.initOrient(0);
+            }
             //Controller.gadget.magneticCompass(true);
             console.log("Starting Compass!");
             var myHeading = this.heading;
@@ -182,7 +189,7 @@ define(['jquery',
             //this.orientation(window.orientation + " : " + window.screen.width + "x" + window.screen.height);
             //var rotation = 360 - this.heading();
             var p = this.relPos();
-            var rotation = Controller.gadget.config().compass ? 360 - this.heading() - window.orientation : 360 - p.motionHeading;
+            var rotation = Controller.gadget.config().compass ? 360 - this.heading() - window.orientation + this.initOrient() : 360 - p.motionHeading;
             /*var msg = "";
             msg = "Compass: " + this.relPos().compassBearing + "\r\nMotion: " + this.relPos().motionHeading;
             msg += "\r\nCardinal: " + rotation;
@@ -193,7 +200,7 @@ define(['jquery',
         this.arrowRotation = ko.computed(function(){
             //var rotation = this.relPos().compassBearing - this.heading();
             var p = this.relPos();
-            var rotation = Controller.gadget.config().compass ? p.compassBearing - this.heading() - window.orientation : p.compassBearing - p.motionHeading;
+            var rotation = Controller.gadget.config().compass ? p.compassBearing - this.heading() - window.orientation + this.initOrient() : p.compassBearing - p.motionHeading;
             if (rotation < 0) {
                 rotation += 360;
             }

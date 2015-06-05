@@ -7,6 +7,7 @@ C:\Dev\Repo\g3\platforms\android\ant-build\classes\com\phonegap\g3\R$string.clas
 C:\Dev\Repo\g3\platforms\android\ant-build\classes\com\phonegap\g3\R$xml.class \
 C:\Dev\Repo\g3\platforms\android\ant-build\classes\com\phonegap\g3\R.class \
 C:\Dev\Repo\g3\platforms\android\ant-build\classes\com\plugin\phonegap\OrientationLock.class \
+C:\Dev\Repo\g3\platforms\android\ant-build\classes\org\apache\cordova\device\Device.class \
 C:\Dev\Repo\g3\platforms\android\ant-build\classes\org\apache\cordova\deviceorientation\CompassListener$1.class \
 C:\Dev\Repo\g3\platforms\android\ant-build\classes\org\apache\cordova\deviceorientation\CompassListener.class \
 C:\Dev\Repo\g3\platforms\android\ant-build\classes\org\apache\cordova\dialogs\Notification$1$1.class \

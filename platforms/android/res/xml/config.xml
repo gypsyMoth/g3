@@ -29,6 +29,9 @@
     <feature name="OrientationLock">
         <param name="android-package" value="com.plugin.phonegap.OrientationLock" />
     </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
     <name>G3</name>
     <description>
         GMSTS Trapper Gadget
