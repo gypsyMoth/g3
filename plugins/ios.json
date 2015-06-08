@@ -9,11 +9,11 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+                            "xml": "<feature name=\"Compass\"><param name=\"ios-package\" value=\"CDVCompass\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Compass\"><param name=\"ios-package\" value=\"CDVCompass\" /></feature>",
+                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
                             "count": 1
                         },
                         {
@@ -33,11 +33,11 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
+                            "xml": "<feature name=\"Vibration\"><param name=\"ios-package\" value=\"CDVVibration\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Vibration\"><param name=\"ios-package\" value=\"CDVVibration\" /></feature>",
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -93,10 +93,10 @@
         "com.phonegap.plugins.OrientationLock": {
             "PACKAGE_NAME": "com.phonegap.g3"
         },
-        "cordova-plugin-device": {
+        "cordova-plugin-device-orientation": {
             "PACKAGE_NAME": "com.phonegap.g3"
         },
-        "cordova-plugin-device-orientation": {
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "com.phonegap.g3"
         },
         "cordova-plugin-dialogs": {
@@ -111,10 +111,10 @@
         "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.phonegap.g3"
         },
-        "cordova-plugin-network-information": {
+        "cordova-plugin-vibration": {
             "PACKAGE_NAME": "com.phonegap.g3"
         },
-        "cordova-plugin-vibration": {
+        "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.phonegap.g3"
         }
     },

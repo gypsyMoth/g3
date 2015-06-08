@@ -1,4 +1,11 @@
 {
+    "com.phonegap.plugins.OrientationLock": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/cogitor/PhoneGap-OrientationLock.git",
+            "subdir": "."
+        }
+    },
     "cordova-plugin-device-orientation": {
         "source": {
             "type": "registry",
@@ -62,12 +69,5 @@
         },
         "is_top_level": true,
         "variables": {}
-    },
-    "com.phonegap.plugins.OrientationLock": {
-        "source": {
-            "type": "git",
-            "url": "https://github.com/cogitor/PhoneGap-OrientationLock.git",
-            "subdir": "."
-        }
     }
 }
