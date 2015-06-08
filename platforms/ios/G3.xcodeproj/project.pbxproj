@@ -9,7 +9,6 @@
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
-		2CB094162BDC4993A5C38DA9 /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 250DA59B77DB46F4A2458BF1 /* CDVLocation.m */; };
 		301BF552109A68D80062928A /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; };
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
@@ -28,14 +27,7 @@
 		30B4F30219D5E07200D9F7D8 /* Default-Landscape-736h.png in Resources */ = {isa = PBXBuildFile; fileRef = 30B4F2FF19D5E07200D9F7D8 /* Default-Landscape-736h.png */; };
 		30C1856619D5FC0A00212699 /* icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C1856519D5FC0A00212699 /* icon-60@3x.png */; };
 		30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC414816E50CA1004E6F35 /* icon-72@2x.png */; };
-		36976A56B2F1479C9B5DAA7D /* CDVConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA60DE056C44ADFBB05228D /* CDVConnection.m */; };
-		3BA5568E7D6D427D9EB4AF6B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E104CEB3C5B4FE9B7287EBF /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		4CE66713D7C04BC893C36116 /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = D932E25255EC4A6198765DAE /* CDVFileTransfer.m */; };
-		55F9F524B420489A8C3D4BFD /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 950AD6017D264319A23DE011 /* CDVAssetLibraryFilesystem.m */; };
-		5862FD04E05F4D92A4F9851F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022025BA601E42BCA5DB2944 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
-		60E461648F884DF49873E2BF /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = B4633E31E5914B57AB08F214 /* CDVDevice.m */; };
-		6281C9A69B064BF3ABAA7E3D /* CDVCompass.m in Sources */ = {isa = PBXBuildFile; fileRef = 600997B854C349B3B3604680 /* CDVCompass.m */; };
 		7E7966DE1810823500FA85AD /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966D41810823500FA85AD /* icon-40.png */; };
 		7E7966DF1810823500FA85AD /* icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966D51810823500FA85AD /* icon-40@2x.png */; };
 		7E7966E01810823500FA85AD /* icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966D61810823500FA85AD /* icon-50.png */; };
@@ -46,14 +38,7 @@
 		7E7966E51810823500FA85AD /* icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DB1810823500FA85AD /* icon-76@2x.png */; };
 		7E7966E61810823500FA85AD /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DC1810823500FA85AD /* icon-small.png */; };
 		7E7966E71810823500FA85AD /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DD1810823500FA85AD /* icon-small@2x.png */; };
-		97DC74CF708946FAB941AE33 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A1120037CF945718A945912 /* CoreLocation.framework */; };
-		C172E0DFA7EB4258A99B40EC /* CDVReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C88BE1170184BCA83FAA567 /* CDVReachability.m */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
-		DC0B85A3607A41DFB2EA82FA /* CDVNotification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D7EEF208CCEA4A158603D4FC /* CDVNotification.bundle */; };
-		DC53B7B5C72D4076B4A7818B /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A2FF4A0AA0443F94FFBDEF /* CDVFile.m */; };
-		DEC119F367A244DA926E57F6 /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01D14C45FD4396B463DB06 /* CDVNotification.m */; };
-		E28A99BF435E40BEA6A1F511 /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A66B5A2B70846B08F32C4AD /* CDVLocalFilesystem.m */; };
-		E611770E29244BAABFE353D5 /* CDVVibration.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE2E65EA4CC4914B0F46CDE /* CDVVibration.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,9 +139,6 @@
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
-				97DC74CF708946FAB941AE33 /* CoreLocation.framework in Frameworks */,
-				3BA5568E7D6D427D9EB4AF6B /* AudioToolbox.framework in Frameworks */,
-				5862FD04E05F4D92A4F9851F /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +405,6 @@
 				7E7966E11810823500FA85AD /* icon-50@2x.png in Resources */,
 				7E7966E51810823500FA85AD /* icon-76@2x.png in Resources */,
 				30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */,
-				DC0B85A3607A41DFB2EA82FA /* CDVNotification.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,17 +436,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				6281C9A69B064BF3ABAA7E3D /* CDVCompass.m in Sources */,
-				60E461648F884DF49873E2BF /* CDVDevice.m in Sources */,
-				DEC119F367A244DA926E57F6 /* CDVNotification.m in Sources */,
-				DC53B7B5C72D4076B4A7818B /* CDVFile.m in Sources */,
-				E28A99BF435E40BEA6A1F511 /* CDVLocalFilesystem.m in Sources */,
-				55F9F524B420489A8C3D4BFD /* CDVAssetLibraryFilesystem.m in Sources */,
-				4CE66713D7C04BC893C36116 /* CDVFileTransfer.m in Sources */,
-				2CB094162BDC4993A5C38DA9 /* CDVLocation.m in Sources */,
-				E611770E29244BAABFE353D5 /* CDVVibration.m in Sources */,
-				36976A56B2F1479C9B5DAA7D /* CDVConnection.m in Sources */,
-				C172E0DFA7EB4258A99B40EC /* CDVReachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
