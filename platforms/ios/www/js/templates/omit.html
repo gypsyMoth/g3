@@ -1,16 +1,16 @@
-<div id="omitHeader" class="formHeader">
-    <select id="selectOmitReason">
-        <option value="H">Nothing to hang trap on</option>
-        <option value="L">Landowner denied access</option>
-        <option value="O">Obstacle prohibits access</option>
-        <option value="W">Too wet</option>
-        <option value="R">Too rough or steep</option>
-        <option value="V">Vegetation too thick</option>
-        <option value="S">Unsafe</option>
-    </select>
-</div>
+<div id="omitDiv" class="view" data-bind="with: omit">
+    <div id="omitBody" class="form main">
+        <div class="vertical center">
+            <span class="bigMessage">Select Omit Reason:</span><br><br>
+            <select id="selectOmitReason" data-bind="options: omit_reasons,
+                                                     optionsText: 'label',
+                                                     value: selectedReason">
+            </select>
+        </div>
+    </div>
 
-<div id="omitFooter" class="formFooter">
-    <input type="button" id="btnOmitOk" class="gadgetButton fastButton" value="Ok">
-    <input type="button" id="btnOmitCancel" class="cancelButton fastButton" value="Cancel">
+    <div id="omitFooter" class="form footer">
+        <input type="button" id="btnOmitOk" class="ok footerButton fastButton" value="OK" data-bind="click: function(){this.startOmit()}">
+        <input type="button" id="btnOmitCancel" class="cancel footerButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    </div>
 </div>

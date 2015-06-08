@@ -1,24 +1,12 @@
-<div id="confirmHeader" class="formHeader">
-    <span id="confirmMessage" class="message">
-        <% if (operation.visit != undefined) { %>
-            <% if (operation.passFail != undefined) { %>
-                Confirm <%=operation.passFail%> <%=operation.visit%> QC inspection of <%=operation.condition%> trap
-                <%if (operation.failReason != undefined) { %>
-                    (<%=operation.failReason%>)
-                <% } %>
-            <% } else { %>
-                Confirm <%=operation.visit%> inspection of <%=operation.condition%> trap with <%=operation.catch%> moths
-            <% } %>
-        <% } else if (operation.traptype === 'Omit') { %>
-            Confirm omit (<%=operation.omitReason%>)
-        <% } else { %>
-            Confirm placement of <%=operation.traptype%>
-        <% } %>
-        at site <%=selectedSite.get('site').quad%>:<%=selectedSite.get('site').site_id%>,
-        coordinates <%=currentUtm.Easting%> E, <%=currentUtm.Northing%> N?
-    </span>
-</div>
-<div id="confirmFooter" class="formFooter">
-    <input type="button" id="btnConfirmOk" class="gadgetButton fastButton" value="Ok">
-    <input type="button" id="btnConfirmCancel" class="cancelButton fastButton" value="Cancel">
+<div id="confirmDiv" class="view" data-bind="with: confirm">
+    <div id="confirmBody" class="form main">
+        <div class="vertical center">
+            <div><input type="button" id="btnConfirmOk" class="ok fastButton" value="Confirm" data-bind="click: function(){this.confirmOperation()};"></div><br>
+        	<span id="confirmMessage" class="bigMessage" data-bind="html: message()"></span>
+        </div>
+    </div>
+    <div id="confirmFooter" class="form footer">
+        <!--<input type="button" id="btnConfirmOk" class="ok footerButton fastButton" value="OK" data-bind="click: function(){this.confirmOperation()};">-->
+        <input type="button" id="btnConfirmCancel" class="cancel footerButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    </div>
 </div>

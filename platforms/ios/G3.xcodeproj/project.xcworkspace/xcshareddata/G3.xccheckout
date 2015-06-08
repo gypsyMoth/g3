@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>EAC99735-70AF-461C-A168-C94D2B46AE3E</string>
+	<string>8706F038-3506-4E6B-96E8-56E2703305CB</string>
 	<key>IDESourceControlProjectName</key>
 	<string>G3</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>385766FF-F700-4D6B-81DC-5DBB42E9E88A</key>
-		<string>https://github.com/gypsymoth/g3</string>
+		<key>B05AB41315882CA33A6BFA122E681ADC38ABB7A5</key>
+		<string>https://github.com/gypsyMoth/g3</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>platforms/ios/G3.xcodeproj/project.xcworkspace</string>
+	<string>platforms/ios/G3.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>385766FF-F700-4D6B-81DC-5DBB42E9E88A</key>
+		<key>B05AB41315882CA33A6BFA122E681ADC38ABB7A5</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/gypsymoth/g3</string>
+	<string>https://github.com/gypsyMoth/g3</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>385766FF-F700-4D6B-81DC-5DBB42E9E88A</string>
+	<string>B05AB41315882CA33A6BFA122E681ADC38ABB7A5</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>385766FF-F700-4D6B-81DC-5DBB42E9E88A</string>
+			<string>B05AB41315882CA33A6BFA122E681ADC38ABB7A5</string>
 			<key>IDESourceControlWCCName</key>
 			<string>g3_debug</string>
 		</dict>

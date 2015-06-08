@@ -16,7 +16,11 @@
  specific language governing permissions and limitations
  under the License.
  */
+//
+// Prefix header for all source files of the 'G3' target in the 'G3' project
+//
 
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
 #endif

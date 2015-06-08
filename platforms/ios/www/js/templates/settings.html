@@ -1,0 +1,18 @@
+<div id="settingsDiv" class="view" data-bind="with: settings">
+    <div id="settingsBody" class="form main">
+        <span class="bigMessage">Application Settings</span><br><br>
+        <form id="settings" data-bind="submit: confirm">
+            <ul>
+                <li><label class="message">Display Metric Units </label><input type="checkbox" data-bind="checked: metric" /></li>
+                <li data-bind="visible: $root.config().magneticCompass"><label class="message">Use Magnetic Compass </label><input type="checkbox" data-bind="checked: compass"/></li>
+                <li><label class="message">Upload Track Log To Server </label><input type="checkbox" data-bind="checked: track" /></li>
+                <li data-bind="visible: !codeMatch()"><label class="message">Advanced Settings Passcode: </label><br><input type="password" data-bind="value: code"><input type="submit" value="Submit"/></li>
+                <li data-bind="visible: codeMatch()"><label class="message">Data Uploads </label><input type="checkbox" data-bind="checked: upload" /></li>
+            </ul>
+        </form>
+    </div>
+    <div id="settingsFooter" class="form footer">
+        <input type="button" id="btnSettingsOK" class="ok footerButton fastButton" value="OK" data-bind="click: function(){this.updateSettings();}">
+        <input type="button" id="btnSettingsCancel" class="cancel footerButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    </div>
+</div>
