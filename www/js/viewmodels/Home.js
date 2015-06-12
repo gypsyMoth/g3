@@ -21,6 +21,16 @@ define(['jquery',
     var HomeView = function() {
 
         var watchId = null;
+        var timerId = null;
+
+        this.timer = function(){
+            timerId = setInterval(_.bind(function () {
+                var offset = Controller.gadget.clockOffset() || 0;
+                this.now(Date.now() - offset);
+                var realTime = Date.now() - offset;
+                console.log(Date.now() + " - " + offset + " = " + realTime);
+            }, this), 1000);
+        }
 
         this.current = ko.computed(function(){
             return Controller.gadget.position();
@@ -49,7 +59,8 @@ define(['jquery',
         this.gpsAge = ko.computed(function(){
             var timestamp = this.current().timestamp() || 0;
             var age = this.now() - timestamp;
-            //console.log(this.now() + "-" + timestamp + "=" + Math.floor(age/1000));
+            //console.log(this.now() + "-" + timestamp + "=" + age);
+            //console.log(Math.floor(age/1000));
             return age <= 0 ? 0 : Math.floor(age/1000);
         }, this);
 
@@ -268,6 +279,7 @@ define(['jquery',
                     alert("Site omitted!");
                     break;
             }
+            return null;
         };
 
         this.message = ko.computed(function(){
@@ -296,10 +308,14 @@ define(['jquery',
         }, this);
 
         this.goToView = function(view){
-            console.log("FOUND SITE: " + this.foundSite());
-            clearInterval(this.timer);
-            navigator.compass.clearWatch(watchId);
-            Controller.gadget.changeView(view);
+            if (view) {
+                clearInterval(timerId);
+                timerId = null;
+                console.log("FOUND SITE: " + this.foundSite());
+                navigator.compass.clearWatch(watchId);
+                watchId = null;
+                Controller.gadget.changeView(view);
+            }
         };
 
     };
