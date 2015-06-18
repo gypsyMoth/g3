@@ -29,15 +29,15 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Vibration\"><param name=\"ios-package\" value=\"CDVVibration\" /></feature>",
                             "count": 1
                         },
                         {
                             "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -48,7 +48,7 @@
                     "CoreLocation.framework": [
                         {
                             "xml": false,
-                            "count": 2
+                            "count": 1
                         }
                     ],
                     "AudioToolbox.framework": [
@@ -79,12 +79,7 @@
             },
             "*-Info.plist": {
                 "parents": {
-                    "NSLocationWhenInUseUsageDescription": [
-                        {
-                            "xml": "<string />",
-                            "count": 1
-                        }
-                    ]
+                    "NSLocationWhenInUseUsageDescription": []
                 }
             }
         }
@@ -108,13 +103,13 @@
         "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.phonegap.g3"
         },
-        "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "com.phonegap.g3"
-        },
         "cordova-plugin-vibration": {
             "PACKAGE_NAME": "com.phonegap.g3"
         },
         "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.phonegap.g3"
+        },
+        "org.apache.cordova.geolocation": {
             "PACKAGE_NAME": "com.phonegap.g3"
         }
     },
