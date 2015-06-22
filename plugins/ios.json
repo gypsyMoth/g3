@@ -48,7 +48,7 @@
                     "CoreLocation.framework": [
                         {
                             "xml": false,
-                            "count": 1
+                            "count": 2
                         }
                     ],
                     "AudioToolbox.framework": [
@@ -79,7 +79,12 @@
             },
             "*-Info.plist": {
                 "parents": {
-                    "NSLocationWhenInUseUsageDescription": []
+                    "NSLocationWhenInUseUsageDescription": [
+                        {
+                            "xml": "<string />",
+                            "count": 1
+                        }
+                    ]
                 }
             }
         }
@@ -112,7 +117,7 @@
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.phonegap.g3"
         },
-        "org.apache.cordova.geolocation": {
+        "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.phonegap.g3"
         }
     },

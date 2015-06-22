@@ -70,10 +70,10 @@
         "is_top_level": true,
         "variables": {}
     },
-    "org.apache.cordova.geolocation": {
+    "cordova-plugin-geolocation": {
         "source": {
-            "type": "local",
-            "path": "C:\\Dev\\Repo\\g3\\plugins\\custom\\org.apache.cordova.geolocation"
+            "type": "registry",
+            "id": "cordova-plugin-geolocation"
         },
         "is_top_level": true,
         "variables": {}

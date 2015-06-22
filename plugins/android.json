@@ -14,7 +14,7 @@
                         },
                         {
                             "xml": "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.GeoBroker\" /></feature>",
-                            "count": 2
+                            "count": 1
                         },
                         {
                             "xml": "<feature name=\"OrientationLock\"><param name=\"android-package\" value=\"com.plugin.phonegap.OrientationLock\" /></feature>",
@@ -113,7 +113,7 @@
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.phonegap.g3"
         },
-        "org.apache.cordova.geolocation": {
+        "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.phonegap.g3"
         }
     },
