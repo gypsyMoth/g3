@@ -86,7 +86,7 @@
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <gap:splash gap:platform="blackberry" src="res/screen/blackberry/screen-225.png" />-->
     
-    <access origin="*" />
+    <access origin="*.ento.vt.edu" />
 
 
 </widget>

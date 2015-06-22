@@ -21,6 +21,7 @@ define(['jquery',
         this.op = Controller.gadget.operationalSite();
 
         this.confirmOperation = function(){
+            document.getElementById("btnConfirmOk").disabled = true;
             var sites = Controller.gadget.sitesList;
             var operation = Encoder.codedString();
             sites.remove(this.site);

@@ -42,7 +42,7 @@ define(['jquery',
                     });
                     Controller.gadget.bidUnitList(list);
                 }).fail(function () {
-                    alert(Controller.errors.timeout);
+                    alert(Controller.errors.network);
                     failRoutes();
                 });
             }
@@ -109,6 +109,7 @@ define(['jquery',
 
         this.requestDownload = function(){
             var self = this;
+            document.getElementById("btnDownloadOk").disabled = true;
             if (this.selectedBidUnit().bidunit !== 'None') {
                 DB.initialize().then(function () {
                     DB.fileExists(DB.root, DB.activityLog).then(
@@ -116,6 +117,7 @@ define(['jquery',
                             DB.fileExists(DB.root, self.downloadFilename()).then(
                                 function () {
                                     alert("Please upload transaction log prior to downloading a new sites file.");
+                                    document.getElementById("btnDownloadOk").disabled = false;
                                 },
                                 function () {
                                     self.download();
@@ -129,6 +131,7 @@ define(['jquery',
                 });
             } else {
                 alert("No Bid Units Found!");
+                document.getElementById("btnDownloadOk").disabled = false;
             }
         };
     };

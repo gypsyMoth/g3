@@ -150,11 +150,9 @@ define(['jquery',
                         this.home.startCompass();
                     }
                     //alert(this.gpsFound());
-                    //if (this.gpsFound() === true) {
-                    //Geolocation.resumeGPS();
-                    //} else {
-                    //    Geolocation.start();
-                    //}
+                    if (this.gpsFound() === false) {
+                        Geolocation.start();
+                    }
                     this.previousUTMs.removeAll();
                     this.watchPosition(true);
                     break;

@@ -103,7 +103,7 @@ define(['jquery',
                             DB.root.getDirectory("Backups", {create: true, exclusive: false}, function(dirEntry) {
                                 DB.fileExists(dirEntry, activity.filename + tag() + ".txt").then(
                                     function () {
-                                        document.getElementById("btnUploadOk").disabled = false;
+                                        document.getElementById("btnUpload").disabled = false;
                                         alert("A file with the name '" + activity.filename + tag() + "' was previously uploaded. Please add a unique tag (letter or number) in the text box!");
                                         show(true);
                                         progress(false);
@@ -170,6 +170,7 @@ define(['jquery',
         this.upload = function(){
 
             this.showProgress(true);
+            document.getElementById("btnUpload").disabled = true;
 
             checkFiles().then(
                 function(){

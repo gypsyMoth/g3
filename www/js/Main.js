@@ -8,7 +8,8 @@ require.config({
         "moment": 'lib/moment.min',
         "text": 'lib/text',
         "knockout": 'lib/knockout-3.1.0',
-        "knockout-amd-helpers": 'lib/knockout-amd-helpers.min'
+        "knockout-amd-helpers": 'lib/knockout-amd-helpers.min',
+        "fastclick" : 'lib/fastclick'
     },
     shim: {
         underscore: {
@@ -21,22 +22,12 @@ require.config({
     }
 });
 
-require(['src/App', 'knockout', 'knockout-amd-helpers', 'text'], function (App, ko) { 'use strict';
+require(['src/App', 'knockout', 'fastclick', 'knockout-amd-helpers', 'text'], function (App, ko, FastClick) { 'use strict';
     document.ontouchmove = function(e){
         e.preventDefault();
     };
 
-   document.ontouchend = function(e){
-        var classStr = e.target.className;
-        if (classStr.indexOf("ok") >= 0){
-            e.preventDefault();
-            if (e.target.disabled === false) {
-                console.log(classStr);
-                $(e.target).trigger("click");
-            }
-            e.target.disabled = true;
-        }
-   };
+    FastClick.attach(document.body);
 
     ko.amdTemplateEngine.defaultSuffix = ".html";
     ko.amdTemplateEngine.defaultPath = "src/templates";

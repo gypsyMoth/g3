@@ -72,7 +72,7 @@ public class GeoBroker extends CordovaPlugin {
                     PluginResult result = new PluginResult(PluginResult.Status.OK, this.returnLocationJSON(last));
                     callbackContext.sendPluginResult(result);
                 } else {
-                    this.getCurrentLocation(callbackContext, enableHighAccuracy, args.optInt(2, 2000));
+                    this.getCurrentLocation(callbackContext, enableHighAccuracy, args.optInt(2, 1000));
                 }
             }
             else if (action.equals("addWatch")) {

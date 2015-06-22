@@ -47,6 +47,10 @@
                         {
                             "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -104,6 +108,9 @@
             "PACKAGE_NAME": "com.phonegap.g3"
         },
         "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.phonegap.g3"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.phonegap.g3"
         },
         "org.apache.cordova.geolocation": {

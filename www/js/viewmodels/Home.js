@@ -27,8 +27,8 @@ define(['jquery',
             timerId = setInterval(_.bind(function () {
                 var offset = Controller.gadget.clockOffset() || 0;
                 this.now(Date.now() - offset);
-                var realTime = Date.now() - offset;
-                console.log(Date.now() + " - " + offset + " = " + realTime);
+                //var realTime = Date.now() - offset;
+                //console.log(Date.now() + " - " + offset + " = " + realTime);
             }, this), 1000);
         }
 

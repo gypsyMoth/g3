@@ -265,6 +265,7 @@ module.exports.metadata =
     "cordova-plugin-file-transfer": "1.1.0",
     "cordova-plugin-vibration": "1.1.0",
     "cordova-plugin-network-information": "1.0.0",
+    "cordova-plugin-whitelist": "1.0.0",
     "org.apache.cordova.geolocation": "0.3.6"
 }
 // BOTTOM OF METADATA
