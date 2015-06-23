@@ -258,7 +258,11 @@ define(['jquery',
                 case Encoder.operationTypes.ERROR:
                     break;
                 case Encoder.operationTypes.UNADDRESSED:
-                    return'placement';
+                    if (this.isOut()){
+                        return'caution';
+                    } else {
+                        return 'placement';
+                    }
                     break;
                 case Encoder.operationTypes.PLACED:
                 case Encoder.operationTypes.MIDSEASON:
