@@ -172,6 +172,7 @@ define(['jquery',
                     this.omit = new OmitView();
                     break;
                 case('caution'):
+                    this.watchPosition(false);
                     this.caution = new CautionView();
                     break;
                 case('confirm'):
