@@ -14,7 +14,7 @@ define(['jquery',
 
     var Gadget;
 
-    var posCount = 0;
+    var posCount = -1;
 
     my.watchId = null;
     my.SitesList = [];
@@ -55,10 +55,12 @@ define(['jquery',
         //if (Gadget.currentView() === 'splash'){
         //    Gadget.changeView('home');
         //}
-        if (!Controller.gadget.gpsFound()) {
-            Controller.gadget.gpsFound(true);
-        } else {
+        if (posCount === -1) {
             posCount += 1;
+        } else {
+            if (!Controller.gadget.gpsFound()) {
+                Controller.gadget.gpsFound(true);
+            }
             if (!Controller.gadget.clockOffset()){
                 Controller.gadget.clockOffset(Date.now() - position.timestamp);
             }
@@ -73,7 +75,7 @@ define(['jquery',
                 }
                 Gadget.previousUTMs.push(Gadget.position().utm());
                 if (posCount % 5 === 0) {
-                    console.log("LOGGING at " + posCount);
+                    //console.log("LOGGING at " + posCount);
                     DB.logTrack(Gadget.position());
                 }
                 //if (Gadget.config().track) {
@@ -82,6 +84,7 @@ define(['jquery',
                 if (!Gadget.manualLock()) {
                     this.findNearest(Gadget.position().utm());
                 }
+                posCount += 1;
             }
         }
     };
