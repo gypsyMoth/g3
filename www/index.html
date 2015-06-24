@@ -5,6 +5,7 @@
         <meta name="format-detection" content="telephone=no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' chrome-extension: file: gap:; object-src 'none'; script-src 'self' 'unsafe-eval' chrome-extension: file: gap:; connect-src *; style-src 'self' 'unsafe-inline' chrome-extension: file: gap:; img-src 'self' chrome-extension: file: gap: data:">
         <title>Home</title>
         <link rel="stylesheet" href="css/gadget.css" type="text/css" />
         <!--<link rel="stylesheet" href="css/index.css" type="text/css" />-->
@@ -14,7 +15,7 @@
     </head>
     <body>
         <div id="content" class="content" data-bind="template: currentView()"></div>
-        <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" data-main="js/Main" src="js/lib/require.js"></script>
     </body>
 </html>

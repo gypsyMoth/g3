@@ -92,7 +92,7 @@ define (['src/util/Date',
         ret += this.transactionLog.HEMISPHERE + ',';
         ret += op.xact + ',';
         ret += op.yact + ',';
-        ret += this.rpad(Controller.gadget.position().accuracy() + '.', 5, '0') + ',';
+        ret += "G" + this.rpad(Controller.gadget.position().accuracy() + '.', 4, '0') + ',';
         ret += DateFormatter.getOperationFormatDate(op.txn_date) + ',';
         ret += DateFormatter.getOperationFormatTime(op.txn_date) + ',';
         ret += this.transactionLog.PLACEHOLDER + ',';

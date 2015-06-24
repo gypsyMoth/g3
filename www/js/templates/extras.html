@@ -4,7 +4,7 @@
         <input type="button" id="btnExtrasManualLock" class="gadgetButton fastButton" value="Manual Lock" data-bind="click: function(){$root.changeView('manualLock');}">
         <input type="button" id="btnExtrasLoadSites" class="gadgetButton fastButton" value="Trapping Area" data-bind="click: function(){$root.changeView('loadSites');}">
         <input type="button" id="btnDownloadSites" class="gadgetButton fastButton" value="Download Sites" data-bind="click: function(){this.clickDownload();}">
-        <input type="button" id="btnExtrasRandom" class="gadgetButton fastButton" value="Random Site" data-bind="click: function(){$root.changeView('random');}">
+        <input type="button" id="btnExtrasRandom" class="gadgetButton fastButton" value="Random Site" data-bind="enable: $root.gpsFound, click: function(){$root.changeView('random');}">
         <input type="button" id="btnExtrasSettings" class="gadgetButton fastButton" value="Settings" data-bind="click: function(){$root.changeView('settings');}">
         <input type="button" id="btnExtrasQC" class="gadgetButton fastButton" value="QC" data-bind="enable: foundSite, click: function(){this.clickQC();}">
         <input type="button" id="btnExtrasUpload" class="gadgetButton fastButton" value="Upload Data" data-bind="visible: $root.config().directUpload, click: function(){this.clickUpload();}">

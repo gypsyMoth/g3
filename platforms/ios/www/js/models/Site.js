@@ -1,23 +1,22 @@
-define(['underscore', 'backbone', 'src/models/RelativePosition'], function(_, Backbone, RelativePosition) { 'use strict';
+define(function() { 'use strict';
 
-    var Site = Backbone.Model.extend({
-        defaults: {
-            zone: '',
-            xth: '',
-            yth: '',
-            xact: '',
-            yact: '',
-            quad: '',
-            site_id: '',
-            grid: '',
-            trap_type: '',
-            visit: '',
-            condition: '',
-            moth_count: '',
-            omit_reason: '',
-            txn_date: ''
-        }
-    });
+    var Site = function(){
+        this.zone = undefined;
+        this.xth = undefined;
+        this.yth = undefined;
+        this.xact = undefined;
+        this.yact = undefined;
+        this.quad = undefined;
+        this.site_id = undefined;
+        this.grid = undefined;
+        this.trap_type = undefined;
+        this.omit_reason = undefined;
+        this.txn_date = undefined;
+        this.moth_count = undefined;
+        this.visit = undefined;
+        this.condition = undefined;
+        this.fail_reason = undefined;
+    };
 
     return Site;
 });

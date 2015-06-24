@@ -225,6 +225,10 @@
     -webkit-appearance: none;
 }
 
+#btnPlacement, #btnInspection, #btnQC, #btnOmit, #btnUpload {
+    font-size: 2em;
+}
+
 .footerButton {
     font-size: 2em;
     font-weight: bolder;
@@ -250,6 +254,16 @@
 #btnHistoryPrev, #btnHistoryNext {
     background-color: #9CCB3B;
     width: 15%;
+}
+
+#btnConfirm {
+    font-size: 2em;
+    font-weight: bolder;
+    max-height: 2em;
+    max-width: 5em;
+    margin: 0 5% 0 5%;
+    -webkit-appearance: none;
+    padding: 1%;
 }
 
 #cautionSpan {

@@ -21,6 +21,16 @@ define(['jquery',
     var HomeView = function() {
 
         var watchId = null;
+        var timerId = null;
+
+        this.timer = function(){
+            timerId = setInterval(_.bind(function () {
+                var offset = Controller.gadget.clockOffset() || 0;
+                this.now(Date.now() - offset);
+                //var realTime = Date.now() - offset;
+                //console.log(Date.now() + " - " + offset + " = " + realTime);
+            }, this), 1000);
+        }
 
         this.current = ko.computed(function(){
             return Controller.gadget.position();
@@ -49,7 +59,8 @@ define(['jquery',
         this.gpsAge = ko.computed(function(){
             var timestamp = this.current().timestamp() || 0;
             var age = this.now() - timestamp;
-            //console.log(this.now() + "-" + timestamp + "=" + Math.floor(age/1000));
+            //console.log(this.now() + "-" + timestamp + "=" + age);
+            //console.log(Math.floor(age/1000));
             return age <= 0 ? 0 : Math.floor(age/1000);
         }, this);
 
@@ -157,10 +168,17 @@ define(['jquery',
             return Controller.gadget.config().compass;
         });
 
+        this.initOrient = ko.observable();
+
         this.startCompass = function(){
-            var options = {
-                frequency: 100
-            };
+            var options;
+            if (Controller.gadget.os === 'iOS'){
+                options = {filter: 1};
+                this.initOrient(window.orientation);
+            } else {
+                options = {frequency: 100};
+                this.initOrient(0);
+            }
             //Controller.gadget.magneticCompass(true);
             console.log("Starting Compass!");
             var myHeading = this.heading;
@@ -182,7 +200,7 @@ define(['jquery',
             //this.orientation(window.orientation + " : " + window.screen.width + "x" + window.screen.height);
             //var rotation = 360 - this.heading();
             var p = this.relPos();
-            var rotation = Controller.gadget.config().compass ? 360 - this.heading() - window.orientation : 360 - p.motionHeading;
+            var rotation = Controller.gadget.config().compass ? 360 - this.heading() - window.orientation + this.initOrient() : 360 - p.motionHeading;
             /*var msg = "";
             msg = "Compass: " + this.relPos().compassBearing + "\r\nMotion: " + this.relPos().motionHeading;
             msg += "\r\nCardinal: " + rotation;
@@ -193,7 +211,7 @@ define(['jquery',
         this.arrowRotation = ko.computed(function(){
             //var rotation = this.relPos().compassBearing - this.heading();
             var p = this.relPos();
-            var rotation = Controller.gadget.config().compass ? p.compassBearing - this.heading() - window.orientation : p.compassBearing - p.motionHeading;
+            var rotation = Controller.gadget.config().compass ? p.compassBearing - this.heading() - window.orientation + this.initOrient() : p.compassBearing - p.motionHeading;
             if (rotation < 0) {
                 rotation += 360;
             }
@@ -240,7 +258,11 @@ define(['jquery',
                 case Encoder.operationTypes.ERROR:
                     break;
                 case Encoder.operationTypes.UNADDRESSED:
-                    return'placement';
+                    if (this.isOut()){
+                        return'caution';
+                    } else {
+                        return 'placement';
+                    }
                     break;
                 case Encoder.operationTypes.PLACED:
                 case Encoder.operationTypes.MIDSEASON:
@@ -261,6 +283,7 @@ define(['jquery',
                     alert("Site omitted!");
                     break;
             }
+            return null;
         };
 
         this.message = ko.computed(function(){
@@ -289,10 +312,14 @@ define(['jquery',
         }, this);
 
         this.goToView = function(view){
-            console.log("FOUND SITE: " + this.foundSite());
-            clearInterval(this.timer);
-            navigator.compass.clearWatch(watchId);
-            Controller.gadget.changeView(view);
+            if (view) {
+                clearInterval(timerId);
+                timerId = null;
+                console.log("FOUND SITE: " + this.foundSite());
+                navigator.compass.clearWatch(watchId);
+                watchId = null;
+                Controller.gadget.changeView(view);
+            }
         };
 
     };

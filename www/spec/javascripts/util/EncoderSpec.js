@@ -181,7 +181,7 @@ define(['src/util/Encoder',
             };
 
             function setCompString(date, code){
-                var ret = "#,000,01234567890123,17,North,400000,4000000,10.00,";
+                var ret = "#,000,01234567890123,17,North,400000,4000000,G10.0,";
                 ret += DateFormatter.getOperationFormatDate(date) + ",";
                 ret += DateFormatter.getOperationFormatTime(date);
                 ret += ",,0,";
