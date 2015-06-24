@@ -122,6 +122,7 @@ define(['jquery',
         this.operationalSite = ko.observable(new Site());
 
         this.initialize = function(){
+            this.os = device.platform;
             this.splash = new SplashView();
             this.home = new HomeView();
             this.splash.initializeGadget();
@@ -131,26 +132,39 @@ define(['jquery',
 
         this.connectionStatus = ko.observable(false);
 
+        this.gpsFound = ko.observable(false);
+
+        this.watchPosition = ko.observable(true);
+
+        this.clockOffset = ko.observable();
+
         this.changeView = function(name){
-            switch(name){
+            switch(name) {
                 case('home'):
-                    this.home.timer = setInterval(_.bind(function(){
+                    this.home.timer();/* = setInterval(_.bind(function () {
                         this.home.now(Date.now());
-                    }, this), 1000);
+                    }, this), 1000);*/
                     this.operationalSite(new Site());
                     console.log(this.config().compass);
-                    if (this.config().compass){
+                    if (this.config().compass) {
                         this.home.startCompass();
-                    };
-                    Geolocation.start();
+                    }
+                    //alert(this.gpsFound());
+                    if (this.gpsFound() === false) {
+                        Geolocation.start();
+                    }
+                    this.previousUTMs.removeAll();
+                    this.watchPosition(true);
                     break;
                 case('placement'):
-                    Geolocation.stop();
+                    //Geolocation.stop();
+                    this.watchPosition(false);
                     this.initializeOperation();
                     this.place = new PlacementView();
                     break;
                 case('inspection'):
-                    Geolocation.stop();
+                    //Geolocation.stop();
+                    this.watchPosition(false);
                     this.initializeOperation();
                     this.inspection = new InspectionView();
                     break;
@@ -158,13 +172,15 @@ define(['jquery',
                     this.omit = new OmitView();
                     break;
                 case('caution'):
+                    this.watchPosition(false);
                     this.caution = new CautionView();
                     break;
                 case('confirm'):
                     this.confirm = new ConfirmView();
                     break;
                 case('extras'):
-                    Geolocation.stop();
+                    //Geolocation.stop();
+                    this.watchPosition(false);
                     this.connectionStatus(DB.checkConnection());
                     this.extras = new ExtrasView();
                     break;

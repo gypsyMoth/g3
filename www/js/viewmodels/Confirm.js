@@ -21,6 +21,7 @@ define(['jquery',
         this.op = Controller.gadget.operationalSite();
 
         this.confirmOperation = function(){
+            document.getElementById("btnConfirmOk").disabled = true;
             var sites = Controller.gadget.sitesList;
             var operation = Encoder.codedString();
             sites.remove(this.site);
@@ -37,7 +38,7 @@ define(['jquery',
 
         this.message = ko.computed(function(){
             var msg;
-            msg = "<span>Confirm ";
+            msg = "";//<span>";//Confirm ";
             if (this.op.visit){
                 if (this.op.fail_reason){
                     if (this.op.fail_reason === 'Passed'){
@@ -45,8 +46,8 @@ define(['jquery',
                     } else {
                         msg += "FAILED ";
                     }
-                    msg += this.op.visit + " QC Inspection of ";
-                    msg += this.op.condition + " trap ";
+                    //msg += this.op.visit
+                    msg += " QC Inspection of " + this.op.condition + " trap ";
                     if (this.op.fail_reason !== 'Passed'){
                         msg += "(" + this.op.fail_reason + ") "
                     }
@@ -58,7 +59,7 @@ define(['jquery',
             } else if (this.op.trap_type === 'Omit'){
                 msg += "OMIT (" + this.op.omit_reason + ") ";
             } else {
-                msg += "placement of " + this.op.trap_type.toUpperCase() + " trap ";
+                msg += "Placement of " + this.op.trap_type.toUpperCase() + " trap ";
                 if (Controller.gadget.relativePosition().distanceOutside > 0){
                     msg += "(outside target circle) ";
                 }
@@ -66,7 +67,7 @@ define(['jquery',
             msg += "at site "
             msg += this.op.quad + ":" + this.op.site_id + ", coordinates ";
             msg += this.op.xact + "E, ";
-            msg += this.op.yact + "N?</span>";
+            msg += this.op.yact + "N?";//</span>";
             return msg;
         }, this);
     };

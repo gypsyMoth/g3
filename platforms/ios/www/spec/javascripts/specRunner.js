@@ -13,7 +13,9 @@
             'jasmine': 'lib/jasmine-2.0.0/jasmine',
             'jasmine-html': 'lib/jasmine-2.0.0/jasmine-html',
             'jasmine-jquery': 'lib/jasmine-jquery/jasmine-jquery',
-            'boot': 'lib/jasmine-2.0.0/boot'
+            'boot': 'lib/jasmine-2.0.0/boot',
+            'knockout': '../../js/lib/knockout-3.1.0',
+            'knockout-amd-helpers': '../../js/lib/knockout-amd-helpers.min'
         },
         shim: {
             'underscore': {
@@ -53,22 +55,8 @@
         'util/GeolocationSpec',
         'util/NearestNeighborSpec',
         'util/DecoderSpec',
-        'models/CurrentPositionSpec',
-        'models/TransactionSpec',
-        'models/RelativePositionSpec',
-        'models/SitesFileSpec',
-        'views/CautionSpec',
-        'views/ConfirmSpec',
-        'views/ExtrasSpec',
-        'views/HomeSpec',
-        'views/PlacementSpec',
-        'views/SplashSpec',
-        'views/LoadSitesSpec',
-        'views/ManualLockSpec',
-        'views/RandomSpec',
-        'views/OmitSpec',
-        'views/HistorySpec',
-        'views/InspectionSpec'
+        'viewmodels/HomeSpec',
+        'viewmodels/HistorySpec'
     ];
 
     require(['src/app', 'boot', 'jasmine-jquery'], function (App) {
@@ -78,7 +66,6 @@
 
             // Initialize the HTML Reporter and execute the environment (setup by `boot.js`)
             window.onload();
-
             App.initialize();
         });
     });

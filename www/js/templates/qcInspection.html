@@ -10,12 +10,13 @@
             <select id="selectInspectionType" data-bind="options: failOptions,
                                                             optionsText: 'label',
                                                             value: selectedFail">
-            </select>
+            </select><br><br>
+            <input type="button" id="btnQC" class="gadgetButton fastButton" value="Continue" data-bind="click: function(){this.startQC()}">
         </div>
     </div>
 
     <div id="qcFooter" class="form footer">
-        <input type="button" id="btnQCOk" class="ok footerButton fastButton" value="OK" data-bind="click: function(){this.startQC()}">
+        <!--<input type="button" id="btnQCOk" class="ok footerButton fastButton" value="OK" data-bind="click: function(){this.startQC()}">-->
         <input type="button" id="btnQCCancel" class="cancel footerButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
     </div>
 </div>

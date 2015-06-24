@@ -5,49 +5,15 @@
     },
     "config_munge": {
         "files": {
-            "framework": {
-                "parents": {
-                    "AssetsLibrary.framework": [
-                        {
-                            "xml": "false",
-                            "count": 4
-                        }
-                    ],
-                    "MobileCoreServices.framework": [
-                        {
-                            "xml": "false",
-                            "count": 1
-                        }
-                    ],
-                    "AudioToolbox.framework": [
-                        {
-                            "xml": "true",
-                            "count": 4
-                        }
-                    ],
-                    "CoreLocation.framework": [
-                        {
-                            "xml": "false",
-                            "count": 2
-                        }
-                    ],
-                    "SystemConfiguration.framework": [
-                        {
-                            "xml": "true",
-                            "count": 1
-                        }
-                    ]
-                }
-            },
             "config.xml": {
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
+                            "xml": "<feature name=\"Compass\"><param name=\"ios-package\" value=\"CDVCompass\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Compass\"><param name=\"ios-package\" value=\"CDVCompass\" /></feature>",
+                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
                             "count": 1
                         },
                         {
@@ -63,11 +29,49 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
+                            "xml": "<feature name=\"Vibration\"><param name=\"ios-package\" value=\"CDVVibration\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Vibration\"><param name=\"ios-package\" value=\"CDVVibration\" /></feature>",
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "framework": {
+                "parents": {
+                    "CoreLocation.framework": [
+                        {
+                            "xml": false,
+                            "count": 2
+                        }
+                    ],
+                    "AudioToolbox.framework": [
+                        {
+                            "xml": true,
+                            "count": 2
+                        }
+                    ],
+                    "AssetsLibrary.framework": [
+                        {
+                            "xml": false,
+                            "count": 2
+                        }
+                    ],
+                    "MobileCoreServices.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "SystemConfiguration.framework": [
+                        {
+                            "xml": true,
                             "count": 1
                         }
                     ]
@@ -86,25 +90,34 @@
         }
     },
     "installed_plugins": {
-        "org.apache.cordova.network-information": {
+        "com.phonegap.plugins.OrientationLock": {
             "PACKAGE_NAME": "com.phonegap.g3"
         },
-        "org.apache.cordova.device-orientation": {
+        "cordova-plugin-device-orientation": {
             "PACKAGE_NAME": "com.phonegap.g3"
         },
-        "org.apache.cordova.dialogs": {
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "com.phonegap.g3"
         },
-        "org.apache.cordova.file": {
+        "cordova-plugin-dialogs": {
             "PACKAGE_NAME": "com.phonegap.g3"
         },
-        "org.apache.cordova.file-transfer": {
+        "cordova-plugin-file": {
             "PACKAGE_NAME": "com.phonegap.g3"
         },
-        "org.apache.cordova.geolocation": {
+        "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.phonegap.g3"
         },
-        "org.apache.cordova.vibration": {
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "com.phonegap.g3"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.phonegap.g3"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.phonegap.g3"
+        },
+        "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.phonegap.g3"
         }
     },

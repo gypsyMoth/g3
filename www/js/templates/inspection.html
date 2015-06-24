@@ -15,12 +15,13 @@
                 <ul>
                     <li><label class="bigMessage">Enter Moth Count: </label><input id="mothCount" data-bind="value: moths" type="number"/></li>
                 </ul>
-            </div>
+            </div><br><br>
+            <input type="button" id="btnInspection" class="gadgetButton fastButton" value="Continue" data-bind="click: function(){this.startInspection()}">
         </div>
     </div>
 
     <div id="inspectionFooter" class="form footer">
-        <input type="button" id="btnInspectionOk" class="ok footerButton fastButton" value="OK" data-bind="click: function(){this.startInspection()}">
+        <!--<input type="button" id="btnInspectionOk" class="ok footerButton fastButton" value="OK" data-bind="click: function(){this.startInspection()}">-->
         <input type="button" id="btnInspectionCancel" class="cancel footerButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
     </div>
 </div>

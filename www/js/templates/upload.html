@@ -1,14 +1,17 @@
 <div id="uploadDiv" class="view" data-bind="with: upload">
     <div id="uploadBody" class="form main">
         <div class="vertical center">
-	        <span id="uploadMessage" class="bigMessage">Upload Trapping Activity Log?</span><br>
-	        <input type="text" id="tagInput" data-bind="value: tag, visible: showTag"><br>
-	        <div id="progressDiv" class="progress" data-bind="style: {width: progress()}, visible: showProgress"></div>
+	        <span id="uploadMessage" class="bigMessage">Upload Trapping Activity Log?</span><br><br>
+            <span id="tagMessage" class="message" data-bind="visible: showTag">Add a unique letter (a-z) tag in the text box below.</span><br>
+	        <input type="text" id="tagInput" data-bind="value: tag, visible: showTag"><br><br>
+	        <div id="progressDiv" class="progress" data-bind="style: {width: progress()}, visible: showProgress"></div><br><br>
+            <div><input type="button" id="btnUpload" class="gadgetButton fastButton" value="Upload" data-bind="click: function(){this.upload()};"></div>
         </div>
+
     </div>
 
     <div id="uploadFooter" class="form footer">
-        <input type="button" id="btnUloadOk" class="ok footerButton fastButton" value="OK" data-bind="click: function(){this.upload()};">
+        <!--<input type="button" id="btnUploadOk" class="ok footerButton fastButton" value="OK" data-bind="click: function(){this.upload()};">-->
         <input type="button" id="btnUploadCancel" class="cancel footerButton fastButton" value="Cancel" data-bind="click: function(){this.cancel();}">
     </div>
 </div>

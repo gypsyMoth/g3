@@ -1,6 +1,12 @@
 define(['jquery',
-    'src/util/Geolocation'],
-    function($, Geolocation) { 'use strict';
+    'knockout',
+    'src/util/Controller',
+    'src/util/Geolocation',
+    'src/viewmodels/Gadget'],
+    function($, ko, Controller, Geolocation, GadgetView) { 'use strict';
+
+    Controller.gadget = new GadgetView();
+
     describe("Geolocation Module", function() {
         it("Has a start method", function() {
             expect(Geolocation.start).toBeDefined();
@@ -21,7 +27,8 @@ define(['jquery',
                 "site_id":1,
                 "grid":"8000",
                 "trap_type":"Milk Carton",
-                "moth_count":0
+                "moth_count":0,
+                "txn_date":"2013-02-06T00:00:00-00:00"
             },{
                 "zone":17,
                 "xth":"600000",
@@ -32,11 +39,12 @@ define(['jquery',
                 "site_id":2,
                 "grid":"8000",
                 "trap_type":"Milk Carton",
-                "moth_count":0
+                "moth_count":0,
+                "txn_date":"2013-02-06T00:00:00-00:00"
             }];
 
-            Geolocation.SitesList = list;
-            expect(Geolocation.SitesList).toEqual(list);
+            Controller.gadget.sitesList(list); //Geolocation.SitesList = list;
+            expect(Controller.gadget.sitesList()).toEqual(list); //Geolocation.SitesList).toEqual(list);
             var site = Geolocation.getSiteById('TEST', 2);
             expect(site).toEqual(list[1]);
         });
@@ -48,12 +56,12 @@ define(['jquery',
             });
 
             it("Returns site id of 9000 when there are no other randoms", function() {
-                Geolocation.SitesList = [{site_id: 8999}];
+                Controller.gadget.sitesList([{site_id: 8999}]);
                 expect(Geolocation.getNextRandomSiteId()).toEqual(9000);
             });
 
             it("Raises an exception when a random with site id 9999 exists", function() {
-                Geolocation.SitesList = [{site_id: 9999}];
+                Controller.gadget.sitesList([{site_id: 9999}]);
                 expect(function() { Geolocation.getNextRandomSiteId(); }).toThrow(new RangeError("Too many randoms--random ids must be between 9000 and 9999"));
             });
 
@@ -79,7 +87,7 @@ define(['jquery',
                     "trap_type":"Milk Carton",
                     "moth_count":0
                 }];
-                Geolocation.SitesList = list;
+                Controller.gadget.sitesList(list);
                 var expectedSites = list.slice(0);
 
                 var randomId = Geolocation.getNextRandomSiteId();
@@ -97,7 +105,7 @@ define(['jquery',
 
                 Geolocation.addRandomSite(randomSite);
 
-                expect(Geolocation.SitesList).toEqual(expectedSites);
+                expect(Controller.gadget.sitesList()).toEqual(expectedSites);
 
             });
         });

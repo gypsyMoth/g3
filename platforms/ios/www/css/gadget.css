@@ -5,10 +5,372 @@
     font-family: 'MS Sans Serif', Geneva, sans-serif;
 }
 
-.view {
+#content {
+    height:100%;
     width: 100%;
-    height: 100%;
     margin: 0;
+}
+
+
+.view {
+    width: 99%;
+    height: 99%;
+    margin: 0.5%;
+}
+
+.form {
+    width: 99%;
+    text-align: center;
+}
+
+@media only screen and (max-height: 400px) and (orientation: landscape), screen and (max-height: 800px) and (orientation: portrait) {
+    .view {
+        font-size: 75%;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    .main {
+        position: absolute;
+        top: 0;
+        height: 78%;
+        padding-top: 3%;
+        padding-bottom: 1%;
+    }
+
+    .footer {
+        position: absolute;
+        height: 15%;
+        bottom: 0.5%;
+    }
+
+    .actionDiv {
+        position: absolute;
+        text-align: center;
+        width: 50%;
+        height: 88%;
+        left: 0;
+        top: 12%;
+    }
+
+    .homeInfo {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        -webkit-transform: translate(0, -50%);
+        height: auto;
+        width: 50%;
+    }
+}
+
+@media only screen and (orientation: portrait) {
+        .main {
+        position: absolute;
+        top: 0;
+        height: 85%;
+        padding-top: 4%;
+        padding-bottom: 1%;
+    }
+
+    .footer {
+        position: absolute;
+        height: 10%;
+        bottom: 0.5%;
+    }
+
+    .actionDiv {
+        position: absolute;
+        top: 10%;
+        width: 100%;
+        height: 60%;
+        text-align: center;
+    }
+
+    .homeInfo {
+        position: absolute;
+        height: 30%;
+        bottom: 0;
+        width: 100%;
+    }
+}
+
+.homeImg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    /*-ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);*/
+}
+
+#homeImage {
+    height:65%;
+}
+
+#homeImage:focus {
+    outline: none;
+}
+
+#arrowImage {
+    height: 85%;
+}
+
+#cardinalImage {
+    height: 85%;
+}
+
+#distanceSpan {
+    position: absolute;
+    bottom: 0;
+    background-color: transparent;
+}
+
+#lockImage {
+    height: 15%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#inspectImage {
+    height: 15%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.siteDiv {
+    background-color: #799839;
+}
+
+.siteSpan {
+    color: white;
+    font-size: 3em;
+    font-weight: bolder;
+}
+
+.progress {
+    padding-top: 1%;
+    background-color: #9CCB3B;
+    float: left;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vertical {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translate(0%, -50%);
+    /*-ms-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);*/
+}
+
+.fastButton, a {
+    -ms-touch-action: none; // Deprecated as of IE 11, Microsoft recommends the the standard below
+    touch-action: none; // webkit
+}
+
+.message {
+    width: 100%;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    //text-transform: uppercase;
+}
+
+.bigMessage {
+    width: 100%;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.bottomLeft {
+    position: absolute;
+    bottom: 1%;
+    left: 0;
+}
+
+.bottomRight {
+    position: absolute;
+    bottom: 1%;
+    right: 0;
+}
+
+.menuButton {
+    background-color: #9CCB3B;
+    height: 85%;
+    margin: 1%;
+    -webkit-border-radius: 5px;
+}
+
+#appInfo {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 1%;
+}
+
+.gadgetButton {
+    background-color: #9CCB3B;
+    font-size: 1.5em;
+    font-weight: bolder;
+    height: 20%;
+    min-height: 2em;
+    max-height: 5em;
+    width:40%;
+    margin: 2% 4% 0 4%;
+    -webkit-appearance: none;
+}
+
+.footerButton {
+    font-size: 2em;
+    font-weight: bolder;
+    height: 95%;
+    max-height: 2em;
+    max-width: 4em;
+    margin: 0 5% 0 5%;
+    -webkit-appearance: none;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.ok {
+    background-color: #9CCB3B;
+    width: 40%;
+}
+
+.cancel {
+    background-color: #DEA625;
+    width:40%;
+}
+
+#btnHistoryPrev, #btnHistoryNext {
+    background-color: #9CCB3B;
+    width: 15%;
+}
+
+#btnConfirmOk {
+    font-size: 2em;
+    font-weight: bolder;
+    max-height: 2em;
+    max-width: 5em;
+    margin: 0 5% 0 5%;
+    -webkit-appearance: none;
     padding: 1%;
 }
 
+#cautionSpan {
+    display: block;
+    font-weight:700;
+    color:red;
+    text-align:center;
+    font-size: 4em;
+}
+
+#cautionImg {
+    display: block;
+    height: 30%;
+}
+
+#splashImage {
+    width: 100%;
+    text-align: center;
+}
+
+#splashText {
+    width: 100%;
+    text-align: center;
+}
+
+select {
+    font-size: 2em;
+    font-weight: bold;
+    //background-color: #C0C4BE;
+    text-align: center;
+    max-width: 95%;
+}
+
+input[type=checkbox] {
+    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    vertical-align: text-bottom;
+    text-align: right;
+}
+
+input[type=text], input[type=password] {
+    height: 1.5em;
+    font-size: 1.5em;
+    font-weight: bold;
+    vertical-align: text-bottom;
+}
+
+input[type=number] {
+    height: 1.5em;
+    font-size: 1.5em;
+    font-weight: bold;
+    vertical-align: text-bottom;
+    max-width: 3em;
+}
+
+input[type=button]{
+    vertical-align: text-bottom;
+    white-space: normal;
+}
+
+input[type=submit]{
+    font-size: 1.5em;
+    font-weight: bold;
+    vertical-align: text-bottom;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 0 0 1em 2%;
+}
+
+#selectState, #selectTrap, #selectBidUnit {
+    width: auto;
+}
+
+#settings, #uploadSettings {
+    text-align:left;
+}
+
+.settingsTable {
+    width: 80%;
+    text-align: left;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.settingsTable tr {
+    vertical-align: middle;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.stripedTable tbody tr:nth-child(odd) {
+    background-color: #9CCB3B;
+}
+
+.historyHeader {
+    background-color: transparent;
+}
+
+#historyTable {
+    font-size: 1.5em;
+    background-color: transparent;
+    text-align: left;
+}
+
+#historyTable tfoot {
+    text-align: center;
+}

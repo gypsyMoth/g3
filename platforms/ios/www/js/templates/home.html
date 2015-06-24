@@ -1,49 +1,26 @@
-<div id="homeHeader" class="homeHeader">
-    <div id="locationDiv" class="homeDiv">
-                <span id="locationSpan" class="locationSpan">
-                    <%= currentUtm.Zone + ", " + currentUtm.Easting + "E, " + currentUtm.Northing + "N" %>
-                </span>
-    </div>
-</div>
-
-<div id="ActionDiv" class="actionDiv">
-    <img id="homeImage" src="img/greenTree.gif"/>
-</div>
-
-<div id="homeFooter" class="homeFooter">
-    <div id="infoDiv">
-        <div id="lockDiv" style="visibility: hidden; float: left;">
-            <img id="lockImage" src="img/locked.gif"/>
+<div id="homeDiv" class="view" data-bind="with: home">
+    <div id="homeBody" class="form main">
+        <div id="locationDiv">
+            <div id="locationSpan" class="message" data-bind="text: location(), style:{color: gpsStatus() ? 'black' : 'red'}, visible: found()"></div>
+            <div id="counterDiv" class="progress" data-bind="style: {backgroundColor: gpsStatus() ? '#9CCB3B' : 'transparent', width: signalCount()}"></div>
         </div>
-        <div id="inspectDiv" style="visibility: hidden; float: right;">
-            <img id="inspectImage" src="img/magGlassSmall.gif"/>
+        <div id="actionDiv" class="actionDiv">
+            <!--<div id="orientation" class="message" data-bind="text: orientation()"></div>-->
+            <img id="arrowImage" class="homeImg" src="img/arrow.png" data-bind="style:{webkitTransform: arrowRotation()}"/>
+            <img id="cardinalImage" class="homeImg" src="img/cardinal.png" data-bind="style:{webkitTransform: cardinalRotation()}"/>
+            <input id="homeImage" class="homeImg" type="image" data-bind="click: function(){this.foundSite() ? this.goToView(this.operation()) : alert('No site found!');}, attr: {src: image()}"/>
+            <img id="lockImage" src="img/locked.png" data-bind="visible: $root.manualLock()">
+            <img id="inspectImage" src="img/magGlassSmall.png" data-bind="visible: inspected()">
+            <div id="distanceSpan" class="message" data-bind="text: positionInfo(), click: function(){this.switchUnits();}"></div>
+        </div>
+        <div id="homeInfo" class="homeInfo">
+            <div id="siteDiv" class="siteDiv" data-bind="style: {backgroundColor: relPos().distanceOutside > 0 ? 'red' : 'yellowgreen'}">
+                <span id="siteSpan" class="siteSpan" data-bind="text: siteInfo()"></span>
+            </div>
+            <span id="messageSpan" class="message" data-bind="text: message()"></span>
         </div>
     </div>
-    <div id="distanceDiv" class="homeDiv">
-                    <span id="distanceSpan" class="message">
-                        <% if(selectedSite.get('relativePosition').get('found')) { %>
-                        <%= selectedSite.get('relativePosition').get('distance')
-                         + " (&plusmn" + accuracy + ") meters "
-                         + selectedSite.get('relativePosition').get('bearing')
-                        %>
-                        <% } else { %>
-                        <%="No sites found in zone " + currentUtm.Zone %>
-                        <% } %>
-                    </span>
-    </div>
-
-    <div id="siteDiv" class="homeDiv siteDiv">
-                    <span id="siteSpan" class="siteSpan">
-                        <% if(selectedSite.get('site').quad  !== '') { %>
-                        <%= selectedSite.get('site').quad + ':' + selectedSite.get('site').site_id%>
-                        <% } else { %>
-                        <%= "No Site" %>
-                        <% } %>
-                    </span>
-    </div>
-
-    <div id="messageDiv" class="homeDiv">
-        <input type="button" id="btnHomeExtras">
-        <span id="messageSpan"><%= message %></span>
+    <div id="homeFooter" class="form footer">
+        <input type="image" id="btnHomeExtras" class="menuButton bottomLeft" src="img/details.png" data-bind="click: function(){this.goToView('extras');}">
     </div>
 </div>
