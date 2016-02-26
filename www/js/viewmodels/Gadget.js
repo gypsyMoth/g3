@@ -122,7 +122,7 @@ define(['jquery',
         this.operationalSite = ko.observable(new Site());
 
         this.initialize = function(){
-            this.os = device.platform;
+            //this.os = device.platform;
             this.splash = new SplashView();
             this.home = new HomeView();
             this.splash.initializeGadget();

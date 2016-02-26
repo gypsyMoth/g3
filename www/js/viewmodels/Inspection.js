@@ -1,10 +1,12 @@
 define(['jquery',
     'knockout',
     'src/util/Encoder',
+    'src/util/DB',
     'src/util/Controller'
 ], function($,
             ko,
             Encoder,
+            DB,
             Controller
     ) {
 
@@ -12,9 +14,11 @@ define(['jquery',
 
     var InspectionView = function() {
 
+        this.defaultInspection = Controller.gadget.config().inspection_type;
+
         this.visitTypes = ko.observableArray(Encoder.visits);
 
-        this.selectedVisit = ko.observable(Encoder.visits[0]);
+        this.selectedVisit = ko.observable(Encoder.visits[this.defaultInspection]);
 
         this.conditions = ko.observableArray(Encoder.conditions);
 
@@ -39,13 +43,22 @@ define(['jquery',
                 this.moths(undefined);
             } else {
                 this.op.visit = this.selectedVisit().text;
+                this.defaultInspection = Encoder.visits.indexOf(this.selectedVisit());
+
                 this.op.condition = this.selectedCondition().text;
                 if (this.moths()) {
                     this.op.moth_count = this.moths();
                 } else {
                     this.op.moth_count = 0;
                 }
-                Controller.gadget.changeView('confirm');
+
+                Controller.gadget.config().inspection_type = this.defaultInspection;
+                DB.setConfig(Controller.gadget.config()).then(
+                    function(){
+                        Controller.gadget.changeView('confirm');
+                    }
+                );
+                //Controller.gadget.changeView('confirm');
             }
         };
 

@@ -92,7 +92,14 @@ define (['src/util/Date',
         ret += this.transactionLog.HEMISPHERE + ',';
         ret += op.xact + ',';
         ret += op.yact + ',';
-        ret += "G" + this.rpad(Controller.gadget.position().accuracy() + '.', 4, '0') + ',';
+        var acc = Controller.gadget.position().accuracy().toString();
+        if (acc.length >= 3){
+            acc = "G100+"
+        } else {
+            acc = "G" + this.rpad(acc + '.', 4, '0');
+        }
+        ret += acc + ',';
+        //ret += "G" + this.rpad(Controller.gadget.position().accuracy() + '.', 4, '0') + ',';
         ret += DateFormatter.getOperationFormatDate(op.txn_date) + ',';
         ret += DateFormatter.getOperationFormatTime(op.txn_date) + ',';
         ret += this.transactionLog.PLACEHOLDER + ',';

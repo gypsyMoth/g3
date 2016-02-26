@@ -14,6 +14,7 @@ define(function() {
         this.baseURL = "http://yt.ento.vt.edu/SlowTheSpread/";
         //this.baseURL = "http://testSkynet.ento.vt.edu/SlowTheSpread/";
         this.uploadURL = "TrapData";
+        this.inspection_type = 0;
     };
 
     return Config;
