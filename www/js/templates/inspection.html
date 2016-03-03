@@ -9,7 +9,8 @@
             <span class="bigMessage">Select Trap Condition</span><br>
             <select id="selectCondition" data-bind="options: conditions,
                                                         optionsText: 'label',
-                                                        value: selectedCondition">
+                                                        value: selectedCondition,
+                                                        enable: enableCondition">
             </select><br><br>
             <div id="enterCount" data-bind="visible: showCount">
                 <ul>

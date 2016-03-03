@@ -19,6 +19,7 @@ define(['jquery',
     'src/viewmodels/LoadSites',
     'src/viewmodels/Random',
     'src/viewmodels/History',
+    'src/viewmodels/Inaccessible',
     'src/viewmodels/Inspection',
     'src/viewmodels/QC',
     'src/viewmodels/Download',
@@ -48,6 +49,7 @@ define(['jquery',
             LoadSitesView,
             RandomView,
             HistoryView,
+            InaccessibleView,
             InspectionView,
             QCView,
             DownloadView,
@@ -161,6 +163,11 @@ define(['jquery',
                     this.watchPosition(false);
                     this.initializeOperation();
                     this.place = new PlacementView();
+                    break;
+                case('inaccessible'):
+                    this.watchPosition(false);
+                    this.initializeOperation();
+                    this.inaccessible = new InaccessibleView();
                     break;
                 case('inspection'):
                     //Geolocation.stop();
