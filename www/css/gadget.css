@@ -266,7 +266,7 @@
     padding: 1%;
 }
 
-#cautionSpan {
+#cautionSpan, #inaccessibleSpan {
     display: block;
     font-weight:700;
     color:red;
