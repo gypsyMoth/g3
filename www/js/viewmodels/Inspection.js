@@ -25,7 +25,7 @@ define(['jquery',
         this.enableCondition = ko.observable(true);
 
         this.selectedCondition = ko.computed(function(){
-            if (Controller.gadget.relativePosition().distanceOutside > 100) {
+            if (Controller.gadget.relativePosition().distance > 100) {
                 this.enableCondition(false);
                 return Encoder.conditions[3];
             } else {
