@@ -31,7 +31,7 @@ define(['jquery',
         this.codeMatch = ko.observable(false);
 
         this.confirm = function() {
-            if (this.code() === 'g2y0p1s5y') {
+            if (this.code() === 'G32016!') {
                 this.codeMatch(true);
             } else {
                 alert("Incorrect Passcode!");

@@ -19,6 +19,7 @@ define(['jquery',
     'src/viewmodels/LoadSites',
     'src/viewmodels/Random',
     'src/viewmodels/History',
+    'src/viewmodels/Inaccessible',
     'src/viewmodels/Inspection',
     'src/viewmodels/QC',
     'src/viewmodels/Download',
@@ -48,6 +49,7 @@ define(['jquery',
             LoadSitesView,
             RandomView,
             HistoryView,
+            InaccessibleView,
             InspectionView,
             QCView,
             DownloadView,
@@ -122,7 +124,7 @@ define(['jquery',
         this.operationalSite = ko.observable(new Site());
 
         this.initialize = function(){
-            this.os = device.platform;
+            //this.os = device.platform;
             this.splash = new SplashView();
             this.home = new HomeView();
             this.splash.initializeGadget();
@@ -161,6 +163,11 @@ define(['jquery',
                     this.watchPosition(false);
                     this.initializeOperation();
                     this.place = new PlacementView();
+                    break;
+                case('inaccessible'):
+                    this.watchPosition(false);
+                    this.initializeOperation();
+                    this.inaccessible = new InaccessibleView();
                     break;
                 case('inspection'):
                     //Geolocation.stop();

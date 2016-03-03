@@ -24,6 +24,10 @@ define(['jquery',
             document.getElementById("btnConfirmOk").disabled = true;
             var sites = Controller.gadget.sitesList;
             var operation = Encoder.codedString();
+            // If placed location exists, retain coordinates for the sites file...
+            this.op.xact = this.site.xact || this.op.xact;
+            this.op.yact = this.site.yact || this.op.yact;
+            this.op.zone = this.site.zone || this.op.zone;
             sites.remove(this.site);
             sites.push(this.op);
             DB.initialize().then(function() {

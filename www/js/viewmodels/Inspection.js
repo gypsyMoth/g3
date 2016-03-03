@@ -1,10 +1,12 @@
 define(['jquery',
     'knockout',
     'src/util/Encoder',
+    'src/util/DB',
     'src/util/Controller'
 ], function($,
             ko,
             Encoder,
+            DB,
             Controller
     ) {
 
@@ -12,13 +14,24 @@ define(['jquery',
 
     var InspectionView = function() {
 
+        this.defaultInspection = Controller.gadget.config().inspection_type;
+
         this.visitTypes = ko.observableArray(Encoder.visits);
 
-        this.selectedVisit = ko.observable(Encoder.visits[0]);
+        this.selectedVisit = ko.observable(Encoder.visits[this.defaultInspection]);
 
         this.conditions = ko.observableArray(Encoder.conditions);
 
-        this.selectedCondition = ko.observable(Encoder.conditions[0]);
+        this.enableCondition = ko.observable(true);
+
+        this.selectedCondition = ko.computed(function(){
+            if (Controller.gadget.relativePosition().distance > 100) {
+                this.enableCondition(false);
+                return Encoder.conditions[3];
+            } else {
+                return Encoder.conditions[0];
+            }
+        }, this);
 
         this.op = Controller.gadget.operationalSite();
 
@@ -39,13 +52,22 @@ define(['jquery',
                 this.moths(undefined);
             } else {
                 this.op.visit = this.selectedVisit().text;
+                this.defaultInspection = Encoder.visits.indexOf(this.selectedVisit());
+
                 this.op.condition = this.selectedCondition().text;
                 if (this.moths()) {
                     this.op.moth_count = this.moths();
                 } else {
                     this.op.moth_count = 0;
                 }
-                Controller.gadget.changeView('confirm');
+
+                Controller.gadget.config().inspection_type = this.defaultInspection;
+                DB.setConfig(Controller.gadget.config()).then(
+                    function(){
+                        Controller.gadget.changeView('confirm');
+                    }
+                );
+                //Controller.gadget.changeView('confirm');
             }
         };
 

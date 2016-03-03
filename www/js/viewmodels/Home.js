@@ -270,7 +270,7 @@ define(['jquery',
                         alert("Site cannot be placed and inspected or inspected multiple times on the same day!");
                     } else {
                         if (this.relPos().distance > 100) {
-                            alert("Inspections cannot be completed from more than 100 meters away. This may be due to GPS error now or during placement.");
+                            return 'inaccessible'; //alert("Inspections cannot be completed from more than 100 meters away. This may be due to GPS error now or during placement.");
                         } else {
                             return 'inspection';
                         }

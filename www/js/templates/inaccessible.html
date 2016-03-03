@@ -1,0 +1,18 @@
+<div id="inaccessibleDiv" class="view" data-bind="with: inaccessible">
+
+    <div id="inaccessibleBody" class="form main">
+        <div class="vertical center">
+            <img id="cautionImg" class="center" src="img/caution.png"/><br><br>
+            <!--<span id="inaccessibleSpan">WARNING</span>-->
+            <div id="inaccessibleHeader">
+                <span id="inaccessibleMessage" class="message" data-bind="html: message()"></span>
+            </div>
+            <!--<input type="button" id="btnInaccessible" class="gadgetButton fastButton" value="Continue" data-bind="click: function(){$root.changeView('inspection');}">-->
+        </div>
+    </div>
+
+    <div id="inaccessibleFooter" class="form footer">
+        <input type="button" id="btnInaccessibleOk" class="ok footerButton fastButton" value="OK" data-bind="click: function(){$root.changeView('inspection');}">
+        <input type="button" id="btnInaccessibleCancel" class="cancel footerButton fastButton" value="Cancel" data-bind="click: function(){$root.changeView('home');}">
+    </div>
+</div>
