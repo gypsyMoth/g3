@@ -18,7 +18,7 @@ define(['jquery',
 
     var UploadSettingsView = function() {
 
-        this.states = ['', 'IA','IL','IN','KY','MN','OH','NC','TN', 'VA','WI','WV'];
+        this.states = ['', 'IA','IL','IN','KY','MI','MN','OH','NC','TN', 'VA','WI','WV'];
 
         this.selectedState = ko.observable(Controller.gadget.config().state);
 
