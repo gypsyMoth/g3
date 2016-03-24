@@ -22,14 +22,14 @@ define(['jquery',
 
         this.conditions = ko.observableArray(Encoder.conditions);
 
-        this.enableCondition = ko.observable(true);
+        this.selectedCondition = ko.observable(Encoder.conditions[0]);
 
-        this.selectedCondition = ko.computed(function(){
+        this.enableCondition = ko.computed(function(){
             if (Controller.gadget.relativePosition().distance > 100) {
-                this.enableCondition(false);
-                return Encoder.conditions[3];
+                this.selectedCondition(Encoder.conditions[3]);
+                return false;
             } else {
-                return Encoder.conditions[0];
+                return true;
             }
         }, this);
 
