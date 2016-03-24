@@ -57,8 +57,10 @@ define(['jquery',
                     }
                 } else {
                     msg += this.op.visit + " Inspection of ";
-                    msg += this.op.condition + " trap with ";
-                    msg += this.op.moth_count + " moths ";
+                    msg += this.op.condition + " trap ";
+                    if (this.op.condition === 'GOOD' || this.op.condition === 'DAMAGED') {
+                        msg += " with " + this.op.moth_count + " moths ";
+                    }
                 }
             } else if (this.op.trap_type === 'Omit'){
                 msg += "OMIT (" + this.op.omit_reason + ") ";
