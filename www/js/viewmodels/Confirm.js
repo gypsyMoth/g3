@@ -3,13 +3,15 @@ define(['jquery',
     'src/util/DB',
     'src/util/Geolocation',
     'src/util/Encoder',
-    'src/util/Controller'
+    'src/util/Controller',
+    'src/models/Site'
 ], function($,
             ko,
             DB,
             Geolocation,
             Encoder,
-            Controller
+            Controller,
+            Site
     ) {
 
     'use strict';
@@ -21,8 +23,12 @@ define(['jquery',
         this.op = Controller.gadget.operationalSite();
 
         this.confirmOperation = function(){
+            var placeHolder = new Site();
             document.getElementById("btnConfirmOk").disabled = true;
             var sites = Controller.gadget.sitesList;
+            if (sites.length === 0) {
+                sites.push(placeHolder);
+            }
             var operation = Encoder.codedString();
             // If placed location exists, retain coordinates for the sites file...
             this.op.xact = this.site.xact || this.op.xact;
@@ -30,6 +36,7 @@ define(['jquery',
             this.op.zone = this.site.zone || this.op.zone;
             sites.remove(this.site);
             sites.push(this.op);
+            sites.remove(placeHolder);
             DB.initialize().then(function() {
                 DB.logOperation(operation).then( function() {
                     DB.saveSites(Controller.gadget.sitesList()).then( function() {
