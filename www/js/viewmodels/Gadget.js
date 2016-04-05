@@ -98,7 +98,7 @@ define(['jquery',
             var east = 0;
             var north = 0;
             var n = this.previousUTMs().length;
-            var zone = this.selectedSite().zone;
+            var zone = this.position().utm().Zone; //this.selectedSite().zone;
             _.each(this.previousUTMs(), function(utm){
                 east += utm.Easting;
                 north += utm.Northing;
@@ -124,7 +124,7 @@ define(['jquery',
         this.operationalSite = ko.observable(new Site());
 
         this.initialize = function(){
-            //this.os = device.platform;
+            this.os = device.platform;
             this.splash = new SplashView();
             this.home = new HomeView();
             this.splash.initializeGadget();
