@@ -124,7 +124,10 @@ define(['jquery',
         this.operationalSite = ko.observable(new Site());
 
         this.initialize = function(){
-            this.os = device.platform;
+            //Added this unnecessary if statement to keep the device check from breaking jasmine spec tests...
+            if (typeof(device) !== 'undefined') {
+                this.os = device.platform;
+            }
             this.splash = new SplashView();
             this.home = new HomeView();
             this.splash.initializeGadget();
